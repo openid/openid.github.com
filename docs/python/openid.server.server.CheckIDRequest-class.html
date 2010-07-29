@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.server.server.CheckIDRequest</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.server-module.html">Package&nbsp;server</a> ::
+        <a href="openid.server.server-module.html">Module&nbsp;server</a> ::
+        Class&nbsp;CheckIDRequest
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.server.server.CheckIDRequest-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class CheckIDRequest</h1><p class="nomargin-top"><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+   object --+    
+            |    
+<a href="openid.server.server.OpenIDRequest-class.html">OpenIDRequest</a> --+
+                |
+               <strong class="uidshort">CheckIDRequest</strong>
+</pre>
+
+<hr />
+<p>A request to confirm the identity of a user.</p>
+  <p>This class handles requests for openid modes <a 
+  name="index-checkid_immediate"></a><i 
+  class="indexterm"><code>checkid_immediate</code></i> and <a 
+  name="index-checkid_setup"></a><i 
+  class="indexterm"><code>checkid_setup</code></i>.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">identity</span>,
+        <span class="summary-sig-arg">return_to</span>,
+        <span class="summary-sig-arg">trust_root</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">immediate</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">assoc_handle</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">op_endpoint</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">claimed_id</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Construct me.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="idSelect"></a><span class="summary-sig-name">idSelect</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Is the identifier to be selected by the IDP?</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.idSelect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="trustRootValid"></a><span class="summary-sig-name">trustRootValid</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Is my return_to under my trust_root?</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.trustRootValid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#returnToVerified" class="summary-sig-name">returnToVerified</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Does the relying party publish the return_to URL for this response 
+      under the realm? It is up to the provider to set a policy for what 
+      kinds of realms should be allowed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.returnToVerified">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#answer" class="summary-sig-name">answer</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">allow</span>,
+        <span class="summary-sig-arg">server_url</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">identity</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">claimed_id</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Respond to this request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.answer">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#encodeToURL" class="summary-sig-name">encodeToURL</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>)</span><br />
+      Encode this request as a URL to GET.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.encodeToURL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#getCancelURL" class="summary-sig-name">getCancelURL</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Get the URL to cancel this request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.getCancelURL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.CheckIDRequest-class.html" 
+      class="link">CheckIDRequest</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#fromMessage" class="summary-sig-name">fromMessage</a>(<span class="summary-sig-arg">klass</span>,
+        <span class="summary-sig-arg">message</span>,
+        <span class="summary-sig-arg">op_endpoint</span>)</span><br />
+      Construct me from an OpenID message.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.fromMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="mode"></a><span class="summary-name">mode</span><br />
+      the <code><a name="index-openid_mode"></a><i 
+      class="indexterm">openid.mode</i></code> of this request.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a href="openid.server.server.CheckIDRequest-class.html#assoc_handle" class="summary-name">assoc_handle</a><br />
+      Provided in smart mode requests, a handle for a previously 
+      established association.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a href="openid.server.server.CheckIDRequest-class.html#claimed_id" class="summary-name">claimed_id</a><br />
+      The claimed identifier.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="identity"></a><span class="summary-name">identity</span><br />
+      The OP-local identifier being checked.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+        <a name="immediate"></a><span class="summary-name">immediate</span><br />
+      Is this an immediate-mode request?
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="return_to"></a><span class="summary-name">return_to</span><br />
+      The URL to send the user agent back to to reply to this request.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a href="openid.server.server.CheckIDRequest-class.html#trust_root" class="summary-name">trust_root</a><br />
+      &quot;Are you Frank?&quot; asks the checkid request.
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.server.server.CheckIDRequest-class.html#namespace" class="summary-name">namespace</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">identity</span>,
+        <span class="sig-arg">return_to</span>,
+        <span class="sig-arg">trust_root</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">immediate</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">assoc_handle</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">op_endpoint</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">claimed_id</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Construct me.</p>
+  <p>These parameters are assigned directly as class attributes, see my <a 
+  href="openid.server.server.CheckIDRequest-class.html" class="link">class 
+  documentation</a> for their descriptions.</p>
+  <dl class="fields">
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="openid.server.server.MalformedReturnURL-class.html">MalformedReturnURL</a></strong></code> - When the <code>return_to</code> URL is not a URL.</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fromMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fromMessage</span>(<span class="sig-arg">klass</span>,
+        <span class="sig-arg">message</span>,
+        <span class="sig-arg">op_endpoint</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.fromMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Construct me from an OpenID message.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>message</code></strong> (openid.message.Message) - An OpenID checkid_* request Message</li>
+        <li><strong class="pname"><code>op_endpoint</code></strong> (str) - The endpoint URL of the server that this message was sent to.</li>
+    </ul></dd>
+    <dt>Returns: <a href="openid.server.server.CheckIDRequest-class.html" 
+      class="link">CheckIDRequest</a></dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="openid.server.server.ProtocolError-class.html">ProtocolError</a></strong></code> - When not all required parameters are present in the message.</li>
+        <li><code><strong class='fraise'><a href="openid.server.server.MalformedReturnURL-class.html">MalformedReturnURL</a></strong></code> - When the <code>return_to</code> URL is not a URL.</li>
+        <li><code><strong class='fraise'><a href="openid.server.server.UntrustedReturnURL-class.html">UntrustedReturnURL</a></strong></code> - When the <code>return_to</code> URL is outside the 
+        <code>trust_root</code>.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="returnToVerified"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">returnToVerified</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.returnToVerified">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Does the relying party publish the return_to URL for this response 
+  under the realm? It is up to the provider to set a policy for what kinds 
+  of realms should be allowed. This return_to URL verification reduces 
+  vulnerability to data-theft attacks based on open proxies, 
+  cross-site-scripting, or open redirectors.</p>
+  <p>This check should only be performed after making sure that the 
+  return_to URL matches the realm.</p>
+  <dl class="fields">
+    <dt>Returns: bool</dt>
+        <dd>True if the realm publishes a document with the return_to URL 
+          listed</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="openid.yadis.discover.DiscoveryFailure-class.html">openid.yadis.discover.DiscoveryFailure</a></strong></code> - if the realm URL does not support Yadis discovery (and so does not 
+        support the verification process).</li>
+        <li><code><strong class='fraise'><a href="openid.fetchers.HTTPFetchingError-class.html">openid.fetchers.HTTPFetchingError</a></strong></code> - if the realm URL is not reachable.  When this is the case, the RP 
+        may be hosted on the user's intranet.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a 
+        href="openid.server.server.CheckIDRequest-class.html#trustRootValid"
+        class="link">trustRootValid</a>
+      </p>
+      <p><strong>Since:</strong>
+        2.1.0
+      </p>
+</div></td></tr></table>
+</div>
+<a name="answer"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">answer</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">allow</span>,
+        <span class="sig-arg">server_url</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">identity</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">claimed_id</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.answer">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Respond to this request.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>allow</code></strong> (bool) - Allow this user to claim this identity, and allow the consumer to
+          have this information?</li>
+        <li><strong class="pname"><code>server_url</code></strong> (str) - DEPRECATED.  Passing <code>op_endpoint</code> to the <a 
+          href="openid.server.server.Server-class.html" 
+          class="link">Server</a> constructor makes this optional.
+          <p>When an OpenID 1.x immediate mode request does not succeed, it
+          gets back a URL where the request may be carried out in a 
+          not-so-immediate fashion.  Pass my URL in here (the fully 
+          qualified address of this server's endpoint, i.e. 
+          <code>http://example.com/server</code>), and I will use it as a 
+          base for the URL for a new request.</p>
+          <p>Optional for requests where 
+          <code>CheckIDRequest.immediate</code> is <code>False</code> or 
+          <code>allow</code> is <code>True</code>.</p></li>
+        <li><strong class="pname"><code>identity</code></strong> (str or None) - The OP-local identifier to answer with.  Only for use when the 
+          relying party requested identifier selection.</li>
+        <li><strong class="pname"><code>claimed_id</code></strong> (str or None) - The claimed identifier to answer with, for use with identifier 
+          selection in the case where the claimed identifier and the 
+          OP-local identifier differ, i.e. when the claimed_id uses 
+          delegation.
+          <p>If <code>identity</code> is provided but this is not, 
+          <code>claimed_id</code> will default to the value of 
+          <code>identity</code>.  When answering requests that did not ask 
+          for identifier selection, the response <code>claimed_id</code> 
+          will default to that of the request.</p>
+          <p>This parameter is new in OpenID 2.0.</p></li>
+    </ul></dd>
+    <dt>Returns: <a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>NoReturnError</strong></code> - when I do not have a return_to.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>Change Log:</strong>
+        Version 2.0 deprecates <code>server_url</code> and adds 
+    <code>claimed_id</code>.
+      </p>
+</div></td></tr></table>
+</div>
+<a name="encodeToURL"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encodeToURL</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.encodeToURL">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode this request as a URL to GET.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> (str) - The URL of the OpenID server to make this request of.</li>
+    </ul></dd>
+    <dt>Returns: str</dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>NoReturnError</strong></code> - when I do not have a return_to.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getCancelURL"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getCancelURL</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.getCancelURL">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get the URL to cancel this request.</p>
+  <p>Useful for creating a &quot;Cancel&quot; button on a web form so that 
+  operation can be carried out directly without another trip through the 
+  server.</p>
+  <p>(Except you probably want to make another trip through the server so 
+  that it knows that the user did make a decision.  Or you could simulate 
+  this method by doing <code>.answer(False).encodeToURL()</code>)</p>
+  <dl class="fields">
+    <dt>Returns: str</dt>
+        <dd>The return_to URL with openid.mode = cancel.</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>NoReturnError</strong></code> - when I do not have a return_to.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#CheckIDRequest.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variable Details</span></td>
+</tr>
+</table>
+<a name="assoc_handle"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">assoc_handle</h3>
+  Provided in smart mode requests, a handle for a previously established 
+  association.  <code>None</code> for dumb mode requests.
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>str</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="claimed_id"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">claimed_id</h3>
+  The claimed identifier.  Not present in OpenID 1.x messages.
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>str</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="trust_root"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">trust_root</h3>
+  &quot;Are you Frank?&quot; asks the checkid request.  &quot;Who wants to 
+  know?&quot;  <code>trust_root</code>, that's who.  This URL identifies 
+  the party making the request, and the user will use that to make her 
+  decision about what answer she trusts them to have.  Referred to as 
+  &quot;realm&quot; in OpenID 2.0.
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd>str</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Property Details</span></td>
+</tr>
+</table>
+<a name="namespace"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">namespace</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="openid.server.server.CheckIDRequest-class.html#_getNamespace" class="summary-sig-name" onclick="show_private();">_getNamespace</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:28 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

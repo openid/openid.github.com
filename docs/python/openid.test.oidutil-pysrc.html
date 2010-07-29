@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.oidutil</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;oidutil
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.oidutil-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.oidutil-module.html">Module openid.test.oidutil</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">codecs</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">string</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">random</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module openid.oidutil=openid.oidutil-module.html,Module openid.test.oidutil=openid.test.oidutil-module.html"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-1', 'oidutil', 'link-1');">oidutil</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"> </tt>
+<a name="test_base64"></a><div id="test_base64-def"><a name="L7"></a><tt class="py-lineno">  7</tt> <a class="py-toggle" href="#" id="test_base64-toggle" onclick="return toggle('test_base64');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil-module.html#test_base64">test_base64</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="test_base64-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="test_base64-expanded"><a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">    <tt class="py-name">allowed_s</tt> <tt class="py-op">=</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">ascii_letters</tt> <tt class="py-op">+</tt> <tt class="py-name">string</tt><tt class="py-op">.</tt><tt class="py-name">digits</tt> <tt class="py-op">+</tt> <tt class="py-string">'+/='</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">    <tt class="py-name">allowed_d</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt id="link-2" class="py-name" targets="Variable openid.test.storetest.c=openid.test.storetest-module.html#c"><a title="openid.test.storetest.c" class="py-name" href="#" onclick="return doclink('link-2', 'c', 'link-2');">c</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">allowed_s</tt><tt class="py-op">:</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">        <tt class="py-name">allowed_d</tt><tt class="py-op">[</tt><tt id="link-3" class="py-name"><a title="openid.test.storetest.c" class="py-name" href="#" onclick="return doclink('link-3', 'c', 'link-2');">c</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Method openid.association.SessionNegotiator.isAllowed()=openid.association.SessionNegotiator-class.html#isAllowed"><a title="openid.association.SessionNegotiator.isAllowed" class="py-name" href="#" onclick="return doclink('link-4', 'isAllowed', 'link-4');">isAllowed</a></tt> <tt class="py-op">=</tt> <tt class="py-name">allowed_d</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method openid.extensions.ax.FetchRequest.has_key()=openid.extensions.ax.FetchRequest-class.html#has_key,Method openid.extensions.sreg.SRegResponse.has_key()=openid.extensions.sreg.SRegResponse-class.html#has_key"><a title="openid.extensions.ax.FetchRequest.has_key
+openid.extensions.sreg.SRegResponse.has_key" class="py-name" href="#" onclick="return doclink('link-5', 'has_key', 'link-5');">has_key</a></tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt class="py-keyword">def</tt> <tt class="py-def-name">checkEncoded</tt><tt class="py-op">(</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-6" class="py-name"><a title="openid.test.storetest.c" class="py-name" href="#" onclick="return doclink('link-6', 'c', 'link-2');">c</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">s</tt><tt class="py-op">:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">            <tt class="py-keyword">assert</tt> <tt id="link-7" class="py-name"><a title="openid.association.SessionNegotiator.isAllowed" class="py-name" href="#" onclick="return doclink('link-7', 'isAllowed', 'link-4');">isAllowed</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name"><a title="openid.test.storetest.c" class="py-name" href="#" onclick="return doclink('link-8', 'c', 'link-2');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">    <tt id="link-9" class="py-name" targets="Variable openid.test.datadriven.DataDrivenTestCase.cases=openid.test.datadriven.DataDrivenTestCase-class.html#cases,Variable openid.test.test_discover.TestDiscoveryFailure.cases=openid.test.test_discover.TestDiscoveryFailure-class.html#cases,Variable openid.test.test_discover.TestFetchException.cases=openid.test.test_discover.TestFetchException-class.html#cases,Variable openid.test.test_discover.TestPreferredNamespace.cases=openid.test.test_discover.TestPreferredNamespace-class.html#cases,Variable openid.test.test_fetchers.FetcherTestHandler.cases=openid.test.test_fetchers.FetcherTestHandler-class.html#cases,Variable openid.test.test_htmldiscover.BadLinksTestCase.cases=openid.test.test_htmldiscover.BadLinksTestCase-class.html#cases,Variable openid.test.test_nonce.BadSplitTest.cases=openid.test.test_nonce.BadSplitTest-class.html#cases,Variable openid.test.test_nonce.CheckTimestampTest.cases=openid.test.test_nonce.CheckTimestampTest-class.html#cases"><a title="openid.test.datadriven.DataDrivenTestCase.cases
+openid.test.test_discover.TestDiscoveryFailure.cases
+openid.test.test_discover.TestFetchException.cases
+openid.test.test_discover.TestPreferredNamespace.cases
+openid.test.test_fetchers.FetcherTestHandler.cases
+openid.test.test_htmldiscover.BadLinksTestCase.cases
+openid.test.test_nonce.BadSplitTest.cases
+openid.test.test_nonce.CheckTimestampTest.cases" class="py-name" href="#" onclick="return doclink('link-9', 'cases', 'link-9');">cases</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-string">''</tt><tt class="py-op">,</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-string">'x'</tt><tt class="py-op">,</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-string">'\x00'</tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">        <tt class="py-string">'\x01'</tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-string">'\x00'</tt> <tt class="py-op">*</tt> <tt class="py-number">100</tt><tt class="py-op">,</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-string">''</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">chr</tt><tt class="py-op">,</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-number">256</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-op">]</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt id="link-10" class="py-name"><a title="openid.test.datadriven.DataDrivenTestCase.cases
+openid.test.test_discover.TestDiscoveryFailure.cases
+openid.test.test_discover.TestFetchException.cases
+openid.test.test_discover.TestPreferredNamespace.cases
+openid.test.test_fetchers.FetcherTestHandler.cases
+openid.test.test_htmldiscover.BadLinksTestCase.cases
+openid.test.test_nonce.BadSplitTest.cases
+openid.test.test_nonce.CheckTimestampTest.cases" class="py-name" href="#" onclick="return doclink('link-10', 'cases', 'link-9');">cases</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-name">b64</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-11', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Function openid.oidutil.toBase64()=openid.oidutil-module.html#toBase64"><a title="openid.oidutil.toBase64" class="py-name" href="#" onclick="return doclink('link-12', 'toBase64', 'link-12');">toBase64</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-name">checkEncoded</tt><tt class="py-op">(</tt><tt class="py-name">b64</tt><tt class="py-op">)</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">s_prime</tt> <tt class="py-op">=</tt> <tt id="link-13" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-13', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Function openid.oidutil.fromBase64()=openid.oidutil-module.html#fromBase64"><a title="openid.oidutil.fromBase64" class="py-name" href="#" onclick="return doclink('link-14', 'fromBase64', 'link-14');">fromBase64</a></tt><tt class="py-op">(</tt><tt class="py-name">b64</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">s_prime</tt> <tt class="py-op">==</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">b64</tt><tt class="py-op">,</tt> <tt class="py-name">s_prime</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-comment"># Randomized test</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-keyword">for</tt> <tt id="link-15" class="py-name" targets="Variable openid.urinorm._=openid.urinorm-module.html#_"><a title="openid.urinorm._" class="py-name" href="#" onclick="return doclink('link-15', '_', 'link-15');">_</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt class="py-number">50</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-name">n</tt> <tt class="py-op">=</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Function openid.cryptutil.randrange()=openid.cryptutil-module.html#randrange"><a title="openid.cryptutil.randrange" class="py-name" href="#" onclick="return doclink('link-16', 'randrange', 'link-16');">randrange</a></tt><tt class="py-op">(</tt><tt class="py-number">2048</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-string">''</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">chr</tt><tt class="py-op">,</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt id="link-17" class="py-name"><a title="openid.urinorm._" class="py-name" href="#" onclick="return doclink('link-17', '_', 'link-15');">_</a></tt><tt class="py-op">:</tt> <tt class="py-name">random</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name"><a title="openid.cryptutil.randrange" class="py-name" href="#" onclick="return doclink('link-18', 'randrange', 'link-16');">randrange</a></tt><tt class="py-op">(</tt><tt class="py-number">256</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">range</tt><tt class="py-op">(</tt><tt class="py-name">n</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">b64</tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-19', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="openid.oidutil.toBase64" class="py-name" href="#" onclick="return doclink('link-20', 'toBase64', 'link-12');">toBase64</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">checkEncoded</tt><tt class="py-op">(</tt><tt class="py-name">b64</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">s_prime</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-21', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="openid.oidutil.fromBase64" class="py-name" href="#" onclick="return doclink('link-22', 'fromBase64', 'link-14');">fromBase64</a></tt><tt class="py-op">(</tt><tt class="py-name">b64</tt><tt class="py-op">)</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">s_prime</tt> <tt class="py-op">==</tt> <tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">b64</tt><tt class="py-op">,</tt> <tt class="py-name">s_prime</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="AppendArgsTest"></a><div id="AppendArgsTest-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="AppendArgsTest-toggle" onclick="return toggle('AppendArgsTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.oidutil.AppendArgsTest-class.html">AppendArgsTest</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AppendArgsTest-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="AppendArgsTest-expanded"><a name="AppendArgsTest.__init__"></a><div id="AppendArgsTest.__init__-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="AppendArgsTest.__init__-toggle" onclick="return toggle('AppendArgsTest.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil.AppendArgsTest-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">desc</tt><tt class="py-op">,</tt> <tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-param">expected</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AppendArgsTest.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AppendArgsTest.__init__-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestCase</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name" targets="Method openid.association.Association.__init__()=openid.association.Association-class.html#__init__,Method openid.association.SessionNegotiator.__init__()=openid.association.SessionNegotiator-class.html#__init__,Method openid.consumer.consumer.AuthRequest.__init__()=openid.consumer.consumer.AuthRequest-class.html#__init__,Method openid.consumer.consumer.CancelResponse.__init__()=openid.consumer.consumer.CancelResponse-class.html#__init__,Method openid.consumer.consumer.Consumer.__init__()=openid.consumer.consumer.Consumer-class.html#__init__,Method openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.__init__()=openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession-class.html#__init__,Method openid.consumer.consumer.FailureResponse.__init__()=openid.consumer.consumer.FailureResponse-class.html#__init__,Method openid.consumer.consumer.GenericConsumer.__init__()=openid.consumer.consumer.GenericConsumer-class.html#__init__,Method openid.consumer.consumer.SetupNeededResponse.__init__()=openid.consumer.consumer.SetupNeededResponse-class.html#__init__,Method openid.consumer.consumer.SuccessResponse.__init__()=openid.consumer.consumer.SuccessResponse-class.html#__init__,Method openid.consumer.discover.OpenIDServiceEndpoint.__init__()=openid.consumer.discover.OpenIDServiceEndpoint-class.html#__init__,Method openid.dh.DiffieHellman.__init__()=openid.dh.DiffieHellman-class.html#__init__,Method openid.extensions.ax.FetchRequest.__init__()=openid.extensions.ax.FetchRequest-class.html#__init__,Method openid.extensions.ax.FetchResponse.__init__()=openid.extensions.ax.FetchResponse-class.html#__init__,Method openid.extensions.ax.StoreRequest.__init__()=openid.extensions.ax.StoreRequest-class.html#__init__,Method openid.extensions.ax.StoreResponse.__init__()=openid.extensions.ax.StoreResponse-class.html#__init__,Method openid.extensions.draft.pape2.Request.__init__()=openid.extensions.draft.pape2.Request-class.html#__init__,Method openid.extensions.draft.pape2.Response.__init__()=openid.extensions.draft.pape2.Response-class.html#__init__,Method openid.extensions.draft.pape5.Request.__init__()=openid.extensions.draft.pape5.Request-class.html#__init__,Method openid.extensions.draft.pape5.Response.__init__()=openid.extensions.draft.pape5.Response-class.html#__init__,Method openid.extensions.sreg.SRegRequest.__init__()=openid.extensions.sreg.SRegRequest-class.html#__init__,Method openid.extensions.sreg.SRegResponse.__init__()=openid.extensions.sreg.SRegResponse-class.html#__init__,Method openid.fetchers.HTTPFetchingError.__init__()=openid.fetchers.HTTPFetchingError-class.html#__init__,Method openid.fetchers.HTTPResponse.__init__()=openid.fetchers.HTTPResponse-class.html#__init__,Method openid.message.Message.__init__()=openid.message.Message-class.html#__init__,Method openid.message.NamespaceMap.__init__()=openid.message.NamespaceMap-class.html#__init__,Method openid.server.server.AssociateRequest.__init__()=openid.server.server.AssociateRequest-class.html#__init__,Method openid.server.server.CheckAuthRequest.__init__()=openid.server.server.CheckAuthRequest-class.html#__init__,Method openid.server.server.CheckIDRequest.__init__()=openid.server.server.CheckIDRequest-class.html#__init__,Method openid.server.server.Decoder.__init__()=openid.server.server.Decoder-class.html#__init__,Method openid.server.server.DiffieHellmanSHA1ServerSession.__init__()=openid.server.server.DiffieHellmanSHA1ServerSession-class.html#__init__,Method openid.server.server.EncodingError.__init__()=openid.server.server.EncodingError-class.html#__init__,Method openid.server.server.MalformedReturnURL.__init__()=openid.server.server.MalformedReturnURL-class.html#__init__,Method openid.server.server.OpenIDResponse.__init__()=openid.server.server.OpenIDResponse-class.html#__init__,Method openid.server.server.ProtocolError.__init__()=openid.server.server.ProtocolError-class.html#__init__,Method openid.server.server.Server.__init__()=openid.server.server.Server-class.html#__init__,Method openid.server.server.Signatory.__init__()=openid.server.server.Signatory-class.html#__init__,Method openid.server.server.SigningEncoder.__init__()=openid.server.server.SigningEncoder-class.html#__init__,Method openid.server.server.UntrustedReturnURL.__init__()=openid.server.server.UntrustedReturnURL-class.html#__init__,Method openid.server.server.WebResponse.__init__()=openid.server.server.WebResponse-class.html#__init__,Method openid.server.trustroot.TrustRoot.__init__()=openid.server.trustroot.TrustRoot-class.html#__init__,Method openid.store.filestore.FileOpenIDStore.__init__()=openid.store.filestore.FileOpenIDStore-class.html#__init__,Method openid.store.memstore.MemoryStore.__init__()=openid.store.memstore.MemoryStore-class.html#__init__,Method openid.store.memstore.ServerAssocs.__init__()=openid.store.memstore.ServerAssocs-class.html#__init__,Method openid.store.sqlstore.SQLStore.__init__()=openid.store.sqlstore.SQLStore-class.html#__init__,Method openid.test.datadriven.DataDrivenTestCase.__init__()=openid.test.datadriven.DataDrivenTestCase-class.html#__init__,Method openid.test.kvform.KVDictTest.__init__()=openid.test.kvform.KVDictTest-class.html#__init__,Method openid.test.kvform.KVExcTest.__init__()=openid.test.kvform.KVExcTest-class.html#__init__,Method openid.test.kvform.KVSeqTest.__init__()=openid.test.kvform.KVSeqTest-class.html#__init__,Method openid.test.oidutil.AppendArgsTest.__init__()=openid.test.oidutil.AppendArgsTest-class.html#__init__,Method openid.test.test_accept.MatchAcceptTest.__init__()=openid.test.test_accept.MatchAcceptTest-class.html#__init__,Method openid.test.test_association.DiffieHellmanSessionTest.__init__()=openid.test.test_association.DiffieHellmanSessionTest-class.html#__init__,Method openid.test.test_association_response.DummyAssocationSession.__init__()=openid.test.test_association_response.DummyAssocationSession-class.html#__init__,Method openid.test.test_ax.DummyRequest.__init__()=openid.test.test_ax.DummyRequest-class.html#__init__,Method openid.test.test_consumer.MockFetcher.__init__()=openid.test.test_consumer.MockFetcher-class.html#__init__,Method openid.test.test_consumer.StubConsumer.__init__()=openid.test.test_consumer.StubConsumer-class.html#__init__,Method openid.test.test_consumer.TestFetcher.__init__()=openid.test.test_consumer.TestFetcher-class.html#__init__,Method openid.test.test_discover.DiscoveryMockFetcher.__init__()=openid.test.test_discover.DiscoveryMockFetcher-class.html#__init__,Method openid.test.test_discover.ErrorRaisingFetcher.__init__()=openid.test.test_discover.ErrorRaisingFetcher-class.html#__init__,Method openid.test.test_discover.MockFetcherForXRIProxy.__init__()=openid.test.test_discover.MockFetcherForXRIProxy-class.html#__init__,Method openid.test.test_discover.SimpleMockFetcher.__init__()=openid.test.test_discover.SimpleMockFetcher-class.html#__init__,Method openid.test.test_discover.TestDiscoveryFailure.__init__()=openid.test.test_discover.TestDiscoveryFailure-class.html#__init__,Method openid.test.test_discover.TestFetchException.__init__()=openid.test.test_discover.TestFetchException-class.html#__init__,Method openid.test.test_discover.TestPreferredNamespace.__init__()=openid.test.test_discover.TestPreferredNamespace-class.html#__init__,Method openid.test.test_htmldiscover.BadLinksTestCase.__init__()=openid.test.test_htmldiscover.BadLinksTestCase-class.html#__init__,Method openid.test.test_nonce.BadSplitTest.__init__()=openid.test.test_nonce.BadSplitTest-class.html#__init__,Method openid.test.test_nonce.CheckTimestampTest.__init__()=openid.test.test_nonce.CheckTimestampTest-class.html#__init__,Method openid.test.test_openidyadis.OpenIDYadisTest.__init__()=openid.test.test_openidyadis.OpenIDYadisTest-class.html#__init__,Method openid.test.test_pape_draft2.DummySuccessResponse.__init__()=openid.test.test_pape_draft2.DummySuccessResponse-class.html#__init__,Method openid.test.test_pape_draft5.DummySuccessResponse.__init__()=openid.test.test_pape_draft5.DummySuccessResponse-class.html#__init__,Method openid.test.test_server.Counter.__init__()=openid.test.test_server.Counter-class.html#__init__,Method openid.test.test_server.MockSignatory.__init__()=openid.test.test_server.MockSignatory-class.html#__init__,Method openid.test.test_sreg.DummySuccessResponse.__init__()=openid.test.test_sreg.DummySuccessResponse-class.html#__init__,Method openid.test.test_sreg.FakeEndpoint.__init__()=openid.test.test_sreg.FakeEndpoint-class.html#__init__,Method openid.test.test_sreg.FakeMessage.__init__()=openid.test.test_sreg.FakeMessage-class.html#__init__,Method openid.test.test_urinorm.UrinormTest.__init__()=openid.test.test_urinorm.UrinormTest-class.html#__init__,Method openid.test.test_yadis_discover.TestFetcher.__init__()=openid.test.test_yadis_discover.TestFetcher-class.html#__init__,Method openid.test.test_yadis_discover.TestSecondGet.MockFetcher.__init__()=openid.test.test_yadis_discover.TestSecondGet.MockFetcher-class.html#__init__,Method openid.yadis.discover.DiscoveryFailure.__init__()=openid.yadis.discover.DiscoveryFailure-class.html#__init__,Method openid.yadis.discover.DiscoveryResult.__init__()=openid.yadis.discover.DiscoveryResult-class.html#__init__,Method openid.yadis.filters.BasicServiceEndpoint.__init__()=openid.yadis.filters.BasicServiceEndpoint-class.html#__init__,Method openid.yadis.filters.CompoundFilter.__init__()=openid.yadis.filters.CompoundFilter-class.html#__init__,Method openid.yadis.filters.TransformFilterMaker.__init__()=openid.yadis.filters.TransformFilterMaker-class.html#__init__,Method openid.yadis.manager.Discovery.__init__()=openid.yadis.manager.Discovery-class.html#__init__,Method openid.yadis.manager.YadisServiceManager.__init__()=openid.yadis.manager.YadisServiceManager-class.html#__init__,Method openid.yadis.xrires.ProxyResolver.__init__()=openid.yadis.xrires.ProxyResolver-class.html#__init__"><a title="openid.association.Association.__init__
+openid.association.SessionNegotiator.__init__
+openid.consumer.consumer.AuthRequest.__init__
+openid.consumer.consumer.CancelResponse.__init__
+openid.consumer.consumer.Consumer.__init__
+openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.__init__
+openid.consumer.consumer.FailureResponse.__init__
+openid.consumer.consumer.GenericConsumer.__init__
+openid.consumer.consumer.SetupNeededResponse.__init__
+openid.consumer.consumer.SuccessResponse.__init__
+openid.consumer.discover.OpenIDServiceEndpoint.__init__
+openid.dh.DiffieHellman.__init__
+openid.extensions.ax.FetchRequest.__init__
+openid.extensions.ax.FetchResponse.__init__
+openid.extensions.ax.StoreRequest.__init__
+openid.extensions.ax.StoreResponse.__init__
+openid.extensions.draft.pape2.Request.__init__
+openid.extensions.draft.pape2.Response.__init__
+openid.extensions.draft.pape5.Request.__init__
+openid.extensions.draft.pape5.Response.__init__
+openid.extensions.sreg.SRegRequest.__init__
+openid.extensions.sreg.SRegResponse.__init__
+openid.fetchers.HTTPFetchingError.__init__
+openid.fetchers.HTTPResponse.__init__
+openid.message.Message.__init__
+openid.message.NamespaceMap.__init__
+openid.server.server.AssociateRequest.__init__
+openid.server.server.CheckAuthRequest.__init__
+openid.server.server.CheckIDRequest.__init__
+openid.server.server.Decoder.__init__
+openid.server.server.DiffieHellmanSHA1ServerSession.__init__
+openid.server.server.EncodingError.__init__
+openid.server.server.MalformedReturnURL.__init__
+openid.server.server.OpenIDResponse.__init__
+openid.server.server.ProtocolError.__init__
+openid.server.server.Server.__init__
+openid.server.server.Signatory.__init__
+openid.server.server.SigningEncoder.__init__
+openid.server.server.UntrustedReturnURL.__init__
+openid.server.server.WebResponse.__init__
+openid.server.trustroot.TrustRoot.__init__
+openid.store.filestore.FileOpenIDStore.__init__
+openid.store.memstore.MemoryStore.__init__
+openid.store.memstore.ServerAssocs.__init__
+openid.store.sqlstore.SQLStore.__init__
+openid.test.datadriven.DataDrivenTestCase.__init__
+openid.test.kvform.KVDictTest.__init__
+openid.test.kvform.KVExcTest.__init__
+openid.test.kvform.KVSeqTest.__init__
+openid.test.oidutil.AppendArgsTest.__init__
+openid.test.test_accept.MatchAcceptTest.__init__
+openid.test.test_association.DiffieHellmanSessionTest.__init__
+openid.test.test_association_response.DummyAssocationSession.__init__
+openid.test.test_ax.DummyRequest.__init__
+openid.test.test_consumer.MockFetcher.__init__
+openid.test.test_consumer.StubConsumer.__init__
+openid.test.test_consumer.TestFetcher.__init__
+openid.test.test_discover.DiscoveryMockFetcher.__init__
+openid.test.test_discover.ErrorRaisingFetcher.__init__
+openid.test.test_discover.MockFetcherForXRIProxy.__init__
+openid.test.test_discover.SimpleMockFetcher.__init__
+openid.test.test_discover.TestDiscoveryFailure.__init__
+openid.test.test_discover.TestFetchException.__init__
+openid.test.test_discover.TestPreferredNamespace.__init__
+openid.test.test_htmldiscover.BadLinksTestCase.__init__
+openid.test.test_nonce.BadSplitTest.__init__
+openid.test.test_nonce.CheckTimestampTest.__init__
+openid.test.test_openidyadis.OpenIDYadisTest.__init__
+openid.test.test_pape_draft2.DummySuccessResponse.__init__
+openid.test.test_pape_draft5.DummySuccessResponse.__init__
+openid.test.test_server.Counter.__init__
+openid.test.test_server.MockSignatory.__init__
+openid.test.test_sreg.DummySuccessResponse.__init__
+openid.test.test_sreg.FakeEndpoint.__init__
+openid.test.test_sreg.FakeMessage.__init__
+openid.test.test_urinorm.UrinormTest.__init__
+openid.test.test_yadis_discover.TestFetcher.__init__
+openid.test.test_yadis_discover.TestSecondGet.MockFetcher.__init__
+openid.yadis.discover.DiscoveryFailure.__init__
+openid.yadis.discover.DiscoveryResult.__init__
+openid.yadis.filters.BasicServiceEndpoint.__init__
+openid.yadis.filters.CompoundFilter.__init__
+openid.yadis.filters.TransformFilterMaker.__init__
+openid.yadis.manager.Discovery.__init__
+openid.yadis.manager.YadisServiceManager.__init__
+openid.yadis.xrires.ProxyResolver.__init__" class="py-name" href="#" onclick="return doclink('link-23', '__init__', 'link-23');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">desc</tt> <tt class="py-op">=</tt> <tt class="py-name">desc</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">expected</tt> <tt class="py-op">=</tt> <tt class="py-name">expected</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="AppendArgsTest.runTest"></a><div id="AppendArgsTest.runTest-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="AppendArgsTest.runTest-toggle" onclick="return toggle('AppendArgsTest.runTest');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil.AppendArgsTest-class.html#runTest">runTest</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AppendArgsTest.runTest-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AppendArgsTest.runTest-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt id="link-24" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-24', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Function openid.oidutil.appendArgs()=openid.oidutil-module.html#appendArgs"><a title="openid.oidutil.appendArgs" class="py-name" href="#" onclick="return doclink('link-25', 'appendArgs', 'link-25');">appendArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">assertEqual</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">expected</tt><tt class="py-op">,</tt> <tt class="py-name">result</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">args</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="AppendArgsTest.shortDescription"></a><div id="AppendArgsTest.shortDescription-def"><a name="L53"></a><tt class="py-lineno"> 53</tt> <a class="py-toggle" href="#" id="AppendArgsTest.shortDescription-toggle" onclick="return toggle('AppendArgsTest.shortDescription');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil.AppendArgsTest-class.html#shortDescription">shortDescription</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="AppendArgsTest.shortDescription-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="AppendArgsTest.shortDescription-expanded"><a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">desc</tt> </tt>
+</div></div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="TestSymbol"></a><div id="TestSymbol-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="TestSymbol-toggle" onclick="return toggle('TestSymbol');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.oidutil.TestSymbol-class.html">TestSymbol</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestSymbol-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestSymbol-expanded"><a name="TestSymbol.testCopyHash"></a><div id="TestSymbol.testCopyHash-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="TestSymbol.testCopyHash-toggle" onclick="return toggle('TestSymbol.testCopyHash');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil.TestSymbol-class.html#testCopyHash">testCopyHash</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestSymbol.testCopyHash-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestSymbol.testCopyHash-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt id="link-26" class="py-name" targets="Method openid.association.SessionNegotiator.copy()=openid.association.SessionNegotiator-class.html#copy,Method openid.message.Message.copy()=openid.message.Message-class.html#copy"><a title="openid.association.SessionNegotiator.copy
+openid.message.Message.copy" class="py-name" href="#" onclick="return doclink('link-26', 'copy', 'link-26');">copy</a></tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-27', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">"Foo"</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">d</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-name">s</tt><tt class="py-op">:</tt> <tt class="py-number">1</tt><tt class="py-op">}</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">d_prime</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="openid.association.SessionNegotiator.copy
+openid.message.Message.copy" class="py-name" href="#" onclick="return doclink('link-28', 'copy', 'link-26');">copy</a></tt><tt class="py-op">.</tt><tt class="py-name">deepcopy</tt><tt class="py-op">(</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt><tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">d_prime</tt><tt class="py-op">,</tt> <tt class="py-string">"%r isn't in %r"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">d_prime</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-29', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">"Bar"</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIfEqual</tt><tt class="py-op">(</tt><tt class="py-name">hash</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">hash</tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="buildAppendTests"></a><div id="buildAppendTests-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="buildAppendTests-toggle" onclick="return toggle('buildAppendTests');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil-module.html#buildAppendTests">buildAppendTests</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="buildAppendTests-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="buildAppendTests-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name">simple</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://www.example.com/'</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-30" class="py-name"><a title="openid.test.datadriven.DataDrivenTestCase.cases
+openid.test.test_discover.TestDiscoveryFailure.cases
+openid.test.test_discover.TestFetchException.cases
+openid.test.test_discover.TestPreferredNamespace.cases
+openid.test.test_fetchers.FetcherTestHandler.cases
+openid.test.test_htmldiscover.BadLinksTestCase.cases
+openid.test.test_nonce.BadSplitTest.cases
+openid.test.test_nonce.CheckTimestampTest.cases" class="py-name" href="#" onclick="return doclink('link-30', 'cases', 'link-9');">cases</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'empty list'</tt><tt class="py-op">,</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">         <tt class="py-name">simple</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'empty dict'</tt><tt class="py-op">,</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">         <tt class="py-name">simple</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'one list'</tt><tt class="py-op">,</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-string">'b'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?a=b'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'one dict'</tt><tt class="py-op">,</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'a'</tt><tt class="py-op">:</tt><tt class="py-string">'b'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?a=b'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'two list (same)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-string">'b'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-string">'c'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?a=b&amp;a=c'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'two list'</tt><tt class="py-op">,</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-string">'b'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'b'</tt><tt class="py-op">,</tt> <tt class="py-string">'c'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?a=b&amp;b=c'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'two list (order)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'b'</tt><tt class="py-op">,</tt> <tt class="py-string">'c'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'a'</tt><tt class="py-op">,</tt> <tt class="py-string">'b'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?b=c&amp;a=b'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'two dict (order)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'b'</tt><tt class="py-op">:</tt><tt class="py-string">'c'</tt><tt class="py-op">,</tt> <tt class="py-string">'a'</tt><tt class="py-op">:</tt><tt class="py-string">'b'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?a=b&amp;b=c'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'escape'</tt><tt class="py-op">,</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'='</tt><tt class="py-op">,</tt> <tt class="py-string">'='</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?%3D=%3D'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'escape (URL)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'this_url'</tt><tt class="py-op">,</tt> <tt class="py-name">simple</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?this_url=http%3A%2F%2Fwww.example.com%2F'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'use dots'</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'openid.stuff'</tt><tt class="py-op">,</tt> <tt class="py-string">'bother'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?openid.stuff=bother'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'args exist (empty)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'args exist'</tt><tt class="py-op">,</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'ack'</tt><tt class="py-op">,</tt> <tt class="py-string">'ack'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother&amp;ack=ack'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'args exist'</tt><tt class="py-op">,</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'ack'</tt><tt class="py-op">,</tt> <tt class="py-string">'ack'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother&amp;ack=ack'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'args exist (dict)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'ack'</tt><tt class="py-op">:</tt> <tt class="py-string">'ack'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother&amp;ack=ack'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'args exist (dict 2)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother'</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'ack'</tt><tt class="py-op">:</tt> <tt class="py-string">'ack'</tt><tt class="py-op">,</tt> <tt class="py-string">'zebra'</tt><tt class="py-op">:</tt><tt class="py-string">'lion'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother&amp;ack=ack&amp;zebra=lion'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'three args (dict)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">{</tt><tt class="py-string">'stuff'</tt><tt class="py-op">:</tt> <tt class="py-string">'bother'</tt><tt class="py-op">,</tt> <tt class="py-string">'ack'</tt><tt class="py-op">:</tt> <tt class="py-string">'ack'</tt><tt class="py-op">,</tt> <tt class="py-string">'zebra'</tt><tt class="py-op">:</tt><tt class="py-string">'lion'</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?ack=ack&amp;stuff=bother&amp;zebra=lion'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-op">(</tt><tt class="py-string">'three args (list)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">         <tt class="py-op">(</tt><tt class="py-name">simple</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">(</tt><tt class="py-string">'stuff'</tt><tt class="py-op">,</tt> <tt class="py-string">'bother'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'ack'</tt><tt class="py-op">,</tt> <tt class="py-string">'ack'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-op">(</tt><tt class="py-string">'zebra'</tt><tt class="py-op">,</tt> <tt class="py-string">'lion'</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">         <tt class="py-name">simple</tt> <tt class="py-op">+</tt> <tt class="py-string">'?stuff=bother&amp;ack=ack&amp;zebra=lion'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">        <tt class="py-op">]</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">    <tt class="py-name">tests</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-name">expected</tt> <tt class="py-keyword">in</tt> <tt id="link-31" class="py-name"><a title="openid.test.datadriven.DataDrivenTestCase.cases
+openid.test.test_discover.TestDiscoveryFailure.cases
+openid.test.test_discover.TestFetchException.cases
+openid.test.test_discover.TestPreferredNamespace.cases
+openid.test.test_fetchers.FetcherTestHandler.cases
+openid.test.test_htmldiscover.BadLinksTestCase.cases
+openid.test.test_nonce.BadSplitTest.cases
+openid.test.test_nonce.CheckTimestampTest.cases" class="py-name" href="#" onclick="return doclink('link-31', 'cases', 'link-9');">cases</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt id="link-32" class="py-name" targets="Package openid.test=openid.test-module.html,Function openid.test.cryptutil.test()=openid.test.cryptutil-module.html#test,Function openid.test.dh.test()=openid.test.dh-module.html#test,Function openid.test.oidutil.test()=openid.test.oidutil-module.html#test,Function openid.test.test_fetchers.test()=openid.test.test_fetchers-module.html#test,Function openid.test.test_parsehtml.test()=openid.test.test_parsehtml-module.html#test,Method openid.test.test_sreg.SendFieldsTest.test()=openid.test.test_sreg.SendFieldsTest-class.html#test,Function openid.test.test_yadis_discover.test()=openid.test.test_yadis_discover-module.html#test"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-32', 'test', 'link-32');">test</a></tt> <tt class="py-op">=</tt> <tt id="link-33" class="py-name" targets="Class openid.test.oidutil.AppendArgsTest=openid.test.oidutil.AppendArgsTest-class.html"><a title="openid.test.oidutil.AppendArgsTest" class="py-name" href="#" onclick="return doclink('link-33', 'AppendArgsTest', 'link-33');">AppendArgsTest</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-name">expected</tt><tt class="py-op">)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">tests</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-34" class="py-name"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-34', 'test', 'link-32');">test</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TestSuite</tt><tt class="py-op">(</tt><tt class="py-name">tests</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"> </tt>
+<a name="pyUnitTests"></a><div id="pyUnitTests-def"><a name="L154"></a><tt class="py-lineno">154</tt> <a class="py-toggle" href="#" id="pyUnitTests-toggle" onclick="return toggle('pyUnitTests');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil-module.html#pyUnitTests">pyUnitTests</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="pyUnitTests-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="pyUnitTests-expanded"><a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-name">some</tt> <tt class="py-op">=</tt> <tt id="link-35" class="py-name" targets="Function openid.test.oidutil.buildAppendTests()=openid.test.oidutil-module.html#buildAppendTests"><a title="openid.test.oidutil.buildAppendTests" class="py-name" href="#" onclick="return doclink('link-35', 'buildAppendTests', 'link-35');">buildAppendTests</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">    <tt class="py-name">some</tt><tt class="py-op">.</tt><tt class="py-name">addTest</tt><tt class="py-op">(</tt><tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">defaultTestLoader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromTestCase</tt><tt class="py-op">(</tt><tt id="link-36" class="py-name" targets="Class openid.test.oidutil.TestSymbol=openid.test.oidutil.TestSymbol-class.html"><a title="openid.test.oidutil.TestSymbol" class="py-name" href="#" onclick="return doclink('link-36', 'TestSymbol', 'link-36');">TestSymbol</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">some</tt> </tt>
+</div><a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"> </tt>
+<a name="test_appendArgs"></a><div id="test_appendArgs-def"><a name="L159"></a><tt class="py-lineno">159</tt> <a class="py-toggle" href="#" id="test_appendArgs-toggle" onclick="return toggle('test_appendArgs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil-module.html#test_appendArgs">test_appendArgs</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="test_appendArgs-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="test_appendArgs-expanded"><a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">    <tt class="py-name">suite</tt> <tt class="py-op">=</tt> <tt id="link-37" class="py-name"><a title="openid.test.oidutil.buildAppendTests" class="py-name" href="#" onclick="return doclink('link-37', 'buildAppendTests', 'link-35');">buildAppendTests</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">    <tt class="py-name">suite</tt><tt class="py-op">.</tt><tt class="py-name">addTest</tt><tt class="py-op">(</tt><tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">defaultTestLoader</tt><tt class="py-op">.</tt><tt class="py-name">loadTestsFromTestCase</tt><tt class="py-op">(</tt><tt id="link-38" class="py-name"><a title="openid.test.oidutil.TestSymbol" class="py-name" href="#" onclick="return doclink('link-38', 'TestSymbol', 'link-36');">TestSymbol</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-name">runner</tt> <tt class="py-op">=</tt> <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">TextTestRunner</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt class="py-name">runner</tt><tt class="py-op">.</tt><tt class="py-name">run</tt><tt class="py-op">(</tt><tt class="py-name">suite</tt><tt class="py-op">)</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-keyword">assert</tt> <tt class="py-name">result</tt><tt class="py-op">.</tt><tt class="py-name">wasSuccessful</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line"> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-comment"># XXX: there are more functions that could benefit from being better</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># specified and tested in oidutil.py These include, but are not</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment"># limited to appendArgs</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="test"></a><div id="test-def"><a name="L170"></a><tt class="py-lineno">170</tt> <a class="py-toggle" href="#" id="test-toggle" onclick="return toggle('test');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.oidutil-module.html#test">test</a><tt class="py-op">(</tt><tt class="py-param">skipPyUnit</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="test-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="test-expanded"><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt id="link-39" class="py-name" targets="Function openid.test.oidutil.test_base64()=openid.test.oidutil-module.html#test_base64"><a title="openid.test.oidutil.test_base64" class="py-name" href="#" onclick="return doclink('link-39', 'test_base64', 'link-39');">test_base64</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">skipPyUnit</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt id="link-40" class="py-name" targets="Function openid.test.oidutil.test_appendArgs()=openid.test.oidutil-module.html#test_appendArgs"><a title="openid.test.oidutil.test_appendArgs" class="py-name" href="#" onclick="return doclink('link-40', 'test_appendArgs', 'link-40');">test_appendArgs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">    <tt id="link-41" class="py-name"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-41', 'test', 'link-32');">test</a></tt><tt class="py-op">(</tt><tt class="py-name">skipPyUnit</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:35 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

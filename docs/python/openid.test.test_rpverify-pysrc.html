@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.test_rpverify</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_rpverify
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.test_rpverify-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.test_rpverify-module.html">Module openid.test.test_rpverify</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""Unit tests for verification of return_to URLs for a realm</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'TestBuildDiscoveryURL'</tt><tt class="py-op">]</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package openid.yadis=openid.yadis-module.html"><a title="openid.yadis" class="py-name" href="#" onclick="return doclink('link-1', 'yadis', 'link-1');">yadis</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module openid.consumer.discover=openid.consumer.discover-module.html,Function openid.consumer.discover.discover()=openid.consumer.discover-module.html#discover,Method openid.test.test_services.TestGetServiceEndpoints.discover()=openid.test.test_services.TestGetServiceEndpoints-class.html#discover,Module openid.yadis.discover=openid.yadis.discover-module.html,Function openid.yadis.discover.discover()=openid.yadis.discover-module.html#discover"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-2', 'discover', 'link-2');">discover</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Class openid.yadis.discover.DiscoveryResult=openid.yadis.discover.DiscoveryResult-class.html"><a title="openid.yadis.discover.DiscoveryResult" class="py-name" href="#" onclick="return doclink('link-3', 'DiscoveryResult', 'link-3');">DiscoveryResult</a></tt><tt class="py-op">,</tt> <tt id="link-4" class="py-name" targets="Class openid.yadis.discover.DiscoveryFailure=openid.yadis.discover.DiscoveryFailure-class.html"><a title="openid.yadis.discover.DiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-4', 'DiscoveryFailure', 'link-4');">DiscoveryFailure</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-5', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="openid.yadis" class="py-name" href="#" onclick="return doclink('link-6', 'yadis', 'link-1');">yadis</a></tt> <tt class="py-keyword">import</tt> <tt id="link-7" class="py-name" targets="Variable openid.test.test_consumer.TestDiscoveryVerification.services=openid.test.test_consumer.TestDiscoveryVerification-class.html#services,Module openid.yadis.services=openid.yadis.services-module.html"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-7', 'services', 'link-7');">services</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-8', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Package openid.server=openid.server-module.html,Module openid.server.server=openid.server.server-module.html"><a title="openid.server
+openid.server.server" class="py-name" href="#" onclick="return doclink('link-9', 'server', 'link-9');">server</a></tt> <tt class="py-keyword">import</tt> <tt id="link-10" class="py-name" targets="Module openid.server.trustroot=openid.server.trustroot-module.html,Module openid.test.trustroot=openid.test.trustroot-module.html"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-10', 'trustroot', 'link-10');">trustroot</a></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-11" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-11', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Package openid.test=openid.test-module.html,Function openid.test.cryptutil.test()=openid.test.cryptutil-module.html#test,Function openid.test.dh.test()=openid.test.dh-module.html#test,Function openid.test.oidutil.test()=openid.test.oidutil-module.html#test,Function openid.test.test_fetchers.test()=openid.test.test_fetchers-module.html#test,Function openid.test.test_parsehtml.test()=openid.test.test_parsehtml-module.html#test,Method openid.test.test_sreg.SendFieldsTest.test()=openid.test.test_sreg.SendFieldsTest-class.html#test,Function openid.test.test_yadis_discover.test()=openid.test.test_yadis_discover-module.html#test"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-12', 'test', 'link-12');">test</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Module openid.test.support=openid.test.support-module.html"><a title="openid.test.support" class="py-name" href="#" onclick="return doclink('link-13', 'support', 'link-13');">support</a></tt> <tt class="py-keyword">import</tt> <tt id="link-14" class="py-name" targets="Class openid.test.support.CatchLogs=openid.test.support.CatchLogs-class.html,Class openid.test.test_server.CatchLogs=openid.test.test_server.CatchLogs-class.html"><a title="openid.test.support.CatchLogs
+openid.test.test_server.CatchLogs" class="py-name" href="#" onclick="return doclink('link-14', 'CatchLogs', 'link-14');">CatchLogs</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># Too many methods does not apply to unit test objects</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt class="py-comment">#pylint:disable-msg=R0904</tt> </tt>
+<a name="TestBuildDiscoveryURL"></a><div id="TestBuildDiscoveryURL-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="TestBuildDiscoveryURL-toggle" onclick="return toggle('TestBuildDiscoveryURL');">-</a><tt class="py-line"><tt class="py-comment"></tt><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestBuildDiscoveryURL-class.html">TestBuildDiscoveryURL</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestBuildDiscoveryURL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestBuildDiscoveryURL-expanded"><a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt class="py-docstring">"""Tests for building the discovery URL from a realm and a</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">    return_to URL</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="TestBuildDiscoveryURL.failUnlessDiscoURL"></a><div id="TestBuildDiscoveryURL.failUnlessDiscoURL-def"><a name="L19"></a><tt class="py-lineno"> 19</tt> <a class="py-toggle" href="#" id="TestBuildDiscoveryURL.failUnlessDiscoURL-toggle" onclick="return toggle('TestBuildDiscoveryURL.failUnlessDiscoURL');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestBuildDiscoveryURL-class.html#failUnlessDiscoURL">failUnlessDiscoURL</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">realm</tt><tt class="py-op">,</tt> <tt class="py-param">expected_discovery_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestBuildDiscoveryURL.failUnlessDiscoURL-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestBuildDiscoveryURL.failUnlessDiscoURL-expanded"><a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">        <tt class="py-docstring">"""Build a discovery URL out of the realm and a return_to and</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring">        make sure that it matches the expected discovery URL</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-name">realm_obj</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-15', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Class openid.server.trustroot.TrustRoot=openid.server.trustroot.TrustRoot-class.html"><a title="openid.server.trustroot.TrustRoot" class="py-name" href="#" onclick="return doclink('link-16', 'TrustRoot', 'link-16');">TrustRoot</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Class Method openid.server.trustroot.TrustRoot.parse()=openid.server.trustroot.TrustRoot-class.html#parse,Class Method openid.test.test_urinorm.UrinormTest.parse()=openid.test.test_urinorm.UrinormTest-class.html#parse"><a title="openid.server.trustroot.TrustRoot.parse
+openid.test.test_urinorm.UrinormTest.parse" class="py-name" href="#" onclick="return doclink('link-17', 'parse', 'link-17');">parse</a></tt><tt class="py-op">(</tt><tt class="py-name">realm</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-name">actual_discovery_url</tt> <tt class="py-op">=</tt> <tt class="py-name">realm_obj</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method openid.server.trustroot.TrustRoot.buildDiscoveryURL()=openid.server.trustroot.TrustRoot-class.html#buildDiscoveryURL"><a title="openid.server.trustroot.TrustRoot.buildDiscoveryURL" class="py-name" href="#" onclick="return doclink('link-18', 'buildDiscoveryURL', 'link-18');">buildDiscoveryURL</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">expected_discovery_url</tt><tt class="py-op">,</tt> <tt class="py-name">actual_discovery_url</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="TestBuildDiscoveryURL.test_trivial"></a><div id="TestBuildDiscoveryURL.test_trivial-def"><a name="L27"></a><tt class="py-lineno"> 27</tt> <a class="py-toggle" href="#" id="TestBuildDiscoveryURL.test_trivial-toggle" onclick="return toggle('TestBuildDiscoveryURL.test_trivial');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestBuildDiscoveryURL-class.html#test_trivial">test_trivial</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestBuildDiscoveryURL.test_trivial-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestBuildDiscoveryURL.test_trivial-expanded"><a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">        <tt class="py-docstring">"""There is no wildcard and the realm is the same as the return_to URL</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method openid.test.test_rpverify.TestBuildDiscoveryURL.failUnlessDiscoURL()=openid.test.test_rpverify.TestBuildDiscoveryURL-class.html#failUnlessDiscoURL"><a title="openid.test.test_rpverify.TestBuildDiscoveryURL.failUnlessDiscoURL" class="py-name" href="#" onclick="return doclink('link-19', 'failUnlessDiscoURL', 'link-19');">failUnlessDiscoURL</a></tt><tt class="py-op">(</tt><tt class="py-string">'http://example.com/foo'</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">                                <tt class="py-string">'http://example.com/foo'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="TestBuildDiscoveryURL.test_wildcard"></a><div id="TestBuildDiscoveryURL.test_wildcard-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="TestBuildDiscoveryURL.test_wildcard-toggle" onclick="return toggle('TestBuildDiscoveryURL.test_wildcard');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestBuildDiscoveryURL-class.html#test_wildcard">test_wildcard</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestBuildDiscoveryURL.test_wildcard-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestBuildDiscoveryURL.test_wildcard-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-docstring">"""There is a wildcard</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="openid.test.test_rpverify.TestBuildDiscoveryURL.failUnlessDiscoURL" class="py-name" href="#" onclick="return doclink('link-20', 'failUnlessDiscoURL', 'link-19');">failUnlessDiscoURL</a></tt><tt class="py-op">(</tt><tt class="py-string">'http://*.example.com/foo'</tt><tt class="py-op">,</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">                                <tt class="py-string">'http://www.example.com/foo'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs"></a><div id="TestExtractReturnToURLs-def"><a name="L39"></a><tt class="py-lineno"> 39</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs-toggle" onclick="return toggle('TestExtractReturnToURLs');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html">TestExtractReturnToURLs</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestExtractReturnToURLs-expanded"><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">    <tt class="py-name">disco_url</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://example.com/'</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.setUp"></a><div id="TestExtractReturnToURLs.setUp-def"><a name="L42"></a><tt class="py-lineno"> 42</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.setUp-toggle" onclick="return toggle('TestExtractReturnToURLs.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.setUp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.setUp-expanded"><a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">original_discover</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-21', 'services', 'link-7');">services</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-22', 'discover', 'link-2');">discover</a></tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt id="link-23" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-23', 'services', 'link-7');">services</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-24', 'discover', 'link-2');">discover</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">mockDiscover</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Variable openid.test.test_openidyadis.data=openid.test.test_openidyadis-module.html#data,Variable openid.test.test_sreg.data=openid.test.test_sreg-module.html#data"><a title="openid.test.test_openidyadis.data
+openid.test.test_sreg.data" class="py-name" href="#" onclick="return doclink('link-25', 'data', 'link-25');">data</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.tearDown"></a><div id="TestExtractReturnToURLs.tearDown-def"><a name="L47"></a><tt class="py-lineno"> 47</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.tearDown-toggle" onclick="return toggle('TestExtractReturnToURLs.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.tearDown-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.tearDown-expanded"><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt id="link-26" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-26', 'services', 'link-7');">services</a></tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-27', 'discover', 'link-2');">discover</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">original_discover</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.mockDiscover"></a><div id="TestExtractReturnToURLs.mockDiscover-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.mockDiscover-toggle" onclick="return toggle('TestExtractReturnToURLs.mockDiscover');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#mockDiscover">mockDiscover</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.mockDiscover-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.mockDiscover-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt id="link-28" class="py-name"><a title="openid.yadis.discover.DiscoveryResult" class="py-name" href="#" onclick="return doclink('link-28', 'DiscoveryResult', 'link-3');">DiscoveryResult</a></tt><tt class="py-op">(</tt><tt class="py-name">uri</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">result</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Variable openid.yadis.discover.DiscoveryResult.response_text=openid.yadis.discover.DiscoveryResult-class.html#response_text"><a title="openid.yadis.discover.DiscoveryResult.response_text" class="py-name" href="#" onclick="return doclink('link-29', 'response_text', 'link-29');">response_text</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="openid.test.test_openidyadis.data
+openid.test.test_sreg.data" class="py-name" href="#" onclick="return doclink('link-30', 'data', 'link-25');">data</a></tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">result</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Variable openid.yadis.discover.DiscoveryResult.normalized_uri=openid.yadis.discover.DiscoveryResult-class.html#normalized_uri"><a title="openid.yadis.discover.DiscoveryResult.normalized_uri" class="py-name" href="#" onclick="return doclink('link-31', 'normalized_uri', 'link-31');">normalized_uri</a></tt> <tt class="py-op">=</tt> <tt class="py-name">uri</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.failUnlessFileHasReturnURLs"></a><div id="TestExtractReturnToURLs.failUnlessFileHasReturnURLs-def"><a name="L56"></a><tt class="py-lineno"> 56</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.failUnlessFileHasReturnURLs-toggle" onclick="return toggle('TestExtractReturnToURLs.failUnlessFileHasReturnURLs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#failUnlessFileHasReturnURLs">failUnlessFileHasReturnURLs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">filename</tt><tt class="py-op">,</tt> <tt class="py-param">expected_return_urls</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.failUnlessFileHasReturnURLs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.failUnlessFileHasReturnURLs-expanded"><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-name">file</tt><tt class="py-op">(</tt><tt id="link-32" class="py-name" targets="Variable openid.test.test_parsehtml.filename=openid.test.test_parsehtml-module.html#filename"><a title="openid.test.test_parsehtml.filename" class="py-name" href="#" onclick="return doclink('link-32', 'filename', 'link-32');">filename</a></tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">read</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                                         <tt class="py-name">expected_return_urls</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs"></a><div id="TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs-toggle" onclick="return toggle('TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#failUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">data</tt><tt class="py-op">,</tt> <tt class="py-param">expected_return_urls</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.failUnlessXRDSHasReturnURLs-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="openid.test.test_openidyadis.data
+openid.test.test_sreg.data" class="py-name" href="#" onclick="return doclink('link-33', 'data', 'link-25');">data</a></tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="openid.test.test_openidyadis.data
+openid.test.test_sreg.data" class="py-name" href="#" onclick="return doclink('link-34', 'data', 'link-25');">data</a></tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">actual_return_urls</tt> <tt class="py-op">=</tt> <tt class="py-name">list</tt><tt class="py-op">(</tt><tt id="link-35" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-35', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt class="py-name">getAllowedReturnURLs</tt><tt class="py-op">(</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">disco_url</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">expected_return_urls</tt><tt class="py-op">,</tt> <tt class="py-name">actual_return_urls</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.failUnlessDiscoveryFailure"></a><div id="TestExtractReturnToURLs.failUnlessDiscoveryFailure-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.failUnlessDiscoveryFailure-toggle" onclick="return toggle('TestExtractReturnToURLs.failUnlessDiscoveryFailure');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#failUnlessDiscoveryFailure">failUnlessDiscoveryFailure</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">text</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.failUnlessDiscoveryFailure-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.failUnlessDiscoveryFailure-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="openid.test.test_openidyadis.data
+openid.test.test_sreg.data" class="py-name" href="#" onclick="return doclink('link-36', 'data', 'link-25');">data</a></tt> <tt class="py-op">=</tt> <tt class="py-name">text</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessRaises</tt><tt class="py-op">(</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">            <tt id="link-37" class="py-name"><a title="openid.yadis.discover.DiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-37', 'DiscoveryFailure', 'link-4');">DiscoveryFailure</a></tt><tt class="py-op">,</tt> <tt id="link-38" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-38', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt class="py-name">getAllowedReturnURLs</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">disco_url</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_empty"></a><div id="TestExtractReturnToURLs.test_empty-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_empty-toggle" onclick="return toggle('TestExtractReturnToURLs.test_empty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_empty">test_empty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_empty-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_empty-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Method openid.test.test_consumer.TestDiscoverAndVerify.failUnlessDiscoveryFailure()=openid.test.test_consumer.TestDiscoverAndVerify-class.html#failUnlessDiscoveryFailure"><a title="openid.test.test_consumer.TestDiscoverAndVerify.failUnlessDiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-39', 'failUnlessDiscoveryFailure', 'link-39');">failUnlessDiscoveryFailure</a></tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_badXML"></a><div id="TestExtractReturnToURLs.test_badXML-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_badXML-toggle" onclick="return toggle('TestExtractReturnToURLs.test_badXML');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_badXML">test_badXML</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_badXML-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_badXML-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name"><a title="openid.test.test_consumer.TestDiscoverAndVerify.failUnlessDiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-40', 'failUnlessDiscoveryFailure', 'link-39');">failUnlessDiscoveryFailure</a></tt><tt class="py-op">(</tt><tt class="py-string">'&gt;'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_noEntries"></a><div id="TestExtractReturnToURLs.test_noEntries-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_noEntries-toggle" onclick="return toggle('TestExtractReturnToURLs.test_noEntries');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_noEntries">test_noEntries</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_noEntries-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_noEntries-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-string">'''\</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-string">&lt;xrds:XRDS xmlns:xrds="xri://$xrds"</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-string">           xmlns="xri://$xrd*($v*2.0)"</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-string">           &gt;</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-string">  &lt;XRD&gt;</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-string">  &lt;/XRD&gt;</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-string">&lt;/xrds:XRDS&gt;</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_noReturnToEntries"></a><div id="TestExtractReturnToURLs.test_noReturnToEntries-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_noReturnToEntries-toggle" onclick="return toggle('TestExtractReturnToURLs.test_noReturnToEntries');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_noReturnToEntries">test_noReturnToEntries</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_noReturnToEntries-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_noReturnToEntries-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-string">'''\</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-string">&lt;xrds:XRDS xmlns:xrds="xri://$xrds"</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-string">           xmlns="xri://$xrd*($v*2.0)"</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-string">           &gt;</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-string">  &lt;XRD&gt;</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="10"&gt;</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/server&lt;/Type&gt;</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://www.myopenid.com/server&lt;/URI&gt;</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-string">  &lt;/XRD&gt;</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-string">&lt;/xrds:XRDS&gt;</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_oneEntry"></a><div id="TestExtractReturnToURLs.test_oneEntry-def"><a name="L104"></a><tt class="py-lineno">104</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_oneEntry-toggle" onclick="return toggle('TestExtractReturnToURLs.test_oneEntry');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_oneEntry">test_oneEntry</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_oneEntry-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_oneEntry-expanded"><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-string">'''\</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-string">&lt;xrds:XRDS xmlns:xrds="xri://$xrds"</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-string">           xmlns="xri://$xrd*($v*2.0)"</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-string">           &gt;</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-string">  &lt;XRD&gt;</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service&gt;</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-string">  &lt;/XRD&gt;</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-string">&lt;/xrds:XRDS&gt;</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-string">'http://rp.example.com/return'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_twoEntries"></a><div id="TestExtractReturnToURLs.test_twoEntries-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_twoEntries-toggle" onclick="return toggle('TestExtractReturnToURLs.test_twoEntries');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_twoEntries">test_twoEntries</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_twoEntries-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_twoEntries-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-string">'''\</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-string">&lt;xrds:XRDS xmlns:xrds="xri://$xrds"</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-string">           xmlns="xri://$xrd*($v*2.0)"</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-string">           &gt;</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"><tt class="py-string">  &lt;XRD&gt;</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="0"&gt;</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="1"&gt;</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://other.rp.example.com/return&lt;/URI&gt;</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-string">  &lt;/XRD&gt;</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-string">&lt;/xrds:XRDS&gt;</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-string">'http://rp.example.com/return'</tt><tt class="py-op">,</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">      <tt class="py-string">'http://other.rp.example.com/return'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="TestExtractReturnToURLs.test_twoEntries_withOther"></a><div id="TestExtractReturnToURLs.test_twoEntries_withOther-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="TestExtractReturnToURLs.test_twoEntries_withOther-toggle" onclick="return toggle('TestExtractReturnToURLs.test_twoEntries_withOther');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestExtractReturnToURLs-class.html#test_twoEntries_withOther">test_twoEntries_withOther</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestExtractReturnToURLs.test_twoEntries_withOther-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestExtractReturnToURLs.test_twoEntries_withOther-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessXRDSHasReturnURLs</tt><tt class="py-op">(</tt><tt class="py-string">'''\</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-string">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-string">&lt;xrds:XRDS xmlns:xrds="xri://$xrds"</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-string">           xmlns="xri://$xrd*($v*2.0)"</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-string">           &gt;</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-string">  &lt;XRD&gt;</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="0"&gt;</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="1"&gt;</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://other.rp.example.com/return&lt;/URI&gt;</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-string">    &lt;Service priority="0"&gt;</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-string">      &lt;Type&gt;http://example.com/LOLCATS&lt;/Type&gt;</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-string">      &lt;URI&gt;http://example.com/invisible+uri&lt;/URI&gt;</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-string">    &lt;/Service&gt;</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-string">  &lt;/XRD&gt;</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-string">&lt;/xrds:XRDS&gt;</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt class="py-op">[</tt><tt class="py-string">'http://rp.example.com/return'</tt><tt class="py-op">,</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">      <tt class="py-string">'http://other.rp.example.com/return'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line"> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches"></a><div id="TestReturnToMatches-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="TestReturnToMatches-toggle" onclick="return toggle('TestReturnToMatches');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html">TestReturnToMatches</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestReturnToMatches-expanded"><a name="TestReturnToMatches.test_noEntries"></a><div id="TestReturnToMatches.test_noEntries-def"><a name="L166"></a><tt class="py-lineno">166</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_noEntries-toggle" onclick="return toggle('TestReturnToMatches.test_noEntries');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_noEntries">test_noEntries</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_noEntries-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_noEntries-expanded"><a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt id="link-41" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-41', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Function openid.server.trustroot.returnToMatches()=openid.server.trustroot-module.html#returnToMatches"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-42', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-string">'anything'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches.test_exactMatch"></a><div id="TestReturnToMatches.test_exactMatch-def"><a name="L169"></a><tt class="py-lineno">169</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_exactMatch-toggle" onclick="return toggle('TestReturnToMatches.test_exactMatch');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_exactMatch">test_exactMatch</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_exactMatch-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_exactMatch-expanded"><a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://example.com/return.to'</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt><tt id="link-43" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-43', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-44', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">r</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> <tt class="py-name">r</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches.test_garbageMatch"></a><div id="TestReturnToMatches.test_garbageMatch-def"><a name="L173"></a><tt class="py-lineno">173</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_garbageMatch-toggle" onclick="return toggle('TestReturnToMatches.test_garbageMatch');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_garbageMatch">test_garbageMatch</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_garbageMatch-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_garbageMatch-expanded"><a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://example.com/return.to'</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt><tt id="link-45" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-45', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-46', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">            <tt class="py-op">[</tt><tt class="py-string">'This is not a URL at all. In fact, it has characters, '</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">             <tt class="py-string">'like "&lt;" that are not allowed in URLs'</tt><tt class="py-op">,</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">             <tt class="py-name">r</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-name">r</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches.test_descendant"></a><div id="TestReturnToMatches.test_descendant-def"><a name="L181"></a><tt class="py-lineno">181</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_descendant-toggle" onclick="return toggle('TestReturnToMatches.test_descendant');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_descendant">test_descendant</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_descendant-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_descendant-expanded"><a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://example.com/return.to'</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt><tt id="link-47" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-47', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-48', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">            <tt class="py-op">[</tt><tt class="py-name">r</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">            <tt class="py-string">'http://example.com/return.to/user:joe'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches.test_wildcard"></a><div id="TestReturnToMatches.test_wildcard-def"><a name="L187"></a><tt class="py-lineno">187</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_wildcard-toggle" onclick="return toggle('TestReturnToMatches.test_wildcard');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_wildcard">test_wildcard</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_wildcard-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_wildcard-expanded"><a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt id="link-49" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-49', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-50', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">            <tt class="py-op">[</tt><tt class="py-string">'http://*.example.com/return.to'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">            <tt class="py-string">'http://example.com/return.to'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"> </tt>
+<a name="TestReturnToMatches.test_noMatch"></a><div id="TestReturnToMatches.test_noMatch-def"><a name="L192"></a><tt class="py-lineno">192</tt> <a class="py-toggle" href="#" id="TestReturnToMatches.test_noMatch-toggle" onclick="return toggle('TestReturnToMatches.test_noMatch');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestReturnToMatches-class.html#test_noMatch">test_noMatch</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestReturnToMatches.test_noMatch-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestReturnToMatches.test_noMatch-expanded"><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-name">r</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://example.com/return.to'</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt id="link-51" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-51', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="openid.server.trustroot.returnToMatches" class="py-name" href="#" onclick="return doclink('link-52', 'returnToMatches', 'link-42');">returnToMatches</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-op">[</tt><tt class="py-name">r</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">            <tt class="py-string">'http://example.com/xss_exploit'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo"></a><div id="TestVerifyReturnTo-def"><a name="L198"></a><tt class="py-lineno">198</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo-toggle" onclick="return toggle('TestVerifyReturnTo');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html">TestVerifyReturnTo</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">,</tt> <tt class="py-base-class">CatchLogs</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestVerifyReturnTo-expanded"><a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo.setUp"></a><div id="TestVerifyReturnTo.setUp-def"><a name="L200"></a><tt class="py-lineno">200</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.setUp-toggle" onclick="return toggle('TestVerifyReturnTo.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.setUp-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.setUp-expanded"><a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt id="link-53" class="py-name"><a title="openid.test.support.CatchLogs
+openid.test.test_server.CatchLogs" class="py-name" href="#" onclick="return doclink('link-53', 'CatchLogs', 'link-14');">CatchLogs</a></tt><tt class="py-op">.</tt><tt id="link-54" class="py-name" targets="Method openid.test.kvform.KVBaseTest.setUp()=openid.test.kvform.KVBaseTest-class.html#setUp,Method openid.test.support.CatchLogs.setUp()=openid.test.support.CatchLogs-class.html#setUp,Method openid.test.test_association.TestMac.setUp()=openid.test.test_association.TestMac-class.html#setUp,Method openid.test.test_association.TestMakePairs.setUp()=openid.test.test_association.TestMakePairs-class.html#setUp,Method openid.test.test_association.TestMessageSigning.setUp()=openid.test.test_association.TestMessageSigning-class.html#setUp,Method openid.test.test_association_response.BaseAssocTest.setUp()=openid.test.test_association_response.BaseAssocTest-class.html#setUp,Method openid.test.test_association_response.TestInvalidFields.setUp()=openid.test.test_association_response.TestInvalidFields-class.html#setUp,Method openid.test.test_auth_request.TestAuthRequestMixin.setUp()=openid.test.test_auth_request.TestAuthRequestMixin-class.html#setUp,Method openid.test.test_ax.AXMessageTest.setUp()=openid.test.test_ax.AXMessageTest-class.html#setUp,Method openid.test.test_ax.FetchRequestTest.setUp()=openid.test.test_ax.FetchRequestTest-class.html#setUp,Method openid.test.test_ax.FetchResponseTest.setUp()=openid.test.test_ax.FetchResponseTest-class.html#setUp,Method openid.test.test_ax.StoreRequestTest.setUp()=openid.test.test_ax.StoreRequestTest-class.html#setUp,Method openid.test.test_ax.ToTypeURIsTest.setUp()=openid.test.test_ax.ToTypeURIsTest-class.html#setUp,Method openid.test.test_consumer.CheckNonceVerifyTest.setUp()=openid.test.test_consumer.CheckNonceVerifyTest-class.html#setUp,Method openid.test.test_consumer.ConsumerTest.setUp()=openid.test.test_consumer.ConsumerTest-class.html#setUp,Method openid.test.test_consumer.IDPDrivenTest.setUp()=openid.test.test_consumer.IDPDrivenTest-class.html#setUp,Method openid.test.test_consumer.IdResCheckForFieldsTest.setUp()=openid.test.test_consumer.IdResCheckForFieldsTest-class.html#setUp,Method openid.test.test_consumer.TestCheckAuth.setUp()=openid.test.test_consumer.TestCheckAuth-class.html#setUp,Method openid.test.test_consumer.TestCheckAuthResponse.setUp()=openid.test.test_consumer.TestCheckAuthResponse-class.html#setUp,Method openid.test.test_consumer.TestCheckAuthTriggered.setUp()=openid.test.test_consumer.TestCheckAuthTriggered-class.html#setUp,Method openid.test.test_consumer.TestCompleteMissingSig.setUp()=openid.test.test_consumer.TestCompleteMissingSig-class.html#setUp,Method openid.test.test_consumer.TestConstruct.setUp()=openid.test.test_consumer.TestConstruct-class.html#setUp,Method openid.test.test_consumer.TestCreateAssociationRequest.setUp()=openid.test.test_consumer.TestCreateAssociationRequest-class.html#setUp,Method openid.test.test_consumer.TestDiffieHellmanResponseParameters.setUp()=openid.test.test_consumer.TestDiffieHellmanResponseParameters-class.html#setUp,Method openid.test.test_consumer.TestDiscoverAndVerify.setUp()=openid.test.test_consumer.TestDiscoverAndVerify-class.html#setUp,Method openid.test.test_consumer.TestDiscoveryVerification.setUp()=openid.test.test_consumer.TestDiscoveryVerification-class.html#setUp,Method openid.test.test_consumer.TestFetchAssoc.setUp()=openid.test.test_consumer.TestFetchAssoc-class.html#setUp,Method openid.test.test_consumer.TestIdRes.setUp()=openid.test.test_consumer.TestIdRes-class.html#setUp,Method openid.test.test_consumer.TestIdResCheckSignature.setUp()=openid.test.test_consumer.TestIdResCheckSignature-class.html#setUp,Method openid.test.test_consumer.TestKVPost.setUp()=openid.test.test_consumer.TestKVPost-class.html#setUp,Method openid.test.test_consumer.TestNoStore.setUp()=openid.test.test_consumer.TestNoStore-class.html#setUp,Method openid.test.test_consumer.TestReturnToArgs.setUp()=openid.test.test_consumer.TestReturnToArgs-class.html#setUp,Method openid.test.test_consumer.TestSuccess.setUp()=openid.test.test_consumer.TestSuccess-class.html#setUp,Method openid.test.test_consumer.TestSuccessResponse.setUp()=openid.test.test_consumer.TestSuccessResponse-class.html#setUp,Method openid.test.test_discover.BaseTestDiscovery.setUp()=openid.test.test_discover.BaseTestDiscovery-class.html#setUp,Method openid.test.test_discover.TestDiscoverFunction.setUp()=openid.test.test_discover.TestDiscoverFunction-class.html#setUp,Method openid.test.test_discover.TestDiscoveryFailure.setUp()=openid.test.test_discover.TestDiscoveryFailure-class.html#setUp,Method openid.test.test_discover.TestEndpointSupportsType.setUp()=openid.test.test_discover.TestEndpointSupportsType-class.html#setUp,Method openid.test.test_discover.TestFetchException.setUp()=openid.test.test_discover.TestFetchException-class.html#setUp,Method openid.test.test_discover.TestFromOPEndpointURL.setUp()=openid.test.test_discover.TestFromOPEndpointURL-class.html#setUp,Method openid.test.test_discover.TestIsOPIdentifier.setUp()=openid.test.test_discover.TestIsOPIdentifier-class.html#setUp,Method openid.test.test_etxrd.TestServiceParser.setUp()=openid.test.test_etxrd.TestServiceParser-class.html#setUp,Method openid.test.test_examples.TestServer.setUp()=openid.test.test_examples.TestServer-class.html#setUp,Method openid.test.test_fetchers.DefaultFetcherTest.setUp()=openid.test.test_fetchers.DefaultFetcherTest-class.html#setUp,Method openid.test.test_message.EmptyMessageTest.setUp()=openid.test.test_message.EmptyMessageTest-class.html#setUp,Method openid.test.test_message.MessageTest.setUp()=openid.test.test_message.MessageTest-class.html#setUp,Method openid.test.test_message.OpenID1ExplicitMessageTest.setUp()=openid.test.test_message.OpenID1ExplicitMessageTest-class.html#setUp,Method openid.test.test_message.OpenID1MessageTest.setUp()=openid.test.test_message.OpenID1MessageTest-class.html#setUp,Method openid.test.test_message.OpenID2MessageTest.setUp()=openid.test.test_message.OpenID2MessageTest-class.html#setUp,Method openid.test.test_negotiation.TestNegotiatorBehaviors.setUp()=openid.test.test_negotiation.TestNegotiatorBehaviors-class.html#setUp,Method openid.test.test_negotiation.TestOpenID1SessionNegotiation.setUp()=openid.test.test_negotiation.TestOpenID1SessionNegotiation-class.html#setUp,Method openid.test.test_negotiation.TestOpenID2SessionNegotiation.setUp()=openid.test.test_negotiation.TestOpenID2SessionNegotiation-class.html#setUp,Method openid.test.test_openidyadis.OpenIDYadisTest.setUp()=openid.test.test_openidyadis.OpenIDYadisTest-class.html#setUp,Method openid.test.test_pape_draft2.PapeRequestTestCase.setUp()=openid.test.test_pape_draft2.PapeRequestTestCase-class.html#setUp,Method openid.test.test_pape_draft2.PapeResponseTestCase.setUp()=openid.test.test_pape_draft2.PapeResponseTestCase-class.html#setUp,Method openid.test.test_pape_draft5.PapeRequestTestCase.setUp()=openid.test.test_pape_draft5.PapeRequestTestCase-class.html#setUp,Method openid.test.test_pape_draft5.PapeResponseTestCase.setUp()=openid.test.test_pape_draft5.PapeResponseTestCase-class.html#setUp,Method openid.test.test_server.CatchLogs.setUp()=openid.test.test_server.CatchLogs-class.html#setUp,Method openid.test.test_server.TestAssociate.setUp()=openid.test.test_server.TestAssociate-class.html#setUp,Method openid.test.test_server.TestCheckAuth.setUp()=openid.test.test_server.TestCheckAuth-class.html#setUp,Method openid.test.test_server.TestCheckID.setUp()=openid.test.test_server.TestCheckID-class.html#setUp,Method openid.test.test_server.TestCheckIDExtension.setUp()=openid.test.test_server.TestCheckIDExtension-class.html#setUp,Method openid.test.test_server.TestDecode.setUp()=openid.test.test_server.TestDecode-class.html#setUp,Method openid.test.test_server.TestEncode.setUp()=openid.test.test_server.TestEncode-class.html#setUp,Method openid.test.test_server.TestServer.setUp()=openid.test.test_server.TestServer-class.html#setUp,Method openid.test.test_server.TestSignatory.setUp()=openid.test.test_server.TestSignatory-class.html#setUp,Method openid.test.test_server.TestSigningEncode.setUp()=openid.test.test_server.TestSigningEncode-class.html#setUp,Method openid.test.test_services.TestGetServiceEndpoints.setUp()=openid.test.test_services.TestGetServiceEndpoints-class.html#setUp,Method openid.test.test_sreg.GetNSTest.setUp()=openid.test.test_sreg.GetNSTest-class.html#setUp,Method openid.test.test_xrires.ProxyQueryTestCase.setUp()=openid.test.test_xrires.ProxyQueryTestCase-class.html#setUp,Method openid.test.test_yadis_discover.TestSecondGet.setUp()=openid.test.test_yadis_discover.TestSecondGet-class.html#setUp"><a title="openid.test.kvform.KVBaseTest.setUp
+openid.test.support.CatchLogs.setUp
+openid.test.test_association.TestMac.setUp
+openid.test.test_association.TestMakePairs.setUp
+openid.test.test_association.TestMessageSigning.setUp
+openid.test.test_association_response.BaseAssocTest.setUp
+openid.test.test_association_response.TestInvalidFields.setUp
+openid.test.test_auth_request.TestAuthRequestMixin.setUp
+openid.test.test_ax.AXMessageTest.setUp
+openid.test.test_ax.FetchRequestTest.setUp
+openid.test.test_ax.FetchResponseTest.setUp
+openid.test.test_ax.StoreRequestTest.setUp
+openid.test.test_ax.ToTypeURIsTest.setUp
+openid.test.test_consumer.CheckNonceVerifyTest.setUp
+openid.test.test_consumer.ConsumerTest.setUp
+openid.test.test_consumer.IDPDrivenTest.setUp
+openid.test.test_consumer.IdResCheckForFieldsTest.setUp
+openid.test.test_consumer.TestCheckAuth.setUp
+openid.test.test_consumer.TestCheckAuthResponse.setUp
+openid.test.test_consumer.TestCheckAuthTriggered.setUp
+openid.test.test_consumer.TestCompleteMissingSig.setUp
+openid.test.test_consumer.TestConstruct.setUp
+openid.test.test_consumer.TestCreateAssociationRequest.setUp
+openid.test.test_consumer.TestDiffieHellmanResponseParameters.setUp
+openid.test.test_consumer.TestDiscoverAndVerify.setUp
+openid.test.test_consumer.TestDiscoveryVerification.setUp
+openid.test.test_consumer.TestFetchAssoc.setUp
+openid.test.test_consumer.TestIdRes.setUp
+openid.test.test_consumer.TestIdResCheckSignature.setUp
+openid.test.test_consumer.TestKVPost.setUp
+openid.test.test_consumer.TestNoStore.setUp
+openid.test.test_consumer.TestReturnToArgs.setUp
+openid.test.test_consumer.TestSuccess.setUp
+openid.test.test_consumer.TestSuccessResponse.setUp
+openid.test.test_discover.BaseTestDiscovery.setUp
+openid.test.test_discover.TestDiscoverFunction.setUp
+openid.test.test_discover.TestDiscoveryFailure.setUp
+openid.test.test_discover.TestEndpointSupportsType.setUp
+openid.test.test_discover.TestFetchException.setUp
+openid.test.test_discover.TestFromOPEndpointURL.setUp
+openid.test.test_discover.TestIsOPIdentifier.setUp
+openid.test.test_etxrd.TestServiceParser.setUp
+openid.test.test_examples.TestServer.setUp
+openid.test.test_fetchers.DefaultFetcherTest.setUp
+openid.test.test_message.EmptyMessageTest.setUp
+openid.test.test_message.MessageTest.setUp
+openid.test.test_message.OpenID1ExplicitMessageTest.setUp
+openid.test.test_message.OpenID1MessageTest.setUp
+openid.test.test_message.OpenID2MessageTest.setUp
+openid.test.test_negotiation.TestNegotiatorBehaviors.setUp
+openid.test.test_negotiation.TestOpenID1SessionNegotiation.setUp
+openid.test.test_negotiation.TestOpenID2SessionNegotiation.setUp
+openid.test.test_openidyadis.OpenIDYadisTest.setUp
+openid.test.test_pape_draft2.PapeRequestTestCase.setUp
+openid.test.test_pape_draft2.PapeResponseTestCase.setUp
+openid.test.test_pape_draft5.PapeRequestTestCase.setUp
+openid.test.test_pape_draft5.PapeResponseTestCase.setUp
+openid.test.test_server.CatchLogs.setUp
+openid.test.test_server.TestAssociate.setUp
+openid.test.test_server.TestCheckAuth.setUp
+openid.test.test_server.TestCheckID.setUp
+openid.test.test_server.TestCheckIDExtension.setUp
+openid.test.test_server.TestDecode.setUp
+openid.test.test_server.TestEncode.setUp
+openid.test.test_server.TestServer.setUp
+openid.test.test_server.TestSignatory.setUp
+openid.test.test_server.TestSigningEncode.setUp
+openid.test.test_services.TestGetServiceEndpoints.setUp
+openid.test.test_sreg.GetNSTest.setUp
+openid.test.test_xrires.ProxyQueryTestCase.setUp
+openid.test.test_yadis_discover.TestSecondGet.setUp" class="py-name" href="#" onclick="return doclink('link-54', 'setUp', 'link-54');">setUp</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo.tearDown"></a><div id="TestVerifyReturnTo.tearDown-def"><a name="L203"></a><tt class="py-lineno">203</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.tearDown-toggle" onclick="return toggle('TestVerifyReturnTo.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.tearDown-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.tearDown-expanded"><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt id="link-55" class="py-name"><a title="openid.test.support.CatchLogs
+openid.test.test_server.CatchLogs" class="py-name" href="#" onclick="return doclink('link-55', 'CatchLogs', 'link-14');">CatchLogs</a></tt><tt class="py-op">.</tt><tt id="link-56" class="py-name" targets="Method openid.test.kvform.KVBaseTest.tearDown()=openid.test.kvform.KVBaseTest-class.html#tearDown,Method openid.test.support.CatchLogs.tearDown()=openid.test.support.CatchLogs-class.html#tearDown,Method openid.test.test_consumer.CheckNonceVerifyTest.tearDown()=openid.test.test_consumer.CheckNonceVerifyTest-class.html#tearDown,Method openid.test.test_consumer.TestCheckAuth.tearDown()=openid.test.test_consumer.TestCheckAuth-class.html#tearDown,Method openid.test.test_consumer.TestCheckAuthResponse.tearDown()=openid.test.test_consumer.TestCheckAuthResponse-class.html#tearDown,Method openid.test.test_consumer.TestCompleteMissingSig.tearDown()=openid.test.test_consumer.TestCompleteMissingSig-class.html#tearDown,Method openid.test.test_consumer.TestSuccess.tearDown()=openid.test.test_consumer.TestSuccess-class.html#tearDown,Method openid.test.test_discover.BaseTestDiscovery.tearDown()=openid.test.test_discover.BaseTestDiscovery-class.html#tearDown,Method openid.test.test_discover.TestDiscoverFunction.tearDown()=openid.test.test_discover.TestDiscoverFunction-class.html#tearDown,Method openid.test.test_discover.TestDiscoveryFailure.tearDown()=openid.test.test_discover.TestDiscoveryFailure-class.html#tearDown,Method openid.test.test_discover.TestFetchException.tearDown()=openid.test.test_discover.TestFetchException-class.html#tearDown,Method openid.test.test_examples.TestServer.tearDown()=openid.test.test_examples.TestServer-class.html#tearDown,Method openid.test.test_fetchers.DefaultFetcherTest.tearDown()=openid.test.test_fetchers.DefaultFetcherTest-class.html#tearDown,Method openid.test.test_server.CatchLogs.tearDown()=openid.test.test_server.CatchLogs-class.html#tearDown,Method openid.test.test_services.TestGetServiceEndpoints.tearDown()=openid.test.test_services.TestGetServiceEndpoints-class.html#tearDown,Method openid.test.test_yadis_discover.TestSecondGet.tearDown()=openid.test.test_yadis_discover.TestSecondGet-class.html#tearDown"><a title="openid.test.kvform.KVBaseTest.tearDown
+openid.test.support.CatchLogs.tearDown
+openid.test.test_consumer.CheckNonceVerifyTest.tearDown
+openid.test.test_consumer.TestCheckAuth.tearDown
+openid.test.test_consumer.TestCheckAuthResponse.tearDown
+openid.test.test_consumer.TestCompleteMissingSig.tearDown
+openid.test.test_consumer.TestSuccess.tearDown
+openid.test.test_discover.BaseTestDiscovery.tearDown
+openid.test.test_discover.TestDiscoverFunction.tearDown
+openid.test.test_discover.TestDiscoveryFailure.tearDown
+openid.test.test_discover.TestFetchException.tearDown
+openid.test.test_examples.TestServer.tearDown
+openid.test.test_fetchers.DefaultFetcherTest.tearDown
+openid.test.test_server.CatchLogs.tearDown
+openid.test.test_services.TestGetServiceEndpoints.tearDown
+openid.test.test_yadis_discover.TestSecondGet.tearDown" class="py-name" href="#" onclick="return doclink('link-56', 'tearDown', 'link-56');">tearDown</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">     </tt>
+<a name="TestVerifyReturnTo.test_bogusRealm"></a><div id="TestVerifyReturnTo.test_bogusRealm-def"><a name="L206"></a><tt class="py-lineno">206</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.test_bogusRealm-toggle" onclick="return toggle('TestVerifyReturnTo.test_bogusRealm');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#test_bogusRealm">test_bogusRealm</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.test_bogusRealm-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.test_bogusRealm-expanded"><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt id="link-57" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-57', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Function openid.server.trustroot.verifyReturnTo()=openid.server.trustroot-module.html#verifyReturnTo"><a title="openid.server.trustroot.verifyReturnTo" class="py-name" href="#" onclick="return doclink('link-58', 'verifyReturnTo', 'link-58');">verifyReturnTo</a></tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-string">'http://example.com/'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo.test_verifyWithDiscoveryCalled"></a><div id="TestVerifyReturnTo.test_verifyWithDiscoveryCalled-def"><a name="L209"></a><tt class="py-lineno">209</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.test_verifyWithDiscoveryCalled-toggle" onclick="return toggle('TestVerifyReturnTo.test_verifyWithDiscoveryCalled');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#test_verifyWithDiscoveryCalled">test_verifyWithDiscoveryCalled</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.test_verifyWithDiscoveryCalled-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.test_verifyWithDiscoveryCalled-expanded"><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-name">realm</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://*.example.com/'</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-name">return_to</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://www.example.com/foo'</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">vrfy</tt><tt class="py-op">(</tt><tt class="py-param">disco_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'http://www.example.com/'</tt><tt class="py-op">,</tt> <tt class="py-name">disco_url</tt><tt class="py-op">)</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-name">return_to</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">            <tt id="link-59" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-59', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="openid.server.trustroot.verifyReturnTo" class="py-name" href="#" onclick="return doclink('link-60', 'verifyReturnTo', 'link-58');">verifyReturnTo</a></tt><tt class="py-op">(</tt><tt class="py-name">realm</tt><tt class="py-op">,</tt> <tt class="py-name">return_to</tt><tt class="py-op">,</tt> <tt class="py-name">_vrfy</tt><tt class="py-op">=</tt><tt class="py-name">vrfy</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name" targets="Method openid.test.support.CatchLogs.failUnlessLogEmpty()=openid.test.support.CatchLogs-class.html#failUnlessLogEmpty"><a title="openid.test.support.CatchLogs.failUnlessLogEmpty" class="py-name" href="#" onclick="return doclink('link-61', 'failUnlessLogEmpty', 'link-61');">failUnlessLogEmpty</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled"></a><div id="TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled-def"><a name="L221"></a><tt class="py-lineno">221</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled-toggle" onclick="return toggle('TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#test_verifyFailWithDiscoveryCalled">test_verifyFailWithDiscoveryCalled</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.test_verifyFailWithDiscoveryCalled-expanded"><a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">realm</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://*.example.com/'</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">return_to</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://www.example.com/foo'</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line"> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">vrfy</tt><tt class="py-op">(</tt><tt class="py-param">disco_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'http://www.example.com/'</tt><tt class="py-op">,</tt> <tt class="py-name">disco_url</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-string">'http://something-else.invalid/'</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">            <tt id="link-62" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-62', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="openid.server.trustroot.verifyReturnTo" class="py-name" href="#" onclick="return doclink('link-63', 'verifyReturnTo', 'link-58');">verifyReturnTo</a></tt><tt class="py-op">(</tt><tt class="py-name">realm</tt><tt class="py-op">,</tt> <tt class="py-name">return_to</tt><tt class="py-op">,</tt> <tt class="py-name">_vrfy</tt><tt class="py-op">=</tt><tt class="py-name">vrfy</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name" targets="Method openid.test.support.CatchLogs.failUnlessLogMatches()=openid.test.support.CatchLogs-class.html#failUnlessLogMatches"><a title="openid.test.support.CatchLogs.failUnlessLogMatches" class="py-name" href="#" onclick="return doclink('link-64', 'failUnlessLogMatches', 'link-64');">failUnlessLogMatches</a></tt><tt class="py-op">(</tt><tt class="py-string">"Failed to validate return_to"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects"></a><div id="TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects-def"><a name="L233"></a><tt class="py-lineno">233</tt> <a class="py-toggle" href="#" id="TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects-toggle" onclick="return toggle('TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_rpverify.TestVerifyReturnTo-class.html#test_verifyFailIfDiscoveryRedirects">test_verifyFailIfDiscoveryRedirects</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestVerifyReturnTo.test_verifyFailIfDiscoveryRedirects-expanded"><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-name">realm</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://*.example.com/'</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt class="py-name">return_to</tt> <tt class="py-op">=</tt> <tt class="py-string">'http://www.example.com/foo'</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">vrfy</tt><tt class="py-op">(</tt><tt class="py-param">disco_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-65" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-65', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt class="py-name">RealmVerificationRedirected</tt><tt class="py-op">(</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">                <tt class="py-name">disco_url</tt><tt class="py-op">,</tt> <tt class="py-string">"http://redirected.invalid"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">            <tt id="link-66" class="py-name"><a title="openid.server.trustroot
+openid.test.trustroot" class="py-name" href="#" onclick="return doclink('link-66', 'trustroot', 'link-10');">trustroot</a></tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="openid.server.trustroot.verifyReturnTo" class="py-name" href="#" onclick="return doclink('link-67', 'verifyReturnTo', 'link-58');">verifyReturnTo</a></tt><tt class="py-op">(</tt><tt class="py-name">realm</tt><tt class="py-op">,</tt> <tt class="py-name">return_to</tt><tt class="py-op">,</tt> <tt class="py-name">_vrfy</tt><tt class="py-op">=</tt><tt class="py-name">vrfy</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="openid.test.support.CatchLogs.failUnlessLogMatches" class="py-name" href="#" onclick="return doclink('link-68', 'failUnlessLogMatches', 'link-64');">failUnlessLogMatches</a></tt><tt class="py-op">(</tt><tt class="py-string">"Attempting to verify"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:35 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

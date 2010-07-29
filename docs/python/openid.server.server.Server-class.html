@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.server.server.Server</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.server-module.html">Package&nbsp;server</a> ::
+        <a href="openid.server.server-module.html">Module&nbsp;server</a> ::
+        Class&nbsp;Server
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.server.server.Server-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Server</h1><p class="nomargin-top"><span class="codelink"><a href="openid.server.server-pysrc.html#Server">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Server</strong>
+</pre>
+
+<hr />
+<p>I handle requests for an OpenID server.</p>
+  <p>Some types of requests (those which are not <code>checkid</code> 
+  requests) may be handed to my <a 
+  href="openid.server.server.Server-class.html#handleRequest" 
+  class="link">handleRequest</a> method, and I will take care of it and 
+  return a response.</p>
+  <p>For your convenience, I also provide an interface to <a 
+  href="openid.server.server.Decoder-class.html#decode" 
+  class="link">Decoder.decode</a> and <a 
+  href="openid.server.server.SigningEncoder-class.html#encode" 
+  class="link">SigningEncoder.encode</a> through my methods <a 
+  href="openid.server.server.Server-class.html#decodeRequest" 
+  class="link">decodeRequest</a> and <a 
+  href="openid.server.server.Server-class.html#encodeResponse" 
+  class="link">encodeResponse</a>.</p>
+  <p>All my state is encapsulated in an <a 
+  href="openid.store.interface.OpenIDStore-class.html" 
+  class="link">OpenIDStore</a>, which means I'm not generally pickleable 
+  but I am easy to reconstruct.</p>
+  <p>Example:</p>
+<pre class="literalblock">
+   oserver = Server(FileOpenIDStore(data_path), &quot;http://example.com/op&quot;)
+   request = oserver.decodeRequest(query)
+   if request.mode in ['checkid_immediate', 'checkid_setup']:
+       if self.isAuthorized(request.identity, request.trust_root):
+           response = request.answer(True)
+       elif request.immediate:
+           response = request.answer(False)
+       else:
+           self.showDecidePage(request)
+           return
+   else:
+       response = oserver.handleRequest(request)
+
+   webresponse = oserver.encode(response)
+</pre>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Nested Classes</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.server.server.Signatory-class.html" class="summary-name">signatoryClass</a><br />
+      I sign things.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.server.server.SigningEncoder-class.html" class="summary-name">encoderClass</a><br />
+      I encode responses in to <a 
+        href="openid.server.server.WebResponse-class.html" 
+        class="link">WebResponses</a>, signing them when required.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.server.server.Decoder-class.html" class="summary-name">decoderClass</a><br />
+      I decode an incoming web request in to a <a 
+        href="openid.server.server.OpenIDRequest-class.html" 
+        class="link">OpenIDRequest</a>.
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.Server-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">store</span>,
+        <span class="summary-sig-arg">op_endpoint</span>=<span class="summary-sig-default">None</span>)</span><br />
+      A new <a href="openid.server.server.Server-class.html" 
+      class="link">Server</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.Server-class.html#handleRequest" class="summary-sig-name">handleRequest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>)</span><br />
+      Handle a request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.handleRequest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="openid_check_authentication"></a><span class="summary-sig-name">openid_check_authentication</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>)</span><br />
+      Handle and respond to <code>check_authentication</code> requests.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.openid_check_authentication">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="openid_associate"></a><span class="summary-sig-name">openid_associate</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">request</span>)</span><br />
+      Handle and respond to <code>associate</code> requests.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.openid_associate">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.OpenIDRequest-class.html" 
+      class="link">OpenIDRequest</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.Server-class.html#decodeRequest" class="summary-sig-name">decodeRequest</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">query</span>)</span><br />
+      Transform query parameters into an <a 
+      href="openid.server.server.OpenIDRequest-class.html" 
+      class="link">OpenIDRequest</a>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.decodeRequest">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.WebResponse-class.html" 
+      class="link">WebResponse</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.server.server.Server-class.html#encodeResponse" class="summary-sig-name">encodeResponse</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">response</span>)</span><br />
+      Encode a response to a <a 
+      href="openid.server.server.WebResponse-class.html" 
+      class="link">WebResponse</a>, signing it first if appropriate.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.server.server-pysrc.html#Server.encodeResponse">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.Decoder-class.html" 
+      class="link">Decoder</a></span>
+    </td><td class="summary">
+        <a name="decoder"></a><span class="summary-name">decoder</span><br />
+      I'm using this to decode things.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.Encoder-class.html" 
+      class="link">Encoder</a></span>
+    </td><td class="summary">
+        <a name="encoder"></a><span class="summary-name">encoder</span><br />
+      I'm using this to encode things.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.association.SessionNegotiator-class.html" 
+      class="link">openid.association.SessionNegotiator</a></span>
+    </td><td class="summary">
+        <a name="negotiator"></a><span class="summary-name">negotiator</span><br />
+      I use this to determine which kinds of associations I can make and 
+      how.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+        <a name="op_endpoint"></a><span class="summary-name">op_endpoint</span><br />
+      My URL.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.server.server.Signatory-class.html" 
+      class="link">Signatory</a></span>
+    </td><td class="summary">
+        <a name="signatory"></a><span class="summary-name">signatory</span><br />
+      I'm using this for associate requests and to sign things.
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">store</span>,
+        <span class="sig-arg">op_endpoint</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#Server.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>A new <a href="openid.server.server.Server-class.html" 
+  class="link">Server</a>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>store</code></strong> (<a href="openid.store.interface.OpenIDStore-class.html" 
+          class="link">openid.store.interface.OpenIDStore</a>) - The back-end where my associations are stored.</li>
+        <li><strong class="pname"><code>op_endpoint</code></strong> (str) - My URL, the fully qualified address of this server's endpoint, 
+          i.e. <code>http://example.com/server</code></li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+<div class="fields">      <p><strong>Change Log:</strong>
+        <code>op_endpoint</code> is new in library version 2.0.  It currently 
+    defaults to <code>None</code> for compatibility with earlier versions 
+    of the library, but you must provide it if you want to respond to any 
+    version 2 OpenID requests.
+      </p>
+</div></td></tr></table>
+</div>
+<a name="handleRequest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">handleRequest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">request</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#Server.handleRequest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Handle a request.</p>
+  <p>Give me a request, I will give you a response.  Unless it's a type of 
+  request I cannot handle myself, in which case I will raise 
+  <code>NotImplementedError</code>.  In that case, you can handle it 
+  yourself, or add a method to me for handling that request type.</p>
+  <dl class="fields">
+    <dt>Returns: <a href="openid.server.server.OpenIDResponse-class.html" 
+      class="link">OpenIDResponse</a></dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>NotImplementedError</strong></code> - When I do not have a handler defined for that type of request.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="decodeRequest"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decodeRequest</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">query</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#Server.decodeRequest">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Transform query parameters into an <a 
+  href="openid.server.server.OpenIDRequest-class.html" 
+  class="link">OpenIDRequest</a>.</p>
+  <p>If the query does not seem to be an OpenID request at all, I return 
+  <code>None</code>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>query</code></strong> (dict) - The query parameters as a dictionary with each key mapping to one
+          value.</li>
+    </ul></dd>
+    <dt>Returns: <a href="openid.server.server.OpenIDRequest-class.html" 
+      class="link">OpenIDRequest</a></dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="openid.server.server.ProtocolError-class.html">ProtocolError</a></strong></code> - When the query does not seem to be a valid OpenID request.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="openid.server.server.Decoder-class.html#decode" 
+        class="link">Decoder.decode</a>
+      </p>
+</div></td></tr></table>
+</div>
+<a name="encodeResponse"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">encodeResponse</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">response</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.server.server-pysrc.html#Server.encodeResponse">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Encode a response to a <a 
+  href="openid.server.server.WebResponse-class.html" 
+  class="link">WebResponse</a>, signing it first if appropriate.</p>
+  <dl class="fields">
+    <dt>Returns: <a href="openid.server.server.WebResponse-class.html" 
+      class="link">WebResponse</a></dt>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'><a href="openid.server.server.EncodingError-class.html">EncodingError</a></strong></code> - When I can't figure out how to encode this message.</li>
+        <li><code><strong class='fraise'><a href="openid.server.server.AlreadySigned-class.html">AlreadySigned</a></strong></code> - When this response is already signed.</li>
+    </ul></dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        <a href="openid.server.server.SigningEncoder-class.html#encode" 
+        class="link">SigningEncoder.encode</a>
+      </p>
+</div></td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:28 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

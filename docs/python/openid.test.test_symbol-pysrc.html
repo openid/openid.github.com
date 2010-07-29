@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.test_symbol</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_symbol
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.test_symbol-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.test_symbol-module.html">Module openid.test.test_symbol</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module openid.oidutil=openid.oidutil-module.html,Module openid.test.oidutil=openid.test.oidutil-module.html"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-1', 'oidutil', 'link-1');">oidutil</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest"></a><div id="SymbolTest-def"><a name="L5"></a><tt class="py-lineno"> 5</tt> <a class="py-toggle" href="#" id="SymbolTest-toggle" onclick="return toggle('SymbolTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html">SymbolTest</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="SymbolTest-expanded"><a name="SymbolTest.test_selfEquality"></a><div id="SymbolTest.test_selfEquality-def"><a name="L6"></a><tt class="py-lineno"> 6</tt> <a class="py-toggle" href="#" id="SymbolTest.test_selfEquality-toggle" onclick="return toggle('SymbolTest.test_selfEquality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_selfEquality">test_selfEquality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_selfEquality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_selfEquality-expanded"><a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">        <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt id="link-2" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-2', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt> <tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest.test_otherEquality"></a><div id="SymbolTest.test_otherEquality-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="SymbolTest.test_otherEquality-toggle" onclick="return toggle('SymbolTest.test_otherEquality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_otherEquality">test_otherEquality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_otherEquality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_otherEquality-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-3', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">y</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-4', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest.test_inequality"></a><div id="SymbolTest.test_inequality-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="SymbolTest.test_inequality-toggle" onclick="return toggle('SymbolTest.test_inequality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_inequality">test_inequality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_inequality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_inequality-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt id="link-5" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-5', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">y</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-6', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'yyy'</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIfEqual</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest.test_selfInequality"></a><div id="SymbolTest.test_selfInequality-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="SymbolTest.test_selfInequality-toggle" onclick="return toggle('SymbolTest.test_selfInequality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_selfInequality">test_selfInequality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_selfInequality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_selfInequality-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-7', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt class="py-name">x</tt> <tt class="py-op">!=</tt> <tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest.test_otherInequality"></a><div id="SymbolTest.test_otherInequality-def"><a name="L24"></a><tt class="py-lineno">24</tt> <a class="py-toggle" href="#" id="SymbolTest.test_otherInequality-toggle" onclick="return toggle('SymbolTest.test_otherInequality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_otherInequality">test_otherInequality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_otherInequality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_otherInequality-expanded"><a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-8', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">y</tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-9', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt class="py-name">x</tt> <tt class="py-op">!=</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="SymbolTest.test_ne_inequality"></a><div id="SymbolTest.test_ne_inequality-def"><a name="L29"></a><tt class="py-lineno">29</tt> <a class="py-toggle" href="#" id="SymbolTest.test_ne_inequality-toggle" onclick="return toggle('SymbolTest.test_ne_inequality');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_symbol.SymbolTest-class.html#test_ne_inequality">test_ne_inequality</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SymbolTest.test_ne_inequality-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="SymbolTest.test_ne_inequality-expanded"><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-name">x</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-10', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'xxx'</tt><tt class="py-op">)</tt> </tt>
+<a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">        <tt class="py-name">y</tt> <tt class="py-op">=</tt> <tt id="link-11" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-11', 'oidutil', 'link-1');">oidutil</a></tt><tt class="py-op">.</tt><tt class="py-name">Symbol</tt><tt class="py-op">(</tt><tt class="py-string">'yyy'</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnless</tt><tt class="py-op">(</tt><tt class="py-name">x</tt> <tt class="py-op">!=</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:40 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

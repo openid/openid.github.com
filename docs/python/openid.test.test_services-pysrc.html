@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.test_services</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_services
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.test_services-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.test_services-module.html">Module openid.test.test_services</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package openid.yadis=openid.yadis-module.html"><a title="openid.yadis" class="py-name" href="#" onclick="return doclink('link-1', 'yadis', 'link-1');">yadis</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Variable openid.test.test_consumer.TestDiscoveryVerification.services=openid.test.test_consumer.TestDiscoveryVerification-class.html#services,Module openid.yadis.services=openid.yadis.services-module.html"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-2', 'services', 'link-2');">services</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-3', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="openid.yadis" class="py-name" href="#" onclick="return doclink('link-4', 'yadis', 'link-1');">yadis</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module openid.consumer.discover=openid.consumer.discover-module.html,Function openid.consumer.discover.discover()=openid.consumer.discover-module.html#discover,Method openid.test.test_services.TestGetServiceEndpoints.discover()=openid.test.test_services.TestGetServiceEndpoints-class.html#discover,Module openid.yadis.discover=openid.yadis.discover-module.html,Function openid.yadis.discover.discover()=openid.yadis.discover-module.html#discover"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-5', 'discover', 'link-5');">discover</a></tt> <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name" targets="Class openid.yadis.discover.DiscoveryFailure=openid.yadis.discover.DiscoveryFailure-class.html"><a title="openid.yadis.discover.DiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-6', 'DiscoveryFailure', 'link-6');">DiscoveryFailure</a></tt><tt class="py-op">,</tt> <tt id="link-7" class="py-name" targets="Class openid.yadis.discover.DiscoveryResult=openid.yadis.discover.DiscoveryResult-class.html"><a title="openid.yadis.discover.DiscoveryResult" class="py-name" href="#" onclick="return doclink('link-7', 'DiscoveryResult', 'link-7');">DiscoveryResult</a></tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"> </tt>
+<a name="TestGetServiceEndpoints"></a><div id="TestGetServiceEndpoints-def"><a name="L7"></a><tt class="py-lineno"> 7</tt> <a class="py-toggle" href="#" id="TestGetServiceEndpoints-toggle" onclick="return toggle('TestGetServiceEndpoints');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_services.TestGetServiceEndpoints-class.html">TestGetServiceEndpoints</a><tt class="py-op">(</tt><tt class="py-base-class">unittest</tt><tt class="py-op">.</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetServiceEndpoints-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="TestGetServiceEndpoints-expanded"><a name="TestGetServiceEndpoints.setUp"></a><div id="TestGetServiceEndpoints.setUp-def"><a name="L8"></a><tt class="py-lineno"> 8</tt> <a class="py-toggle" href="#" id="TestGetServiceEndpoints.setUp-toggle" onclick="return toggle('TestGetServiceEndpoints.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_services.TestGetServiceEndpoints-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetServiceEndpoints.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestGetServiceEndpoints.setUp-expanded"><a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">orig_discover</tt> <tt class="py-op">=</tt> <tt id="link-8" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-8', 'services', 'link-2');">services</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-9', 'discover', 'link-5');">discover</a></tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt id="link-10" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-10', 'services', 'link-2');">services</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-11', 'discover', 'link-5');">discover</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-12', 'discover', 'link-5');">discover</a></tt> </tt>
+</div><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="TestGetServiceEndpoints.tearDown"></a><div id="TestGetServiceEndpoints.tearDown-def"><a name="L12"></a><tt class="py-lineno">12</tt> <a class="py-toggle" href="#" id="TestGetServiceEndpoints.tearDown-toggle" onclick="return toggle('TestGetServiceEndpoints.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_services.TestGetServiceEndpoints-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetServiceEndpoints.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestGetServiceEndpoints.tearDown-expanded"><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line">        <tt id="link-13" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-13', 'services', 'link-2');">services</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="openid.consumer.discover
+openid.consumer.discover.discover
+openid.test.test_services.TestGetServiceEndpoints.discover
+openid.yadis.discover
+openid.yadis.discover.discover" class="py-name" href="#" onclick="return doclink('link-14', 'discover', 'link-5');">discover</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">orig_discover</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"> </tt>
+<a name="TestGetServiceEndpoints.discover"></a><div id="TestGetServiceEndpoints.discover-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="TestGetServiceEndpoints.discover-toggle" onclick="return toggle('TestGetServiceEndpoints.discover');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_services.TestGetServiceEndpoints-class.html#discover">discover</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">input_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetServiceEndpoints.discover-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestGetServiceEndpoints.discover-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">        <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name"><a title="openid.yadis.discover.DiscoveryResult" class="py-name" href="#" onclick="return doclink('link-15', 'DiscoveryResult', 'link-7');">DiscoveryResult</a></tt><tt class="py-op">(</tt><tt class="py-name">input_url</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-name">result</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Variable openid.yadis.discover.DiscoveryResult.response_text=openid.yadis.discover.DiscoveryResult-class.html#response_text"><a title="openid.yadis.discover.DiscoveryResult.response_text" class="py-name" href="#" onclick="return doclink('link-16', 'response_text', 'link-16');">response_text</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"This is not XRDS text."</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">result</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="TestGetServiceEndpoints.test_catchXRDSError"></a><div id="TestGetServiceEndpoints.test_catchXRDSError-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="TestGetServiceEndpoints.test_catchXRDSError-toggle" onclick="return toggle('TestGetServiceEndpoints.test_catchXRDSError');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_services.TestGetServiceEndpoints-class.html#test_catchXRDSError">test_catchXRDSError</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetServiceEndpoints.test_catchXRDSError-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="TestGetServiceEndpoints.test_catchXRDSError-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessRaises</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name"><a title="openid.yadis.discover.DiscoveryFailure" class="py-name" href="#" onclick="return doclink('link-17', 'DiscoveryFailure', 'link-6');">DiscoveryFailure</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">                              <tt id="link-18" class="py-name"><a title="openid.test.test_consumer.TestDiscoveryVerification.services
+openid.yadis.services" class="py-name" href="#" onclick="return doclink('link-18', 'services', 'link-2');">services</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method openid.yadis.filters.CompoundFilter.getServiceEndpoints()=openid.yadis.filters.CompoundFilter-class.html#getServiceEndpoints,Method openid.yadis.filters.IFilter.getServiceEndpoints()=openid.yadis.filters.IFilter-class.html#getServiceEndpoints,Method openid.yadis.filters.TransformFilterMaker.getServiceEndpoints()=openid.yadis.filters.TransformFilterMaker-class.html#getServiceEndpoints,Function openid.yadis.services.getServiceEndpoints()=openid.yadis.services-module.html#getServiceEndpoints"><a title="openid.yadis.filters.CompoundFilter.getServiceEndpoints
+openid.yadis.filters.IFilter.getServiceEndpoints
+openid.yadis.filters.TransformFilterMaker.getServiceEndpoints
+openid.yadis.services.getServiceEndpoints" class="py-name" href="#" onclick="return doclink('link-19', 'getServiceEndpoints', 'link-19');">getServiceEndpoints</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">                              <tt class="py-string">"http://example.invalid/sometest"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:33 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

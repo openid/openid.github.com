@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.support</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;support
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.support-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.support-module.html">Module openid.test.support</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module openid.message=openid.message-module.html"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-1', 'message', 'link-1');">message</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-2', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module openid.oidutil=openid.oidutil-module.html,Module openid.test.oidutil=openid.test.oidutil-module.html"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-3', 'oidutil', 'link-3');">oidutil</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="OpenIDTestMixin"></a><div id="OpenIDTestMixin-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="OpenIDTestMixin-toggle" onclick="return toggle('OpenIDTestMixin');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.support.OpenIDTestMixin-class.html">OpenIDTestMixin</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenIDTestMixin-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="OpenIDTestMixin-expanded"><a name="OpenIDTestMixin.failUnlessOpenIDValueEquals"></a><div id="OpenIDTestMixin.failUnlessOpenIDValueEquals-def"><a name="L5"></a><tt class="py-lineno"> 5</tt> <a class="py-toggle" href="#" id="OpenIDTestMixin.failUnlessOpenIDValueEquals-toggle" onclick="return toggle('OpenIDTestMixin.failUnlessOpenIDValueEquals');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.OpenIDTestMixin-class.html#failUnlessOpenIDValueEquals">failUnlessOpenIDValueEquals</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">msg</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">,</tt> <tt class="py-param">expected</tt><tt class="py-op">,</tt> <tt class="py-param">ns</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenIDTestMixin.failUnlessOpenIDValueEquals-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OpenIDTestMixin.failUnlessOpenIDValueEquals-expanded"><a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">ns</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line">            <tt class="py-name">ns</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-4', 'message', 'link-1');">message</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Variable openid.message.OPENID_NS=openid.message-module.html#OPENID_NS,Variable openid.test.test_pape_draft2.OPENID_NS=openid.test.test_pape_draft2-module.html#OPENID_NS,Variable openid.test.test_pape_draft5.OPENID_NS=openid.test.test_pape_draft5-module.html#OPENID_NS"><a title="openid.message.OPENID_NS
+openid.test.test_pape_draft2.OPENID_NS
+openid.test.test_pape_draft5.OPENID_NS" class="py-name" href="#" onclick="return doclink('link-5', 'OPENID_NS', 'link-5');">OPENID_NS</a></tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">        <tt class="py-name">actual</tt> <tt class="py-op">=</tt> <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method openid.message.Message.getArg()=openid.message.Message-class.html#getArg"><a title="openid.message.Message.getArg" class="py-name" href="#" onclick="return doclink('link-6', 'getArg', 'link-6');">getArg</a></tt><tt class="py-op">(</tt><tt class="py-name">ns</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line">        <tt class="py-name">error_format</tt> <tt class="py-op">=</tt> <tt class="py-string">'Wrong value for openid.%s: expected=%s, actual=%s'</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line">        <tt class="py-name">error_message</tt> <tt class="py-op">=</tt> <tt class="py-name">error_format</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">expected</tt><tt class="py-op">,</tt> <tt class="py-name">actual</tt><tt class="py-op">)</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">expected</tt><tt class="py-op">,</tt> <tt class="py-name">actual</tt><tt class="py-op">,</tt> <tt class="py-name">error_message</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="OpenIDTestMixin.failIfOpenIDKeyExists"></a><div id="OpenIDTestMixin.failIfOpenIDKeyExists-def"><a name="L14"></a><tt class="py-lineno">14</tt> <a class="py-toggle" href="#" id="OpenIDTestMixin.failIfOpenIDKeyExists-toggle" onclick="return toggle('OpenIDTestMixin.failIfOpenIDKeyExists');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.OpenIDTestMixin-class.html#failIfOpenIDKeyExists">failIfOpenIDKeyExists</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">msg</tt><tt class="py-op">,</tt> <tt class="py-param">key</tt><tt class="py-op">,</tt> <tt class="py-param">ns</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OpenIDTestMixin.failIfOpenIDKeyExists-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="OpenIDTestMixin.failIfOpenIDKeyExists-expanded"><a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">ns</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">            <tt class="py-name">ns</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-7', 'message', 'link-1');">message</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="openid.message.OPENID_NS
+openid.test.test_pape_draft2.OPENID_NS
+openid.test.test_pape_draft5.OPENID_NS" class="py-name" href="#" onclick="return doclink('link-8', 'OPENID_NS', 'link-5');">OPENID_NS</a></tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">        <tt class="py-name">actual</tt> <tt class="py-op">=</tt> <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt id="link-9" class="py-name"><a title="openid.message.Message.getArg" class="py-name" href="#" onclick="return doclink('link-9', 'getArg', 'link-6');">getArg</a></tt><tt class="py-op">(</tt><tt class="py-name">ns</tt><tt class="py-op">,</tt> <tt class="py-name">key</tt><tt class="py-op">)</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">        <tt class="py-name">error_message</tt> <tt class="py-op">=</tt> <tt class="py-string">'openid.%s unexpectedly present: %s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">actual</tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failIf</tt><tt class="py-op">(</tt><tt class="py-name">actual</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-name">error_message</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"> </tt>
+<a name="CatchLogs"></a><div id="CatchLogs-def"><a name="L22"></a><tt class="py-lineno">22</tt> <a class="py-toggle" href="#" id="CatchLogs-toggle" onclick="return toggle('CatchLogs');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html">CatchLogs</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="CatchLogs-expanded"><a name="CatchLogs.setUp"></a><div id="CatchLogs.setUp-def"><a name="L23"></a><tt class="py-lineno">23</tt> <a class="py-toggle" href="#" id="CatchLogs.setUp-toggle" onclick="return toggle('CatchLogs.setUp');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html#setUp">setUp</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs.setUp-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CatchLogs.setUp-expanded"><a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">old_logger</tt> <tt class="py-op">=</tt> <tt id="link-10" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-10', 'oidutil', 'link-3');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Function openid.oidutil.log()=openid.oidutil-module.html#log,Method openid.test.kvform.KVBaseTest.log()=openid.test.kvform.KVBaseTest-class.html#log"><a title="openid.oidutil.log
+openid.test.kvform.KVBaseTest.log" class="py-name" href="#" onclick="return doclink('link-11', 'log', 'link-11');">log</a></tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt id="link-12" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-12', 'oidutil', 'link-3');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="openid.oidutil.log
+openid.test.kvform.KVBaseTest.log" class="py-name" href="#" onclick="return doclink('link-13', 'log', 'link-11');">log</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method openid.test.support.CatchLogs.gotLogMessage()=openid.test.support.CatchLogs-class.html#gotLogMessage,Method openid.test.test_server.CatchLogs.gotLogMessage()=openid.test.test_server.CatchLogs-class.html#gotLogMessage"><a title="openid.test.support.CatchLogs.gotLogMessage
+openid.test.test_server.CatchLogs.gotLogMessage" class="py-name" href="#" onclick="return doclink('link-14', 'gotLogMessage', 'link-14');">gotLogMessage</a></tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="CatchLogs.gotLogMessage"></a><div id="CatchLogs.gotLogMessage-def"><a name="L28"></a><tt class="py-lineno">28</tt> <a class="py-toggle" href="#" id="CatchLogs.gotLogMessage-toggle" onclick="return toggle('CatchLogs.gotLogMessage');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html#gotLogMessage">gotLogMessage</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">message</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs.gotLogMessage-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CatchLogs.gotLogMessage-expanded"><a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-15', 'message', 'link-1');">message</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line"> </tt>
+<a name="CatchLogs.tearDown"></a><div id="CatchLogs.tearDown-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="CatchLogs.tearDown-toggle" onclick="return toggle('CatchLogs.tearDown');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html#tearDown">tearDown</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs.tearDown-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CatchLogs.tearDown-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">        <tt id="link-16" class="py-name"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-16', 'oidutil', 'link-3');">oidutil</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name"><a title="openid.oidutil.log
+openid.test.kvform.KVBaseTest.log" class="py-name" href="#" onclick="return doclink('link-17', 'log', 'link-11');">log</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">old_logger</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="CatchLogs.failUnlessLogMatches"></a><div id="CatchLogs.failUnlessLogMatches-def"><a name="L34"></a><tt class="py-lineno">34</tt> <a class="py-toggle" href="#" id="CatchLogs.failUnlessLogMatches-toggle" onclick="return toggle('CatchLogs.failUnlessLogMatches');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html#failUnlessLogMatches">failUnlessLogMatches</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">prefixes</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs.failUnlessLogMatches-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CatchLogs.failUnlessLogMatches-expanded"><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line"><tt class="py-docstring">        Check that the log messages contained in self.messages have</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line"><tt class="py-docstring">        prefixes in *prefixes.  Raise AssertionError if not, or if the</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"><tt class="py-docstring">        number of prefixes is different than the number of log</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line"><tt class="py-docstring">        messages.</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-keyword">assert</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">prefixes</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">               <tt class="py-string">"Expected log prefixes %r, got %r"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">prefixes</tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">                                                     <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">prefix</tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-18', 'message', 'link-1');">message</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">prefixes</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">            <tt class="py-keyword">assert</tt> <tt id="link-19" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-19', 'message', 'link-1');">message</a></tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-name">prefix</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> \ </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                   <tt class="py-string">"Expected log prefixes %r, got %r"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">prefixes</tt><tt class="py-op">,</tt> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line">                                                         <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">messages</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno">49</tt>  <tt class="py-line"> </tt>
+<a name="CatchLogs.failUnlessLogEmpty"></a><div id="CatchLogs.failUnlessLogEmpty-def"><a name="L50"></a><tt class="py-lineno">50</tt> <a class="py-toggle" href="#" id="CatchLogs.failUnlessLogEmpty-toggle" onclick="return toggle('CatchLogs.failUnlessLogEmpty');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.support.CatchLogs-class.html#failUnlessLogEmpty">failUnlessLogEmpty</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CatchLogs.failUnlessLogEmpty-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="CatchLogs.failUnlessLogEmpty-expanded"><a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Method openid.test.support.CatchLogs.failUnlessLogMatches()=openid.test.support.CatchLogs-class.html#failUnlessLogMatches"><a title="openid.test.support.CatchLogs.failUnlessLogMatches" class="py-name" href="#" onclick="return doclink('link-20', 'failUnlessLogMatches', 'link-20');">failUnlessLogMatches</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:35 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

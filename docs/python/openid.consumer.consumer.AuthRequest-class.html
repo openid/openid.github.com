@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.consumer.consumer.AuthRequest</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.consumer-module.html">Package&nbsp;consumer</a> ::
+        <a href="openid.consumer.consumer-module.html">Module&nbsp;consumer</a> ::
+        Class&nbsp;AuthRequest
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.consumer.consumer.AuthRequest-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class AuthRequest</h1><p class="nomargin-top"><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">AuthRequest</strong>
+</pre>
+
+<hr />
+<p>An object that holds the state necessary for generating an OpenID 
+  authentication request. This object holds the association with the server
+  and the discovered information with which the request will be made.</p>
+  <p>It is separate from the consumer because you may wish to add things to
+  the request before sending it on its way to the server. It also has 
+  serialization options that let you encode the authentication request as a
+  URL or as a form POST.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">endpoint</span>,
+        <span class="summary-sig-arg">assoc</span>)</span><br />
+      Creates a new AuthRequest object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#setAnonymous" class="summary-sig-name">setAnonymous</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">is_anonymous</span>)</span><br />
+      Set whether this request should be made anonymously.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.setAnonymous">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#addExtension" class="summary-sig-name">addExtension</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">extension_request</span>)</span><br />
+      Add an extension to this checkid request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.addExtension">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#addExtensionArg" class="summary-sig-name">addExtensionArg</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">namespace</span>,
+        <span class="summary-sig-arg">key</span>,
+        <span class="summary-sig-arg">value</span>)</span><br />
+      Add an extension argument to this OpenID authentication request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.addExtensionArg">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.message.Message-class.html" 
+      class="link">openid.message.Message</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#getMessage" class="summary-sig-name">getMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">realm</span>,
+        <span class="summary-sig-arg">return_to</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">immediate</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Produce a <a href="openid.message.Message-class.html" 
+      class="link">openid.message.Message</a> representing this request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.getMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#redirectURL" class="summary-sig-name">redirectURL</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">realm</span>,
+        <span class="summary-sig-arg">return_to</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">immediate</span>=<span class="summary-sig-default">False</span>)</span><br />
+      Returns a URL with an encoded OpenID request.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.redirectURL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#formMarkup" class="summary-sig-name">formMarkup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">realm</span>,
+        <span class="summary-sig-arg">return_to</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">immediate</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">form_tag_attrs</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Get html for a form to submit this request to the IDP.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.formMarkup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.consumer.consumer.AuthRequest-class.html#htmlMarkup" class="summary-sig-name">htmlMarkup</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">realm</span>,
+        <span class="summary-sig-arg">return_to</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">immediate</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">form_tag_attrs</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Get an autosubmitting HTML page that submits this request to the IDP.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.htmlMarkup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">bool</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="shouldSendRedirect"></a><span class="summary-sig-name">shouldSendRedirect</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Should this OpenID authentication request be sent as a HTTP redirect 
+      or as a POST (form submission)?</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.shouldSendRedirect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">endpoint</span>,
+        <span class="sig-arg">assoc</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Creates a new AuthRequest object.  This just stores each argument in 
+  an appropriately named field.</p>
+  <p>Users of this library should not create instances of this class.  
+  Instances of this class are created by the library when needed.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="setAnonymous"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setAnonymous</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">is_anonymous</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.setAnonymous">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Set whether this request should be made anonymously. If a request is 
+  anonymous, the identifier will not be sent in the request. This is only 
+  useful if you are making another kind of request with an extension in 
+  this request.</p>
+  <p>Anonymous requests are not allowed when the request is made with 
+  OpenID 1.</p>
+  <dl class="fields">
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>ValueError</strong></code> - when attempting to set an OpenID1 request as anonymous</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addExtension"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addExtension</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">extension_request</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.addExtension">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add an extension to this checkid request.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>extension_request</code></strong> - An object that implements the extension interface for adding 
+          arguments to an OpenID message.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addExtensionArg"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addExtensionArg</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">namespace</span>,
+        <span class="sig-arg">key</span>,
+        <span class="sig-arg">value</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.addExtensionArg">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add an extension argument to this OpenID authentication request.</p>
+  <p>Use caution when adding arguments, because they will be URL-escaped 
+  and appended to the redirect URL, which can easily get quite long.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>namespace</code></strong> (str) - The namespace for the extension. For example, the simple 
+          registration extension uses the namespace <code>sreg</code>.</li>
+        <li><strong class="pname"><code>key</code></strong> (str) - The key within the extension namespace. For example, the nickname
+          field in the simple registration extension's key is 
+          <code>nickname</code>.</li>
+        <li><strong class="pname"><code>value</code></strong> (str) - The value to provide to the server for this argument.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">realm</span>,
+        <span class="sig-arg">return_to</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">immediate</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.getMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Produce a <a href="openid.message.Message-class.html" 
+  class="link">openid.message.Message</a> representing this request.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>realm</code></strong> (str) - The URL (or URL pattern) that identifies your web site to the 
+          user when she is authorizing it.</li>
+        <li><strong class="pname"><code>return_to</code></strong> (str) - The URL that the OpenID provider will send the user back to after
+          attempting to verify her identity.
+          <p>Not specifying a return_to URL means that the user will not be
+          returned to the site issuing the request upon its completion.</p></li>
+        <li><strong class="pname"><code>immediate</code></strong> (bool) - If True, the OpenID provider is to send back a response 
+          immediately, useful for behind-the-scenes authentication 
+          attempts.  Otherwise the OpenID provider may engage the user 
+          before providing a response.  This is the default case, as the 
+          user may need to provide credentials or approve the request 
+          before a positive response can be sent.</li>
+    </ul></dd>
+    <dt>Returns: <a href="openid.message.Message-class.html" 
+      class="link">openid.message.Message</a></dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="redirectURL"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">redirectURL</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">realm</span>,
+        <span class="sig-arg">return_to</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">immediate</span>=<span class="sig-default">False</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.redirectURL">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns a URL with an encoded OpenID request.</p>
+  <p>The resulting URL is the OpenID provider's endpoint URL with 
+  parameters appended as query arguments.  You should redirect the user 
+  agent to this URL.</p>
+  <p>OpenID 2.0 endpoints also accept POST requests, see <code><a 
+  href="openid.consumer.consumer.AuthRequest-class.html#shouldSendRedirect"
+  class="link">shouldSendRedirect</a></code> and <code><a 
+  href="openid.consumer.consumer.AuthRequest-class.html#formMarkup" 
+  class="link">formMarkup</a></code>.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>realm</code></strong> (str) - The URL (or URL pattern) that identifies your web site to the 
+          user when she is authorizing it.</li>
+        <li><strong class="pname"><code>return_to</code></strong> (str) - The URL that the OpenID provider will send the user back to after
+          attempting to verify her identity.
+          <p>Not specifying a return_to URL means that the user will not be
+          returned to the site issuing the request upon its completion.</p></li>
+        <li><strong class="pname"><code>immediate</code></strong> (bool) - If True, the OpenID provider is to send back a response 
+          immediately, useful for behind-the-scenes authentication 
+          attempts.  Otherwise the OpenID provider may engage the user 
+          before providing a response.  This is the default case, as the 
+          user may need to provide credentials or approve the request 
+          before a positive response can be sent.</li>
+    </ul></dd>
+    <dt>Returns: str</dt>
+        <dd>The URL to redirect the user agent to.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="formMarkup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">formMarkup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">realm</span>,
+        <span class="sig-arg">return_to</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">immediate</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">form_tag_attrs</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.formMarkup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get html for a form to submit this request to the IDP.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>form_tag_attrs</code></strong> ({unicode: unicode}) - Dictionary of attributes to be added to the form tag. 
+          'accept-charset' and 'enctype' have defaults that can be 
+          overridden. If a value is supplied for 'action' or 'method', it 
+          will be replaced.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="htmlMarkup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">htmlMarkup</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">realm</span>,
+        <span class="sig-arg">return_to</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">immediate</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">form_tag_attrs</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.consumer.consumer-pysrc.html#AuthRequest.htmlMarkup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Get an autosubmitting HTML page that submits this request to the IDP.
+  This is just a wrapper for formMarkup.</p>
+  <dl class="fields">
+    <dt>Returns:</dt>
+        <dd>str</dd>
+  </dl>
+<div class="fields">      <p><strong>See Also:</strong>
+        formMarkup
+      </p>
+</div></td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:27 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

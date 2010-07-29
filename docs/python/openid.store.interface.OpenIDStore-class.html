@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.store.interface.OpenIDStore</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.store-module.html">Package&nbsp;store</a> ::
+        <a href="openid.store.interface-module.html">Module&nbsp;interface</a> ::
+        Class&nbsp;OpenIDStore
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.store.interface.OpenIDStore-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class OpenIDStore</h1><p class="nomargin-top"><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">OpenIDStore</strong>
+</pre>
+
+<dl><dt>Known Subclasses:</dt>
+<dd>
+      <ul class="subclass-list">
+<li><a href="openid.store.filestore.FileOpenIDStore-class.html">filestore.FileOpenIDStore</a></li><li>, <a href="openid.store.sqlstore.SQLStore-class.html">sqlstore.SQLStore</a></li>  </ul>
+</dd></dl>
+
+<hr />
+<p>This is the interface for the store objects the OpenID library uses.  
+  It is a single class that provides all of the persistence mechanisms that
+  the OpenID library needs, for both servers and consumers.</p>
+
+<hr />
+<div class="fields">      <p><strong>Change Log:</strong>
+        Version 2.0 removed the <code>storeNonce</code>, 
+    <code>getAuthKey</code>, and <code>isDumb</code> methods, and changed 
+    the behavior of the <code><a 
+    href="openid.store.interface.OpenIDStore-class.html#useNonce" 
+    class="link">useNonce</a></code> method to support one-way nonces.  It 
+    added <code><a 
+    href="openid.store.interface.OpenIDStore-class.html#cleanupNonces" 
+    class="link">cleanupNonces</a></code>, <code><a 
+    href="openid.store.interface.OpenIDStore-class.html#cleanupAssociations"
+    class="link">cleanupAssociations</a></code>, and <code><a 
+    href="openid.store.interface.OpenIDStore-class.html#cleanup" 
+    class="link">cleanup</a></code>.
+      </p>
+</div><!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>NoneType</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#storeAssociation" class="summary-sig-name">storeAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">association</span>)</span><br />
+      This method puts a <code><a 
+      href="openid.association.Association-class.html" 
+      class="link">Association</a></code> object into storage, retrievable 
+      by server URL and handle.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.storeAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code><a href="openid.association.Association-class.html" 
+      class="link">Association</a></code> or <code>NoneType</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#getAssociation" class="summary-sig-name">getAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">handle</span>=<span class="summary-sig-default">None</span>)</span><br />
+      This method returns an <code><a 
+      href="openid.association.Association-class.html" 
+      class="link">Association</a></code> object from storage that matches 
+      the server URL and, if specified, handle.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.getAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code> or <code>int</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#removeAssociation" class="summary-sig-name">removeAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">handle</span>)</span><br />
+      This method removes the matching association if it's found, and 
+      returns whether the association was removed or not.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.removeAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#useNonce" class="summary-sig-name">useNonce</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">timestamp</span>,
+        <span class="summary-sig-arg">salt</span>)</span><br />
+      Called when using a nonce.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.useNonce">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#cleanup" class="summary-sig-name">cleanup</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Shortcut for <code><a 
+      href="openid.store.interface.OpenIDStore-class.html#cleanupNonces" 
+      class="link">cleanupNonces</a>()</code>, <code><a 
+      href="openid.store.interface.OpenIDStore-class.html#cleanupAssociations"
+      class="link">cleanupAssociations</a>()</code>.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#cleanupAssociations" class="summary-sig-name">cleanupAssociations</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired associations from the store.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanupAssociations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.interface.OpenIDStore-class.html#cleanupNonces" class="summary-sig-name">cleanupNonces</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired nonces from the store.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanupNonces">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__init__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="storeAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">storeAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">association</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.storeAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This method puts a <code><a 
+  href="openid.association.Association-class.html" 
+  class="link">Association</a></code> object into storage, retrievable by 
+  server URL and handle.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> (<code>str</code>) - The URL of the identity server that this association is with.  
+          Because of the way the server portion of the library uses this 
+          interface, don't assume there are any limitations on the 
+          character set of the input string.  In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>association</code></strong> (<code><a href="openid.association.Association-class.html" 
+          class="link">Association</a></code>) - The <code><a href="openid.association.Association-class.html" 
+          class="link">Association</a></code> to store.</li>
+    </ul></dd>
+    <dt>Returns: <code>NoneType</code></dt>
+        <dd><code>None</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">handle</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.getAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This method returns an <code><a 
+  href="openid.association.Association-class.html" 
+  class="link">Association</a></code> object from storage that matches the 
+  server URL and, if specified, handle. It returns <code>None</code> if no 
+  such association is found or if the matching association is expired.</p>
+  <p>If no handle is specified, the store may return any association which 
+  matches the server URL.  If multiple associations are valid, the 
+  recommended return value for this method is the one most recently 
+  issued.</p>
+  <p>This method is allowed (and encouraged) to garbage collect expired 
+  associations when found. This method must not return expired 
+  associations.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> (<code>str</code>) - The URL of the identity server to get the association for.  
+          Because of the way the server portion of the library uses this 
+          interface, don't assume there are any limitations on the 
+          character set of the input string. In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>handle</code></strong> (<code>str</code> or <code>NoneType</code>) - This optional parameter is the handle of the specific association
+          to get.  If no specific handle is provided, any valid association
+          matching the server URL is returned.</li>
+    </ul></dd>
+    <dt>Returns: <code><a href="openid.association.Association-class.html" 
+      class="link">Association</a></code> or <code>NoneType</code></dt>
+        <dd>The <code><a href="openid.association.Association-class.html" 
+          class="link">Association</a></code> for the given identity 
+          server.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="removeAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">removeAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">handle</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.removeAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This method removes the matching association if it's found, and 
+  returns whether the association was removed or not.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> (<code>str</code>) - The URL of the identity server the association to remove belongs 
+          to.  Because of the way the server portion of the library uses 
+          this interface, don't assume there are any limitations on the 
+          character set of the input string.  In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>handle</code></strong> (<code>str</code>) - This is the handle of the association to remove.  If there isn't 
+          an association found that matches both the given URL and handle, 
+          then there was no matching handle found.</li>
+    </ul></dd>
+    <dt>Returns: <code>bool</code> or <code>int</code></dt>
+        <dd>Returns whether or not the given association existed.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="useNonce"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">useNonce</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">timestamp</span>,
+        <span class="sig-arg">salt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.useNonce">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Called when using a nonce.</p>
+  <p>This method should return <code>True</code> if the nonce has not been 
+  used before, and store it for a while to make sure nobody tries to use 
+  the same value again.  If the nonce has already been used or the 
+  timestamp is not current, return <code>False</code>.</p>
+  <p>You may use <a href="openid.store.nonce-module.html#SKEW" class="link"
+  onclick="show_private();">openid.store.nonce.SKEW</a> for your timestamp 
+  window.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> (<code>str</code>) - The URL of the server from which the nonce originated.</li>
+        <li><strong class="pname"><code>timestamp</code></strong> (<code>int</code>) - The time that the nonce was created (to the nearest second), in 
+          seconds since January 1 1970 UTC.</li>
+        <li><strong class="pname"><code>salt</code></strong> (str) - A random string that makes two nonces from the same server issued
+          during the same second unique.</li>
+    </ul></dd>
+    <dt>Returns: <code>bool</code></dt>
+        <dd>Whether or not the nonce was valid.</dd>
+  </dl>
+<div class="fields">      <p><strong>Change Log:</strong>
+        In earlier versions, round-trip nonces were used and a nonce was only 
+    valid if it had been previously stored with <code>storeNonce</code>.  
+    Version 2.0 uses one-way nonces, requiring a different implementation 
+    here that does not depend on a <code>storeNonce</code> call.  
+    (<code>storeNonce</code> is no longer part of the interface.)
+      </p>
+</div></td></tr></table>
+</div>
+<a name="cleanup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanup</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Shortcut for <code><a 
+  href="openid.store.interface.OpenIDStore-class.html#cleanupNonces" 
+  class="link">cleanupNonces</a>()</code>, <code><a 
+  href="openid.store.interface.OpenIDStore-class.html#cleanupAssociations" 
+  class="link">cleanupAssociations</a>()</code>.</p>
+  <p>This method is not called in the normal operation of the library.  It 
+  provides a way for store admins to keep their storage from filling up 
+  with expired data.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanupAssociations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanupAssociations</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanupAssociations">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove expired associations from the store.</p>
+  <p>This method is not called in the normal operation of the library.  It 
+  provides a way for store admins to keep their storage from filling up 
+  with expired data.</p>
+  <dl class="fields">
+    <dt>Returns: int</dt>
+        <dd>the number of associations expired.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanupNonces"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanupNonces</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.interface-pysrc.html#OpenIDStore.cleanupNonces">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove expired nonces from the store.</p>
+  <p>Discards any nonce from storage that is old enough that its timestamp 
+  would not pass <a 
+  href="openid.store.filestore.FileOpenIDStore-class.html#useNonce" 
+  class="link">useNonce</a>.</p>
+  <p>This method is not called in the normal operation of the library.  It 
+  provides a way for store admins to keep their storage from filling up 
+  with expired data.</p>
+  <dl class="fields">
+    <dt>Returns: int</dt>
+        <dd>the number of nonces expired.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:28 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

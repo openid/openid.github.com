@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.consumer.html_parse</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.consumer-module.html">Package&nbsp;consumer</a> ::
+        Module&nbsp;html_parse
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.consumer.html_parse-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.consumer.html_parse-module.html">Module openid.consumer.html_parse</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">This module implements a VERY limited parser that finds &lt;link&gt; tags in</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring">the head of HTML or XHTML documents and parses out their attributes</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">according to the OpenID spec. It is a liberal parser, but it requires</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring">these things from the data in order to work:</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring"> - There must be an open &lt;html&gt; tag</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-docstring"> - There must be an open &lt;head&gt; tag inside of the &lt;html&gt; tag</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-docstring"> - Only &lt;link&gt;s that are found inside of the &lt;head&gt; tag are parsed</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-docstring">   (this is by design)</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-docstring"> - The parser follows the OpenID specification in resolving the</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-docstring">   attributes of the link tags. This means that the attributes DO NOT</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-docstring">   get resolved as they would by an XML or HTML parser. In particular,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-docstring">   only certain entities get replaced, and href attributes do not get</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-docstring">   resolved relative to a base URL.</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-docstring">From http://openid.net/specs.bml#linkrel:</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-docstring"> - The openid.server URL MUST be an absolute URL. OpenID consumers</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-docstring">   MUST NOT attempt to resolve relative URLs.</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-docstring"> - The openid.server URL MUST NOT include entities other than &amp;amp;,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-docstring">   &amp;lt;, &amp;gt;, and &amp;quot;.</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">The parser ignores SGML comments and &lt;![CDATA[blocks]]&gt;. Both kinds of</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">quoting are allowed for attributes.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-docstring">The parser deals with invalid markup in these ways:</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-docstring"> - Tag names are not case-sensitive</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-docstring"> - The &lt;html&gt; tag is accepted even when it is not at the top level</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-docstring"> - The &lt;head&gt; tag is accepted even when it is not a direct child of</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-docstring">   the &lt;html&gt; tag, but a &lt;html&gt; tag must be an ancestor of the &lt;head&gt;</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring">   tag</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring"> - &lt;link&gt; tags are accepted even when they are not direct children of</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-docstring">   the &lt;head&gt; tag, but a &lt;head&gt; tag must be an ancestor of the &lt;link&gt;</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-docstring">   tag</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-docstring"> - If there is no closing tag for an open &lt;html&gt; or &lt;head&gt; tag, the</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-docstring">   remainder of the document is viewed as being inside of the tag. If</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-docstring">   there is no closing tag for a &lt;link&gt; tag, the link tag is treated</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-docstring">   as a short tag. Exceptions to this rule are that &lt;html&gt; closes</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"><tt class="py-docstring">   &lt;html&gt; and &lt;body&gt; or &lt;head&gt; closes &lt;head&gt;</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"> - Attributes of the &lt;link&gt; tag are not required to be quoted.</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring"> - In the case of duplicated attribute names, the attribute coming</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring">   last in the tag will be the value returned.</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring"> - Any text that does not parse as an attribute within a link tag will</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">   be ignored. (e.g. &lt;link pumpkin rel='openid.server' /&gt; will ignore</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">   pumpkin)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"><tt class="py-docstring"> - If there are more than one &lt;html&gt; or &lt;head&gt; tag, the parser only</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"><tt class="py-docstring">   looks inside of the first one.</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line"><tt class="py-docstring"> - The contents of &lt;script&gt; tags are ignored entirely, except unclosed</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"><tt class="py-docstring">   &lt;script&gt; tags. Unclosed &lt;script&gt; tags are ignored.</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"><tt class="py-docstring"> - Any other invalid markup is ignored, including unclosed SGML</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"><tt class="py-docstring">   comments and unclosed &lt;![CDATA[blocks.</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">'parseLinkAttrs'</tt><tt class="py-op">]</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"><tt id="link-0" class="py-name" targets="Variable openid.consumer.html_parse.flags=openid.consumer.html_parse-module.html#flags"><a title="openid.consumer.html_parse.flags" class="py-name" href="#" onclick="return doclink('link-0', 'flags', 'link-0');">flags</a></tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">DOTALL</tt> <tt class="py-comment"># Match newlines with '.'</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-op">|</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">IGNORECASE</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-op">|</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">VERBOSE</tt> <tt class="py-comment"># Allow comments and whitespace in patterns</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-op">|</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">UNICODE</tt> <tt class="py-comment"># Make \b respect Unicode word boundaries</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-comment"># Stuff to remove before we start looking for tags</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-1" class="py-name" targets="Variable openid.consumer.html_parse.removed_re=openid.consumer.html_parse-module.html#removed_re"><a title="openid.consumer.html_parse.removed_re" class="py-name" href="#" onclick="return doclink('link-1', 'removed_re', 'link-1');">removed_re</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'''</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-string">  # Comments</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-string">  &lt;!--.*?--&gt;</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-string">  # CDATA blocks</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"><tt class="py-string">| &lt;!\[CDATA\[.*?\]\]&gt;</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line"><tt class="py-string">  # script blocks</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-string">| &lt;script\b</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-string">  # make sure script is not an XML namespace</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-string">  (?!:)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-string">  [^&gt;]*&gt;.*?&lt;/script&gt;</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt id="link-2" class="py-name"><a title="openid.consumer.html_parse.flags" class="py-name" href="#" onclick="return doclink('link-2', 'flags', 'link-0');">flags</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable openid.consumer.html_parse.tag_expr=openid.consumer.html_parse-module.html#tag_expr"><a title="openid.consumer.html_parse.tag_expr" class="py-name" href="#" onclick="return doclink('link-3', 'tag_expr', 'link-3');">tag_expr</a></tt> <tt class="py-op">=</tt> <tt class="py-string">r'''</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-string"># Starts with the tag name at a word boundary, where the tag name is</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-string"># not a namespace</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-string">&lt;%(tag_name)s\b(?!:)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-string"># All of the stuff up to a "&gt;", hopefully attributes.</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-string">(?P&lt;attrs&gt;[^&gt;]*?)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-string">(?: # Match a short tag</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-string">    /&gt;</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-string">|   # Match a full tag</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"><tt class="py-string">    &gt;</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"><tt class="py-string">    (?P&lt;contents&gt;.*?)</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-string">    # Closed by</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-string">    (?: # One of the specified close tags</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-string">        &lt;/?%(closers)s\s*&gt;</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"><tt class="py-string">        # End of the string</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"><tt class="py-string">    |   \Z</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line"><tt class="py-string">    )</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"><tt class="py-string">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"><tt class="py-string">'''</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line"> </tt>
+<a name="tagMatcher"></a><div id="tagMatcher-def"><a name="L126"></a><tt class="py-lineno">126</tt> <a class="py-toggle" href="#" id="tagMatcher-toggle" onclick="return toggle('tagMatcher');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#tagMatcher">tagMatcher</a><tt class="py-op">(</tt><tt class="py-param">tag_name</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">close_tags</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="tagMatcher-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="tagMatcher-expanded"><a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">close_tags</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-name">options</tt> <tt class="py-op">=</tt> <tt class="py-string">'|'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">tag_name</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">close_tags</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">closers</tt> <tt class="py-op">=</tt> <tt class="py-string">'(?:%s)'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">options</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">        <tt class="py-name">closers</tt> <tt class="py-op">=</tt> <tt class="py-name">tag_name</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-name">expr</tt> <tt class="py-op">=</tt> <tt id="link-4" class="py-name"><a title="openid.consumer.html_parse.tag_expr" class="py-name" href="#" onclick="return doclink('link-4', 'tag_expr', 'link-3');">tag_expr</a></tt> <tt class="py-op">%</tt> <tt class="py-name">locals</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-name">expr</tt><tt class="py-op">,</tt> <tt id="link-5" class="py-name"><a title="openid.consumer.html_parse.flags" class="py-name" href="#" onclick="return doclink('link-5', 'flags', 'link-0');">flags</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-comment"># Must contain at least an open html and an open head tag</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-6" class="py-name" targets="Variable openid.consumer.html_parse.html_find=openid.consumer.html_parse-module.html#html_find"><a title="openid.consumer.html_parse.html_find" class="py-name" href="#" onclick="return doclink('link-6', 'html_find', 'link-6');">html_find</a></tt> <tt class="py-op">=</tt> <tt class="py-name">tagMatcher</tt><tt class="py-op">(</tt><tt class="py-string">'html'</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable openid.consumer.html_parse.head_find=openid.consumer.html_parse-module.html#head_find"><a title="openid.consumer.html_parse.head_find" class="py-name" href="#" onclick="return doclink('link-7', 'head_find', 'link-7');">head_find</a></tt> <tt class="py-op">=</tt> <tt class="py-name">tagMatcher</tt><tt class="py-op">(</tt><tt class="py-string">'head'</tt><tt class="py-op">,</tt> <tt class="py-string">'body'</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable openid.consumer.html_parse.link_find=openid.consumer.html_parse-module.html#link_find"><a title="openid.consumer.html_parse.link_find" class="py-name" href="#" onclick="return doclink('link-8', 'link_find', 'link-8');">link_find</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'&lt;link\b(?!:)'</tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name"><a title="openid.consumer.html_parse.flags" class="py-name" href="#" onclick="return doclink('link-9', 'flags', 'link-0');">flags</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable openid.consumer.html_parse.attr_find=openid.consumer.html_parse-module.html#attr_find"><a title="openid.consumer.html_parse.attr_find" class="py-name" href="#" onclick="return doclink('link-10', 'attr_find', 'link-10');">attr_find</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'''</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-string"># Must start with a sequence of word-characters, followed by an equals sign</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-string">(?P&lt;attr_name&gt;\w+)=</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-string"># Then either a quoted or unquoted attribute</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-string">(?:</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line"><tt class="py-string"> # Match everything that\'s between matching quote marks</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-string"> (?P&lt;qopen&gt;["\'])(?P&lt;q_val&gt;.*?)(?P=qopen)</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line"><tt class="py-string">|</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-string"> # If the value is not quoted, match up to whitespace</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line"><tt class="py-string"> (?P&lt;unq_val&gt;(?:[^\s&lt;&gt;/]|/(?!&gt;))+)</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line"><tt class="py-string">)</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"><tt class="py-string">|</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line"><tt class="py-string"></tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line"><tt class="py-string">(?P&lt;end_link&gt;[&lt;&gt;])</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"><tt class="py-string">'''</tt><tt class="py-op">,</tt> <tt id="link-11" class="py-name"><a title="openid.consumer.html_parse.flags" class="py-name" href="#" onclick="return doclink('link-11', 'flags', 'link-0');">flags</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line"><tt class="py-comment"># Entity replacement:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"><tt class="py-comment"></tt><tt id="link-12" class="py-name" targets="Variable openid.consumer.html_parse.replacements=openid.consumer.html_parse-module.html#replacements"><a title="openid.consumer.html_parse.replacements" class="py-name" href="#" onclick="return doclink('link-12', 'replacements', 'link-12');">replacements</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">    <tt class="py-string">'amp'</tt><tt class="py-op">:</tt><tt class="py-string">'&amp;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">    <tt class="py-string">'lt'</tt><tt class="py-op">:</tt><tt class="py-string">'&lt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">    <tt class="py-string">'gt'</tt><tt class="py-op">:</tt><tt class="py-string">'&gt;'</tt><tt class="py-op">,</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">    <tt class="py-string">'quot'</tt><tt class="py-op">:</tt><tt class="py-string">'"'</tt><tt class="py-op">,</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">    <tt class="py-op">}</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt id="link-13" class="py-name" targets="Variable openid.consumer.html_parse.ent_replace=openid.consumer.html_parse-module.html#ent_replace"><a title="openid.consumer.html_parse.ent_replace" class="py-name" href="#" onclick="return doclink('link-13', 'ent_replace', 'link-13');">ent_replace</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">r'&amp;(%s);'</tt> <tt class="py-op">%</tt> <tt class="py-string">'|'</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt id="link-14" class="py-name"><a title="openid.consumer.html_parse.replacements" class="py-name" href="#" onclick="return doclink('link-14', 'replacements', 'link-12');">replacements</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.keys()=openid.extensions.sreg.SRegResponse-class.html#keys"><a title="openid.extensions.sreg.SRegResponse.keys" class="py-name" href="#" onclick="return doclink('link-15', 'keys', 'link-15');">keys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="replaceEnt"></a><div id="replaceEnt-def"><a name="L170"></a><tt class="py-lineno">170</tt> <a class="py-toggle" href="#" id="replaceEnt-toggle" onclick="return toggle('replaceEnt');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#replaceEnt">replaceEnt</a><tt class="py-op">(</tt><tt class="py-param">mo</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="replaceEnt-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="replaceEnt-expanded"><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-docstring">"Replace the entities that are specified by OpenID"</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-16" class="py-name"><a title="openid.consumer.html_parse.replacements" class="py-name" href="#" onclick="return doclink('link-16', 'replacements', 'link-12');">replacements</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.get()=openid.extensions.sreg.SRegResponse-class.html#get,Method openid.store.memstore.ServerAssocs.get()=openid.store.memstore.ServerAssocs-class.html#get"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-17', 'get', 'link-17');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">mo</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">mo</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line"> </tt>
+<a name="parseLinkAttrs"></a><div id="parseLinkAttrs-def"><a name="L174"></a><tt class="py-lineno">174</tt> <a class="py-toggle" href="#" id="parseLinkAttrs-toggle" onclick="return toggle('parseLinkAttrs');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#parseLinkAttrs">parseLinkAttrs</a><tt class="py-op">(</tt><tt class="py-param">html</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="parseLinkAttrs-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="parseLinkAttrs-expanded"><a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-docstring">"""Find all link tags in a string representing a HTML document and</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"><tt class="py-docstring">    return a list of their attributes.</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line"><tt class="py-docstring">    @param html: the text to parse</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"><tt class="py-docstring">    @type html: str or unicode</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line"><tt class="py-docstring">    @return: A list of dictionaries of attributes, one for each link tag</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring">    @rtype: [[(type(html), type(html))]]</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">    <tt class="py-name">stripped</tt> <tt class="py-op">=</tt> <tt id="link-18" class="py-name"><a title="openid.consumer.html_parse.removed_re" class="py-name" href="#" onclick="return doclink('link-18', 'removed_re', 'link-1');">removed_re</a></tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">,</tt> <tt class="py-name">html</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">    <tt class="py-name">html_mo</tt> <tt class="py-op">=</tt> <tt id="link-19" class="py-name"><a title="openid.consumer.html_parse.html_find" class="py-name" href="#" onclick="return doclink('link-19', 'html_find', 'link-6');">html_find</a></tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">stripped</tt><tt class="py-op">)</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">html_mo</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-name">html_mo</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-string">'contents'</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">    <tt class="py-name">start</tt><tt class="py-op">,</tt> <tt class="py-name">end</tt> <tt class="py-op">=</tt> <tt class="py-name">html_mo</tt><tt class="py-op">.</tt><tt class="py-name">span</tt><tt class="py-op">(</tt><tt class="py-string">'contents'</tt><tt class="py-op">)</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">    <tt class="py-name">head_mo</tt> <tt class="py-op">=</tt> <tt id="link-20" class="py-name"><a title="openid.consumer.html_parse.head_find" class="py-name" href="#" onclick="return doclink('link-20', 'head_find', 'link-7');">head_find</a></tt><tt class="py-op">.</tt><tt class="py-name">search</tt><tt class="py-op">(</tt><tt class="py-name">stripped</tt><tt class="py-op">,</tt> <tt class="py-name">start</tt><tt class="py-op">,</tt> <tt class="py-name">end</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">head_mo</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt class="py-name">head_mo</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-string">'contents'</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">    <tt class="py-name">start</tt><tt class="py-op">,</tt> <tt class="py-name">end</tt> <tt class="py-op">=</tt> <tt class="py-name">head_mo</tt><tt class="py-op">.</tt><tt class="py-name">span</tt><tt class="py-op">(</tt><tt class="py-string">'contents'</tt><tt class="py-op">)</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">    <tt class="py-name">link_mos</tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name"><a title="openid.consumer.html_parse.link_find" class="py-name" href="#" onclick="return doclink('link-21', 'link_find', 'link-8');">link_find</a></tt><tt class="py-op">.</tt><tt class="py-name">finditer</tt><tt class="py-op">(</tt><tt class="py-name">stripped</tt><tt class="py-op">,</tt> <tt class="py-name">head_mo</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">head_mo</tt><tt class="py-op">.</tt><tt class="py-name">end</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">    <tt class="py-name">matches</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">link_mo</tt> <tt class="py-keyword">in</tt> <tt class="py-name">link_mos</tt><tt class="py-op">:</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">        <tt class="py-name">start</tt> <tt class="py-op">=</tt> <tt class="py-name">link_mo</tt><tt class="py-op">.</tt><tt class="py-name">start</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-number">5</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-name">link_attrs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">attr_mo</tt> <tt class="py-keyword">in</tt> <tt id="link-22" class="py-name"><a title="openid.consumer.html_parse.attr_find" class="py-name" href="#" onclick="return doclink('link-22', 'attr_find', 'link-10');">attr_find</a></tt><tt class="py-op">.</tt><tt class="py-name">finditer</tt><tt class="py-op">(</tt><tt class="py-name">stripped</tt><tt class="py-op">,</tt> <tt class="py-name">start</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">attr_mo</tt><tt class="py-op">.</tt><tt class="py-name">lastgroup</tt> <tt class="py-op">==</tt> <tt class="py-string">'end_link'</tt><tt class="py-op">:</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">                <tt class="py-keyword">break</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">            <tt class="py-comment"># Either q_val or unq_val must be present, but not both</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-comment"># unq_val is a True (non-empty) value if it is present</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"><tt class="py-comment"></tt>            <tt class="py-name">attr_name</tt><tt class="py-op">,</tt> <tt class="py-name">q_val</tt><tt class="py-op">,</tt> <tt class="py-name">unq_val</tt> <tt class="py-op">=</tt> <tt class="py-name">attr_mo</tt><tt class="py-op">.</tt><tt class="py-name">group</tt><tt class="py-op">(</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">                <tt class="py-string">'attr_name'</tt><tt class="py-op">,</tt> <tt class="py-string">'q_val'</tt><tt class="py-op">,</tt> <tt class="py-string">'unq_val'</tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">            <tt class="py-name">attr_val</tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="openid.consumer.html_parse.ent_replace" class="py-name" href="#" onclick="return doclink('link-23', 'ent_replace', 'link-13');">ent_replace</a></tt><tt class="py-op">.</tt><tt class="py-name">sub</tt><tt class="py-op">(</tt><tt class="py-name">replaceEnt</tt><tt class="py-op">,</tt> <tt class="py-name">unq_val</tt> <tt class="py-keyword">or</tt> <tt class="py-name">q_val</tt><tt class="py-op">)</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">            <tt class="py-name">link_attrs</tt><tt class="py-op">[</tt><tt class="py-name">attr_name</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">attr_val</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line"> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-name">matches</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">link_attrs</tt><tt class="py-op">)</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">matches</tt> </tt>
+</div><a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line"> </tt>
+<a name="relMatches"></a><div id="relMatches-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="relMatches-toggle" onclick="return toggle('relMatches');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#relMatches">relMatches</a><tt class="py-op">(</tt><tt class="py-param">rel_attr</tt><tt class="py-op">,</tt> <tt class="py-param">target_rel</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="relMatches-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="relMatches-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">    <tt class="py-docstring">"""Does this target_rel appear in the rel_str?"""</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">    <tt class="py-comment"># XXX: TESTME</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-name">rels</tt> <tt class="py-op">=</tt> <tt class="py-name">rel_attr</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Function openid.store.nonce.split()=openid.store.nonce-module.html#split"><a title="openid.store.nonce.split" class="py-name" href="#" onclick="return doclink('link-24', 'split', 'link-24');">split</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">rel</tt> <tt class="py-keyword">in</tt> <tt class="py-name">rels</tt><tt class="py-op">:</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt class="py-name">rel</tt> <tt class="py-op">=</tt> <tt class="py-name">rel</tt><tt class="py-op">.</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">rel</tt> <tt class="py-op">==</tt> <tt class="py-name">target_rel</tt><tt class="py-op">:</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-number">1</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line"> </tt>
+<a name="linkHasRel"></a><div id="linkHasRel-def"><a name="L228"></a><tt class="py-lineno">228</tt> <a class="py-toggle" href="#" id="linkHasRel-toggle" onclick="return toggle('linkHasRel');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#linkHasRel">linkHasRel</a><tt class="py-op">(</tt><tt class="py-param">link_attrs</tt><tt class="py-op">,</tt> <tt class="py-param">target_rel</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="linkHasRel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="linkHasRel-expanded"><a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt class="py-docstring">"""Does this link have target_rel as a relationship?"""</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">    <tt class="py-comment"># XXX: TESTME</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-name">rel_attr</tt> <tt class="py-op">=</tt> <tt class="py-name">link_attrs</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-25', 'get', 'link-17');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'rel'</tt><tt class="py-op">)</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">rel_attr</tt> <tt class="py-keyword">and</tt> <tt class="py-name">relMatches</tt><tt class="py-op">(</tt><tt class="py-name">rel_attr</tt><tt class="py-op">,</tt> <tt class="py-name">target_rel</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line"> </tt>
+<a name="findLinksRel"></a><div id="findLinksRel-def"><a name="L234"></a><tt class="py-lineno">234</tt> <a class="py-toggle" href="#" id="findLinksRel-toggle" onclick="return toggle('findLinksRel');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#findLinksRel">findLinksRel</a><tt class="py-op">(</tt><tt class="py-param">link_attrs_list</tt><tt class="py-op">,</tt> <tt class="py-param">target_rel</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="findLinksRel-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="findLinksRel-expanded"><a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">    <tt class="py-docstring">"""Filter the list of link attributes on whether it has target_rel</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-docstring">    as a relationship."""</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">    <tt class="py-comment"># XXX: TESTME</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-name">matchesTarget</tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">attrs</tt><tt class="py-op">:</tt> <tt class="py-name">linkHasRel</tt><tt class="py-op">(</tt><tt class="py-name">attrs</tt><tt class="py-op">,</tt> <tt class="py-name">target_rel</tt><tt class="py-op">)</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">matchesTarget</tt><tt class="py-op">,</tt> <tt class="py-name">link_attrs_list</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line"> </tt>
+<a name="findFirstHref"></a><div id="findFirstHref-def"><a name="L241"></a><tt class="py-lineno">241</tt> <a class="py-toggle" href="#" id="findFirstHref-toggle" onclick="return toggle('findFirstHref');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.consumer.html_parse-module.html#findFirstHref">findFirstHref</a><tt class="py-op">(</tt><tt class="py-param">link_attrs_list</tt><tt class="py-op">,</tt> <tt class="py-param">target_rel</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="findFirstHref-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="findFirstHref-expanded"><a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return the value of the href attribute for the first link tag</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line"><tt class="py-docstring">    in the list that has target_rel as a relationship."""</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">    <tt class="py-comment"># XXX: TESTME</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-name">matches</tt> <tt class="py-op">=</tt> <tt class="py-name">findLinksRel</tt><tt class="py-op">(</tt><tt class="py-name">link_attrs_list</tt><tt class="py-op">,</tt> <tt class="py-name">target_rel</tt><tt class="py-op">)</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">matches</tt><tt class="py-op">:</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">    <tt class="py-name">first</tt> <tt class="py-op">=</tt> <tt class="py-name">matches</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">first</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-26', 'get', 'link-17');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'href'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:34 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

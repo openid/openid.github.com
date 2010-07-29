@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.store.memstore</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.store-module.html">Package&nbsp;store</a> ::
+        Module&nbsp;memstore
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.store.memstore-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.store.memstore-module.html">Module openid.store.memstore</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""A simple store using only in-process memory."""</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package openid.store=openid.store-module.html,Method openid.yadis.manager.YadisServiceManager.store()=openid.yadis.manager.YadisServiceManager-class.html#store"><a title="openid.store
+openid.yadis.manager.YadisServiceManager.store" class="py-name" href="#" onclick="return doclink('link-1', 'store', 'link-1');">store</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module openid.store.nonce=openid.store.nonce-module.html"><a title="openid.store.nonce" class="py-name" href="#" onclick="return doclink('link-2', 'nonce', 'link-2');">nonce</a></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Method openid.association.SessionNegotiator.copy()=openid.association.SessionNegotiator-class.html#copy,Method openid.message.Message.copy()=openid.message.Message-class.html#copy"><a title="openid.association.SessionNegotiator.copy
+openid.message.Message.copy" class="py-name" href="#" onclick="return doclink('link-3', 'copy', 'link-3');">copy</a></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs"></a><div id="ServerAssocs-def"><a name="L8"></a><tt class="py-lineno">  8</tt> <a class="py-toggle" href="#" id="ServerAssocs-toggle" onclick="return toggle('ServerAssocs');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html">ServerAssocs</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ServerAssocs-expanded"><a name="ServerAssocs.__init__"></a><div id="ServerAssocs.__init__-def"><a name="L9"></a><tt class="py-lineno">  9</tt> <a class="py-toggle" href="#" id="ServerAssocs.__init__-toggle" onclick="return toggle('ServerAssocs.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.__init__-expanded"><a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Variable openid.test.test_consumer.assocs=openid.test.test_consumer-module.html#assocs"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-4', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div><a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs.set"></a><div id="ServerAssocs.set-def"><a name="L12"></a><tt class="py-lineno"> 12</tt> <a class="py-toggle" href="#" id="ServerAssocs.set-toggle" onclick="return toggle('ServerAssocs.set');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#set">set</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">assoc</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.set-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.set-expanded"><a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-5', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">[</tt><tt class="py-name">assoc</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Variable openid.test.test_auth_request.DummyAssoc.handle=openid.test.test_auth_request.DummyAssoc-class.html#handle,Variable openid.test.test_consumer.GoodAssociation.handle=openid.test.test_consumer.GoodAssociation-class.html#handle"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-6', 'handle', 'link-6');">handle</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">assoc</tt> </tt>
+</div><a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs.get"></a><div id="ServerAssocs.get-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="ServerAssocs.get-toggle" onclick="return toggle('ServerAssocs.get');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#get">get</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">handle</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.get-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.get-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-7', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.get()=openid.extensions.sreg.SRegResponse-class.html#get,Method openid.store.memstore.ServerAssocs.get()=openid.store.memstore.ServerAssocs-class.html#get"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-8', 'get', 'link-8');">get</a></tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-9', 'handle', 'link-6');">handle</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs.remove"></a><div id="ServerAssocs.remove-def"><a name="L18"></a><tt class="py-lineno"> 18</tt> <a class="py-toggle" href="#" id="ServerAssocs.remove-toggle" onclick="return toggle('ServerAssocs.remove');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#remove">remove</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">handle</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.remove-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.remove-expanded"><a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-10', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">[</tt><tt id="link-11" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-11', 'handle', 'link-6');">handle</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs.best"></a><div id="ServerAssocs.best-def"><a name="L26"></a><tt class="py-lineno"> 26</tt> <a class="py-toggle" href="#" id="ServerAssocs.best-toggle" onclick="return toggle('ServerAssocs.best');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#best">best</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.best-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.best-expanded"><a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-docstring">"""Returns association with the oldest issued date.</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">        or None if there are no associations.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">        <tt id="link-12" class="py-name" targets="Method openid.store.memstore.ServerAssocs.best()=openid.store.memstore.ServerAssocs-class.html#best"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-12', 'best', 'link-12');">best</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">assoc</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-13', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt class="py-name">values</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-14" class="py-name"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-14', 'best', 'link-12');">best</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> <tt id="link-15" class="py-name"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-15', 'best', 'link-12');">best</a></tt><tt class="py-op">.</tt><tt class="py-name">issued</tt> <tt class="py-op">&lt;</tt> <tt class="py-name">assoc</tt><tt class="py-op">.</tt><tt class="py-name">issued</tt><tt class="py-op">:</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">                <tt id="link-16" class="py-name"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-16', 'best', 'link-12');">best</a></tt> <tt class="py-op">=</tt> <tt class="py-name">assoc</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-17" class="py-name"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-17', 'best', 'link-12');">best</a></tt> </tt>
+</div><a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="ServerAssocs.cleanup"></a><div id="ServerAssocs.cleanup-def"><a name="L37"></a><tt class="py-lineno"> 37</tt> <a class="py-toggle" href="#" id="ServerAssocs.cleanup-toggle" onclick="return toggle('ServerAssocs.cleanup');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.ServerAssocs-class.html#cleanup">cleanup</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ServerAssocs.cleanup-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ServerAssocs.cleanup-expanded"><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-docstring">"""Remove expired associations.</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-docstring">        @return: tuple of (removed associations, remaining associations)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt id="link-18" class="py-name" targets="Method openid.store.memstore.ServerAssocs.remove()=openid.store.memstore.ServerAssocs-class.html#remove"><a title="openid.store.memstore.ServerAssocs.remove" class="py-name" href="#" onclick="return doclink('link-18', 'remove', 'link-18');">remove</a></tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-19" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-19', 'handle', 'link-6');">handle</a></tt><tt class="py-op">,</tt> <tt class="py-name">assoc</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-20', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.iteritems()=openid.extensions.sreg.SRegResponse-class.html#iteritems,Method openid.message.NamespaceMap.iteritems()=openid.message.NamespaceMap-class.html#iteritems"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-21', 'iteritems', 'link-21');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">assoc</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Method openid.association.Association.getExpiresIn()=openid.association.Association-class.html#getExpiresIn,Method openid.test.test_consumer.GoodAssociation.getExpiresIn()=openid.test.test_consumer.GoodAssociation-class.html#getExpiresIn"><a title="openid.association.Association.getExpiresIn
+openid.test.test_consumer.GoodAssociation.getExpiresIn" class="py-name" href="#" onclick="return doclink('link-22', 'getExpiresIn', 'link-22');">getExpiresIn</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">                <tt id="link-23" class="py-name"><a title="openid.store.memstore.ServerAssocs.remove" class="py-name" href="#" onclick="return doclink('link-23', 'remove', 'link-18');">remove</a></tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-24" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-24', 'handle', 'link-6');">handle</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-25" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-25', 'handle', 'link-6');">handle</a></tt> <tt class="py-keyword">in</tt> <tt id="link-26" class="py-name"><a title="openid.store.memstore.ServerAssocs.remove" class="py-name" href="#" onclick="return doclink('link-26', 'remove', 'link-18');">remove</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-27', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">[</tt><tt id="link-28" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-28', 'handle', 'link-6');">handle</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt id="link-29" class="py-name"><a title="openid.store.memstore.ServerAssocs.remove" class="py-name" href="#" onclick="return doclink('link-29', 'remove', 'link-18');">remove</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-30', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore"></a><div id="MemoryStore-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="MemoryStore-toggle" onclick="return toggle('MemoryStore');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html">MemoryStore</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MemoryStore-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-docstring">"""In-process memory store.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">    Use for single long-running processes.  No persistence supplied.</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="MemoryStore.__init__"></a><div id="MemoryStore.__init__-def"><a name="L57"></a><tt class="py-lineno"> 57</tt> <a class="py-toggle" href="#" id="MemoryStore.__init__-toggle" onclick="return toggle('MemoryStore.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.__init__-expanded"><a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore._getServerAssocs"></a><div id="MemoryStore._getServerAssocs-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="MemoryStore._getServerAssocs-toggle" onclick="return toggle('MemoryStore._getServerAssocs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#_getServerAssocs">_getServerAssocs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">server_url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore._getServerAssocs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore._getServerAssocs-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt><tt class="py-op">[</tt><tt id="link-31" class="py-name" targets="Variable openid.test.test_auth_request.DummyEndpoint.server_url=openid.test.test_auth_request.DummyEndpoint-class.html#server_url,Variable openid.test.test_consumer.TestSuccess.server_url=openid.test.test_consumer.TestSuccess-class.html#server_url,Variable openid.test.test_consumer.TestSuccessHTTPS.server_url=openid.test.test_consumer.TestSuccessHTTPS-class.html#server_url"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-31', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt id="link-32" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-32', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt><tt class="py-op">[</tt><tt id="link-33" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-33', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name" targets="Class openid.store.memstore.ServerAssocs=openid.store.memstore.ServerAssocs-class.html"><a title="openid.store.memstore.ServerAssocs" class="py-name" href="#" onclick="return doclink('link-34', 'ServerAssocs', 'link-34');">ServerAssocs</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-35" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-35', 'assocs', 'link-4');">assocs</a></tt> </tt>
+</div><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.storeAssociation"></a><div id="MemoryStore.storeAssociation-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="MemoryStore.storeAssociation-toggle" onclick="return toggle('MemoryStore.storeAssociation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#storeAssociation">storeAssociation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">server_url</tt><tt class="py-op">,</tt> <tt class="py-param">assoc</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.storeAssociation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.storeAssociation-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt id="link-36" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-36', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getServerAssocs</tt><tt class="py-op">(</tt><tt id="link-37" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-37', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt id="link-38" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-38', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-39" class="py-name" targets="Method openid.store.memstore.ServerAssocs.set()=openid.store.memstore.ServerAssocs-class.html#set"><a title="openid.store.memstore.ServerAssocs.set" class="py-name" href="#" onclick="return doclink('link-39', 'set', 'link-39');">set</a></tt><tt class="py-op">(</tt><tt id="link-40" class="py-name"><a title="openid.association.SessionNegotiator.copy
+openid.message.Message.copy" class="py-name" href="#" onclick="return doclink('link-40', 'copy', 'link-3');">copy</a></tt><tt class="py-op">.</tt><tt class="py-name">deepcopy</tt><tt class="py-op">(</tt><tt class="py-name">assoc</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.getAssociation"></a><div id="MemoryStore.getAssociation-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="MemoryStore.getAssociation-toggle" onclick="return toggle('MemoryStore.getAssociation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#getAssociation">getAssociation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">server_url</tt><tt class="py-op">,</tt> <tt class="py-param">handle</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.getAssociation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.getAssociation-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt id="link-41" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-41', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getServerAssocs</tt><tt class="py-op">(</tt><tt id="link-42" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-42', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-43" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-43', 'handle', 'link-6');">handle</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-44" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-44', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="openid.store.memstore.ServerAssocs.best" class="py-name" href="#" onclick="return doclink('link-45', 'best', 'link-12');">best</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-46" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-46', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-47', 'get', 'link-8');">get</a></tt><tt class="py-op">(</tt><tt id="link-48" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-48', 'handle', 'link-6');">handle</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.removeAssociation"></a><div id="MemoryStore.removeAssociation-def"><a name="L79"></a><tt class="py-lineno"> 79</tt> <a class="py-toggle" href="#" id="MemoryStore.removeAssociation-toggle" onclick="return toggle('MemoryStore.removeAssociation');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#removeAssociation">removeAssociation</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">server_url</tt><tt class="py-op">,</tt> <tt class="py-param">handle</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.removeAssociation-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.removeAssociation-expanded"><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt id="link-49" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-49', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getServerAssocs</tt><tt class="py-op">(</tt><tt id="link-50" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-50', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-51" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-51', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="openid.store.memstore.ServerAssocs.remove" class="py-name" href="#" onclick="return doclink('link-52', 'remove', 'link-18');">remove</a></tt><tt class="py-op">(</tt><tt id="link-53" class="py-name"><a title="openid.test.test_auth_request.DummyAssoc.handle
+openid.test.test_consumer.GoodAssociation.handle" class="py-name" href="#" onclick="return doclink('link-53', 'handle', 'link-6');">handle</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.useNonce"></a><div id="MemoryStore.useNonce-def"><a name="L83"></a><tt class="py-lineno"> 83</tt> <a class="py-toggle" href="#" id="MemoryStore.useNonce-toggle" onclick="return toggle('MemoryStore.useNonce');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#useNonce">useNonce</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">server_url</tt><tt class="py-op">,</tt> <tt class="py-param">timestamp</tt><tt class="py-op">,</tt> <tt class="py-param">salt</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.useNonce-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.useNonce-expanded"><a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">abs</tt><tt class="py-op">(</tt><tt class="py-name">timestamp</tt> <tt class="py-op">-</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt id="link-54" class="py-name"><a title="openid.store.nonce" class="py-name" href="#" onclick="return doclink('link-54', 'nonce', 'link-2');">nonce</a></tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Variable openid.store.nonce.SKEW=openid.store.nonce-module.html#SKEW"><a title="openid.store.nonce.SKEW" class="py-name" href="#" onclick="return doclink('link-55', 'SKEW', 'link-55');">SKEW</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">anonce</tt> <tt class="py-op">=</tt> <tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-56" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-56', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">timestamp</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">salt</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">anonce</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">False</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt><tt class="py-op">[</tt><tt class="py-name">anonce</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">True</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.cleanupNonces"></a><div id="MemoryStore.cleanupNonces-def"><a name="L94"></a><tt class="py-lineno"> 94</tt> <a class="py-toggle" href="#" id="MemoryStore.cleanupNonces-toggle" onclick="return toggle('MemoryStore.cleanupNonces');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#cleanupNonces">cleanupNonces</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.cleanupNonces-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.cleanupNonces-expanded"><a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">now</tt> <tt class="py-op">=</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">time</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">expired</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">anonce</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.iterkeys()=openid.extensions.sreg.SRegResponse-class.html#iterkeys"><a title="openid.extensions.sreg.SRegResponse.iterkeys" class="py-name" href="#" onclick="return doclink('link-57', 'iterkeys', 'link-57');">iterkeys</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">abs</tt><tt class="py-op">(</tt><tt class="py-name">anonce</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt> <tt class="py-op">-</tt> <tt class="py-name">now</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt id="link-58" class="py-name"><a title="openid.store.nonce" class="py-name" href="#" onclick="return doclink('link-58', 'nonce', 'link-2');">nonce</a></tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="openid.store.nonce.SKEW" class="py-name" href="#" onclick="return doclink('link-59', 'SKEW', 'link-55');">SKEW</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">                <tt class="py-comment"># removing items while iterating over the set could be bad.</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-name">expired</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">anonce</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">anonce</tt> <tt class="py-keyword">in</tt> <tt class="py-name">expired</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt><tt class="py-op">[</tt><tt class="py-name">anonce</tt><tt class="py-op">]</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">expired</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.cleanupAssociations"></a><div id="MemoryStore.cleanupAssociations-def"><a name="L106"></a><tt class="py-lineno">106</tt> <a class="py-toggle" href="#" id="MemoryStore.cleanupAssociations-toggle" onclick="return toggle('MemoryStore.cleanupAssociations');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#cleanupAssociations">cleanupAssociations</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.cleanupAssociations-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.cleanupAssociations-expanded"><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">remove_urls</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-name">removed_assocs</tt> <tt class="py-op">=</tt> <tt class="py-number">0</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-60" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-60', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">,</tt> <tt id="link-61" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-61', 'assocs', 'link-4');">assocs</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-62', 'iteritems', 'link-21');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">            <tt class="py-name">removed</tt><tt class="py-op">,</tt> <tt class="py-name">remaining</tt> <tt class="py-op">=</tt> <tt id="link-63" class="py-name"><a title="openid.test.test_consumer.assocs" class="py-name" href="#" onclick="return doclink('link-63', 'assocs', 'link-4');">assocs</a></tt><tt class="py-op">.</tt><tt id="link-64" class="py-name" targets="Method openid.store.filestore.FileOpenIDStore.cleanup()=openid.store.filestore.FileOpenIDStore-class.html#cleanup,Method openid.store.interface.OpenIDStore.cleanup()=openid.store.interface.OpenIDStore-class.html#cleanup,Method openid.store.memstore.ServerAssocs.cleanup()=openid.store.memstore.ServerAssocs-class.html#cleanup,Method openid.yadis.manager.Discovery.cleanup()=openid.yadis.manager.Discovery-class.html#cleanup"><a title="openid.store.filestore.FileOpenIDStore.cleanup
+openid.store.interface.OpenIDStore.cleanup
+openid.store.memstore.ServerAssocs.cleanup
+openid.yadis.manager.Discovery.cleanup" class="py-name" href="#" onclick="return doclink('link-64', 'cleanup', 'link-64');">cleanup</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-name">removed_assocs</tt> <tt class="py-op">+=</tt> <tt class="py-name">removed</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">remaining</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">                <tt class="py-name">remove_urls</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt id="link-65" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-65', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-comment"># Remove entries from server_assocs that had none remaining.</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">for</tt> <tt id="link-66" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-66', 'server_url', 'link-31');">server_url</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">remove_urls</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt><tt class="py-op">[</tt><tt id="link-67" class="py-name"><a title="openid.test.test_auth_request.DummyEndpoint.server_url
+openid.test.test_consumer.TestSuccess.server_url
+openid.test.test_consumer.TestSuccessHTTPS.server_url" class="py-name" href="#" onclick="return doclink('link-67', 'server_url', 'link-31');">server_url</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">removed_assocs</tt> </tt>
+</div><a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.__eq__"></a><div id="MemoryStore.__eq__-def"><a name="L120"></a><tt class="py-lineno">120</tt> <a class="py-toggle" href="#" id="MemoryStore.__eq__-toggle" onclick="return toggle('MemoryStore.__eq__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#__eq__">__eq__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.__eq__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.__eq__-expanded"><a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt> <tt class="py-op">==</tt> <tt class="py-name">other</tt><tt class="py-op">.</tt><tt class="py-name">server_assocs</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">                <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt> <tt class="py-op">==</tt> <tt class="py-name">other</tt><tt class="py-op">.</tt><tt class="py-name">nonces</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="MemoryStore.__ne__"></a><div id="MemoryStore.__ne__-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="MemoryStore.__ne__-toggle" onclick="return toggle('MemoryStore.__ne__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.store.memstore.MemoryStore-class.html#__ne__">__ne__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">other</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MemoryStore.__ne__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MemoryStore.__ne__-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-keyword">not</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt> <tt class="py-op">==</tt> <tt class="py-name">other</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:40 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

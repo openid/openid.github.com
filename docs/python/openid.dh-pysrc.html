@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.dh</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        Module&nbsp;dh
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.dh-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.dh-module.html">Module openid.dh</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-1" class="py-name" targets="Module openid.cryptutil=openid.cryptutil-module.html,Module openid.test.cryptutil=openid.test.cryptutil-module.html"><a title="openid.cryptutil
+openid.test.cryptutil" class="py-name" href="#" onclick="return doclink('link-1', 'cryptutil', 'link-1');">cryptutil</a></tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-2" class="py-name"><a title="openid" class="py-name" href="#" onclick="return doclink('link-2', 'openid', 'link-0');">openid</a></tt> <tt class="py-keyword">import</tt> <tt id="link-3" class="py-name" targets="Module openid.oidutil=openid.oidutil-module.html,Module openid.test.oidutil=openid.test.oidutil-module.html"><a title="openid.oidutil
+openid.test.oidutil" class="py-name" href="#" onclick="return doclink('link-3', 'oidutil', 'link-3');">oidutil</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"> </tt>
+<a name="strxor"></a><div id="strxor-def"><a name="L4"></a><tt class="py-lineno"> 4</tt> <a class="py-toggle" href="#" id="strxor-toggle" onclick="return toggle('strxor');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh-module.html#strxor">strxor</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt> <tt class="py-param">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="strxor-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="strxor-expanded"><a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-op">!=</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Inputs to strxor must have the same length'</tt><tt class="py-op">)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line">    <tt class="py-name">xor</tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">,</tt> <tt class="py-name">b</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> <tt class="py-name">chr</tt><tt class="py-op">(</tt><tt class="py-name">ord</tt><tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">)</tt> <tt class="py-op">^</tt> <tt class="py-name">ord</tt><tt class="py-op">(</tt><tt class="py-name">b</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-string">""</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">xor</tt><tt class="py-op">,</tt> <tt class="py-name">zip</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">y</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman"></a><div id="DiffieHellman-def"><a name="L11"></a><tt class="py-lineno">11</tt> <a class="py-toggle" href="#" id="DiffieHellman-toggle" onclick="return toggle('DiffieHellman');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html">DiffieHellman</a><tt class="py-op">(</tt><tt class="py-base-class">object</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="DiffieHellman-expanded"><a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">    <tt id="link-4" class="py-name" targets="Variable openid.dh.DiffieHellman.DEFAULT_MOD=openid.dh.DiffieHellman-class.html#DEFAULT_MOD"><a title="openid.dh.DiffieHellman.DEFAULT_MOD" class="py-name" href="#" onclick="return doclink('link-4', 'DEFAULT_MOD', 'link-4');">DEFAULT_MOD</a></tt> <tt class="py-op">=</tt> <tt class="py-number">155172898181473697471232257763715539915724801966915404479707795314057629378541917580651227423698188993727816152646631438561595825688188889951272158842675419950341258706556549803580104870537681476726513255747040765857479291291572334510643245094715007229621094194349783925984760375594985848253359305585439638443L</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable openid.dh.DiffieHellman.DEFAULT_GEN=openid.dh.DiffieHellman-class.html#DEFAULT_GEN"><a title="openid.dh.DiffieHellman.DEFAULT_GEN" class="py-name" href="#" onclick="return doclink('link-5', 'DEFAULT_GEN', 'link-5');">DEFAULT_GEN</a></tt> <tt class="py-op">=</tt> <tt class="py-number">2</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman.fromDefaults"></a><div id="DiffieHellman.fromDefaults-def"><a name="L16"></a><tt class="py-lineno">16</tt> <a class="py-toggle" href="#" id="DiffieHellman.fromDefaults-toggle" onclick="return toggle('DiffieHellman.fromDefaults');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#fromDefaults">fromDefaults</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman.fromDefaults-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman.fromDefaults-expanded"><a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">cls</tt><tt class="py-op">(</tt><tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name"><a title="openid.dh.DiffieHellman.DEFAULT_MOD" class="py-name" href="#" onclick="return doclink('link-6', 'DEFAULT_MOD', 'link-4');">DEFAULT_MOD</a></tt><tt class="py-op">,</tt> <tt class="py-name">cls</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name"><a title="openid.dh.DiffieHellman.DEFAULT_GEN" class="py-name" href="#" onclick="return doclink('link-7', 'DEFAULT_GEN', 'link-5');">DEFAULT_GEN</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line">    <tt id="link-8" class="py-name" targets="Class Method openid.dh.DiffieHellman.fromDefaults()=openid.dh.DiffieHellman-class.html#fromDefaults"><a title="openid.dh.DiffieHellman.fromDefaults" class="py-name" href="#" onclick="return doclink('link-8', 'fromDefaults', 'link-8');">fromDefaults</a></tt> <tt class="py-op">=</tt> <tt class="py-name">classmethod</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="openid.dh.DiffieHellman.fromDefaults" class="py-name" href="#" onclick="return doclink('link-9', 'fromDefaults', 'link-8');">fromDefaults</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman.__init__"></a><div id="DiffieHellman.__init__-def"><a name="L21"></a><tt class="py-lineno">21</tt> <a class="py-toggle" href="#" id="DiffieHellman.__init__-toggle" onclick="return toggle('DiffieHellman.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">modulus</tt><tt class="py-op">,</tt> <tt class="py-param">generator</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman.__init__-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman.__init__-expanded"><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">modulus</tt> <tt class="py-op">=</tt> <tt class="py-name">long</tt><tt class="py-op">(</tt><tt class="py-name">modulus</tt><tt class="py-op">)</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">generator</tt> <tt class="py-op">=</tt> <tt class="py-name">long</tt><tt class="py-op">(</tt><tt class="py-name">generator</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_setPrivate</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name"><a title="openid.cryptutil
+openid.test.cryptutil" class="py-name" href="#" onclick="return doclink('link-10', 'cryptutil', 'link-1');">cryptutil</a></tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Function openid.cryptutil.randrange()=openid.cryptutil-module.html#randrange"><a title="openid.cryptutil.randrange" class="py-name" href="#" onclick="return doclink('link-11', 'randrange', 'link-11');">randrange</a></tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt class="py-name">modulus</tt> <tt class="py-op">-</tt> <tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman._setPrivate"></a><div id="DiffieHellman._setPrivate-def"><a name="L27"></a><tt class="py-lineno">27</tt> <a class="py-toggle" href="#" id="DiffieHellman._setPrivate-toggle" onclick="return toggle('DiffieHellman._setPrivate');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#_setPrivate">_setPrivate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">private</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman._setPrivate-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman._setPrivate-expanded"><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line">        <tt class="py-docstring">"""This is here to make testing easier"""</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">private</tt> <tt class="py-op">=</tt> <tt class="py-name">private</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">public</tt> <tt class="py-op">=</tt> <tt class="py-name">pow</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">generator</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">private</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">modulus</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman.usingDefaultValues"></a><div id="DiffieHellman.usingDefaultValues-def"><a name="L32"></a><tt class="py-lineno">32</tt> <a class="py-toggle" href="#" id="DiffieHellman.usingDefaultValues-toggle" onclick="return toggle('DiffieHellman.usingDefaultValues');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#usingDefaultValues">usingDefaultValues</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman.usingDefaultValues-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman.usingDefaultValues-expanded"><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">modulus</tt> <tt class="py-op">==</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="openid.dh.DiffieHellman.DEFAULT_MOD" class="py-name" href="#" onclick="return doclink('link-12', 'DEFAULT_MOD', 'link-4');">DEFAULT_MOD</a></tt> <tt class="py-keyword">and</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">generator</tt> <tt class="py-op">==</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="openid.dh.DiffieHellman.DEFAULT_GEN" class="py-name" href="#" onclick="return doclink('link-13', 'DEFAULT_GEN', 'link-5');">DEFAULT_GEN</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman.getSharedSecret"></a><div id="DiffieHellman.getSharedSecret-def"><a name="L36"></a><tt class="py-lineno">36</tt> <a class="py-toggle" href="#" id="DiffieHellman.getSharedSecret-toggle" onclick="return toggle('DiffieHellman.getSharedSecret');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#getSharedSecret">getSharedSecret</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">composite</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman.getSharedSecret-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman.getSharedSecret-expanded"><a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">pow</tt><tt class="py-op">(</tt><tt class="py-name">composite</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">private</tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">modulus</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line"> </tt>
+<a name="DiffieHellman.xorSecret"></a><div id="DiffieHellman.xorSecret-def"><a name="L39"></a><tt class="py-lineno">39</tt> <a class="py-toggle" href="#" id="DiffieHellman.xorSecret-toggle" onclick="return toggle('DiffieHellman.xorSecret');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.dh.DiffieHellman-class.html#xorSecret">xorSecret</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">composite</tt><tt class="py-op">,</tt> <tt class="py-param">secret</tt><tt class="py-op">,</tt> <tt class="py-param">hash_func</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DiffieHellman.xorSecret-collapsed" style="display:none;" pad="++" indent="++++++++"></div><div id="DiffieHellman.xorSecret-expanded"><a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-name">dh_shared</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method openid.dh.DiffieHellman.getSharedSecret()=openid.dh.DiffieHellman-class.html#getSharedSecret"><a title="openid.dh.DiffieHellman.getSharedSecret" class="py-name" href="#" onclick="return doclink('link-14', 'getSharedSecret', 'link-14');">getSharedSecret</a></tt><tt class="py-op">(</tt><tt class="py-name">composite</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">        <tt class="py-name">hashed_dh_shared</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name" targets="Static Method openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.hash_func()=openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession-class.html#hash_func,Static Method openid.consumer.consumer.DiffieHellmanSHA256ConsumerSession.hash_func()=openid.consumer.consumer.DiffieHellmanSHA256ConsumerSession-class.html#hash_func,Static Method openid.server.server.DiffieHellmanSHA1ServerSession.hash_func()=openid.server.server.DiffieHellmanSHA1ServerSession-class.html#hash_func,Static Method openid.server.server.DiffieHellmanSHA256ServerSession.hash_func()=openid.server.server.DiffieHellmanSHA256ServerSession-class.html#hash_func"><a title="openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.hash_func
+openid.consumer.consumer.DiffieHellmanSHA256ConsumerSession.hash_func
+openid.server.server.DiffieHellmanSHA1ServerSession.hash_func
+openid.server.server.DiffieHellmanSHA256ServerSession.hash_func" class="py-name" href="#" onclick="return doclink('link-15', 'hash_func', 'link-15');">hash_func</a></tt><tt class="py-op">(</tt><tt id="link-16" class="py-name"><a title="openid.cryptutil
+openid.test.cryptutil" class="py-name" href="#" onclick="return doclink('link-16', 'cryptutil', 'link-1');">cryptutil</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Function openid.cryptutil.longToBinary()=openid.cryptutil-module.html#longToBinary"><a title="openid.cryptutil.longToBinary" class="py-name" href="#" onclick="return doclink('link-17', 'longToBinary', 'link-17');">longToBinary</a></tt><tt class="py-op">(</tt><tt class="py-name">dh_shared</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-18" class="py-name" targets="Function openid.dh.strxor()=openid.dh-module.html#strxor"><a title="openid.dh.strxor" class="py-name" href="#" onclick="return doclink('link-18', 'strxor', 'link-18');">strxor</a></tt><tt class="py-op">(</tt><tt id="link-19" class="py-name" targets="Variable openid.test.test_association_response.DummyAssociationSession.secret=openid.test.test_association_response.DummyAssociationSession-class.html#secret,Variable openid.test.test_association_response.TestExtractAssociationDiffieHellman.secret=openid.test.test_association_response.TestExtractAssociationDiffieHellman-class.html#secret"><a title="openid.test.test_association_response.DummyAssociationSession.secret
+openid.test.test_association_response.TestExtractAssociationDiffieHellman.secret" class="py-name" href="#" onclick="return doclink('link-19', 'secret', 'link-19');">secret</a></tt><tt class="py-op">,</tt> <tt class="py-name">hashed_dh_shared</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:38 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

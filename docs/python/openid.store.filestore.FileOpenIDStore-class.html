@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.store.filestore.FileOpenIDStore</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.store-module.html">Package&nbsp;store</a> ::
+        <a href="openid.store.filestore-module.html">Module&nbsp;filestore</a> ::
+        Class&nbsp;FileOpenIDStore
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.store.filestore.FileOpenIDStore-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class FileOpenIDStore</h1><p class="nomargin-top"><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+    
+                    |    
+<a href="openid.store.interface.OpenIDStore-class.html">interface.OpenIDStore</a> --+
+                        |
+                       <strong class="uidshort">FileOpenIDStore</strong>
+</pre>
+
+<hr />
+<p>This is a filesystem-based store for OpenID associations and nonces.  
+  This store should be safe for use in concurrent systems on both windows 
+  and unix (excluding NFS filesystems).  There are a couple race conditions
+  in the system, but those failure cases have been set up in such a way 
+  that the worst-case behavior is someone having to try to log in a second 
+  time.</p>
+  <p>Most of the methods of this class are implementation details. People 
+  wishing to just use this store need only pay attention to the <code><a 
+  href="openid.store.filestore.FileOpenIDStore-class.html#__init__" 
+  class="link">__init__</a></code> method.</p>
+  <p>Methods of this object can raise OSError if unexpected filesystem 
+  conditions, such as bad permissions or missing directories, occur.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">directory</span>)</span><br />
+      Initializes a new FileOpenIDStore.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#getAssociationFilename" class="summary-sig-name">getAssociationFilename</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">handle</span>)</span><br />
+      Create a unique filename for a given server url and handle.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.getAssociationFilename">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>NoneType</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#storeAssociation" class="summary-sig-name">storeAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">association</span>)</span><br />
+      Store an association in the association directory.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.storeAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code><a href="openid.association.Association-class.html" 
+      class="link">Association</a></code> or <code>NoneType</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#getAssociation" class="summary-sig-name">getAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">handle</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Retrieve an association.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.getAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code> or <code>int</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#removeAssociation" class="summary-sig-name">removeAssociation</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">handle</span>)</span><br />
+      Remove an association if it exists.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.removeAssociation">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#useNonce" class="summary-sig-name">useNonce</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">server_url</span>,
+        <span class="summary-sig-arg">timestamp</span>,
+        <span class="summary-sig-arg">salt</span>)</span><br />
+      Return whether this nonce is valid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.useNonce">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#cleanup" class="summary-sig-name">cleanup</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired entries from the database.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#cleanupAssociations" class="summary-sig-name">cleanupAssociations</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired associations from the store.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanupAssociations">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">int</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.filestore.FileOpenIDStore-class.html#cleanupNonces" class="summary-sig-name">cleanupNonces</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Remove expired nonces from the store.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanupNonces">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">directory</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initializes a new FileOpenIDStore.  This initializes the nonce and 
+  association directories, which are subdirectories of the directory passed
+  in.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>directory</code></strong> (<code>str</code>) - This is the directory to put the store directories in.</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAssociationFilename"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAssociationFilename</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">handle</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.getAssociationFilename">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create a unique filename for a given server url and handle. This 
+  implementation does not assume anything about the format of the handle. 
+  The filename that is returned will contain the domain name from the 
+  server URL for ease of human inspection of the data directory.</p>
+  <p>(str, str) -&gt; str</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="storeAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">storeAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">association</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.storeAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Store an association in the association directory.</p>
+  <p>(str, Association) -&gt; NoneType</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> - The URL of the identity server that this association is with.  
+          Because of the way the server portion of the library uses this 
+          interface, don't assume there are any limitations on the 
+          character set of the input string.  In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>association</code></strong> - The <code><a href="openid.association.Association-class.html" 
+          class="link">Association</a></code> to store.</li>
+    </ul></dd>
+    <dt>Returns: <code>NoneType</code></dt>
+        <dd><code>None</code></dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#storeAssociation">interface.OpenIDStore.storeAssociation</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">handle</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.getAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Retrieve an association. If no handle is specified, return the 
+  association with the latest expiration.</p>
+  <p>(str, str or NoneType) -&gt; Association or NoneType</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> - The URL of the identity server to get the association for.  
+          Because of the way the server portion of the library uses this 
+          interface, don't assume there are any limitations on the 
+          character set of the input string. In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>handle</code></strong> - This optional parameter is the handle of the specific association
+          to get.  If no specific handle is provided, any valid association
+          matching the server URL is returned.</li>
+    </ul></dd>
+    <dt>Returns: <code><a href="openid.association.Association-class.html" 
+      class="link">Association</a></code> or <code>NoneType</code></dt>
+        <dd>The <code><a href="openid.association.Association-class.html" 
+          class="link">Association</a></code> for the given identity 
+          server.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#getAssociation">interface.OpenIDStore.getAssociation</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="removeAssociation"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">removeAssociation</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">handle</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.removeAssociation">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove an association if it exists. Do nothing if it does not.</p>
+  <p>(str, str) -&gt; bool</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> - The URL of the identity server the association to remove belongs 
+          to.  Because of the way the server portion of the library uses 
+          this interface, don't assume there are any limitations on the 
+          character set of the input string.  In particular, expect to see 
+          unescaped non-url-safe characters in the server_url field.</li>
+        <li><strong class="pname"><code>handle</code></strong> - This is the handle of the association to remove.  If there isn't 
+          an association found that matches both the given URL and handle, 
+          then there was no matching handle found.</li>
+    </ul></dd>
+    <dt>Returns: <code>bool</code> or <code>int</code></dt>
+        <dd>Returns whether or not the given association existed.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#removeAssociation">interface.OpenIDStore.removeAssociation</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="useNonce"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">useNonce</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">server_url</span>,
+        <span class="sig-arg">timestamp</span>,
+        <span class="sig-arg">salt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.useNonce">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return whether this nonce is valid.</p>
+  <p>str -&gt; bool</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> - The URL of the server from which the nonce originated.</li>
+        <li><strong class="pname"><code>timestamp</code></strong> - The time that the nonce was created (to the nearest second), in 
+          seconds since January 1 1970 UTC.</li>
+        <li><strong class="pname"><code>salt</code></strong> - A random string that makes two nonces from the same server issued
+          during the same second unique.</li>
+    </ul></dd>
+    <dt>Returns: <code>bool</code></dt>
+        <dd>Whether or not the nonce was valid.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#useNonce">interface.OpenIDStore.useNonce</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanup"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanup</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanup">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove expired entries from the database. This is potentially 
+  expensive, so only run when it is acceptable to take time.</p>
+  <p>() -&gt; NoneType</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#cleanup">interface.OpenIDStore.cleanup</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanupAssociations"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanupAssociations</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanupAssociations">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove expired associations from the store.</p>
+  <p>This method is not called in the normal operation of the library.  It 
+  provides a way for store admins to keep their storage from filling up 
+  with expired data.</p>
+  <dl class="fields">
+    <dt>Returns: int</dt>
+        <dd>the number of associations expired.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#cleanupAssociations">interface.OpenIDStore.cleanupAssociations</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="cleanupNonces"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">cleanupNonces</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.filestore-pysrc.html#FileOpenIDStore.cleanupNonces">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Remove expired nonces from the store.</p>
+  <p>Discards any nonce from storage that is old enough that its timestamp 
+  would not pass <a 
+  href="openid.store.filestore.FileOpenIDStore-class.html#useNonce" 
+  class="link">useNonce</a>.</p>
+  <p>This method is not called in the normal operation of the library.  It 
+  provides a way for store admins to keep their storage from filling up 
+  with expired data.</p>
+  <dl class="fields">
+    <dt>Returns: int</dt>
+        <dd>the number of nonces expired.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#cleanupNonces">interface.OpenIDStore.cleanupNonces</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:28 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

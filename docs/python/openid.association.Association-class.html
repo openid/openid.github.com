@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.association.Association</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.association-module.html">Module&nbsp;association</a> ::
+        Class&nbsp;Association
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.association.Association-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Association</h1><p class="nomargin-top"><span class="codelink"><a href="openid.association-pysrc.html#Association">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+object --+
+         |
+        <strong class="uidshort">Association</strong>
+</pre>
+
+<hr />
+<p>This class represents an association between a server and a consumer.
+  In general, users of this library will never see instances of this 
+  object.  The only exception is if you implement a custom <code><a 
+  href="openid.store.interface.OpenIDStore-class.html" 
+  class="link">OpenIDStore</a></code>.</p>
+  <p>If you do implement such a store, it will need to store the values of 
+  the <code><a href="openid.association.Association-class.html#handle" 
+  class="link">handle</a></code>, <code><a 
+  href="openid.association.Association-class.html#secret" 
+  class="link">secret</a></code>, <code><a 
+  href="openid.association.Association-class.html#issued" 
+  class="link">issued</a></code>, <code><a 
+  href="openid.association.Association-class.html#lifetime" 
+  class="link">lifetime</a></code>, and <code><a 
+  href="openid.association.Association-class.html#assoc_type" 
+  class="link">assoc_type</a></code> instance variables.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">handle</span>,
+        <span class="summary-sig-arg">secret</span>,
+        <span class="summary-sig-arg">issued</span>,
+        <span class="summary-sig-arg">lifetime</span>,
+        <span class="summary-sig-arg">assoc_type</span>)</span><br />
+      This is the standard constructor for creating an association.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>int</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#getExpiresIn" class="summary-sig-name">getExpiresIn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">now</span>=<span class="summary-sig-default">None</span>)</span><br />
+      This returns the number of seconds this association is still valid 
+      for, or <code>0</code> if the association is no longer valid.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.getExpiresIn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#__eq__" class="summary-sig-name">__eq__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span><br />
+      This checks to see if two <code><a 
+      href="openid.association.Association-class.html" 
+      class="link">Association</a></code> instances represent the same 
+      association.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.__eq__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#__ne__" class="summary-sig-name">__ne__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">other</span>)</span><br />
+      This checks to see if two <code><a 
+      href="openid.association.Association-class.html" 
+      class="link">Association</a></code> instances represent different 
+      associations.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.__ne__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#serialize" class="summary-sig-name">serialize</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Convert an association to KV form.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.serialize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#sign" class="summary-sig-name">sign</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">pairs</span>)</span><br />
+      Generate a signature for a sequence of (key, value) pairs</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.sign">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">str</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#getMessageSignature" class="summary-sig-name">getMessageSignature</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Return the signature of a message.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.getMessageSignature">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><a href="openid.message.Message-class.html" 
+      class="link">openid.message.Message</a></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#signMessage" class="summary-sig-name">signMessage</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Add a signature (and a signed list) to a message.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.signMessage">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#checkMessageSignature" class="summary-sig-name">checkMessageSignature</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">message</span>)</span><br />
+      Given a message with a signature, calculate a new signature and 
+      return whether it matches the signature in the message.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.checkMessageSignature">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#__repr__" class="summary-sig-name">__repr__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      repr(x)</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.__repr__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#fromExpiresIn" class="summary-sig-name">fromExpiresIn</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">expires_in</span>,
+        <span class="summary-sig-arg">handle</span>,
+        <span class="summary-sig-arg">secret</span>,
+        <span class="summary-sig-arg">assoc_type</span>)</span><br />
+      This is an alternate constructor used by the OpenID consumer library 
+      to create associations.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.fromExpiresIn">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.association.Association-class.html#deserialize" class="summary-sig-name">deserialize</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">assoc_s</span>)</span><br />
+      Parse an association as stored by serialize().</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.association-pysrc.html#Association.deserialize">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.association.Association-class.html#assoc_keys" class="summary-name">assoc_keys</a> = <code title="['version', 'handle', 'secret', 'issued', 'lifetime', 'assoc_type']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">version</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">handle</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">secret</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">issued</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lifeti</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE VARIABLES ==================== -->
+<a name="section-InstanceVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>str</code></span>
+    </td><td class="summary">
+        <a name="handle"></a><span class="summary-name">handle</span><br />
+      This is the handle the server gave this association.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>str</code></span>
+    </td><td class="summary">
+        <a name="secret"></a><span class="summary-name">secret</span><br />
+      This is the shared secret the server generated for this association.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>int</code></span>
+    </td><td class="summary">
+        <a href="openid.association.Association-class.html#issued" class="summary-name">issued</a><br />
+      This is the time this association was issued, in seconds since 00:00 
+      GMT, January 1, 1970.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>int</code></span>
+    </td><td class="summary">
+        <a name="lifetime"></a><span class="summary-name">lifetime</span><br />
+      This is the amount of time this association is good for, measured in 
+      seconds since the association was issued.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>str</code></span>
+    </td><td class="summary">
+        <a href="openid.association.Association-class.html#assoc_type" class="summary-name">assoc_type</a><br />
+      This is the type of association this instance represents.
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>int</code></span>
+    </td><td class="summary">
+        <a href="openid.association.Association-class.html#expiresIn" class="summary-name">expiresIn</a><br />
+      This returns the number of seconds this association is still valid 
+      for, or <code>0</code> if the association is no longer valid.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">handle</span>,
+        <span class="sig-arg">secret</span>,
+        <span class="sig-arg">issued</span>,
+        <span class="sig-arg">lifetime</span>,
+        <span class="sig-arg">assoc_type</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This is the standard constructor for creating an association.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>handle</code></strong> (<code>str</code>) - This is the handle the server gave this association.</li>
+        <li><strong class="pname"><code>secret</code></strong> (<code>str</code>) - This is the shared secret the server generated for this 
+          association.</li>
+        <li><strong class="pname"><code>issued</code></strong> (<code>int</code>) - This is the time this association was issued, in seconds since 
+          00:00 GMT, January 1, 1970.  (ie, a unix timestamp)</li>
+        <li><strong class="pname"><code>lifetime</code></strong> (<code>int</code>) - This is the amount of time this association is good for, measured
+          in seconds since the association was issued.</li>
+        <li><strong class="pname"><code>assoc_type</code></strong> (<code>str</code>) - This is the type of association this instance represents.  The 
+          only valid value of this field at this time is 
+          <code>'HMAC-SHA1'</code>, but new types may be defined in the 
+          future.</li>
+    </ul></dd>
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="fromExpiresIn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">fromExpiresIn</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">expires_in</span>,
+        <span class="sig-arg">handle</span>,
+        <span class="sig-arg">secret</span>,
+        <span class="sig-arg">assoc_type</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.fromExpiresIn">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This is an alternate constructor used by the OpenID consumer library 
+  to create associations.  <code><a 
+  href="openid.store.interface.OpenIDStore-class.html" 
+  class="link">OpenIDStore</a></code> implementations shouldn't use this 
+  constructor.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>expires_in</code></strong> (<code>int</code>) - This is the amount of time this association is good for, measured
+          in seconds since the association was issued.</li>
+        <li><strong class="pname"><code>handle</code></strong> (<code>str</code>) - This is the handle the server gave this association.</li>
+        <li><strong class="pname"><code>secret</code></strong> (<code>str</code>) - This is the shared secret the server generated for this 
+          association.</li>
+        <li><strong class="pname"><code>assoc_type</code></strong> (<code>str</code>) - This is the type of association this instance represents.  The 
+          only valid value of this field at this time is 
+          <code>'HMAC-SHA1'</code>, but new types may be defined in the 
+          future.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getExpiresIn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getExpiresIn</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">now</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.getExpiresIn">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This returns the number of seconds this association is still valid 
+  for, or <code>0</code> if the association is no longer valid.</p>
+  <dl class="fields">
+    <dt>Returns: <code>int</code></dt>
+        <dd>The number of seconds this association is still valid for, or 
+          <code>0</code> if the association is no longer valid.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__eq__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__eq__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">other</span>)</span>
+    <br /><em class="fname">(Equality operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.__eq__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This checks to see if two <code><a 
+  href="openid.association.Association-class.html" 
+  class="link">Association</a></code> instances represent the same 
+  association.</p>
+  <dl class="fields">
+    <dt>Returns: <code>bool</code></dt>
+        <dd><code>True</code> if the two instances represent the same 
+          association, <code>False</code> otherwise.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__ne__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__ne__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">other</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.__ne__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This checks to see if two <code><a 
+  href="openid.association.Association-class.html" 
+  class="link">Association</a></code> instances represent different 
+  associations.</p>
+  <dl class="fields">
+    <dt>Returns: <code>bool</code></dt>
+        <dd><code>True</code> if the two instances represent different 
+          associations, <code>False</code> otherwise.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="serialize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">serialize</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.serialize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert an association to KV form.</p>
+  <dl class="fields">
+    <dt>Returns: str</dt>
+        <dd>String in KV form suitable for deserialization by deserialize.</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="deserialize"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">deserialize</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">assoc_s</span>)</span>
+    <br /><em class="fname">Class Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.deserialize">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Parse an association as stored by serialize().</p>
+  <p>inverse of serialize</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>assoc_s</code></strong> (str) - Association as serialized by serialize()</li>
+    </ul></dd>
+    <dt>Returns:</dt>
+        <dd>instance of this class</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="sign"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">sign</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">pairs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.sign">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Generate a signature for a sequence of (key, value) pairs</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>pairs</code></strong> (sequence of (str, str)) - The pairs to sign, in order</li>
+    </ul></dd>
+    <dt>Returns: str</dt>
+        <dd>The binary signature of this sequence of pairs</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="getMessageSignature"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getMessageSignature</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.getMessageSignature">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return the signature of a message.</p>
+  <p>If I am not a sign-all association, the message must have a signed 
+  list.</p>
+  <dl class="fields">
+    <dt>Returns: str</dt>
+        <dd>the signature, base64 encoded</dd>
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>ValueError</strong></code> - If there is no signed list and I am not a sign-all type of 
+        association.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="signMessage"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">signMessage</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.signMessage">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a signature (and a signed list) to a message.</p>
+  <dl class="fields">
+    <dt>Returns: <a href="openid.message.Message-class.html" 
+      class="link">openid.message.Message</a></dt>
+        <dd>a new Message object with a signature</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="checkMessageSignature"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">checkMessageSignature</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">message</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.checkMessageSignature">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Given a message with a signature, calculate a new signature and return
+  whether it matches the signature in the message.</p>
+  <dl class="fields">
+    <dt>Raises:</dt>
+    <dd><ul class="nomargin-top">
+        <li><code><strong class='fraise'>ValueError</strong></code> - if the message has no signature or no signature can be calculated 
+        for it.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__repr__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__repr__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.association-pysrc.html#Association.__repr__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>repr(x)</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__repr__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variable Details</span></td>
+</tr>
+</table>
+<a name="assoc_keys"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">assoc_keys</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">version</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">handle</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">secret</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">issued</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">lifetime</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">assoc_type</code><code class="variable-quote">'</code><code class="variable-group">]</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== INSTANCE VARIABLE DETAILS ==================== -->
+<a name="section-InstanceVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Variable Details</span></td>
+</tr>
+</table>
+<a name="issued"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">issued</h3>
+  This is the time this association was issued, in seconds since 00:00 GMT,
+  January 1, 1970.  (ie, a unix timestamp)
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd><code>int</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="assoc_type"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">assoc_type</h3>
+  This is the type of association this instance represents.  The only valid
+  value of this field at this time is <code>'HMAC-SHA1'</code>, but new 
+  types may be defined in the future.
+  <dl class="fields">
+    <dt>Type:</dt>
+      <dd><code>str</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Property Details</span></td>
+</tr>
+</table>
+<a name="expiresIn"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">expiresIn</h3>
+  <p>This returns the number of seconds this association is still valid 
+  for, or <code>0</code> if the association is no longer valid.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="openid.association.Association-class.html#getExpiresIn" class="summary-sig-name">getExpiresIn</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">now</span>=<span class="summary-sig-default">None</span>)</span>
+        - This returns the number of seconds this association is still valid 
+      for, or <code>0</code> if the association is no longer valid.
+    </dd>
+    <dt>Type:</dt>
+      <dd><code>int</code></dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:27 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

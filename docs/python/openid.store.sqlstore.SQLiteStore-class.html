@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.store.sqlstore.SQLiteStore</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.store-module.html">Package&nbsp;store</a> ::
+        <a href="openid.store.sqlstore-module.html">Module&nbsp;sqlstore</a> ::
+        Class&nbsp;SQLiteStore
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.store.sqlstore.SQLiteStore-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SQLiteStore</h1><p class="nomargin-top"><span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore">source&nbsp;code</a></span></p>
+<pre class="base-tree">
+           object --+        
+                    |        
+<a href="openid.store.interface.OpenIDStore-class.html">interface.OpenIDStore</a> --+    
+                        |    
+                 <a href="openid.store.sqlstore.SQLStore-class.html">SQLStore</a> --+
+                            |
+                           <strong class="uidshort">SQLiteStore</strong>
+</pre>
+
+<hr />
+<p>This is an SQLite-based specialization of <code><a 
+  href="openid.store.sqlstore.SQLStore-class.html" 
+  class="link">SQLStore</a></code>.</p>
+  <p>To create an instance, see <code><a 
+  href="openid.store.sqlstore.SQLStore-class.html#__init__" 
+  class="link">SQLStore.__init__</a></code>.  To create the tables it will 
+  use, see <code><a 
+  href="openid.store.sqlstore.SQLStore-class.html#createTables" 
+  class="link">SQLStore.createTables</a></code>.</p>
+  <p>All other methods are implementation details.</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.sqlstore.SQLiteStore-class.html#blobDecode" class="summary-sig-name">blobDecode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">buf</span>)</span><br />
+      Convert a blob as returned by the SQL engine into a str object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.blobDecode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.sqlstore.SQLiteStore-class.html#blobEncode" class="summary-sig-name">blobEncode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span><br />
+      Convert a str object into the necessary object for storing in the 
+      database as a blob.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.blobEncode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type"><code>bool</code></span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="openid.store.sqlstore.SQLiteStore-class.html#useNonce" class="summary-sig-name">useNonce</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*args</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Return whether this nonce is present, and if it is, then remove it 
+      from the set.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.useNonce">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="openid.store.sqlstore.SQLStore-class.html">SQLStore</a></code></b>:
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#__getattr__">__getattr__</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#__init__">__init__</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#cleanupAssociations">cleanupAssociations</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#cleanupNonces">cleanupNonces</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#createTables">createTables</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#getAssociation">getAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#removeAssociation">removeAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#storeAssociation">storeAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_cleanupAssociations">txn_cleanupAssociations</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_cleanupNonces">txn_cleanupNonces</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_createTables">txn_createTables</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_getAssociation">txn_getAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_removeAssociation">txn_removeAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_storeAssociation">txn_storeAssociation</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#txn_useNonce">txn_useNonce</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="openid.store.interface.OpenIDStore-class.html">interface.OpenIDStore</a></code></b>:
+      <code><a href="openid.store.interface.OpenIDStore-class.html#cleanup">cleanup</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__str__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#create_nonce_sql" class="summary-name">create_nonce_sql</a> = <code title="'''
+    CREATE TABLE %(nonces)s (
+        server_url VARCHAR,
+        timestamp INTEGER,
+        salt CHAR(40),
+        UNIQUE(server_url, timestamp, salt)
+    );
+    '''"><code class="variable-quote">'</code><code class="variable-string">\n    CREATE TABLE %(nonces)s (\n        s</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#create_assoc_sql" class="summary-name">create_assoc_sql</a> = <code title="'''
+    CREATE TABLE %(associations)s
+    (
+        server_url VARCHAR(2047),
+        handle VARCHAR(255),
+        secret BLOB(128),
+        issued INTEGER,
+        lifetime INTEGER,
+..."><code class="variable-quote">'</code><code class="variable-string">\n    CREATE TABLE %(associations)s\n    (</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#set_assoc_sql" class="summary-name">set_assoc_sql</a> = <code title="'INSERT OR REPLACE INTO %(associations)s (server_url, handle, secret, \
+issued, lifetime, assoc_type) VALUES (?, ?, ?, ?, ?, ?);'"><code class="variable-quote">'</code><code class="variable-string">INSERT OR REPLACE INTO %(associations)s (serv</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#get_assocs_sql" class="summary-name">get_assocs_sql</a> = <code title="'SELECT handle, secret, issued, lifetime, assoc_type FROM %(associatio\
+ns)s WHERE server_url = ?;'"><code class="variable-quote">'</code><code class="variable-string">SELECT handle, secret, issued, lifetime, ass</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#get_assoc_sql" class="summary-name">get_assoc_sql</a> = <code title="'SELECT handle, secret, issued, lifetime, assoc_type FROM %(associatio\
+ns)s WHERE server_url = ? AND handle = ?;'"><code class="variable-quote">'</code><code class="variable-string">SELECT handle, secret, issued, lifetime, asso</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#get_expired_sql" class="summary-name">get_expired_sql</a> = <code title="'SELECT server_url FROM %(associations)s WHERE issued + lifetime &lt; ?;'"><code class="variable-quote">'</code><code class="variable-string">SELECT server_url FROM %(associations)s WHE</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#remove_assoc_sql" class="summary-name">remove_assoc_sql</a> = <code title="'DELETE FROM %(associations)s WHERE server_url = ? AND handle = ?;'"><code class="variable-quote">'</code><code class="variable-string">DELETE FROM %(associations)s WHERE server_</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="openid.store.sqlstore.SQLiteStore-class.html#clean_assoc_sql" class="summary-name">clean_assoc_sql</a> = <code title="'DELETE FROM %(associations)s WHERE issued + lifetime &lt; ?;'"><code class="variable-quote">'</code><code class="variable-string">DELETE FROM %(associations)s WHERE issued +</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="add_nonce_sql"></a><span class="summary-name">add_nonce_sql</span> = <code title="'INSERT INTO %(nonces)s VALUES (?, ?, ?);'"><code class="variable-quote">'</code><code class="variable-string">INSERT INTO %(nonces)s VALUES (?, ?, ?);</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="clean_nonce_sql"></a><span class="summary-name">clean_nonce_sql</span> = <code title="'DELETE FROM %(nonces)s WHERE timestamp &lt; ?;'"><code class="variable-quote">'</code><code class="variable-string">DELETE FROM %(nonces)s WHERE timestamp &lt; ?;</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="openid.store.sqlstore.SQLStore-class.html">SQLStore</a></code></b>:
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#associations_table">associations_table</a></code>,
+      <code><a href="openid.store.sqlstore.SQLStore-class.html#nonces_table">nonces_table</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="blobDecode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">blobDecode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">buf</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.blobDecode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert a blob as returned by the SQL engine into a str object.</p>
+  <p>str -&gt; str</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="openid.store.sqlstore.SQLStore-class.html#blobDecode">SQLStore.blobDecode</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="blobEncode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">blobEncode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.blobEncode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Convert a str object into the necessary object for storing in the 
+  database as a blob.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="openid.store.sqlstore.SQLStore-class.html#blobEncode">SQLStore.blobEncode</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="useNonce"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">useNonce</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*args</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="openid.store.sqlstore-pysrc.html#SQLiteStore.useNonce">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return whether this nonce is present, and if it is, then remove it 
+  from the set.</p>
+  <p>str -&gt; bool</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>server_url</code></strong> - The URL of the server from which the nonce originated.</li>
+        <li><strong class="pname"><code>timestamp</code></strong> - The time that the nonce was created (to the nearest second), in 
+          seconds since January 1 1970 UTC.</li>
+        <li><strong class="pname"><code>salt</code></strong> - A random string that makes two nonces from the same server issued
+          during the same second unique.</li>
+    </ul></dd>
+    <dt>Returns: <code>bool</code></dt>
+        <dd>Whether or not the nonce was valid.</dd>
+    <dt>Overrides:
+        <a href="openid.store.interface.OpenIDStore-class.html#useNonce">interface.OpenIDStore.useNonce</a>
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variable Details</span></td>
+</tr>
+</table>
+<a name="create_nonce_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">create_nonce_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string"></code>
+<code class="variable-string">    CREATE TABLE %(nonces)s (</code>
+<code class="variable-string">        server_url VARCHAR,</code>
+<code class="variable-string">        timestamp INTEGER,</code>
+<code class="variable-string">        salt CHAR(40),</code>
+<code class="variable-string">        UNIQUE(server_url, timestamp, salt)</code>
+<code class="variable-string">    );</code>
+<code class="variable-string">    </code><code class="variable-quote">'''</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_assoc_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">create_assoc_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string"></code>
+<code class="variable-string">    CREATE TABLE %(associations)s</code>
+<code class="variable-string">    (</code>
+<code class="variable-string">        server_url VARCHAR(2047),</code>
+<code class="variable-string">        handle VARCHAR(255),</code>
+<code class="variable-string">        secret BLOB(128),</code>
+<code class="variable-string">        issued INTEGER,</code>
+<code class="variable-string">        lifetime INTEGER,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="set_assoc_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">set_assoc_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">INSERT OR REPLACE INTO %(associations)s (server_url, handle, secret, </code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">issued, lifetime, assoc_type) VALUES (?, ?, ?, ?, ?, ?);</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_assocs_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">get_assocs_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">SELECT handle, secret, issued, lifetime, assoc_type FROM %(associatio</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ns)s WHERE server_url = ?;</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_assoc_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">get_assoc_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">SELECT handle, secret, issued, lifetime, assoc_type FROM %(associatio</code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-string">ns)s WHERE server_url = ? AND handle = ?;</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_expired_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">get_expired_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">SELECT server_url FROM %(associations)s WHERE issued + lifetime &lt; ?;</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remove_assoc_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remove_assoc_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">DELETE FROM %(associations)s WHERE server_url = ? AND handle = ?;</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="clean_assoc_sql"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">clean_assoc_sql</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'</code><code class="variable-string">DELETE FROM %(associations)s WHERE issued + lifetime &lt; ?;</code><code class="variable-quote">'</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:28 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.test.test_xri</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.test-module.html">Package&nbsp;test</a> ::
+        Module&nbsp;test_xri
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.test.test_xri-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.test.test_xri-module.html">Module openid.test.test_xri</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">unittest</tt> <tt class="py-keyword">import</tt> <tt class="py-name">TestCase</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Package openid.yadis=openid.yadis-module.html"><a title="openid.yadis" class="py-name" href="#" onclick="return doclink('link-1', 'yadis', 'link-1');">yadis</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Module openid.yadis.xri=openid.yadis.xri-module.html"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-2', 'xri', 'link-2');">xri</a></tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"> </tt>
+<a name="XriDiscoveryTestCase"></a><div id="XriDiscoveryTestCase-def"><a name="L4"></a><tt class="py-lineno">  4</tt> <a class="py-toggle" href="#" id="XriDiscoveryTestCase-toggle" onclick="return toggle('XriDiscoveryTestCase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_xri.XriDiscoveryTestCase-class.html">XriDiscoveryTestCase</a><tt class="py-op">(</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriDiscoveryTestCase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="XriDiscoveryTestCase-expanded"><a name="XriDiscoveryTestCase.test_isXRI"></a><div id="XriDiscoveryTestCase.test_isXRI-def"><a name="L5"></a><tt class="py-lineno">  5</tt> <a class="py-toggle" href="#" id="XriDiscoveryTestCase.test_isXRI-toggle" onclick="return toggle('XriDiscoveryTestCase.test_isXRI');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriDiscoveryTestCase-class.html#test_isXRI">test_isXRI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriDiscoveryTestCase.test_isXRI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XriDiscoveryTestCase.test_isXRI-expanded"><a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line">        <tt class="py-name">i</tt> <tt class="py-op">=</tt> <tt id="link-3" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-3', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Function openid.yadis.xri.identifierScheme()=openid.yadis.xri-module.html#identifierScheme"><a title="openid.yadis.xri.identifierScheme" class="py-name" href="#" onclick="return doclink('link-4', 'identifierScheme', 'link-4');">identifierScheme</a></tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">(</tt><tt class="py-string">'=john.smith'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'XRI'</tt><tt class="py-op">)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">(</tt><tt class="py-string">'@smiths/john'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'XRI'</tt><tt class="py-op">)</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">(</tt><tt class="py-string">'smoker.myopenid.com'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'URI'</tt><tt class="py-op">)</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">(</tt><tt class="py-string">'xri://=john'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'XRI'</tt><tt class="py-op">)</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">(</tt><tt class="py-string">''</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'URI'</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"> </tt>
+<a name="XriEscapingTestCase"></a><div id="XriEscapingTestCase-def"><a name="L14"></a><tt class="py-lineno"> 14</tt> <a class="py-toggle" href="#" id="XriEscapingTestCase-toggle" onclick="return toggle('XriEscapingTestCase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_xri.XriEscapingTestCase-class.html">XriEscapingTestCase</a><tt class="py-op">(</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriEscapingTestCase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="XriEscapingTestCase-expanded"><a name="XriEscapingTestCase.test_escaping_percents"></a><div id="XriEscapingTestCase.test_escaping_percents-def"><a name="L15"></a><tt class="py-lineno"> 15</tt> <a class="py-toggle" href="#" id="XriEscapingTestCase.test_escaping_percents-toggle" onclick="return toggle('XriEscapingTestCase.test_escaping_percents');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriEscapingTestCase-class.html#test_escaping_percents">test_escaping_percents</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriEscapingTestCase.test_escaping_percents-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XriEscapingTestCase.test_escaping_percents-expanded"><a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt id="link-5" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-5', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Function openid.yadis.xri.escapeForIRI()=openid.yadis.xri-module.html#escapeForIRI"><a title="openid.yadis.xri.escapeForIRI" class="py-name" href="#" onclick="return doclink('link-6', 'escapeForIRI', 'link-6');">escapeForIRI</a></tt><tt class="py-op">(</tt><tt class="py-string">'@example/abc%2Fd/ef'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">                             <tt class="py-string">'@example/abc%252Fd/ef'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="XriEscapingTestCase.test_escaping_xref"></a><div id="XriEscapingTestCase.test_escaping_xref-def"><a name="L20"></a><tt class="py-lineno"> 20</tt> <a class="py-toggle" href="#" id="XriEscapingTestCase.test_escaping_xref-toggle" onclick="return toggle('XriEscapingTestCase.test_escaping_xref');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriEscapingTestCase-class.html#test_escaping_xref">test_escaping_xref</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriEscapingTestCase.test_escaping_xref-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XriEscapingTestCase.test_escaping_xref-expanded"><a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line">        <tt class="py-comment"># no escapes</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">esc</tt> <tt class="py-op">=</tt> <tt id="link-7" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-7', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name"><a title="openid.yadis.xri.escapeForIRI" class="py-name" href="#" onclick="return doclink('link-8', 'escapeForIRI', 'link-6');">escapeForIRI</a></tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar)'</tt><tt class="py-op">,</tt> <tt class="py-name">esc</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar)'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line">        <tt class="py-comment"># escape slashes</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar%2Fbaz)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line">                             <tt class="py-name">esc</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar/baz)'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar%2Fbaz)/(+a%2Fb)'</tt><tt class="py-op">,</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">                             <tt class="py-name">esc</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@bar/baz)/(+a/b)'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">        <tt class="py-comment"># escape query ? and fragment #</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@baz%3Fp=q%23r)?i=j#k'</tt><tt class="py-op">,</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">                             <tt class="py-name">esc</tt><tt class="py-op">(</tt><tt class="py-string">'@example/foo/(@baz?p=q#r)?i=j#k'</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="XriTransformationTestCase"></a><div id="XriTransformationTestCase-def"><a name="L35"></a><tt class="py-lineno"> 35</tt> <a class="py-toggle" href="#" id="XriTransformationTestCase-toggle" onclick="return toggle('XriTransformationTestCase');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_xri.XriTransformationTestCase-class.html">XriTransformationTestCase</a><tt class="py-op">(</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriTransformationTestCase-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="XriTransformationTestCase-expanded"><a name="XriTransformationTestCase.test_to_iri_normal"></a><div id="XriTransformationTestCase.test_to_iri_normal-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="XriTransformationTestCase.test_to_iri_normal-toggle" onclick="return toggle('XriTransformationTestCase.test_to_iri_normal');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriTransformationTestCase-class.html#test_to_iri_normal">test_to_iri_normal</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriTransformationTestCase.test_to_iri_normal-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XriTransformationTestCase.test_to_iri_normal-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt id="link-9" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-9', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Function openid.yadis.xri.toIRINormal()=openid.yadis.xri-module.html#toIRINormal"><a title="openid.yadis.xri.toIRINormal" class="py-name" href="#" onclick="return doclink('link-10', 'toIRINormal', 'link-10');">toIRINormal</a></tt><tt class="py-op">(</tt><tt class="py-string">'@example'</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'xri://@example'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">unichr</tt><tt class="py-op">(</tt><tt class="py-number">0x10000</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">:</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-comment"># bleh narrow python build</tt> </tt>
+<a name="XriTransformationTestCase.test_iri_to_url"></a><div id="XriTransformationTestCase.test_iri_to_url-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="XriTransformationTestCase.test_iri_to_url-toggle" onclick="return toggle('XriTransformationTestCase.test_iri_to_url');">-</a><tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriTransformationTestCase-class.html#test_iri_to_url">test_iri_to_url</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriTransformationTestCase.test_iri_to_url-collapsed" style="display:none;" pad="+++" indent="++++++++++++++++"></div><div id="XriTransformationTestCase.test_iri_to_url-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">            <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-string">u'l\xa1m'</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-name">expected</tt> <tt class="py-op">=</tt> <tt class="py-string">'l%C2%A1m'</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt id="link-11" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-11', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Function openid.yadis.xri.iriToURI()=openid.yadis.xri-module.html#iriToURI"><a title="openid.yadis.xri.iriToURI" class="py-name" href="#" onclick="return doclink('link-12', 'iriToURI', 'link-12');">iriToURI</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">expected</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="XriTransformationTestCase.test_iri_to_url"></a><div id="XriTransformationTestCase.test_iri_to_url-def"><a name="L48"></a><tt class="py-lineno"> 48</tt> <a class="py-toggle" href="#" id="XriTransformationTestCase.test_iri_to_url-toggle" onclick="return toggle('XriTransformationTestCase.test_iri_to_url');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.XriTransformationTestCase-class.html#test_iri_to_url">test_iri_to_url</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XriTransformationTestCase.test_iri_to_url-collapsed" style="display:none;" pad="+++" indent="++++++++++++++++"></div><div id="XriTransformationTestCase.test_iri_to_url-expanded"><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">            <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-string">u'l\xa1m\U00101010n'</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">            <tt class="py-name">expected</tt> <tt class="py-op">=</tt> <tt class="py-string">'l%C2%A1m%F4%81%80%90n'</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-13', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-14" class="py-name"><a title="openid.yadis.xri.iriToURI" class="py-name" href="#" onclick="return doclink('link-14', 'iriToURI', 'link-12');">iriToURI</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">expected</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"> </tt>
+<a name="CanonicalIDTest"></a><div id="CanonicalIDTest-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="CanonicalIDTest-toggle" onclick="return toggle('CanonicalIDTest');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_xri.CanonicalIDTest-class.html">CanonicalIDTest</a><tt class="py-op">(</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CanonicalIDTest-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="CanonicalIDTest-expanded"><a name="CanonicalIDTest.mkTest"></a><div id="CanonicalIDTest.mkTest-def"><a name="L56"></a><tt class="py-lineno"> 56</tt> <a class="py-toggle" href="#" id="CanonicalIDTest.mkTest-toggle" onclick="return toggle('CanonicalIDTest.mkTest');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.CanonicalIDTest-class.html#mkTest">mkTest</a><tt class="py-op">(</tt><tt class="py-param">providerID</tt><tt class="py-op">,</tt> <tt class="py-param">canonicalID</tt><tt class="py-op">,</tt> <tt class="py-param">isAuthoritative</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="CanonicalIDTest.mkTest-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="CanonicalIDTest.mkTest-expanded"><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">test</tt><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">            <tt class="py-name">result</tt> <tt class="py-op">=</tt> <tt id="link-15" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-15', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Function openid.yadis.xri.providerIsAuthoritative()=openid.yadis.xri-module.html#providerIsAuthoritative"><a title="openid.yadis.xri.providerIsAuthoritative" class="py-name" href="#" onclick="return doclink('link-16', 'providerIsAuthoritative', 'link-16');">providerIsAuthoritative</a></tt><tt class="py-op">(</tt><tt class="py-name">providerID</tt><tt class="py-op">,</tt> <tt class="py-name">canonicalID</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">            <tt class="py-name">format</tt> <tt class="py-op">=</tt> <tt class="py-string">"%s providing %s, expected %s"</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt id="link-17" class="py-name" targets="Module openid.message=openid.message-module.html"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-17', 'message', 'link-17');">message</a></tt> <tt class="py-op">=</tt> <tt class="py-name">format</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">providerID</tt><tt class="py-op">,</tt> <tt class="py-name">canonicalID</tt><tt class="py-op">,</tt> <tt class="py-name">isAuthoritative</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">isAuthoritative</tt><tt class="py-op">,</tt> <tt class="py-name">result</tt><tt class="py-op">,</tt> <tt id="link-18" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-18', 'message', 'link-17');">message</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-19" class="py-name" targets="Package openid.test=openid.test-module.html,Function openid.test.cryptutil.test()=openid.test.cryptutil-module.html#test,Function openid.test.dh.test()=openid.test.dh-module.html#test,Function openid.test.oidutil.test()=openid.test.oidutil-module.html#test,Function openid.test.test_fetchers.test()=openid.test.test_fetchers-module.html#test,Function openid.test.test_parsehtml.test()=openid.test.test_parsehtml-module.html#test,Method openid.test.test_sreg.SendFieldsTest.test()=openid.test.test_sreg.SendFieldsTest-class.html#test,Function openid.test.test_yadis_discover.test()=openid.test.test_yadis_discover-module.html#test"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-19', 'test', 'link-19');">test</a></tt> </tt>
+</div><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line"> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">    <tt id="link-20" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_equals()=openid.test.test_xri.CanonicalIDTest-class.html#test_equals"><a title="openid.test.test_xri.CanonicalIDTest.test_equals" class="py-name" href="#" onclick="return doclink('link-20', 'test_equals', 'link-20');">test_equals</a></tt> <tt class="py-op">=</tt> <tt id="link-21" class="py-name" targets="Method openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest()=openid.test.test_association_response.ExtractAssociationSessionTypeMismatch-class.html#mkTest,Method openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest()=openid.test.test_association_response.TestOpenID1AssociationResponseSessionType-class.html#mkTest,Method openid.test.test_etxrd.TestCanonicalID.mkTest()=openid.test.test_etxrd.TestCanonicalID-class.html#mkTest,Method openid.test.test_xri.CanonicalIDTest.mkTest()=openid.test.test_xri.CanonicalIDTest-class.html#mkTest,Method openid.test.test_xri.TestGetRootAuthority.mkTest()=openid.test.test_xri.TestGetRootAuthority-class.html#mkTest"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-21', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'='</tt><tt class="py-op">,</tt> <tt class="py-string">'=!698.74D1.A1F2.86C7'</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">    <tt id="link-22" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_atOne()=openid.test.test_xri.CanonicalIDTest-class.html#test_atOne"><a title="openid.test.test_xri.CanonicalIDTest.test_atOne" class="py-name" href="#" onclick="return doclink('link-22', 'test_atOne', 'link-22');">test_atOne</a></tt> <tt class="py-op">=</tt> <tt id="link-23" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-23', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'@!1234'</tt><tt class="py-op">,</tt> <tt class="py-string">'@!1234!ABCD'</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt id="link-24" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_atTwo()=openid.test.test_xri.CanonicalIDTest-class.html#test_atTwo"><a title="openid.test.test_xri.CanonicalIDTest.test_atTwo" class="py-name" href="#" onclick="return doclink('link-24', 'test_atTwo', 'link-24');">test_atTwo</a></tt> <tt class="py-op">=</tt> <tt id="link-25" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-25', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'@!1234!5678'</tt><tt class="py-op">,</tt> <tt class="py-string">'@!1234!5678!ABCD'</tt><tt class="py-op">,</tt> <tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_atEqualsFails()=openid.test.test_xri.CanonicalIDTest-class.html#test_atEqualsFails"><a title="openid.test.test_xri.CanonicalIDTest.test_atEqualsFails" class="py-name" href="#" onclick="return doclink('link-26', 'test_atEqualsFails', 'link-26');">test_atEqualsFails</a></tt> <tt class="py-op">=</tt> <tt id="link-27" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-27', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'@!1234'</tt><tt class="py-op">,</tt> <tt class="py-string">'=!1234!ABCD'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt id="link-28" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_tooDeepFails()=openid.test.test_xri.CanonicalIDTest-class.html#test_tooDeepFails"><a title="openid.test.test_xri.CanonicalIDTest.test_tooDeepFails" class="py-name" href="#" onclick="return doclink('link-28', 'test_tooDeepFails', 'link-28');">test_tooDeepFails</a></tt> <tt class="py-op">=</tt> <tt id="link-29" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-29', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'@!1234'</tt><tt class="py-op">,</tt> <tt class="py-string">'@!1234!ABCD!9765'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt id="link-30" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_atEqualsAndTooDeepFails()=openid.test.test_xri.CanonicalIDTest-class.html#test_atEqualsAndTooDeepFails"><a title="openid.test.test_xri.CanonicalIDTest.test_atEqualsAndTooDeepFails" class="py-name" href="#" onclick="return doclink('link-30', 'test_atEqualsAndTooDeepFails', 'link-30');">test_atEqualsAndTooDeepFails</a></tt> <tt class="py-op">=</tt> <tt id="link-31" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-31', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'@!1234!ABCD'</tt><tt class="py-op">,</tt> <tt class="py-string">'=!1234'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt id="link-32" class="py-name" targets="Method openid.test.test_xri.CanonicalIDTest.test_differentBeginningFails()=openid.test.test_xri.CanonicalIDTest-class.html#test_differentBeginningFails"><a title="openid.test.test_xri.CanonicalIDTest.test_differentBeginningFails" class="py-name" href="#" onclick="return doclink('link-32', 'test_differentBeginningFails', 'link-32');">test_differentBeginningFails</a></tt> <tt class="py-op">=</tt> <tt id="link-33" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-33', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">'=!BABE'</tt><tt class="py-op">,</tt> <tt class="py-string">'=!D00D'</tt><tt class="py-op">,</tt> <tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="TestGetRootAuthority"></a><div id="TestGetRootAuthority-def"><a name="L74"></a><tt class="py-lineno"> 74</tt> <a class="py-toggle" href="#" id="TestGetRootAuthority-toggle" onclick="return toggle('TestGetRootAuthority');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.test.test_xri.TestGetRootAuthority-class.html">TestGetRootAuthority</a><tt class="py-op">(</tt><tt class="py-base-class">TestCase</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetRootAuthority-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="TestGetRootAuthority-expanded"><a name="TestGetRootAuthority.mkTest"></a><div id="TestGetRootAuthority.mkTest-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="TestGetRootAuthority.mkTest-toggle" onclick="return toggle('TestGetRootAuthority.mkTest');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.test.test_xri.TestGetRootAuthority-class.html#mkTest">mkTest</a><tt class="py-op">(</tt><tt class="py-param">the_xri</tt><tt class="py-op">,</tt> <tt class="py-param">expected_root</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="TestGetRootAuthority.mkTest-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="TestGetRootAuthority.mkTest-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">def</tt> <tt class="py-def-name">test</tt><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">            <tt class="py-name">actual_root</tt> <tt class="py-op">=</tt> <tt id="link-34" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-34', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Function openid.yadis.xri.rootAuthority()=openid.yadis.xri-module.html#rootAuthority"><a title="openid.yadis.xri.rootAuthority" class="py-name" href="#" onclick="return doclink('link-35', 'rootAuthority', 'link-35');">rootAuthority</a></tt><tt class="py-op">(</tt><tt class="py-name">the_xri</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">failUnlessEqual</tt><tt class="py-op">(</tt><tt class="py-name">actual_root</tt><tt class="py-op">,</tt> <tt id="link-36" class="py-name"><a title="openid.yadis.xri" class="py-name" href="#" onclick="return doclink('link-36', 'xri', 'link-2');">xri</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Function openid.yadis.xri.XRI()=openid.yadis.xri-module.html#XRI"><a title="openid.yadis.xri.XRI" class="py-name" href="#" onclick="return doclink('link-37', 'XRI', 'link-37');">XRI</a></tt><tt class="py-op">(</tt><tt class="py-name">expected_root</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-38" class="py-name"><a title="openid.test
+openid.test.cryptutil.test
+openid.test.dh.test
+openid.test.oidutil.test
+openid.test.test_fetchers.test
+openid.test.test_parsehtml.test
+openid.test.test_sreg.SendFieldsTest.test
+openid.test.test_yadis_discover.test" class="py-name" href="#" onclick="return doclink('link-38', 'test', 'link-19');">test</a></tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">    <tt id="link-39" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_at()=openid.test.test_xri.TestGetRootAuthority-class.html#test_at"><a title="openid.test.test_xri.TestGetRootAuthority.test_at" class="py-name" href="#" onclick="return doclink('link-39', 'test_at', 'link-39');">test_at</a></tt> <tt class="py-op">=</tt> <tt id="link-40" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-40', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"@foo"</tt><tt class="py-op">,</tt> <tt class="py-string">"@"</tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">    <tt id="link-41" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_atStar()=openid.test.test_xri.TestGetRootAuthority-class.html#test_atStar"><a title="openid.test.test_xri.TestGetRootAuthority.test_atStar" class="py-name" href="#" onclick="return doclink('link-41', 'test_atStar', 'link-41');">test_atStar</a></tt> <tt class="py-op">=</tt> <tt id="link-42" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-42', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"@foo*bar"</tt><tt class="py-op">,</tt> <tt class="py-string">"@"</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">    <tt id="link-43" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_atStarStar()=openid.test.test_xri.TestGetRootAuthority-class.html#test_atStarStar"><a title="openid.test.test_xri.TestGetRootAuthority.test_atStarStar" class="py-name" href="#" onclick="return doclink('link-43', 'test_atStarStar', 'link-43');">test_atStarStar</a></tt> <tt class="py-op">=</tt> <tt id="link-44" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-44', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"@*foo*bar"</tt><tt class="py-op">,</tt> <tt class="py-string">"@"</tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">    <tt id="link-45" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_atWithPath()=openid.test.test_xri.TestGetRootAuthority-class.html#test_atWithPath"><a title="openid.test.test_xri.TestGetRootAuthority.test_atWithPath" class="py-name" href="#" onclick="return doclink('link-45', 'test_atWithPath', 'link-45');">test_atWithPath</a></tt> <tt class="py-op">=</tt> <tt id="link-46" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-46', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"@foo/bar"</tt><tt class="py-op">,</tt> <tt class="py-string">"@"</tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">    <tt id="link-47" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_bangBang()=openid.test.test_xri.TestGetRootAuthority-class.html#test_bangBang"><a title="openid.test.test_xri.TestGetRootAuthority.test_bangBang" class="py-name" href="#" onclick="return doclink('link-47', 'test_bangBang', 'link-47');">test_bangBang</a></tt> <tt class="py-op">=</tt> <tt id="link-48" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-48', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"!!990!991"</tt><tt class="py-op">,</tt> <tt class="py-string">"!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">    <tt id="link-49" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_bang()=openid.test.test_xri.TestGetRootAuthority-class.html#test_bang"><a title="openid.test.test_xri.TestGetRootAuthority.test_bang" class="py-name" href="#" onclick="return doclink('link-49', 'test_bang', 'link-49');">test_bang</a></tt> <tt class="py-op">=</tt> <tt id="link-50" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-50', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"!1001!02"</tt><tt class="py-op">,</tt> <tt class="py-string">"!"</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">    <tt id="link-51" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_equalsStar()=openid.test.test_xri.TestGetRootAuthority-class.html#test_equalsStar"><a title="openid.test.test_xri.TestGetRootAuthority.test_equalsStar" class="py-name" href="#" onclick="return doclink('link-51', 'test_equalsStar', 'link-51');">test_equalsStar</a></tt> <tt class="py-op">=</tt> <tt id="link-52" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-52', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"=foo*bar"</tt><tt class="py-op">,</tt> <tt class="py-string">"="</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt id="link-53" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_xrefPath()=openid.test.test_xri.TestGetRootAuthority-class.html#test_xrefPath"><a title="openid.test.test_xri.TestGetRootAuthority.test_xrefPath" class="py-name" href="#" onclick="return doclink('link-53', 'test_xrefPath', 'link-53');">test_xrefPath</a></tt> <tt class="py-op">=</tt> <tt id="link-54" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-54', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"(example.com)/foo"</tt><tt class="py-op">,</tt> <tt class="py-string">"(example.com)"</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">    <tt id="link-55" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_xrefStar()=openid.test.test_xri.TestGetRootAuthority-class.html#test_xrefStar"><a title="openid.test.test_xri.TestGetRootAuthority.test_xrefStar" class="py-name" href="#" onclick="return doclink('link-55', 'test_xrefStar', 'link-55');">test_xrefStar</a></tt> <tt class="py-op">=</tt> <tt id="link-56" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-56', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"(example.com)*bar/foo"</tt><tt class="py-op">,</tt> <tt class="py-string">"(example.com)"</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">    <tt id="link-57" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_uriAuth()=openid.test.test_xri.TestGetRootAuthority-class.html#test_uriAuth"><a title="openid.test.test_xri.TestGetRootAuthority.test_uriAuth" class="py-name" href="#" onclick="return doclink('link-57', 'test_uriAuth', 'link-57');">test_uriAuth</a></tt> <tt class="py-op">=</tt> <tt id="link-58" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-58', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"baz.example.com/foo"</tt><tt class="py-op">,</tt> <tt class="py-string">"baz.example.com"</tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">    <tt id="link-59" class="py-name" targets="Method openid.test.test_xri.TestGetRootAuthority.test_uriAuthPort()=openid.test.test_xri.TestGetRootAuthority-class.html#test_uriAuthPort"><a title="openid.test.test_xri.TestGetRootAuthority.test_uriAuthPort" class="py-name" href="#" onclick="return doclink('link-59', 'test_uriAuthPort', 'link-59');">test_uriAuthPort</a></tt> <tt class="py-op">=</tt> <tt id="link-60" class="py-name"><a title="openid.test.test_association_response.ExtractAssociationSessionTypeMismatch.mkTest
+openid.test.test_association_response.TestOpenID1AssociationResponseSessionType.mkTest
+openid.test.test_etxrd.TestCanonicalID.mkTest
+openid.test.test_xri.CanonicalIDTest.mkTest
+openid.test.test_xri.TestGetRootAuthority.mkTest" class="py-name" href="#" onclick="return doclink('link-60', 'mkTest', 'link-21');">mkTest</a></tt><tt class="py-op">(</tt><tt class="py-string">"baz.example.com:8080/foo"</tt><tt class="py-op">,</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                              <tt class="py-string">"baz.example.com:8080"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">    <tt class="py-comment"># Looking at the ABNF in XRI Syntax 2.0, I don't think you can</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># have example.com*bar.  You can do (example.com)*bar, but that</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment"># would mean something else.</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">##("example.com*bar/(=baz)", "example.com*bar"),</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-comment"></tt>    <tt class="py-comment">##("baz.example.com!01/foo", "baz.example.com!01"),</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-comment"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-keyword">if</tt> <tt class="py-name">__name__</tt> <tt class="py-op">==</tt> <tt class="py-string">'__main__'</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">unittest</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">    <tt class="py-name">unittest</tt><tt class="py-op">.</tt><tt class="py-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:38 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

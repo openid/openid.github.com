@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>openid.extensions.draft.pape5</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="openid-module.html">Package&nbsp;openid</a> ::
+        <a href="openid.extensions-module.html">Package&nbsp;extensions</a> ::
+        <a href="openid.extensions.draft-module.html" onclick="show_private();">Package&nbsp;draft</a> ::
+        Module&nbsp;pape5
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="openid.extensions.draft.pape5-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="openid.extensions.draft.pape5-module.html">Module openid.extensions.draft.pape5</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-docstring">"""An implementation of the OpenID Provider Authentication Policy</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-docstring">Extension 1.0, Draft 5</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-docstring">@see: http://openid.net/developers/specs/</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-docstring">@since: 2.1.0</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line">    <tt class="py-string">'Request'</tt><tt class="py-op">,</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line">    <tt class="py-string">'Response'</tt><tt class="py-op">,</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line">    <tt class="py-string">'ns_uri'</tt><tt class="py-op">,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line">    <tt class="py-string">'AUTH_PHISHING_RESISTANT'</tt><tt class="py-op">,</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line">    <tt class="py-string">'AUTH_MULTI_FACTOR'</tt><tt class="py-op">,</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line">    <tt class="py-string">'AUTH_MULTI_FACTOR_PHYSICAL'</tt><tt class="py-op">,</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line">    <tt class="py-string">'LEVELS_NIST'</tt><tt class="py-op">,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line">    <tt class="py-string">'LEVELS_JISA'</tt><tt class="py-op">,</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line">    <tt class="py-op">]</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package openid=openid-module.html"><a title="openid" class="py-name" href="#" onclick="return doclink('link-0', 'openid', 'link-0');">openid</a></tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Module openid.extension=openid.extension-module.html"><a title="openid.extension" class="py-name" href="#" onclick="return doclink('link-1', 'extension', 'link-1');">extension</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class openid.extension.Extension=openid.extension.Extension-class.html"><a title="openid.extension.Extension" class="py-name" href="#" onclick="return doclink('link-2', 'Extension', 'link-2');">Extension</a></tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">warnings</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">re</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt id="link-3" class="py-name" targets="Variable openid.extension.Extension.ns_uri=openid.extension.Extension-class.html#ns_uri,Variable openid.extensions.draft.pape2.Request.ns_uri=openid.extensions.draft.pape2.Request-class.html#ns_uri,Variable openid.extensions.draft.pape2.Response.ns_uri=openid.extensions.draft.pape2.Response-class.html#ns_uri,Variable openid.extensions.draft.pape2.ns_uri=openid.extensions.draft.pape2-module.html#ns_uri,Variable openid.extensions.draft.pape5.Request.ns_uri=openid.extensions.draft.pape5.Request-class.html#ns_uri,Variable openid.extensions.draft.pape5.Response.ns_uri=openid.extensions.draft.pape5.Response-class.html#ns_uri,Variable openid.extensions.draft.pape5.ns_uri=openid.extensions.draft.pape5-module.html#ns_uri,Variable openid.extensions.sreg.ns_uri=openid.extensions.sreg-module.html#ns_uri,Variable openid.sreg.ns_uri=openid.sreg-module.html#ns_uri,Variable openid.test.test_consumer.SillyExtension.ns_uri=openid.test.test_consumer.SillyExtension-class.html#ns_uri,Variable openid.test.test_extension.DummyExtension.ns_uri=openid.test.test_extension.DummyExtension-class.html#ns_uri"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-3', 'ns_uri', 'link-3');">ns_uri</a></tt> <tt class="py-op">=</tt> <tt class="py-string">"http://specs.openid.net/extensions/pape/1.0"</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt id="link-4" class="py-name" targets="Variable openid.extensions.draft.pape2.AUTH_MULTI_FACTOR_PHYSICAL=openid.extensions.draft.pape2-module.html#AUTH_MULTI_FACTOR_PHYSICAL,Variable openid.extensions.draft.pape5.AUTH_MULTI_FACTOR_PHYSICAL=openid.extensions.draft.pape5-module.html#AUTH_MULTI_FACTOR_PHYSICAL"><a title="openid.extensions.draft.pape2.AUTH_MULTI_FACTOR_PHYSICAL
+openid.extensions.draft.pape5.AUTH_MULTI_FACTOR_PHYSICAL" class="py-name" href="#" onclick="return doclink('link-4', 'AUTH_MULTI_FACTOR_PHYSICAL', 'link-4');">AUTH_MULTI_FACTOR_PHYSICAL</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line">    <tt class="py-string">'http://schemas.openid.net/pape/policies/2007/06/multi-factor-physical'</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt id="link-5" class="py-name" targets="Variable openid.extensions.draft.pape2.AUTH_MULTI_FACTOR=openid.extensions.draft.pape2-module.html#AUTH_MULTI_FACTOR,Variable openid.extensions.draft.pape5.AUTH_MULTI_FACTOR=openid.extensions.draft.pape5-module.html#AUTH_MULTI_FACTOR"><a title="openid.extensions.draft.pape2.AUTH_MULTI_FACTOR
+openid.extensions.draft.pape5.AUTH_MULTI_FACTOR" class="py-name" href="#" onclick="return doclink('link-5', 'AUTH_MULTI_FACTOR', 'link-5');">AUTH_MULTI_FACTOR</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-string">'http://schemas.openid.net/pape/policies/2007/06/multi-factor'</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt id="link-6" class="py-name" targets="Variable openid.extensions.draft.pape2.AUTH_PHISHING_RESISTANT=openid.extensions.draft.pape2-module.html#AUTH_PHISHING_RESISTANT,Variable openid.extensions.draft.pape5.AUTH_PHISHING_RESISTANT=openid.extensions.draft.pape5-module.html#AUTH_PHISHING_RESISTANT"><a title="openid.extensions.draft.pape2.AUTH_PHISHING_RESISTANT
+openid.extensions.draft.pape5.AUTH_PHISHING_RESISTANT" class="py-name" href="#" onclick="return doclink('link-6', 'AUTH_PHISHING_RESISTANT', 'link-6');">AUTH_PHISHING_RESISTANT</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-string">'http://schemas.openid.net/pape/policies/2007/06/phishing-resistant'</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable openid.extensions.draft.pape5.AUTH_NONE=openid.extensions.draft.pape5-module.html#AUTH_NONE"><a title="openid.extensions.draft.pape5.AUTH_NONE" class="py-name" href="#" onclick="return doclink('link-7', 'AUTH_NONE', 'link-7');">AUTH_NONE</a></tt> <tt class="py-op">=</tt> \ </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-string">'http://schemas.openid.net/pape/policies/2007/06/none'</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable openid.extensions.draft.pape2.TIME_VALIDATOR=openid.extensions.draft.pape2-module.html#TIME_VALIDATOR,Variable openid.extensions.draft.pape5.TIME_VALIDATOR=openid.extensions.draft.pape5-module.html#TIME_VALIDATOR"><a title="openid.extensions.draft.pape2.TIME_VALIDATOR
+openid.extensions.draft.pape5.TIME_VALIDATOR" class="py-name" href="#" onclick="return doclink('link-8', 'TIME_VALIDATOR', 'link-8');">TIME_VALIDATOR</a></tt> <tt class="py-op">=</tt> <tt class="py-name">re</tt><tt class="py-op">.</tt><tt class="py-name">compile</tt><tt class="py-op">(</tt><tt class="py-string">'^\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\dZ$'</tt><tt class="py-op">)</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt id="link-9" class="py-name" targets="Variable openid.extensions.draft.pape5.LEVELS_NIST=openid.extensions.draft.pape5-module.html#LEVELS_NIST"><a title="openid.extensions.draft.pape5.LEVELS_NIST" class="py-name" href="#" onclick="return doclink('link-9', 'LEVELS_NIST', 'link-9');">LEVELS_NIST</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'http://csrc.nist.gov/publications/nistpubs/800-63/SP800-63V1_0_2.pdf'</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-10" class="py-name" targets="Variable openid.extensions.draft.pape5.LEVELS_JISA=openid.extensions.draft.pape5-module.html#LEVELS_JISA"><a title="openid.extensions.draft.pape5.LEVELS_JISA" class="py-name" href="#" onclick="return doclink('link-10', 'LEVELS_JISA', 'link-10');">LEVELS_JISA</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'http://www.jisa.or.jp/spec/auth_level.html'</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="PAPEExtension"></a><div id="PAPEExtension-def"><a name="L40"></a><tt class="py-lineno"> 40</tt> <a class="py-toggle" href="#" id="PAPEExtension-toggle" onclick="return toggle('PAPEExtension');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.PAPEExtension-class.html">PAPEExtension</a><tt class="py-op">(</tt><tt class="py-base-class">Extension</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PAPEExtension-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="PAPEExtension-expanded"><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-name">_default_auth_level_aliases</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-string">'nist'</tt><tt class="py-op">:</tt> <tt id="link-11" class="py-name"><a title="openid.extensions.draft.pape5.LEVELS_NIST" class="py-name" href="#" onclick="return doclink('link-11', 'LEVELS_NIST', 'link-9');">LEVELS_NIST</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">        <tt class="py-string">'jisa'</tt><tt class="py-op">:</tt> <tt id="link-12" class="py-name"><a title="openid.extensions.draft.pape5.LEVELS_JISA" class="py-name" href="#" onclick="return doclink('link-12', 'LEVELS_JISA', 'link-10');">LEVELS_JISA</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="PAPEExtension.__init__"></a><div id="PAPEExtension.__init__-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="PAPEExtension.__init__-toggle" onclick="return toggle('PAPEExtension.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.PAPEExtension-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PAPEExtension.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PAPEExtension.__init__-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_level_aliases</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_default_auth_level_aliases</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method openid.association.SessionNegotiator.copy()=openid.association.SessionNegotiator-class.html#copy,Method openid.message.Message.copy()=openid.message.Message-class.html#copy"><a title="openid.association.SessionNegotiator.copy
+openid.message.Message.copy" class="py-name" href="#" onclick="return doclink('link-13', 'copy', 'link-13');">copy</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"> </tt>
+<a name="PAPEExtension._addAuthLevelAlias"></a><div id="PAPEExtension._addAuthLevelAlias-def"><a name="L49"></a><tt class="py-lineno"> 49</tt> <a class="py-toggle" href="#" id="PAPEExtension._addAuthLevelAlias-toggle" onclick="return toggle('PAPEExtension._addAuthLevelAlias');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.PAPEExtension-class.html#_addAuthLevelAlias">_addAuthLevelAlias</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">auth_level_uri</tt><tt class="py-op">,</tt> <tt class="py-param">alias</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PAPEExtension._addAuthLevelAlias-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PAPEExtension._addAuthLevelAlias-expanded"><a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add an auth level URI alias to this request.</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line"><tt class="py-docstring">        @param auth_level_uri: The auth level URI to send in the</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line"><tt class="py-docstring">            request.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line"><tt class="py-docstring">        @param alias: The namespace alias to use for this auth level</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line"><tt class="py-docstring">            in this message. May be None if the alias is not</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"><tt class="py-docstring">            important.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">alias</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">                <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getAlias</tt><tt class="py-op">(</tt><tt class="py-name">auth_level_uri</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">                <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_generateAlias</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-name">existing_uri</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_level_aliases</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.get()=openid.extensions.sreg.SRegResponse-class.html#get,Method openid.store.memstore.ServerAssocs.get()=openid.store.memstore.ServerAssocs-class.html#get"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-14', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">existing_uri</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt> <tt class="py-keyword">and</tt> <tt class="py-name">existing_uri</tt> <tt class="py-op">!=</tt> <tt class="py-name">auth_level_uri</tt><tt class="py-op">:</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">KeyError</tt><tt class="py-op">(</tt><tt class="py-string">'Attempting to redefine alias %r from %r to %r'</tt><tt class="py-op">,</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">                               <tt class="py-name">alias</tt><tt class="py-op">,</tt> <tt class="py-name">existing_uri</tt><tt class="py-op">,</tt> <tt class="py-name">auth_level_uri</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_level_aliases</tt><tt class="py-op">[</tt><tt class="py-name">alias</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_level_uri</tt> </tt>
+</div><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="PAPEExtension._generateAlias"></a><div id="PAPEExtension._generateAlias-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="PAPEExtension._generateAlias-toggle" onclick="return toggle('PAPEExtension._generateAlias');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.PAPEExtension-class.html#_generateAlias">_generateAlias</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PAPEExtension._generateAlias-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PAPEExtension._generateAlias-expanded"><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return an unused auth level alias"""</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">i</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt class="py-number">1000</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">            <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-string">'cust%d'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">i</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">alias</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_level_aliases</tt><tt class="py-op">:</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">alias</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line"> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">RuntimeError</tt><tt class="py-op">(</tt><tt class="py-string">'Could not find an unused alias (tried 1000!)'</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="PAPEExtension._getAlias"></a><div id="PAPEExtension._getAlias-def"><a name="L81"></a><tt class="py-lineno"> 81</tt> <a class="py-toggle" href="#" id="PAPEExtension._getAlias-toggle" onclick="return toggle('PAPEExtension._getAlias');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.PAPEExtension-class.html#_getAlias">_getAlias</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">auth_level_uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="PAPEExtension._getAlias-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="PAPEExtension._getAlias-expanded"><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the alias for the specified auth level URI.</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line"><tt class="py-docstring">        @raises KeyError: if no alias is defined</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt> <tt class="py-name">existing_uri</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_level_aliases</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method openid.extensions.sreg.SRegResponse.iteritems()=openid.extensions.sreg.SRegResponse-class.html#iteritems,Method openid.message.NamespaceMap.iteritems()=openid.message.NamespaceMap-class.html#iteritems"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-15', 'iteritems', 'link-15');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">auth_level_uri</tt> <tt class="py-op">==</tt> <tt class="py-name">existing_uri</tt><tt class="py-op">:</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">alias</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">KeyError</tt><tt class="py-op">(</tt><tt class="py-name">auth_level_uri</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="Request"></a><div id="Request-def"><a name="L92"></a><tt class="py-lineno"> 92</tt> <a class="py-toggle" href="#" id="Request-toggle" onclick="return toggle('Request');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html">Request</a><tt class="py-op">(</tt><tt class="py-base-class">PAPEExtension</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Request-expanded"><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-docstring">"""A Provider Authentication Policy request, sent from a relying</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-docstring">    party to a provider</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar preferred_auth_policies: The authentication policies that</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"><tt class="py-docstring">        the relying party prefers</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line"><tt class="py-docstring">    @type preferred_auth_policies: [str]</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar max_auth_age: The maximum time, in seconds, that the relying</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"><tt class="py-docstring">        party wants to allow to have elapsed before the user must</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        re-authenticate</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">    @type max_auth_age: int or NoneType</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar preferred_auth_level_types: Ordered list of authentication</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"><tt class="py-docstring">        level namespace URIs</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"><tt class="py-docstring">    @type preferred_auth_level_types: [str]</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">    <tt id="link-16" class="py-name" targets="Variable openid.extension.Extension.ns_alias=openid.extension.Extension-class.html#ns_alias,Variable openid.extensions.draft.pape2.Request.ns_alias=openid.extensions.draft.pape2.Request-class.html#ns_alias,Variable openid.extensions.draft.pape2.Response.ns_alias=openid.extensions.draft.pape2.Response-class.html#ns_alias,Variable openid.extensions.draft.pape5.Request.ns_alias=openid.extensions.draft.pape5.Request-class.html#ns_alias,Variable openid.extensions.draft.pape5.Response.ns_alias=openid.extensions.draft.pape5.Response-class.html#ns_alias,Variable openid.extensions.sreg.SRegRequest.ns_alias=openid.extensions.sreg.SRegRequest-class.html#ns_alias,Variable openid.extensions.sreg.SRegResponse.ns_alias=openid.extensions.sreg.SRegResponse-class.html#ns_alias,Variable openid.test.test_consumer.SillyExtension.ns_alias=openid.test.test_consumer.SillyExtension-class.html#ns_alias,Variable openid.test.test_extension.DummyExtension.ns_alias=openid.test.test_extension.DummyExtension-class.html#ns_alias"><a title="openid.extension.Extension.ns_alias
+openid.extensions.draft.pape2.Request.ns_alias
+openid.extensions.draft.pape2.Response.ns_alias
+openid.extensions.draft.pape5.Request.ns_alias
+openid.extensions.draft.pape5.Response.ns_alias
+openid.extensions.sreg.SRegRequest.ns_alias
+openid.extensions.sreg.SRegResponse.ns_alias
+openid.test.test_consumer.SillyExtension.ns_alias
+openid.test.test_extension.DummyExtension.ns_alias" class="py-name" href="#" onclick="return doclink('link-16', 'ns_alias', 'link-16');">ns_alias</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'pape'</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line"> </tt>
+<a name="Request.__init__"></a><div id="Request.__init__-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="Request.__init__-toggle" onclick="return toggle('Request.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">preferred_auth_policies</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">max_auth_age</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">                 <tt class="py-param">preferred_auth_level_types</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.__init__-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-17" class="py-name" targets="Class openid.extensions.draft.pape2.Request=openid.extensions.draft.pape2.Request-class.html,Class openid.extensions.draft.pape5.Request=openid.extensions.draft.pape5.Request-class.html"><a title="openid.extensions.draft.pape2.Request
+openid.extensions.draft.pape5.Request" class="py-name" href="#" onclick="return doclink('link-17', 'Request', 'link-17');">Request</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method openid.association.Association.__init__()=openid.association.Association-class.html#__init__,Method openid.association.SessionNegotiator.__init__()=openid.association.SessionNegotiator-class.html#__init__,Method openid.consumer.consumer.AuthRequest.__init__()=openid.consumer.consumer.AuthRequest-class.html#__init__,Method openid.consumer.consumer.CancelResponse.__init__()=openid.consumer.consumer.CancelResponse-class.html#__init__,Method openid.consumer.consumer.Consumer.__init__()=openid.consumer.consumer.Consumer-class.html#__init__,Method openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.__init__()=openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession-class.html#__init__,Method openid.consumer.consumer.FailureResponse.__init__()=openid.consumer.consumer.FailureResponse-class.html#__init__,Method openid.consumer.consumer.GenericConsumer.__init__()=openid.consumer.consumer.GenericConsumer-class.html#__init__,Method openid.consumer.consumer.SetupNeededResponse.__init__()=openid.consumer.consumer.SetupNeededResponse-class.html#__init__,Method openid.consumer.consumer.SuccessResponse.__init__()=openid.consumer.consumer.SuccessResponse-class.html#__init__,Method openid.consumer.discover.OpenIDServiceEndpoint.__init__()=openid.consumer.discover.OpenIDServiceEndpoint-class.html#__init__,Method openid.dh.DiffieHellman.__init__()=openid.dh.DiffieHellman-class.html#__init__,Method openid.extensions.ax.FetchRequest.__init__()=openid.extensions.ax.FetchRequest-class.html#__init__,Method openid.extensions.ax.FetchResponse.__init__()=openid.extensions.ax.FetchResponse-class.html#__init__,Method openid.extensions.ax.StoreRequest.__init__()=openid.extensions.ax.StoreRequest-class.html#__init__,Method openid.extensions.ax.StoreResponse.__init__()=openid.extensions.ax.StoreResponse-class.html#__init__,Method openid.extensions.draft.pape2.Request.__init__()=openid.extensions.draft.pape2.Request-class.html#__init__,Method openid.extensions.draft.pape2.Response.__init__()=openid.extensions.draft.pape2.Response-class.html#__init__,Method openid.extensions.draft.pape5.Request.__init__()=openid.extensions.draft.pape5.Request-class.html#__init__,Method openid.extensions.draft.pape5.Response.__init__()=openid.extensions.draft.pape5.Response-class.html#__init__,Method openid.extensions.sreg.SRegRequest.__init__()=openid.extensions.sreg.SRegRequest-class.html#__init__,Method openid.extensions.sreg.SRegResponse.__init__()=openid.extensions.sreg.SRegResponse-class.html#__init__,Method openid.fetchers.HTTPFetchingError.__init__()=openid.fetchers.HTTPFetchingError-class.html#__init__,Method openid.fetchers.HTTPResponse.__init__()=openid.fetchers.HTTPResponse-class.html#__init__,Method openid.message.Message.__init__()=openid.message.Message-class.html#__init__,Method openid.message.NamespaceMap.__init__()=openid.message.NamespaceMap-class.html#__init__,Method openid.server.server.AssociateRequest.__init__()=openid.server.server.AssociateRequest-class.html#__init__,Method openid.server.server.CheckAuthRequest.__init__()=openid.server.server.CheckAuthRequest-class.html#__init__,Method openid.server.server.CheckIDRequest.__init__()=openid.server.server.CheckIDRequest-class.html#__init__,Method openid.server.server.Decoder.__init__()=openid.server.server.Decoder-class.html#__init__,Method openid.server.server.DiffieHellmanSHA1ServerSession.__init__()=openid.server.server.DiffieHellmanSHA1ServerSession-class.html#__init__,Method openid.server.server.EncodingError.__init__()=openid.server.server.EncodingError-class.html#__init__,Method openid.server.server.MalformedReturnURL.__init__()=openid.server.server.MalformedReturnURL-class.html#__init__,Method openid.server.server.OpenIDResponse.__init__()=openid.server.server.OpenIDResponse-class.html#__init__,Method openid.server.server.ProtocolError.__init__()=openid.server.server.ProtocolError-class.html#__init__,Method openid.server.server.Server.__init__()=openid.server.server.Server-class.html#__init__,Method openid.server.server.Signatory.__init__()=openid.server.server.Signatory-class.html#__init__,Method openid.server.server.SigningEncoder.__init__()=openid.server.server.SigningEncoder-class.html#__init__,Method openid.server.server.UntrustedReturnURL.__init__()=openid.server.server.UntrustedReturnURL-class.html#__init__,Method openid.server.server.WebResponse.__init__()=openid.server.server.WebResponse-class.html#__init__,Method openid.server.trustroot.TrustRoot.__init__()=openid.server.trustroot.TrustRoot-class.html#__init__,Method openid.store.filestore.FileOpenIDStore.__init__()=openid.store.filestore.FileOpenIDStore-class.html#__init__,Method openid.store.memstore.MemoryStore.__init__()=openid.store.memstore.MemoryStore-class.html#__init__,Method openid.store.memstore.ServerAssocs.__init__()=openid.store.memstore.ServerAssocs-class.html#__init__,Method openid.store.sqlstore.SQLStore.__init__()=openid.store.sqlstore.SQLStore-class.html#__init__,Method openid.test.datadriven.DataDrivenTestCase.__init__()=openid.test.datadriven.DataDrivenTestCase-class.html#__init__,Method openid.test.kvform.KVDictTest.__init__()=openid.test.kvform.KVDictTest-class.html#__init__,Method openid.test.kvform.KVExcTest.__init__()=openid.test.kvform.KVExcTest-class.html#__init__,Method openid.test.kvform.KVSeqTest.__init__()=openid.test.kvform.KVSeqTest-class.html#__init__,Method openid.test.oidutil.AppendArgsTest.__init__()=openid.test.oidutil.AppendArgsTest-class.html#__init__,Method openid.test.test_accept.MatchAcceptTest.__init__()=openid.test.test_accept.MatchAcceptTest-class.html#__init__,Method openid.test.test_association.DiffieHellmanSessionTest.__init__()=openid.test.test_association.DiffieHellmanSessionTest-class.html#__init__,Method openid.test.test_association_response.DummyAssocationSession.__init__()=openid.test.test_association_response.DummyAssocationSession-class.html#__init__,Method openid.test.test_ax.DummyRequest.__init__()=openid.test.test_ax.DummyRequest-class.html#__init__,Method openid.test.test_consumer.MockFetcher.__init__()=openid.test.test_consumer.MockFetcher-class.html#__init__,Method openid.test.test_consumer.StubConsumer.__init__()=openid.test.test_consumer.StubConsumer-class.html#__init__,Method openid.test.test_consumer.TestFetcher.__init__()=openid.test.test_consumer.TestFetcher-class.html#__init__,Method openid.test.test_discover.DiscoveryMockFetcher.__init__()=openid.test.test_discover.DiscoveryMockFetcher-class.html#__init__,Method openid.test.test_discover.ErrorRaisingFetcher.__init__()=openid.test.test_discover.ErrorRaisingFetcher-class.html#__init__,Method openid.test.test_discover.MockFetcherForXRIProxy.__init__()=openid.test.test_discover.MockFetcherForXRIProxy-class.html#__init__,Method openid.test.test_discover.SimpleMockFetcher.__init__()=openid.test.test_discover.SimpleMockFetcher-class.html#__init__,Method openid.test.test_discover.TestDiscoveryFailure.__init__()=openid.test.test_discover.TestDiscoveryFailure-class.html#__init__,Method openid.test.test_discover.TestFetchException.__init__()=openid.test.test_discover.TestFetchException-class.html#__init__,Method openid.test.test_discover.TestPreferredNamespace.__init__()=openid.test.test_discover.TestPreferredNamespace-class.html#__init__,Method openid.test.test_htmldiscover.BadLinksTestCase.__init__()=openid.test.test_htmldiscover.BadLinksTestCase-class.html#__init__,Method openid.test.test_nonce.BadSplitTest.__init__()=openid.test.test_nonce.BadSplitTest-class.html#__init__,Method openid.test.test_nonce.CheckTimestampTest.__init__()=openid.test.test_nonce.CheckTimestampTest-class.html#__init__,Method openid.test.test_openidyadis.OpenIDYadisTest.__init__()=openid.test.test_openidyadis.OpenIDYadisTest-class.html#__init__,Method openid.test.test_pape_draft2.DummySuccessResponse.__init__()=openid.test.test_pape_draft2.DummySuccessResponse-class.html#__init__,Method openid.test.test_pape_draft5.DummySuccessResponse.__init__()=openid.test.test_pape_draft5.DummySuccessResponse-class.html#__init__,Method openid.test.test_server.Counter.__init__()=openid.test.test_server.Counter-class.html#__init__,Method openid.test.test_server.MockSignatory.__init__()=openid.test.test_server.MockSignatory-class.html#__init__,Method openid.test.test_sreg.DummySuccessResponse.__init__()=openid.test.test_sreg.DummySuccessResponse-class.html#__init__,Method openid.test.test_sreg.FakeEndpoint.__init__()=openid.test.test_sreg.FakeEndpoint-class.html#__init__,Method openid.test.test_sreg.FakeMessage.__init__()=openid.test.test_sreg.FakeMessage-class.html#__init__,Method openid.test.test_urinorm.UrinormTest.__init__()=openid.test.test_urinorm.UrinormTest-class.html#__init__,Method openid.test.test_yadis_discover.TestFetcher.__init__()=openid.test.test_yadis_discover.TestFetcher-class.html#__init__,Method openid.test.test_yadis_discover.TestSecondGet.MockFetcher.__init__()=openid.test.test_yadis_discover.TestSecondGet.MockFetcher-class.html#__init__,Method openid.yadis.discover.DiscoveryFailure.__init__()=openid.yadis.discover.DiscoveryFailure-class.html#__init__,Method openid.yadis.discover.DiscoveryResult.__init__()=openid.yadis.discover.DiscoveryResult-class.html#__init__,Method openid.yadis.filters.BasicServiceEndpoint.__init__()=openid.yadis.filters.BasicServiceEndpoint-class.html#__init__,Method openid.yadis.filters.CompoundFilter.__init__()=openid.yadis.filters.CompoundFilter-class.html#__init__,Method openid.yadis.filters.TransformFilterMaker.__init__()=openid.yadis.filters.TransformFilterMaker-class.html#__init__,Method openid.yadis.manager.Discovery.__init__()=openid.yadis.manager.Discovery-class.html#__init__,Method openid.yadis.manager.YadisServiceManager.__init__()=openid.yadis.manager.YadisServiceManager-class.html#__init__,Method openid.yadis.xrires.ProxyResolver.__init__()=openid.yadis.xrires.ProxyResolver-class.html#__init__"><a title="openid.association.Association.__init__
+openid.association.SessionNegotiator.__init__
+openid.consumer.consumer.AuthRequest.__init__
+openid.consumer.consumer.CancelResponse.__init__
+openid.consumer.consumer.Consumer.__init__
+openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.__init__
+openid.consumer.consumer.FailureResponse.__init__
+openid.consumer.consumer.GenericConsumer.__init__
+openid.consumer.consumer.SetupNeededResponse.__init__
+openid.consumer.consumer.SuccessResponse.__init__
+openid.consumer.discover.OpenIDServiceEndpoint.__init__
+openid.dh.DiffieHellman.__init__
+openid.extensions.ax.FetchRequest.__init__
+openid.extensions.ax.FetchResponse.__init__
+openid.extensions.ax.StoreRequest.__init__
+openid.extensions.ax.StoreResponse.__init__
+openid.extensions.draft.pape2.Request.__init__
+openid.extensions.draft.pape2.Response.__init__
+openid.extensions.draft.pape5.Request.__init__
+openid.extensions.draft.pape5.Response.__init__
+openid.extensions.sreg.SRegRequest.__init__
+openid.extensions.sreg.SRegResponse.__init__
+openid.fetchers.HTTPFetchingError.__init__
+openid.fetchers.HTTPResponse.__init__
+openid.message.Message.__init__
+openid.message.NamespaceMap.__init__
+openid.server.server.AssociateRequest.__init__
+openid.server.server.CheckAuthRequest.__init__
+openid.server.server.CheckIDRequest.__init__
+openid.server.server.Decoder.__init__
+openid.server.server.DiffieHellmanSHA1ServerSession.__init__
+openid.server.server.EncodingError.__init__
+openid.server.server.MalformedReturnURL.__init__
+openid.server.server.OpenIDResponse.__init__
+openid.server.server.ProtocolError.__init__
+openid.server.server.Server.__init__
+openid.server.server.Signatory.__init__
+openid.server.server.SigningEncoder.__init__
+openid.server.server.UntrustedReturnURL.__init__
+openid.server.server.WebResponse.__init__
+openid.server.trustroot.TrustRoot.__init__
+openid.store.filestore.FileOpenIDStore.__init__
+openid.store.memstore.MemoryStore.__init__
+openid.store.memstore.ServerAssocs.__init__
+openid.store.sqlstore.SQLStore.__init__
+openid.test.datadriven.DataDrivenTestCase.__init__
+openid.test.kvform.KVDictTest.__init__
+openid.test.kvform.KVExcTest.__init__
+openid.test.kvform.KVSeqTest.__init__
+openid.test.oidutil.AppendArgsTest.__init__
+openid.test.test_accept.MatchAcceptTest.__init__
+openid.test.test_association.DiffieHellmanSessionTest.__init__
+openid.test.test_association_response.DummyAssocationSession.__init__
+openid.test.test_ax.DummyRequest.__init__
+openid.test.test_consumer.MockFetcher.__init__
+openid.test.test_consumer.StubConsumer.__init__
+openid.test.test_consumer.TestFetcher.__init__
+openid.test.test_discover.DiscoveryMockFetcher.__init__
+openid.test.test_discover.ErrorRaisingFetcher.__init__
+openid.test.test_discover.MockFetcherForXRIProxy.__init__
+openid.test.test_discover.SimpleMockFetcher.__init__
+openid.test.test_discover.TestDiscoveryFailure.__init__
+openid.test.test_discover.TestFetchException.__init__
+openid.test.test_discover.TestPreferredNamespace.__init__
+openid.test.test_htmldiscover.BadLinksTestCase.__init__
+openid.test.test_nonce.BadSplitTest.__init__
+openid.test.test_nonce.CheckTimestampTest.__init__
+openid.test.test_openidyadis.OpenIDYadisTest.__init__
+openid.test.test_pape_draft2.DummySuccessResponse.__init__
+openid.test.test_pape_draft5.DummySuccessResponse.__init__
+openid.test.test_server.Counter.__init__
+openid.test.test_server.MockSignatory.__init__
+openid.test.test_sreg.DummySuccessResponse.__init__
+openid.test.test_sreg.FakeEndpoint.__init__
+openid.test.test_sreg.FakeMessage.__init__
+openid.test.test_urinorm.UrinormTest.__init__
+openid.test.test_yadis_discover.TestFetcher.__init__
+openid.test.test_yadis_discover.TestSecondGet.MockFetcher.__init__
+openid.yadis.discover.DiscoveryFailure.__init__
+openid.yadis.discover.DiscoveryResult.__init__
+openid.yadis.filters.BasicServiceEndpoint.__init__
+openid.yadis.filters.CompoundFilter.__init__
+openid.yadis.filters.TransformFilterMaker.__init__
+openid.yadis.manager.Discovery.__init__
+openid.yadis.manager.YadisServiceManager.__init__
+openid.yadis.xrires.ProxyResolver.__init__" class="py-name" href="#" onclick="return doclink('link-18', '__init__', 'link-18');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">preferred_auth_policies</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-name">preferred_auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-name">preferred_auth_policies</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt> <tt class="py-op">=</tt> <tt class="py-name">max_auth_age</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line"> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">preferred_auth_level_types</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">auth_level</tt> <tt class="py-keyword">in</tt> <tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">:</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method openid.extensions.draft.pape5.Request.addAuthLevel()=openid.extensions.draft.pape5.Request-class.html#addAuthLevel"><a title="openid.extensions.draft.pape5.Request.addAuthLevel" class="py-name" href="#" onclick="return doclink('link-19', 'addAuthLevel', 'link-19');">addAuthLevel</a></tt><tt class="py-op">(</tt><tt class="py-name">auth_level</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"> </tt>
+<a name="Request.__nonzero__"></a><div id="Request.__nonzero__-def"><a name="L127"></a><tt class="py-lineno">127</tt> <a class="py-toggle" href="#" id="Request.__nonzero__-toggle" onclick="return toggle('Request.__nonzero__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#__nonzero__">__nonzero__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.__nonzero__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.__nonzero__-expanded"><a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">bool</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt> <tt class="py-keyword">or</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt> <tt class="py-keyword">or</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="Request.addPolicyURI"></a><div id="Request.addPolicyURI-def"><a name="L132"></a><tt class="py-lineno">132</tt> <a class="py-toggle" href="#" id="Request.addPolicyURI-toggle" onclick="return toggle('Request.addPolicyURI');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#addPolicyURI">addPolicyURI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">policy_uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.addPolicyURI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.addPolicyURI-expanded"><a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add an acceptable authentication policy URI to this request</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt class="py-docstring">        This method is intended to be used by the relying party to add</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt class="py-docstring">        acceptable authentication types to the request.</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring">        @param policy_uri: The identifier for the preferred type of</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">            authentication.</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">        @see: http://openid.net/specs/openid-provider-authentication-policy-extension-1_0-05.html#auth_policies</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">policy_uri</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">policy_uri</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"> </tt>
+<a name="Request.addAuthLevel"></a><div id="Request.addAuthLevel-def"><a name="L145"></a><tt class="py-lineno">145</tt> <a class="py-toggle" href="#" id="Request.addAuthLevel-toggle" onclick="return toggle('Request.addAuthLevel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#addAuthLevel">addAuthLevel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">auth_level_uri</tt><tt class="py-op">,</tt> <tt class="py-param">alias</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.addAuthLevel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.addAuthLevel-expanded"><a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_addAuthLevelAlias</tt><tt class="py-op">(</tt><tt class="py-name">auth_level_uri</tt><tt class="py-op">,</tt> <tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">auth_level_uri</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">auth_level_uri</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"> </tt>
+<a name="Request.getExtensionArgs"></a><div id="Request.getExtensionArgs-def"><a name="L150"></a><tt class="py-lineno">150</tt> <a class="py-toggle" href="#" id="Request.getExtensionArgs-toggle" onclick="return toggle('Request.getExtensionArgs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#getExtensionArgs">getExtensionArgs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.getExtensionArgs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.getExtensionArgs-expanded"><a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-docstring">"""@see: C{L{Extension.getExtensionArgs}}</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">        <tt class="py-name">ns_args</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">            <tt class="py-string">'preferred_auth_policies'</tt><tt class="py-op">:</tt><tt class="py-string">' '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line"> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'max_auth_age'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line"> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-name">preferred_types</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line"> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">auth_level_uri</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">:</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">                <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getAlias</tt><tt class="py-op">(</tt><tt class="py-name">auth_level_uri</tt><tt class="py-op">)</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">                <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'auth_level.ns.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_level_uri</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                <tt class="py-name">preferred_types</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'preferred_auth_level_types'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-string">' '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">preferred_types</tt><tt class="py-op">)</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ns_args</tt> </tt>
+</div><a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line"> </tt>
+<a name="Request.fromOpenIDRequest"></a><div id="Request.fromOpenIDRequest-def"><a name="L172"></a><tt class="py-lineno">172</tt> <a class="py-toggle" href="#" id="Request.fromOpenIDRequest-toggle" onclick="return toggle('Request.fromOpenIDRequest');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#fromOpenIDRequest">fromOpenIDRequest</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">request</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.fromOpenIDRequest-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.fromOpenIDRequest-expanded"><a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-docstring">"""Instantiate a Request object from the arguments in a</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line"><tt class="py-docstring">        C{checkid_*} OpenID message</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-name">self</tt> <tt class="py-op">=</tt> <tt class="py-name">cls</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name" targets="Module openid.message=openid.message-module.html"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-20', 'message', 'link-20');">message</a></tt><tt class="py-op">.</tt><tt id="link-21" class="py-name" targets="Method openid.message.Message.getArgs()=openid.message.Message-class.html#getArgs"><a title="openid.message.Message.getArgs" class="py-name" href="#" onclick="return doclink('link-21', 'getArgs', 'link-21');">getArgs</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-22', 'ns_uri', 'link-3');">ns_uri</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-name">is_openid1</tt> <tt class="py-op">=</tt> <tt class="py-name">request</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="openid.message" class="py-name" href="#" onclick="return doclink('link-23', 'message', 'link-20');">message</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method openid.consumer.consumer.SuccessResponse.isOpenID1()=openid.consumer.consumer.SuccessResponse-class.html#isOpenID1,Method openid.message.Message.isOpenID1()=openid.message.Message-class.html#isOpenID1,Method openid.test.test_pape_draft5.DummySuccessResponse.isOpenID1()=openid.test.test_pape_draft5.DummySuccessResponse-class.html#isOpenID1,Method openid.test.test_sreg.FakeMessage.isOpenID1()=openid.test.test_sreg.FakeMessage-class.html#isOpenID1"><a title="openid.consumer.consumer.SuccessResponse.isOpenID1
+openid.message.Message.isOpenID1
+openid.test.test_pape_draft5.DummySuccessResponse.isOpenID1
+openid.test.test_sreg.FakeMessage.isOpenID1" class="py-name" href="#" onclick="return doclink('link-24', 'isOpenID1', 'link-24');">isOpenID1</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">args</tt> <tt class="py-op">==</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">:</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method openid.extensions.ax.FetchRequest.parseExtensionArgs()=openid.extensions.ax.FetchRequest-class.html#parseExtensionArgs,Method openid.extensions.ax.FetchResponse.parseExtensionArgs()=openid.extensions.ax.FetchResponse-class.html#parseExtensionArgs,Method openid.extensions.draft.pape2.Request.parseExtensionArgs()=openid.extensions.draft.pape2.Request-class.html#parseExtensionArgs,Method openid.extensions.draft.pape2.Response.parseExtensionArgs()=openid.extensions.draft.pape2.Response-class.html#parseExtensionArgs,Method openid.extensions.draft.pape5.Request.parseExtensionArgs()=openid.extensions.draft.pape5.Request-class.html#parseExtensionArgs,Method openid.extensions.draft.pape5.Response.parseExtensionArgs()=openid.extensions.draft.pape5.Response-class.html#parseExtensionArgs,Method openid.extensions.sreg.SRegRequest.parseExtensionArgs()=openid.extensions.sreg.SRegRequest-class.html#parseExtensionArgs"><a title="openid.extensions.ax.FetchRequest.parseExtensionArgs
+openid.extensions.ax.FetchResponse.parseExtensionArgs
+openid.extensions.draft.pape2.Request.parseExtensionArgs
+openid.extensions.draft.pape2.Response.parseExtensionArgs
+openid.extensions.draft.pape5.Request.parseExtensionArgs
+openid.extensions.draft.pape5.Response.parseExtensionArgs
+openid.extensions.sreg.SRegRequest.parseExtensionArgs" class="py-name" href="#" onclick="return doclink('link-25', 'parseExtensionArgs', 'link-25');">parseExtensionArgs</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-name">is_openid1</tt><tt class="py-op">)</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+</div><a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">    <tt id="link-26" class="py-name" targets="Class Method openid.extensions.ax.FetchRequest.fromOpenIDRequest()=openid.extensions.ax.FetchRequest-class.html#fromOpenIDRequest,Class Method openid.extensions.draft.pape2.Request.fromOpenIDRequest()=openid.extensions.draft.pape2.Request-class.html#fromOpenIDRequest,Class Method openid.extensions.draft.pape5.Request.fromOpenIDRequest()=openid.extensions.draft.pape5.Request-class.html#fromOpenIDRequest,Class Method openid.extensions.sreg.SRegRequest.fromOpenIDRequest()=openid.extensions.sreg.SRegRequest-class.html#fromOpenIDRequest"><a title="openid.extensions.ax.FetchRequest.fromOpenIDRequest
+openid.extensions.draft.pape2.Request.fromOpenIDRequest
+openid.extensions.draft.pape5.Request.fromOpenIDRequest
+openid.extensions.sreg.SRegRequest.fromOpenIDRequest" class="py-name" href="#" onclick="return doclink('link-26', 'fromOpenIDRequest', 'link-26');">fromOpenIDRequest</a></tt> <tt class="py-op">=</tt> <tt class="py-name">classmethod</tt><tt class="py-op">(</tt><tt id="link-27" class="py-name"><a title="openid.extensions.ax.FetchRequest.fromOpenIDRequest
+openid.extensions.draft.pape2.Request.fromOpenIDRequest
+openid.extensions.draft.pape5.Request.fromOpenIDRequest
+openid.extensions.sreg.SRegRequest.fromOpenIDRequest" class="py-name" href="#" onclick="return doclink('link-27', 'fromOpenIDRequest', 'link-26');">fromOpenIDRequest</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"> </tt>
+<a name="Request.parseExtensionArgs"></a><div id="Request.parseExtensionArgs-def"><a name="L188"></a><tt class="py-lineno">188</tt> <a class="py-toggle" href="#" id="Request.parseExtensionArgs-toggle" onclick="return toggle('Request.parseExtensionArgs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#parseExtensionArgs">parseExtensionArgs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-param">is_openid1</tt><tt class="py-op">,</tt> <tt class="py-param">strict</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.parseExtensionArgs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.parseExtensionArgs-expanded"><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the state of this request to be that expressed in these</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-docstring">        PAPE arguments</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: The PAPE arguments without a namespace</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line"><tt class="py-docstring">        @param strict: Whether to raise an exception if the input is</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"><tt class="py-docstring">            out of spec or otherwise malformed. If strict is false,</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line"><tt class="py-docstring">            malformed input will be ignored.</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"><tt class="py-docstring">        @param is_openid1: Whether the input should be treated as part</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line"><tt class="py-docstring">            of an OpenID1 request</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: None</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line"><tt class="py-docstring">        @raises ValueError: When the max_auth_age is not parseable as</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"><tt class="py-docstring">            an integer</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-comment"># preferred_auth_policies is a space-separated list of policy URIs</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line"> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">        <tt class="py-name">policies_str</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-28', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'preferred_auth_policies'</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">policies_str</tt><tt class="py-op">:</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">uri</tt> <tt class="py-keyword">in</tt> <tt class="py-name">policies_str</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Function openid.store.nonce.split()=openid.store.nonce-module.html#split"><a title="openid.store.nonce.split" class="py-name" href="#" onclick="return doclink('link-29', 'split', 'link-29');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">' '</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">uri</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">:</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">uri</tt><tt class="py-op">)</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">        <tt class="py-comment"># max_auth_age is base-10 integer number of seconds</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">max_auth_age_str</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-30', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'max_auth_age'</tt><tt class="py-op">)</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line"> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">max_auth_age_str</tt><tt class="py-op">:</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">max_auth_age</tt> <tt class="py-op">=</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">max_auth_age_str</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt> <tt class="py-name">ValueError</tt><tt class="py-op">:</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">                    <tt class="py-keyword">raise</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line"> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-comment"># Parse auth level information</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">preferred_auth_level_types</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-31', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'preferred_auth_level_types'</tt><tt class="py-op">)</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">            <tt class="py-name">aliases</tt> <tt class="py-op">=</tt> <tt class="py-name">preferred_auth_level_types</tt><tt class="py-op">.</tt><tt class="py-name">strip</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name"><a title="openid.store.nonce.split" class="py-name" href="#" onclick="return doclink('link-32', 'split', 'link-29');">split</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">alias</tt> <tt class="py-keyword">in</tt> <tt class="py-name">aliases</tt><tt class="py-op">:</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">                <tt class="py-name">key</tt> <tt class="py-op">=</tt> <tt class="py-string">'auth_level.ns.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">                    <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">[</tt><tt class="py-name">key</tt><tt class="py-op">]</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">is_openid1</tt><tt class="py-op">:</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">                        <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_default_auth_level_aliases</tt><tt class="py-op">.</tt><tt id="link-33" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-33', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">                        <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">uri</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'preferred auth level %r is not '</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">                                         <tt class="py-string">'defined in this message'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="openid.extensions.draft.pape5.Request.addAuthLevel" class="py-name" href="#" onclick="return doclink('link-34', 'addAuthLevel', 'link-19');">addAuthLevel</a></tt><tt class="py-op">(</tt><tt class="py-name">uri</tt><tt class="py-op">,</tt> <tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"> </tt>
+<a name="Request.preferredTypes"></a><div id="Request.preferredTypes-def"><a name="L249"></a><tt class="py-lineno">249</tt> <a class="py-toggle" href="#" id="Request.preferredTypes-toggle" onclick="return toggle('Request.preferredTypes');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Request-class.html#preferredTypes">preferredTypes</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">supported_types</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Request.preferredTypes-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Request.preferredTypes-expanded"><a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-docstring">"""Given a list of authentication policy URIs that a provider</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line"><tt class="py-docstring">        supports, this method returns the subsequence of those types</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line"><tt class="py-docstring">        that are preferred by the relying party.</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"><tt class="py-docstring">        @param supported_types: A sequence of authentication policy</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line"><tt class="py-docstring">            type URIs that are supported by a provider</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: The sub-sequence of the supported types that are</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring">            preferred by the relying party. This list will be ordered</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">            in the order that the types appear in the supported_types</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">            sequence, and may be empty if the provider does not prefer</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line"><tt class="py-docstring">            any of the supported authentication types.</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line"><tt class="py-docstring">        @returntype: [str]</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">preferred_auth_policies</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method openid.extensions.sreg.SRegRequest.__contains__()=openid.extensions.sreg.SRegRequest-class.html#__contains__,Method openid.extensions.sreg.SRegResponse.__contains__()=openid.extensions.sreg.SRegResponse-class.html#__contains__,Method openid.message.NamespaceMap.__contains__()=openid.message.NamespaceMap-class.html#__contains__"><a title="openid.extensions.sreg.SRegRequest.__contains__
+openid.extensions.sreg.SRegResponse.__contains__
+openid.message.NamespaceMap.__contains__" class="py-name" href="#" onclick="return doclink('link-35', '__contains__', 'link-35');">__contains__</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">                      <tt class="py-name">supported_types</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line"> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line"><tt id="link-36" class="py-name"><a title="openid.extensions.draft.pape2.Request
+openid.extensions.draft.pape5.Request" class="py-name" href="#" onclick="return doclink('link-36', 'Request', 'link-17');">Request</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-37', 'ns_uri', 'link-3');">ns_uri</a></tt> <tt class="py-op">=</tt> <tt id="link-38" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-38', 'ns_uri', 'link-3');">ns_uri</a></tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line"> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"> </tt>
+<a name="Response"></a><div id="Response-def"><a name="L271"></a><tt class="py-lineno">271</tt> <a class="py-toggle" href="#" id="Response-toggle" onclick="return toggle('Response');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html">Response</a><tt class="py-op">(</tt><tt class="py-base-class">PAPEExtension</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Response-expanded"><a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">    <tt class="py-docstring">"""A Provider Authentication Policy response, sent from a provider</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line"><tt class="py-docstring">    to a relying party</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line"><tt class="py-docstring">    @ivar auth_policies: List of authentication policies conformed to</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line"><tt class="py-docstring">        by this OpenID assertion, represented as policy URIs</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">    <tt id="link-39" class="py-name"><a title="openid.extension.Extension.ns_alias
+openid.extensions.draft.pape2.Request.ns_alias
+openid.extensions.draft.pape2.Response.ns_alias
+openid.extensions.draft.pape5.Request.ns_alias
+openid.extensions.draft.pape5.Response.ns_alias
+openid.extensions.sreg.SRegRequest.ns_alias
+openid.extensions.sreg.SRegResponse.ns_alias
+openid.test.test_consumer.SillyExtension.ns_alias
+openid.test.test_extension.DummyExtension.ns_alias" class="py-name" href="#" onclick="return doclink('link-39', 'ns_alias', 'link-16');">ns_alias</a></tt> <tt class="py-op">=</tt> <tt class="py-string">'pape'</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"> </tt>
+<a name="Response.__init__"></a><div id="Response.__init__-def"><a name="L281"></a><tt class="py-lineno">281</tt> <a class="py-toggle" href="#" id="Response.__init__-toggle" onclick="return toggle('Response.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">auth_policies</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> <tt class="py-param">auth_time</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">                 <tt class="py-param">auth_levels</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.__init__-expanded"><a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">        <tt class="py-name">super</tt><tt class="py-op">(</tt><tt id="link-40" class="py-name" targets="Class openid.extensions.draft.pape2.Response=openid.extensions.draft.pape2.Response-class.html,Class openid.extensions.draft.pape5.Response=openid.extensions.draft.pape5.Response-class.html"><a title="openid.extensions.draft.pape2.Response
+openid.extensions.draft.pape5.Response" class="py-name" href="#" onclick="return doclink('link-40', 'Response', 'link-40');">Response</a></tt><tt class="py-op">,</tt> <tt class="py-name">self</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="openid.association.Association.__init__
+openid.association.SessionNegotiator.__init__
+openid.consumer.consumer.AuthRequest.__init__
+openid.consumer.consumer.CancelResponse.__init__
+openid.consumer.consumer.Consumer.__init__
+openid.consumer.consumer.DiffieHellmanSHA1ConsumerSession.__init__
+openid.consumer.consumer.FailureResponse.__init__
+openid.consumer.consumer.GenericConsumer.__init__
+openid.consumer.consumer.SetupNeededResponse.__init__
+openid.consumer.consumer.SuccessResponse.__init__
+openid.consumer.discover.OpenIDServiceEndpoint.__init__
+openid.dh.DiffieHellman.__init__
+openid.extensions.ax.FetchRequest.__init__
+openid.extensions.ax.FetchResponse.__init__
+openid.extensions.ax.StoreRequest.__init__
+openid.extensions.ax.StoreResponse.__init__
+openid.extensions.draft.pape2.Request.__init__
+openid.extensions.draft.pape2.Response.__init__
+openid.extensions.draft.pape5.Request.__init__
+openid.extensions.draft.pape5.Response.__init__
+openid.extensions.sreg.SRegRequest.__init__
+openid.extensions.sreg.SRegResponse.__init__
+openid.fetchers.HTTPFetchingError.__init__
+openid.fetchers.HTTPResponse.__init__
+openid.message.Message.__init__
+openid.message.NamespaceMap.__init__
+openid.server.server.AssociateRequest.__init__
+openid.server.server.CheckAuthRequest.__init__
+openid.server.server.CheckIDRequest.__init__
+openid.server.server.Decoder.__init__
+openid.server.server.DiffieHellmanSHA1ServerSession.__init__
+openid.server.server.EncodingError.__init__
+openid.server.server.MalformedReturnURL.__init__
+openid.server.server.OpenIDResponse.__init__
+openid.server.server.ProtocolError.__init__
+openid.server.server.Server.__init__
+openid.server.server.Signatory.__init__
+openid.server.server.SigningEncoder.__init__
+openid.server.server.UntrustedReturnURL.__init__
+openid.server.server.WebResponse.__init__
+openid.server.trustroot.TrustRoot.__init__
+openid.store.filestore.FileOpenIDStore.__init__
+openid.store.memstore.MemoryStore.__init__
+openid.store.memstore.ServerAssocs.__init__
+openid.store.sqlstore.SQLStore.__init__
+openid.test.datadriven.DataDrivenTestCase.__init__
+openid.test.kvform.KVDictTest.__init__
+openid.test.kvform.KVExcTest.__init__
+openid.test.kvform.KVSeqTest.__init__
+openid.test.oidutil.AppendArgsTest.__init__
+openid.test.test_accept.MatchAcceptTest.__init__
+openid.test.test_association.DiffieHellmanSessionTest.__init__
+openid.test.test_association_response.DummyAssocationSession.__init__
+openid.test.test_ax.DummyRequest.__init__
+openid.test.test_consumer.MockFetcher.__init__
+openid.test.test_consumer.StubConsumer.__init__
+openid.test.test_consumer.TestFetcher.__init__
+openid.test.test_discover.DiscoveryMockFetcher.__init__
+openid.test.test_discover.ErrorRaisingFetcher.__init__
+openid.test.test_discover.MockFetcherForXRIProxy.__init__
+openid.test.test_discover.SimpleMockFetcher.__init__
+openid.test.test_discover.TestDiscoveryFailure.__init__
+openid.test.test_discover.TestFetchException.__init__
+openid.test.test_discover.TestPreferredNamespace.__init__
+openid.test.test_htmldiscover.BadLinksTestCase.__init__
+openid.test.test_nonce.BadSplitTest.__init__
+openid.test.test_nonce.CheckTimestampTest.__init__
+openid.test.test_openidyadis.OpenIDYadisTest.__init__
+openid.test.test_pape_draft2.DummySuccessResponse.__init__
+openid.test.test_pape_draft5.DummySuccessResponse.__init__
+openid.test.test_server.Counter.__init__
+openid.test.test_server.MockSignatory.__init__
+openid.test.test_sreg.DummySuccessResponse.__init__
+openid.test.test_sreg.FakeEndpoint.__init__
+openid.test.test_sreg.FakeMessage.__init__
+openid.test.test_urinorm.UrinormTest.__init__
+openid.test.test_yadis_discover.TestFetcher.__init__
+openid.test.test_yadis_discover.TestSecondGet.MockFetcher.__init__
+openid.yadis.discover.DiscoveryFailure.__init__
+openid.yadis.discover.DiscoveryResult.__init__
+openid.yadis.filters.BasicServiceEndpoint.__init__
+openid.yadis.filters.CompoundFilter.__init__
+openid.yadis.filters.TransformFilterMaker.__init__
+openid.yadis.manager.Discovery.__init__
+openid.yadis.manager.YadisServiceManager.__init__
+openid.yadis.xrires.ProxyResolver.__init__" class="py-name" href="#" onclick="return doclink('link-41', '__init__', 'link-18');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">auth_policies</tt><tt class="py-op">:</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_policies</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line"> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_time</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_time</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_levels</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line"> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">auth_levels</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">            <tt class="py-name">auth_levels</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line"> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">uri</tt><tt class="py-op">,</tt> <tt class="py-name">level</tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth_levels</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-42', 'iteritems', 'link-15');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Method openid.extensions.draft.pape5.Response.setAuthLevel()=openid.extensions.draft.pape5.Response-class.html#setAuthLevel"><a title="openid.extensions.draft.pape5.Response.setAuthLevel" class="py-name" href="#" onclick="return doclink('link-43', 'setAuthLevel', 'link-43');">setAuthLevel</a></tt><tt class="py-op">(</tt><tt class="py-name">uri</tt><tt class="py-op">,</tt> <tt class="py-name">level</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt>
+<a name="Response.setAuthLevel"></a><div id="Response.setAuthLevel-def"><a name="L298"></a><tt class="py-lineno">298</tt> <a class="py-toggle" href="#" id="Response.setAuthLevel-toggle" onclick="return toggle('Response.setAuthLevel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#setAuthLevel">setAuthLevel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">level_uri</tt><tt class="py-op">,</tt> <tt class="py-param">level</tt><tt class="py-op">,</tt> <tt class="py-param">alias</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.setAuthLevel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.setAuthLevel-expanded"><a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">        <tt class="py-docstring">"""Set the value for the given auth level type.</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line"><tt class="py-docstring">        @param level: string representation of an authentication level</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line"><tt class="py-docstring">            valid for level_uri</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line"><tt class="py-docstring">        @param alias: An optional namespace alias for the given auth</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"><tt class="py-docstring">            level URI. May be omitted if the alias is not</tt> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line"><tt class="py-docstring">            significant. The library will use a reasonable default for</tt> </tt>
+<a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"><tt class="py-docstring">            widely-used auth level types.</tt> </tt>
+<a name="L308"></a><tt class="py-lineno">308</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_addAuthLevelAlias</tt><tt class="py-op">(</tt><tt class="py-name">level_uri</tt><tt class="py-op">,</tt> <tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_levels</tt><tt class="py-op">[</tt><tt class="py-name">level_uri</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">level</tt> </tt>
+</div><a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line"> </tt>
+<a name="Response.getAuthLevel"></a><div id="Response.getAuthLevel-def"><a name="L312"></a><tt class="py-lineno">312</tt> <a class="py-toggle" href="#" id="Response.getAuthLevel-toggle" onclick="return toggle('Response.getAuthLevel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#getAuthLevel">getAuthLevel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">level_uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.getAuthLevel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.getAuthLevel-expanded"><a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">        <tt class="py-docstring">"""Return the auth level for the specified auth level</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line"><tt class="py-docstring">        identifier</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: A string that should map to the auth levels defined</tt> </tt>
+<a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line"><tt class="py-docstring">            for the auth level type</tt> </tt>
+<a name="L318"></a><tt class="py-lineno">318</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line"><tt class="py-docstring">        @raises KeyError: If the auth level type is not present in</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line"><tt class="py-docstring">            this message</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_levels</tt><tt class="py-op">[</tt><tt class="py-name">level_uri</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line"> </tt>
+<a name="Response._getNISTAuthLevel"></a><div id="Response._getNISTAuthLevel-def"><a name="L324"></a><tt class="py-lineno">324</tt> <a class="py-toggle" href="#" id="Response._getNISTAuthLevel-toggle" onclick="return toggle('Response._getNISTAuthLevel');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#_getNISTAuthLevel">_getNISTAuthLevel</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response._getNISTAuthLevel-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response._getNISTAuthLevel-expanded"><a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L326"></a><tt class="py-lineno">326</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Method openid.extensions.draft.pape5.Response.getAuthLevel()=openid.extensions.draft.pape5.Response-class.html#getAuthLevel"><a title="openid.extensions.draft.pape5.Response.getAuthLevel" class="py-name" href="#" onclick="return doclink('link-44', 'getAuthLevel', 'link-44');">getAuthLevel</a></tt><tt class="py-op">(</tt><tt id="link-45" class="py-name"><a title="openid.extensions.draft.pape5.LEVELS_NIST" class="py-name" href="#" onclick="return doclink('link-45', 'LEVELS_NIST', 'link-9');">LEVELS_NIST</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line">    <tt id="link-46" class="py-name" targets="Variable openid.extensions.draft.pape5.Response.nist_auth_level=openid.extensions.draft.pape5.Response-class.html#nist_auth_level"><a title="openid.extensions.draft.pape5.Response.nist_auth_level" class="py-name" href="#" onclick="return doclink('link-46', 'nist_auth_level', 'link-46');">nist_auth_level</a></tt> <tt class="py-op">=</tt> <tt class="py-name">property</tt><tt class="py-op">(</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line">        <tt id="link-47" class="py-name" targets="Method openid.extensions.draft.pape5.Response._getNISTAuthLevel()=openid.extensions.draft.pape5.Response-class.html#_getNISTAuthLevel"><a title="openid.extensions.draft.pape5.Response._getNISTAuthLevel" class="py-name" href="#" onclick="return doclink('link-47', '_getNISTAuthLevel', 'link-47');">_getNISTAuthLevel</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line">        <tt class="py-name">doc</tt><tt class="py-op">=</tt><tt class="py-string">"Backward-compatibility accessor for the NIST auth level"</tt><tt class="py-op">)</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"> </tt>
+<a name="Response.addPolicyURI"></a><div id="Response.addPolicyURI-def"><a name="L334"></a><tt class="py-lineno">334</tt> <a class="py-toggle" href="#" id="Response.addPolicyURI-toggle" onclick="return toggle('Response.addPolicyURI');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#addPolicyURI">addPolicyURI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">policy_uri</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.addPolicyURI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.addPolicyURI-expanded"><a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line">        <tt class="py-docstring">"""Add a authentication policy to this response</tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-docstring">        This method is intended to be used by the provider to add a</tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-docstring">        policy that the provider conformed to when authenticating the user.</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line"><tt class="py-docstring">        @param policy_uri: The identifier for the preferred type of</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line"><tt class="py-docstring">            authentication.</tt> </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line"><tt class="py-docstring">        @see: http://openid.net/specs/openid-provider-authentication-policy-extension-1_0-01.html#auth_policies</tt> </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">policy_uri</tt> <tt class="py-op">==</tt> <tt id="link-48" class="py-name"><a title="openid.extensions.draft.pape5.AUTH_NONE" class="py-name" href="#" onclick="return doclink('link-48', 'AUTH_NONE', 'link-7');">AUTH_NONE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">RuntimeError</tt><tt class="py-op">(</tt> </tt>
+<a name="L346"></a><tt class="py-lineno">346</tt>  <tt class="py-line">                <tt class="py-string">'To send no policies, do not set any on the response.'</tt><tt class="py-op">)</tt> </tt>
+<a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line"> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">policy_uri</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt><tt class="py-op">:</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-name">policy_uri</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"> </tt>
+<a name="Response.fromSuccessResponse"></a><div id="Response.fromSuccessResponse-def"><a name="L351"></a><tt class="py-lineno">351</tt> <a class="py-toggle" href="#" id="Response.fromSuccessResponse-toggle" onclick="return toggle('Response.fromSuccessResponse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#fromSuccessResponse">fromSuccessResponse</a><tt class="py-op">(</tt><tt class="py-param">cls</tt><tt class="py-op">,</tt> <tt class="py-param">success_response</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.fromSuccessResponse-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.fromSuccessResponse-expanded"><a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">        <tt class="py-docstring">"""Create a C{L{Response}} object from a successful OpenID</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line"><tt class="py-docstring">        library response</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line"><tt class="py-docstring">        (C{L{openid.consumer.consumer.SuccessResponse}}) response</tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line"><tt class="py-docstring">        message</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line"><tt class="py-docstring">        @param success_response: A SuccessResponse from consumer.complete()</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line"><tt class="py-docstring">        @type success_response: C{L{openid.consumer.consumer.SuccessResponse}}</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line"><tt class="py-docstring">        @rtype: Response or None</tt> </tt>
+<a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: A provider authentication policy response from the</tt> </tt>
+<a name="L362"></a><tt class="py-lineno">362</tt>  <tt class="py-line"><tt class="py-docstring">            data that was supplied with the C{id_res} response or None</tt> </tt>
+<a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line"><tt class="py-docstring">            if the provider sent no signed PAPE response arguments.</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line">        <tt class="py-name">self</tt> <tt class="py-op">=</tt> <tt class="py-name">cls</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line">        <tt class="py-comment"># PAPE requires that the args be signed.</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-name">args</tt> <tt class="py-op">=</tt> <tt class="py-name">success_response</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name" targets="Method openid.consumer.consumer.SuccessResponse.getSignedNS()=openid.consumer.consumer.SuccessResponse-class.html#getSignedNS,Method openid.test.test_pape_draft2.DummySuccessResponse.getSignedNS()=openid.test.test_pape_draft2.DummySuccessResponse-class.html#getSignedNS,Method openid.test.test_pape_draft5.DummySuccessResponse.getSignedNS()=openid.test.test_pape_draft5.DummySuccessResponse-class.html#getSignedNS,Method openid.test.test_sreg.DummySuccessResponse.getSignedNS()=openid.test.test_sreg.DummySuccessResponse-class.html#getSignedNS"><a title="openid.consumer.consumer.SuccessResponse.getSignedNS
+openid.test.test_pape_draft2.DummySuccessResponse.getSignedNS
+openid.test.test_pape_draft5.DummySuccessResponse.getSignedNS
+openid.test.test_sreg.DummySuccessResponse.getSignedNS" class="py-name" href="#" onclick="return doclink('link-49', 'getSignedNS', 'link-49');">getSignedNS</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-50', 'ns_uri', 'link-3');">ns_uri</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line">        <tt class="py-name">is_openid1</tt> <tt class="py-op">=</tt> <tt class="py-name">success_response</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="openid.consumer.consumer.SuccessResponse.isOpenID1
+openid.message.Message.isOpenID1
+openid.test.test_pape_draft5.DummySuccessResponse.isOpenID1
+openid.test.test_sreg.FakeMessage.isOpenID1" class="py-name" href="#" onclick="return doclink('link-51', 'isOpenID1', 'link-24');">isOpenID1</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line">        <tt class="py-comment"># Only try to construct a PAPE response if the arguments were</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-comment"># signed in the OpenID response.  If not, return None.</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"><tt class="py-comment"></tt>        <tt class="py-keyword">if</tt> <tt class="py-name">args</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="openid.extensions.ax.FetchRequest.parseExtensionArgs
+openid.extensions.ax.FetchResponse.parseExtensionArgs
+openid.extensions.draft.pape2.Request.parseExtensionArgs
+openid.extensions.draft.pape2.Response.parseExtensionArgs
+openid.extensions.draft.pape5.Request.parseExtensionArgs
+openid.extensions.draft.pape5.Response.parseExtensionArgs
+openid.extensions.sreg.SRegRequest.parseExtensionArgs" class="py-name" href="#" onclick="return doclink('link-52', 'parseExtensionArgs', 'link-25');">parseExtensionArgs</a></tt><tt class="py-op">(</tt><tt class="py-name">args</tt><tt class="py-op">,</tt> <tt class="py-name">is_openid1</tt><tt class="py-op">)</tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"> </tt>
+<a name="Response.parseExtensionArgs"></a><div id="Response.parseExtensionArgs-def"><a name="L379"></a><tt class="py-lineno">379</tt> <a class="py-toggle" href="#" id="Response.parseExtensionArgs-toggle" onclick="return toggle('Response.parseExtensionArgs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#parseExtensionArgs">parseExtensionArgs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">args</tt><tt class="py-op">,</tt> <tt class="py-param">is_openid1</tt><tt class="py-op">,</tt> <tt class="py-param">strict</tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.parseExtensionArgs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.parseExtensionArgs-expanded"><a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line">        <tt class="py-docstring">"""Parse the provider authentication policy arguments into the</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line"><tt class="py-docstring">        internal state of this object</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line"><tt class="py-docstring">        @param args: unqualified provider authentication policy</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line"><tt class="py-docstring">            arguments</tt> </tt>
+<a name="L385"></a><tt class="py-lineno">385</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line"><tt class="py-docstring">        @param strict: Whether to raise an exception when bad data is</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line"><tt class="py-docstring">            encountered</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"><tt class="py-docstring">        @returns: None. The data is parsed into the internal fields of</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"><tt class="py-docstring">            this object.</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line">        <tt class="py-name">policies_str</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-53', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'auth_policies'</tt><tt class="py-op">)</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">policies_str</tt><tt class="py-op">:</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">            <tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-name">policies_str</tt><tt class="py-op">.</tt><tt id="link-54" class="py-name"><a title="openid.store.nonce.split" class="py-name" href="#" onclick="return doclink('link-54', 'split', 'link-29');">split</a></tt><tt class="py-op">(</tt><tt class="py-string">' '</tt><tt class="py-op">)</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Missing auth_policies'</tt><tt class="py-op">)</tt> </tt>
+<a name="L397"></a><tt class="py-lineno">397</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">            <tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line"> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">auth_policies</tt><tt class="py-op">)</tt> <tt class="py-op">&gt;</tt> <tt class="py-number">1</tt> <tt class="py-keyword">and</tt> <tt class="py-name">strict</tt> <tt class="py-keyword">and</tt> <tt id="link-55" class="py-name"><a title="openid.extensions.draft.pape5.AUTH_NONE" class="py-name" href="#" onclick="return doclink('link-55', 'AUTH_NONE', 'link-7');">AUTH_NONE</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth_policies</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'Got some auth policies, as well as the special '</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line">                             <tt class="py-string">'"none" URI: %r'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">auth_policies</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line"> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-string">'none'</tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth_policies</tt><tt class="py-op">:</tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">            <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-string">'"none" used as a policy URI (see PAPE draft &lt; 5)'</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L409"></a><tt class="py-lineno">409</tt>  <tt class="py-line">                <tt class="py-name">warnings</tt><tt class="py-op">.</tt><tt class="py-name">warn</tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">,</tt> <tt class="py-name">stacklevel</tt><tt class="py-op">=</tt><tt class="py-number">2</tt><tt class="py-op">)</tt> </tt>
+<a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line"> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line">        <tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-name">u</tt> <tt class="py-keyword">for</tt> <tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">auth_policies</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line">                         <tt class="py-keyword">if</tt> <tt class="py-name">u</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">'none'</tt><tt class="py-op">,</tt> <tt id="link-56" class="py-name"><a title="openid.extensions.draft.pape5.AUTH_NONE" class="py-name" href="#" onclick="return doclink('link-56', 'AUTH_NONE', 'link-7');">AUTH_NONE</a></tt><tt class="py-op">]</tt><tt class="py-op">]</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_policies</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-57', 'iteritems', 'link-15');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">key</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">'auth_level.'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">                <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-name">key</tt><tt class="py-op">[</tt><tt class="py-number">11</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line"> </tt>
+<a name="L420"></a><tt class="py-lineno">420</tt>  <tt class="py-line">                <tt class="py-comment"># skip the already-processed namespace declarations</tt> </tt>
+<a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line"><tt class="py-comment"></tt>                <tt class="py-keyword">if</tt> <tt class="py-name">alias</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">'ns.'</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line">                    <tt class="py-keyword">continue</tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line"> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line">                <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line">                    <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">[</tt><tt class="py-string">'auth_level.ns.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line">                <tt class="py-keyword">except</tt> <tt class="py-name">KeyError</tt><tt class="py-op">:</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">is_openid1</tt><tt class="py-op">:</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line">                        <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_default_auth_level_aliases</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-58', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">                    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line">                        <tt class="py-name">uri</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line"> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">uri</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">                        <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">                            <tt class="py-string">'Undefined auth level alias: %r'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line">                    <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="openid.extensions.draft.pape5.Response.setAuthLevel" class="py-name" href="#" onclick="return doclink('link-59', 'setAuthLevel', 'link-43');">setAuthLevel</a></tt><tt class="py-op">(</tt><tt class="py-name">uri</tt><tt class="py-op">,</tt> <tt class="py-name">val</tt><tt class="py-op">,</tt> <tt class="py-name">alias</tt><tt class="py-op">)</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line"> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line">        <tt class="py-name">auth_time</tt> <tt class="py-op">=</tt> <tt class="py-name">args</tt><tt class="py-op">.</tt><tt id="link-60" class="py-name"><a title="openid.extensions.sreg.SRegResponse.get
+openid.store.memstore.ServerAssocs.get" class="py-name" href="#" onclick="return doclink('link-60', 'get', 'link-14');">get</a></tt><tt class="py-op">(</tt><tt class="py-string">'auth_time'</tt><tt class="py-op">)</tt> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">auth_time</tt><tt class="py-op">:</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-61" class="py-name"><a title="openid.extensions.draft.pape2.TIME_VALIDATOR
+openid.extensions.draft.pape5.TIME_VALIDATOR" class="py-name" href="#" onclick="return doclink('link-61', 'TIME_VALIDATOR', 'link-8');">TIME_VALIDATOR</a></tt><tt class="py-op">.</tt><tt class="py-name">match</tt><tt class="py-op">(</tt><tt class="py-name">auth_time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_time</tt> <tt class="py-op">=</tt> <tt class="py-name">auth_time</tt> </tt>
+<a name="L443"></a><tt class="py-lineno">443</tt>  <tt class="py-line">            <tt class="py-keyword">elif</tt> <tt class="py-name">strict</tt><tt class="py-op">:</tt> </tt>
+<a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">"auth_time must be in RFC3339 format"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line"> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line">    <tt id="link-62" class="py-name" targets="Class Method openid.extensions.ax.FetchResponse.fromSuccessResponse()=openid.extensions.ax.FetchResponse-class.html#fromSuccessResponse,Class Method openid.extensions.draft.pape2.Response.fromSuccessResponse()=openid.extensions.draft.pape2.Response-class.html#fromSuccessResponse,Class Method openid.extensions.draft.pape5.Response.fromSuccessResponse()=openid.extensions.draft.pape5.Response-class.html#fromSuccessResponse,Class Method openid.extensions.sreg.SRegResponse.fromSuccessResponse()=openid.extensions.sreg.SRegResponse-class.html#fromSuccessResponse"><a title="openid.extensions.ax.FetchResponse.fromSuccessResponse
+openid.extensions.draft.pape2.Response.fromSuccessResponse
+openid.extensions.draft.pape5.Response.fromSuccessResponse
+openid.extensions.sreg.SRegResponse.fromSuccessResponse" class="py-name" href="#" onclick="return doclink('link-62', 'fromSuccessResponse', 'link-62');">fromSuccessResponse</a></tt> <tt class="py-op">=</tt> <tt class="py-name">classmethod</tt><tt class="py-op">(</tt><tt id="link-63" class="py-name"><a title="openid.extensions.ax.FetchResponse.fromSuccessResponse
+openid.extensions.draft.pape2.Response.fromSuccessResponse
+openid.extensions.draft.pape5.Response.fromSuccessResponse
+openid.extensions.sreg.SRegResponse.fromSuccessResponse" class="py-name" href="#" onclick="return doclink('link-63', 'fromSuccessResponse', 'link-62');">fromSuccessResponse</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line"> </tt>
+<a name="Response.getExtensionArgs"></a><div id="Response.getExtensionArgs-def"><a name="L448"></a><tt class="py-lineno">448</tt> <a class="py-toggle" href="#" id="Response.getExtensionArgs-toggle" onclick="return toggle('Response.getExtensionArgs');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="openid.extensions.draft.pape5.Response-class.html#getExtensionArgs">getExtensionArgs</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Response.getExtensionArgs-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Response.getExtensionArgs-expanded"><a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line">        <tt class="py-docstring">"""@see: C{L{Extension.getExtensionArgs}}</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">len</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line">                <tt class="py-string">'auth_policies'</tt><tt class="py-op">:</tt> <tt id="link-64" class="py-name"><a title="openid.extensions.draft.pape5.AUTH_NONE" class="py-name" href="#" onclick="return doclink('link-64', 'AUTH_NONE', 'link-7');">AUTH_NONE</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L457"></a><tt class="py-lineno">457</tt>  <tt class="py-line">                <tt class="py-string">'auth_policies'</tt><tt class="py-op">:</tt><tt class="py-string">' '</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_policies</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> </tt>
+<a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line">                <tt class="py-op">}</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line"> </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">level_type</tt><tt class="py-op">,</tt> <tt class="py-name">level</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_levels</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="openid.extensions.sreg.SRegResponse.iteritems
+openid.message.NamespaceMap.iteritems" class="py-name" href="#" onclick="return doclink('link-65', 'iteritems', 'link-15');">iteritems</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">            <tt class="py-name">alias</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">_getAlias</tt><tt class="py-op">(</tt><tt class="py-name">level_type</tt><tt class="py-op">)</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'auth_level.ns.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">level_type</tt> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'auth_level.%s'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">alias</tt><tt class="py-op">,</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">level</tt><tt class="py-op">)</tt> </tt>
+<a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line"> </tt>
+<a name="L465"></a><tt class="py-lineno">465</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_time</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L466"></a><tt class="py-lineno">466</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt id="link-66" class="py-name"><a title="openid.extensions.draft.pape2.TIME_VALIDATOR
+openid.extensions.draft.pape5.TIME_VALIDATOR" class="py-name" href="#" onclick="return doclink('link-66', 'TIME_VALIDATOR', 'link-8');">TIME_VALIDATOR</a></tt><tt class="py-op">.</tt><tt class="py-name">match</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_time</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line">                <tt class="py-keyword">raise</tt> <tt class="py-name">ValueError</tt><tt class="py-op">(</tt><tt class="py-string">'auth_time must be in RFC3339 format'</tt><tt class="py-op">)</tt> </tt>
+<a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line"> </tt>
+<a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line">            <tt class="py-name">ns_args</tt><tt class="py-op">[</tt><tt class="py-string">'auth_time'</tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">auth_time</tt> </tt>
+<a name="L470"></a><tt class="py-lineno">470</tt>  <tt class="py-line"> </tt>
+<a name="L471"></a><tt class="py-lineno">471</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">ns_args</tt> </tt>
+</div></div><a name="L472"></a><tt class="py-lineno">472</tt>  <tt class="py-line"> </tt>
+<a name="L473"></a><tt class="py-lineno">473</tt>  <tt class="py-line"><tt id="link-67" class="py-name"><a title="openid.extensions.draft.pape2.Response
+openid.extensions.draft.pape5.Response" class="py-name" href="#" onclick="return doclink('link-67', 'Response', 'link-40');">Response</a></tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-68', 'ns_uri', 'link-3');">ns_uri</a></tt> <tt class="py-op">=</tt> <tt id="link-69" class="py-name"><a title="openid.extension.Extension.ns_uri
+openid.extensions.draft.pape2.Request.ns_uri
+openid.extensions.draft.pape2.Response.ns_uri
+openid.extensions.draft.pape2.ns_uri
+openid.extensions.draft.pape5.Request.ns_uri
+openid.extensions.draft.pape5.Response.ns_uri
+openid.extensions.draft.pape5.ns_uri
+openid.extensions.sreg.ns_uri
+openid.sreg.ns_uri
+openid.test.test_consumer.SillyExtension.ns_uri
+openid.test.test_extension.DummyExtension.ns_uri" class="py-name" href="#" onclick="return doclink('link-69', 'ns_uri', 'link-3');">ns_uri</a></tt> </tt>
+<a name="L474"></a><tt class="py-lineno">474</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="openid-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://github.com/openid/python-openid/">Python-OpenID</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 29 15:11:38 2010
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
