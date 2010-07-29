@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: OpenID::Message</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">OpenID::Message</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/openid/kvpost_rb.html">
+                lib/openid/kvpost.rb
+                </a>
+        <br />
+                <a href="../../files/lib/openid/message_rb.html">
+                lib/openid/message.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000346">==</a>&nbsp;&nbsp;
+      <a href="#M000338">_fix_ns</a>&nbsp;&nbsp;
+      <a href="#M000324">_from_openid_args</a>&nbsp;&nbsp;
+      <a href="#M000325">_get_default_namespace</a>&nbsp;&nbsp;
+      <a href="#M000331">copy</a>&nbsp;&nbsp;
+      <a href="#M000345">del_arg</a>&nbsp;&nbsp;
+      <a href="#M000319">from_http_response</a>&nbsp;&nbsp;
+      <a href="#M000330">from_kvform</a>&nbsp;&nbsp;
+      <a href="#M000323">from_openid_args</a>&nbsp;&nbsp;
+      <a href="#M000322">from_post_args</a>&nbsp;&nbsp;
+      <a href="#M000347">get_aliased_arg</a>&nbsp;&nbsp;
+      <a href="#M000341">get_arg</a>&nbsp;&nbsp;
+      <a href="#M000342">get_args</a>&nbsp;&nbsp;
+      <a href="#M000340">get_key</a>&nbsp;&nbsp;
+      <a href="#M000327">get_openid_namespace</a>&nbsp;&nbsp;
+      <a href="#M000339">has_key?</a>&nbsp;&nbsp;
+      <a href="#M000328">is_openid1</a>&nbsp;&nbsp;
+      <a href="#M000329">is_openid2</a>&nbsp;&nbsp;
+      <a href="#M000321">new</a>&nbsp;&nbsp;
+      <a href="#M000320">register_namespace_alias</a>&nbsp;&nbsp;
+      <a href="#M000344">set_arg</a>&nbsp;&nbsp;
+      <a href="#M000326">set_openid_namespace</a>&nbsp;&nbsp;
+      <a href="#M000333">to_args</a>&nbsp;&nbsp;
+      <a href="#M000334">to_form_markup</a>&nbsp;&nbsp;
+      <a href="#M000336">to_kvform</a>&nbsp;&nbsp;
+      <a href="#M000332">to_post_args</a>&nbsp;&nbsp;
+      <a href="#M000335">to_url</a>&nbsp;&nbsp;
+      <a href="#M000337">to_url_encoded</a>&nbsp;&nbsp;
+      <a href="#M000343">update_args</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="Message/KeyNotFound.html" class="link">OpenID::Message::KeyNotFound</a><br />
+
+    </div>
+
+
+
+
+    <div id="attribute-list">
+      <h3 class="section-bar">Attributes</h3>
+
+      <div class="name-list">
+        <table>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">namespaces</td>
+          <td class="context-item-value">&nbsp;[R]&nbsp;</td>
+          <td class="context-item-desc"></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000319" class="method-detail">
+        <a name="M000319"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000319.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000319.html');return false;">
+          <span class="method-name">from_http_response</span><span class="method-args">(response, server_url)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000330" class="method-detail">
+        <a name="M000330"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000330.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000330.html');return false;">
+          <span class="method-name">from_kvform</span><span class="method-args">(kvform_string)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Create a message from a KVForm string
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000323" class="method-detail">
+        <a name="M000323"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000323.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000323.html');return false;">
+          <span class="method-name">from_openid_args</span><span class="method-args">(openid_args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Construct a <a href="Message.html">Message</a> from a parsed KVForm
+message. Raises InvalidNamespaceError if you try to instantiate a <a
+href="Message.html">Message</a> with a namespace not in the above allowed
+list
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000322" class="method-detail">
+        <a name="M000322"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000322.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000322.html');return false;">
+          <span class="method-name">from_post_args</span><span class="method-args">(args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Construct a <a href="Message.html">Message</a> containing a set of POST
+arguments. Raises InvalidNamespaceError if you try to instantiate a <a
+href="Message.html">Message</a> with a namespace not in the above allowed
+list
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000321" class="method-detail">
+        <a name="M000321"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000321.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000321.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(openid_namespace=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Raises InvalidNamespaceError if you try to instantiate a <a
+href="Message.html">Message</a> with a namespace not in the above allowed
+list
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000320" class="method-detail">
+        <a name="M000320"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000320.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000320.html');return false;">
+          <span class="method-name">register_namespace_alias</span><span class="method-args">(namespace_uri, alias_)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Registers a (namespace URI, alias) mapping in a global namespace alias map.
+Raises <a
+href="NamespaceAliasRegistrationError.html">NamespaceAliasRegistrationError</a>
+if either the namespace URI or alias has already been registered with a
+different value. This function is required if you want to use a namespace
+with an <a href="../OpenID.html">OpenID</a> 1 message.
+</p>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000346" class="method-detail">
+        <a name="M000346"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000346.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000346.html');return false;">
+          <span class="method-name">==</span><span class="method-args">(other)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000338" class="method-detail">
+        <a name="M000338"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000338.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000338.html');return false;">
+          <span class="method-name">_fix_ns</span><span class="method-args">(namespace)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Convert an input value into the internally used values of this obejct.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000324" class="method-detail">
+        <a name="M000324"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000324.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000324.html');return false;">
+          <span class="method-name">_from_openid_args</span><span class="method-args">(openid_args)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Raises InvalidNamespaceError if you try to instantiate a <a
+href="Message.html">Message</a> with a namespace not in the above allowed
+list
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000325" class="method-detail">
+        <a name="M000325"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000325.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000325.html');return false;">
+          <span class="method-name">_get_default_namespace</span><span class="method-args">(mystery_alias)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000331" class="method-detail">
+        <a name="M000331"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000331.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000331.html');return false;">
+          <span class="method-name">copy</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000345" class="method-detail">
+        <a name="M000345"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000345.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000345.html');return false;">
+          <span class="method-name">del_arg</span><span class="method-args">(namespace, key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Remove a single argument from this namespace.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000347" class="method-detail">
+        <a name="M000347"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000347.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000347.html');return false;">
+          <span class="method-name">get_aliased_arg</span><span class="method-args">(aliased_key, default=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000341" class="method-detail">
+        <a name="M000341"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000341.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000341.html');return false;">
+          <span class="method-name">get_arg</span><span class="method-args">(namespace, key, default=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get a value for a namespaced key.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000342" class="method-detail">
+        <a name="M000342"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000342.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000342.html');return false;">
+          <span class="method-name">get_args</span><span class="method-args">(namespace)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the arguments that are defined for this namespace URI.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000340" class="method-detail">
+        <a name="M000340"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000340.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000340.html');return false;">
+          <span class="method-name">get_key</span><span class="method-args">(namespace, ns_key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Get the key for a particular namespaced argument
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000327" class="method-detail">
+        <a name="M000327"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000327.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000327.html');return false;">
+          <span class="method-name">get_openid_namespace</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000339" class="method-detail">
+        <a name="M000339"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000339.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000339.html');return false;">
+          <span class="method-name">has_key?</span><span class="method-args">(namespace, ns_key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000328" class="method-detail">
+        <a name="M000328"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000328.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000328.html');return false;">
+          <span class="method-name">is_openid1</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000329" class="method-detail">
+        <a name="M000329"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000329.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000329.html');return false;">
+          <span class="method-name">is_openid2</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000344" class="method-detail">
+        <a name="M000344"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000344.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000344.html');return false;">
+          <span class="method-name">set_arg</span><span class="method-args">(namespace, key, value)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set a single argument in this namespace
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000326" class="method-detail">
+        <a name="M000326"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000326.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000326.html');return false;">
+          <span class="method-name">set_openid_namespace</span><span class="method-args">(openid_ns_uri, implicit)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000333" class="method-detail">
+        <a name="M000333"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000333.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000333.html');return false;">
+          <span class="method-name">to_args</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return all namespaced arguments, failing if any non-namespaced arguments
+exist.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000334" class="method-detail">
+        <a name="M000334"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000334.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000334.html');return false;">
+          <span class="method-name">to_form_markup</span><span class="method-args">(action_url, form_tag_attrs=nil, submit_text='Continue')</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generate HTML form markup that contains the values in this message, to be
+HTTP POSTed as x-www-form-urlencoded UTF-8.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000336" class="method-detail">
+        <a name="M000336"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000336.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000336.html');return false;">
+          <span class="method-name">to_kvform</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generate a KVForm string that contains the parameters in this message. This
+will fail is the message contains arguments outside of the
+&quot;openid.&quot; prefix.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000332" class="method-detail">
+        <a name="M000332"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000332.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000332.html');return false;">
+          <span class="method-name">to_post_args</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Return all arguments with &quot;openid.&quot; in from of namespaced
+arguments.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000335" class="method-detail">
+        <a name="M000335"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000335.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000335.html');return false;">
+          <span class="method-name">to_url</span><span class="method-args">(base_url)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generate a GET URL with the paramters in this message attacked as query
+parameters.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000337" class="method-detail">
+        <a name="M000337"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000337.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000337.html');return false;">
+          <span class="method-name">to_url_encoded</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Generate an x-www-urlencoded string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000343" class="method-detail">
+        <a name="M000343"></a>
+
+        <div class="method-heading">
+          <a href="Message.src/M000343.html" target="Code" class="method-signature"
+            onclick="popupCode('Message.src/M000343.html');return false;">
+          <span class="method-name">update_args</span><span class="method-args">(namespace, updates)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Set multiple key/value pairs in one call.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>
