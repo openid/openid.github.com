@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Auth_OpenID_CryptUtil</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Auth_OpenID_CryptUtil</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_Auth---OpenID---CryptUtil.php.html">/Auth/OpenID/CryptUtil.php</a> (line <span class="field">26</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#constEq" title="details" class="method-name">constEq</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$s1</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$s2</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">string</span>
+										<a href="#getBytes" title="details" class="method-name">getBytes</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$num_bytes</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">string</span>
+										<a href="#randomString" title="details" class="method-name">randomString</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$length</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$population</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$chrs</span>)
+									</div>
+																																							</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodconstEq" id="constEq"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static constEq</span> (line <span class="line-number">108</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			constEq
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$s1</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$s2</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$s1</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$s2</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetBytes" id="getBytes"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static getBytes</span> (line <span class="line-number">40</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the specified number of random bytes.</p>
+<p class="description"><p>Attempts to use a cryptographically secure (not predictable)  source of randomness if available. If there is no high-entropy  randomness source available, it will fail. As a last resort,  for non-critical systems, define  <div class="src-code"><ol><li><div class="src-line"><span class="src-id"><a href="../OpenID/_admin---texttest.php.html#defineAuth_OpenID_RAND_SOURCE">Auth_OpenID_RAND_SOURCE</a></span></div></li>
+</ol></div> as <div class="src-code"><ol><li><div class="src-line"><span class="src-id">null</span></div></li>
+</ol></div>, and  the code will fall back on a pseudo-random number generator.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> random bytes</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getBytes
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$num_bytes</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$num_bytes</span><span class="var-description">: The length of the return value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrandomString" id="randomString"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static randomString</span> (line <span class="line-number">80</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Produce a string of length random bytes, chosen from chrs.  If  $chrs is null, the resulting string may contain any characters.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> A string of randomly-chosen characters  from $chrs</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			randomString
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$length</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$population</span> = <span class="var-default">null</span>], <span class="var-type">string</span>&nbsp;<span class="var-name">$chrs</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$length</span><span class="var-description">: The length of the resulting  randomly-generated string</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$chrs</span><span class="var-description">: A string of characters from which to choose  to build the new string</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$population</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:43 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

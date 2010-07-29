@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for about.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file about.php</h1>
+<p>Documentation is available at <a href="../OpenID/_examples---server---lib---render---about.php.html">about.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/session.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/render.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a6"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'about_error_template'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;error&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-str">An&nbsp;error&nbsp;occurred&nbsp;when&nbsp;processing&nbsp;your&nbsp;request:</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-str">&lt;br&nbsp;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-str">%s</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-str">&lt;/div&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a13"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'about_body'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'&lt;p&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-str">&nbsp;&nbsp;This&nbsp;is&nbsp;an&nbsp;&lt;a&nbsp;href=&quot;http://www.openid.net/&quot;&gt;OpenID&lt;/a&gt;&nbsp;server</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-str">&nbsp;&nbsp;endpoint.&nbsp;This&nbsp;server&nbsp;is&nbsp;built&nbsp;on&nbsp;the&nbsp;&lt;a</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-str">&nbsp;&nbsp;href=&quot;http://github.com/openid/php-openid&quot;&gt;JanRain&nbsp;PHP&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-str">&nbsp;&nbsp;library&lt;/a&gt;.&nbsp;Since&nbsp;OpenID&nbsp;consumer&nbsp;sites&nbsp;will&nbsp;need&nbsp;to&nbsp;directly&nbsp;contact&nbsp;this</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-str">&nbsp;&nbsp;server,&nbsp;it&nbsp;must&nbsp;be&nbsp;accessible&nbsp;over&nbsp;the&nbsp;Internet&nbsp;(not&nbsp;behind&nbsp;a&nbsp;firewall).</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-str">&lt;/p&gt;</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-str">&lt;p&gt;</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-str">&nbsp;&nbsp;To&nbsp;use&nbsp;this&nbsp;server,&nbsp;you&nbsp;will&nbsp;have&nbsp;to&nbsp;set&nbsp;up&nbsp;a&nbsp;URL&nbsp;to&nbsp;use&nbsp;as&nbsp;an&nbsp;identifier.</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-str">&nbsp;&nbsp;Insert&nbsp;the&nbsp;following&nbsp;markup&nbsp;into&nbsp;the&nbsp;&lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt;&nbsp;of&nbsp;the&nbsp;HTML</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-str">&nbsp;&nbsp;document&nbsp;at&nbsp;that&nbsp;URL:</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-str">&lt;/p&gt;</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-str">&lt;pre&gt;&amp;lt;link&nbsp;rel=&quot;openid.server&quot;&nbsp;href=&quot;%s&quot;&nbsp;/&amp;gt;&lt;/pre&gt;</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-str">&lt;p&gt;</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-str">&nbsp;&nbsp;Then&nbsp;configure&nbsp;this&nbsp;server&nbsp;so&nbsp;that&nbsp;you&nbsp;can&nbsp;log&nbsp;in&nbsp;with&nbsp;that&nbsp;URL.</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-str">&lt;/p&gt;</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-str">'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*&nbsp;Render&nbsp;the&nbsp;about&nbsp;page,&nbsp;potentially&nbsp;with&nbsp;an&nbsp;error&nbsp;message</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render---about.php.html#functionabout_render">about_render</a><span class="src-sym">(</span><span class="src-var">$error</span>=<span class="src-id">false</span><span class="src-sym">,&nbsp;</span><span class="src-var">$internal</span>=<span class="src-id">true</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$headers&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render---about.php.html#defineabout_body">about_body</a></span><span class="src-sym">,&nbsp;</span><a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$error</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$headers</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$internal&nbsp;</span>?&nbsp;<span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#definehttp_internal_error">http_internal_error</a>&nbsp;</span>:&nbsp;<span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#definehttp_bad_request">http_bad_request</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>.=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render---about.php.html#defineabout_error_template">about_error_template</a></span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><span class="src-var">$error</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$current_user&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functiongetLoggedInUser">getLoggedInUser</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionpage_render">page_render</a><span class="src-sym">(</span><span class="src-var">$body</span><span class="src-sym">,&nbsp;</span><span class="src-var">$current_user</span><span class="src-sym">,&nbsp;</span><span class="src-str">'OpenID&nbsp;Server&nbsp;Endpoint'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:17 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

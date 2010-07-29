@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for TestUtil.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file TestUtil.php</h1>
+<p>Documentation is available at <a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html">TestUtil.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;Utilites&nbsp;for&nbsp;test&nbsp;functions</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html#functionTests_Auth_OpenID_datafile">Tests_Auth_OpenID_datafile</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-var">$reader</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$path&nbsp;</span>=&nbsp;<a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><a href="http://www.php.net/realpath">realpath</a><span class="src-sym">(</span>__FILE__<span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sep&nbsp;</span>=&nbsp;<span class="src-id">DIRECTORY_SEPARATOR</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$filename&nbsp;</span>=&nbsp;<span class="src-var">$path&nbsp;</span>.&nbsp;<span class="src-var">$sep&nbsp;</span>.&nbsp;<span class="src-str">'data'&nbsp;</span>.&nbsp;<span class="src-var">$sep&nbsp;</span>.&nbsp;<span class="src-var">$name</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$data&nbsp;</span>=&nbsp;<span class="src-var">$reader</span><span class="src-sym">(</span><span class="src-var">$filename</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$data&nbsp;</span>===&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$msg&nbsp;</span>=&nbsp;<span class="src-str">&quot;</span><span class="src-str">Failed&nbsp;to&nbsp;open&nbsp;data&nbsp;file:&nbsp;<span class="src-var">$name</span></span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$data</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html#functionTests_Auth_OpenID_readdata">Tests_Auth_OpenID_readdata</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html#functionTests_Auth_OpenID_datafile">Tests_Auth_OpenID_datafile</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-str">'file_get_contents'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html#functionTests_Auth_OpenID_readlines">Tests_Auth_OpenID_readlines</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="../OpenID/_Tests---Auth---OpenID---TestUtil.php.html#functionTests_Auth_OpenID_datafile">Tests_Auth_OpenID_datafile</a><span class="src-sym">(</span><span class="src-var">$name</span><span class="src-sym">,&nbsp;</span><span class="src-str">'file'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/OpenIDTestMixin.html">OpenIDTestMixin</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestCase&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/OpenIDTestMixin.html#methodfailUnlessOpenIDValueEquals">failUnlessOpenIDValueEquals</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">,&nbsp;</span><span class="src-var">$expected</span><span class="src-sym">,&nbsp;</span><span class="src-var">$ns</span>=<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$ns&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$ns&nbsp;</span>=&nbsp;<span class="src-id"><a href="../OpenID/_Auth---OpenID---Message.php.html#defineAuth_OpenID_OPENID_NS">Auth_OpenID_OPENID_NS</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$actual&nbsp;</span>=&nbsp;<span class="src-var">$msg</span><span class="src-sym">-&gt;</span><span class="src-id">getArg</span><span class="src-sym">(</span><span class="src-var">$ns</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$error_format&nbsp;</span>=&nbsp;<span class="src-str">'Wrong&nbsp;value&nbsp;for&nbsp;openid.%s:&nbsp;expected=%s,&nbsp;actual=%s'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$error_message&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-var">$error_format</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$key</span><span class="src-sym">,&nbsp;</span><span class="src-var">$expected</span><span class="src-sym">,&nbsp;</span><span class="src-var">$actual</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertEquals</span><span class="src-sym">(</span><span class="src-var">$expected</span><span class="src-sym">,&nbsp;</span><span class="src-var">$actual</span><span class="src-sym">,&nbsp;</span><span class="src-var">$error_message</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/OpenIDTestMixin.html#methodfailIfOpenIDKeyExists">failIfOpenIDKeyExists</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">,&nbsp;</span><span class="src-var">$ns</span>=<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$ns&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$ns&nbsp;</span>=&nbsp;<span class="src-id"><a href="../OpenID/_Auth---OpenID---Message.php.html#defineAuth_OpenID_OPENID_NS">Auth_OpenID_OPENID_NS</a></span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$actual&nbsp;</span>=&nbsp;<span class="src-var">$msg</span><span class="src-sym">-&gt;</span><span class="src-id">getArg</span><span class="src-sym">(</span><span class="src-var">$ns</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$error_message&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'openid.%s&nbsp;unexpectedly&nbsp;present:&nbsp;%s'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$key</span><span class="src-sym">,&nbsp;</span><span class="src-var">$actual</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">-&gt;</span><span class="src-id">hasKey</span><span class="src-sym">(</span><span class="src-var">$ns</span><span class="src-sym">,&nbsp;</span><span class="src-var">$key</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$error_message</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:34 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

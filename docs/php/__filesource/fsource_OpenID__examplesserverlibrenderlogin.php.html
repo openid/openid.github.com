@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for login.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file login.php</h1>
+<p>Documentation is available at <a href="../OpenID/_examples---server---lib---render---login.php.html">login.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/session.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/render.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a6"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'login_form_pat'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'&lt;div&nbsp;class=&quot;form&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-str">&nbsp;&nbsp;&lt;p&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;Enter&nbsp;your&nbsp;username&nbsp;into&nbsp;this&nbsp;form&nbsp;to&nbsp;log&nbsp;in&nbsp;to&nbsp;this&nbsp;server.&nbsp;&nbsp;It</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;can&nbsp;be&nbsp;anything;&nbsp;this&nbsp;is&nbsp;just&nbsp;for&nbsp;demonstration&nbsp;purposes.&nbsp;&nbsp;For</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;example,&nbsp;entering&nbsp;USERNAME&nbsp;will&nbsp;give&nbsp;you&nbsp;the&nbsp;identity&nbsp;URL</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;pre&gt;%s&lt;/pre&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-str">&nbsp;&nbsp;&lt;/p&gt;</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-str">&nbsp;&nbsp;&lt;form&nbsp;method=&quot;post&quot;&nbsp;action=&quot;%s&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;&lt;label&nbsp;for=&quot;openid_url&quot;&gt;Name:&lt;/label&gt;&lt;/th&gt;</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;openid_url&quot;</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;%s&quot;&nbsp;id=&quot;openid_url&quot;&nbsp;/&gt;&lt;/td&gt;</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&nbsp;colspan=&quot;2&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;value=&quot;Log&nbsp;in&quot;&nbsp;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;cancel&quot;&nbsp;value=&quot;Cancel&quot;&nbsp;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/td&gt;</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-str">&nbsp;&nbsp;&lt;/form&gt;</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-str">&lt;/div&gt;</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-str">'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a35"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'login_needed_pat'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'You&nbsp;must&nbsp;be&nbsp;logged&nbsp;in&nbsp;as&nbsp;%s&nbsp;to&nbsp;approve&nbsp;this&nbsp;request.'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render---login.php.html#functionlogin_render">login_render</a><span class="src-sym">(</span><span class="src-var">$errors</span>=<span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$input</span>=<span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$needed</span>=<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$current_user&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functiongetLoggedInUser">getLoggedInUser</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$input&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$input&nbsp;</span>=&nbsp;<span class="src-var">$current_user</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$needed</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$errors</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render---login.php.html#definelogin_needed_pat">login_needed_pat</a></span><span class="src-sym">,&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><span class="src-var">$needed</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$esc_input&nbsp;</span>=&nbsp;<a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><span class="src-var">$input</span><span class="src-sym">,&nbsp;</span><span class="src-id">ENT_QUOTES</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$login_url&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-str">'login'</span><span class="src-sym">,&nbsp;</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render---login.php.html#definelogin_form_pat">login_form_pat</a></span><span class="src-sym">,&nbsp;</span><a href="../OpenID/_examples---server---lib---session.php.html#functionidURL">idURL</a><span class="src-sym">(</span><span class="src-str">'USERNAME'</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$login_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$esc_input</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$errors</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---render---login.php.html#functionloginError_render">loginError_render</a><span class="src-sym">(</span><span class="src-var">$errors</span><span class="src-sym">)&nbsp;</span>.&nbsp;<span class="src-var">$body</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionpage_render">page_render</a><span class="src-sym">(</span><span class="src-var">$body</span><span class="src-sym">,&nbsp;</span><span class="src-var">$current_user</span><span class="src-sym">,&nbsp;</span><span class="src-str">'Log&nbsp;In'</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-id">true</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render---login.php.html#functionloginError_render">loginError_render</a><span class="src-sym">(</span><span class="src-var">$errors</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$text&nbsp;</span>=&nbsp;<span class="src-str">''</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$errors&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$error</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$text&nbsp;</span>.=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;&lt;li&gt;%s&lt;/li&gt;\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$error</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;&lt;ul&nbsp;class=\&quot;error\&quot;&gt;\n%s&lt;/ul&gt;\n&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$text</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a65"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:54 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

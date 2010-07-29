@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for RPVerify.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file RPVerify.php</h1>
+<p>Documentation is available at <a href="../OpenID/_Tests---Auth---OpenID---RPVerify.php.html">RPVerify.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-comm">&nbsp;*&nbsp;Unit&nbsp;tests&nbsp;for&nbsp;verification&nbsp;of&nbsp;return_to&nbsp;URLs&nbsp;for&nbsp;a&nbsp;realm.</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-comm">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a6"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/OpenID/Discover.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/OpenID/TrustRoot.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a9"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/Yadis/Yadis.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-comm">&nbsp;*&nbsp;Tests&nbsp;for&nbsp;building&nbsp;the&nbsp;discovery&nbsp;URL&nbsp;from&nbsp;a&nbsp;realm&nbsp;and&nbsp;a&nbsp;return_to</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-comm">&nbsp;*&nbsp;URL</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-comm">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html">Tests_Auth_OpenID_BuildDiscoveryURL</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestCase&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Build&nbsp;a&nbsp;discovery&nbsp;URL&nbsp;out&nbsp;of&nbsp;the&nbsp;realm&nbsp;and&nbsp;a&nbsp;return_to&nbsp;and&nbsp;make</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;sure&nbsp;that&nbsp;it&nbsp;matches&nbsp;the&nbsp;expected&nbsp;discovery&nbsp;URL</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html#methodfailUnlessDiscoURL">failUnlessDiscoURL</a><span class="src-sym">(</span><span class="src-var">$realm</span><span class="src-sym">,&nbsp;</span><span class="src-var">$expected_discovery_url</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$actual_discovery_url&nbsp;</span>=&nbsp;<span class="src-id"><a href="../OpenID/Auth_OpenID_TrustRoot.html">Auth_OpenID_TrustRoot</a></span><span class="src-sym">::</span><a href="../OpenID/Auth_OpenID_TrustRoot.html#methodbuildDiscoveryURL">buildDiscoveryURL</a><span class="src-sym">(</span><span class="src-var">$realm</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertEquals</span><span class="src-sym">(</span><span class="src-var">$expected_discovery_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$actual_discovery_url</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;There&nbsp;is&nbsp;no&nbsp;wildcard&nbsp;and&nbsp;the&nbsp;realm&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;the&nbsp;return_to</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;URL</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html#methodtest_trivial">test_trivial</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html#methodfailUnlessDiscoURL">failUnlessDiscoURL</a><span class="src-sym">(</span><span class="src-str">'http://example.com/foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://example.com/foo'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;There&nbsp;is&nbsp;a&nbsp;wildcard</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html#methodtest_wildcard">test_wildcard</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_BuildDiscoveryURL.html#methodfailUnlessDiscoURL">failUnlessDiscoURL</a><span class="src-sym">(</span><span class="src-str">'http://*.example.com/foo'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://www.example.com/foo'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/_MockDiscover.html">_MockDiscover</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/_MockDiscover.html#method_MockDiscover">_MockDiscover</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">data&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$data</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/_MockDiscover.html#methodmockDiscover">mockDiscover</a><span class="src-sym">(</span><span class="src-var">$uri</span><span class="src-sym">,&nbsp;</span><span class="src-var">$fetcher</span><span class="src-sym">,&nbsp;</span><span class="src-var">$discover_function</span>=<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$result&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/Auth_Yadis_DiscoveryResult.html">Auth_Yadis_DiscoveryResult</a></span><span class="src-sym">(</span><span class="src-var">$uri</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$result</span><span class="src-sym">-&gt;</span><span class="src-id">response_text&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">data</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$result</span><span class="src-sym">-&gt;</span><span class="src-id">normalized_uri&nbsp;</span>=&nbsp;<span class="src-var">$uri</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$result</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html">Tests_Auth_OpenID_ExtractReturnToURLs</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestCase&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">var&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#var$disco_url">$disco_url</a>&nbsp;=&nbsp;<span class="src-str">'http://example.com/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">,&nbsp;</span><span class="src-var">$expected_return_urls</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$discover_object&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/_MockDiscover.html">_MockDiscover</a></span><span class="src-sym">(</span><span class="src-var">$data</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$actual_return_urls&nbsp;</span>=&nbsp;<a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_getAllowedReturnURLs">Auth_OpenID_getAllowedReturnURLs</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#var$disco_url">disco_url</a><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$discover_object</span><span class="src-sym">,&nbsp;</span><span class="src-str">'mockDiscover'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertEquals</span><span class="src-sym">(</span><span class="src-var">$expected_return_urls</span><span class="src-sym">,&nbsp;</span><span class="src-var">$actual_return_urls</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessDiscoveryFailure">failUnlessDiscoveryFailure</a><span class="src-sym">(</span><span class="src-var">$text</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$discover_object&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/_MockDiscover.html">_MockDiscover</a></span><span class="src-sym">(</span><span class="src-var">$text</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_getAllowedReturnURLs">Auth_OpenID_getAllowedReturnURLs</a><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#var$disco_url">disco_url</a><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$discover_object</span><span class="src-sym">,&nbsp;</span><span class="src-str">'mockDiscover'</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_empty">test_empty</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessDiscoveryFailure">failUnlessDiscoveryFailure</a><span class="src-sym">(</span><span class="src-str">''</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_badXML">test_badXML</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessDiscoveryFailure">failUnlessDiscoveryFailure</a><span class="src-sym">(</span><span class="src-str">'&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_noEntries">test_noEntries</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-str">'&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;</span></div></li>
+<li><div class="src-line"><a name="a91"></a><span class="src-str">&lt;xrds:XRDS&nbsp;xmlns:xrds=&quot;xri://$xrds&quot;</span></div></li>
+<li><div class="src-line"><a name="a92"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;xri://$xrd*($v*2.0)&quot;</span></div></li>
+<li><div class="src-line"><a name="a93"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span></div></li>
+<li><div class="src-line"><a name="a94"></a><span class="src-str">&nbsp;&nbsp;&lt;XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a95"></a><span class="src-str">&nbsp;&nbsp;&lt;/XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a96"></a><span class="src-str">&lt;/xrds:XRDS&gt;</span></div></li>
+<li><div class="src-line"><a name="a97"></a><span class="src-str">'</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_noReturnToEntries">test_noReturnToEntries</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-str">'&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;</span></div></li>
+<li><div class="src-line"><a name="a103"></a><span class="src-str">&lt;xrds:XRDS&nbsp;xmlns:xrds=&quot;xri://$xrds&quot;</span></div></li>
+<li><div class="src-line"><a name="a104"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;xri://$xrd*($v*2.0)&quot;</span></div></li>
+<li><div class="src-line"><a name="a105"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span></div></li>
+<li><div class="src-line"><a name="a106"></a><span class="src-str">&nbsp;&nbsp;&lt;XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a107"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;10&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a108"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/server&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a109"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://www.myopenid.com/server&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a110"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a111"></a><span class="src-str">&nbsp;&nbsp;&lt;/XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a112"></a><span class="src-str">&lt;/xrds:XRDS&gt;</span></div></li>
+<li><div class="src-line"><a name="a113"></a><span class="src-str">'</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_oneEntry">test_oneEntry</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-str">'&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;</span></div></li>
+<li><div class="src-line"><a name="a119"></a><span class="src-str">&lt;xrds:XRDS&nbsp;xmlns:xrds=&quot;xri://$xrds&quot;</span></div></li>
+<li><div class="src-line"><a name="a120"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;xri://$xrd*($v*2.0)&quot;</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span></div></li>
+<li><div class="src-line"><a name="a122"></a><span class="src-str">&nbsp;&nbsp;&lt;XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a123"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a124"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a125"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a126"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a127"></a><span class="src-str">&nbsp;&nbsp;&lt;/XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a128"></a><span class="src-str">&lt;/xrds:XRDS&gt;</span></div></li>
+<li><div class="src-line"><a name="a129"></a><span class="src-str">'</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'http://rp.example.com/return'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_twoEntries">test_twoEntries</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-str">'&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;</span></div></li>
+<li><div class="src-line"><a name="a135"></a><span class="src-str">&lt;xrds:XRDS&nbsp;xmlns:xrds=&quot;xri://$xrds&quot;</span></div></li>
+<li><div class="src-line"><a name="a136"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;xri://$xrd*($v*2.0)&quot;</span></div></li>
+<li><div class="src-line"><a name="a137"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span></div></li>
+<li><div class="src-line"><a name="a138"></a><span class="src-str">&nbsp;&nbsp;&lt;XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a139"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;0&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a140"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a141"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a142"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a143"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;1&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a144"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a145"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://other.rp.example.com/return&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a146"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a147"></a><span class="src-str">&nbsp;&nbsp;&lt;/XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a148"></a><span class="src-str">&lt;/xrds:XRDS&gt;</span></div></li>
+<li><div class="src-line"><a name="a149"></a><span class="src-str">'</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'http://rp.example.com/return'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://other.rp.example.com/return'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodtest_twoEntries_withOther">test_twoEntries_withOther</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Tests_Auth_OpenID_ExtractReturnToURLs.html#methodfailUnlessXRDSHasReturnURLs">failUnlessXRDSHasReturnURLs</a><span class="src-sym">(</span><span class="src-str">'&lt;?xml&nbsp;version=&quot;1.0&quot;&nbsp;encoding=&quot;UTF-8&quot;?&gt;</span></div></li>
+<li><div class="src-line"><a name="a156"></a><span class="src-str">&lt;xrds:XRDS&nbsp;xmlns:xrds=&quot;xri://$xrds&quot;</span></div></li>
+<li><div class="src-line"><a name="a157"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;xmlns=&quot;xri://$xrd*($v*2.0)&quot;</span></div></li>
+<li><div class="src-line"><a name="a158"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;</span></div></li>
+<li><div class="src-line"><a name="a159"></a><span class="src-str">&nbsp;&nbsp;&lt;XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a160"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;0&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a161"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a162"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://rp.example.com/return&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a163"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a164"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;1&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a165"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://specs.openid.net/auth/2.0/return_to&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a166"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://other.rp.example.com/return&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a167"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a168"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;Service&nbsp;priority=&quot;0&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a169"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Type&gt;http://example.com/LOLCATS&lt;/Type&gt;</span></div></li>
+<li><div class="src-line"><a name="a170"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;URI&gt;http://example.com/invisible+uri&lt;/URI&gt;</span></div></li>
+<li><div class="src-line"><a name="a171"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/Service&gt;</span></div></li>
+<li><div class="src-line"><a name="a172"></a><span class="src-str">&nbsp;&nbsp;&lt;/XRD&gt;</span></div></li>
+<li><div class="src-line"><a name="a173"></a><span class="src-str">&lt;/xrds:XRDS&gt;</span></div></li>
+<li><div class="src-line"><a name="a174"></a><span class="src-str">'</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'http://rp.example.com/return'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://other.rp.example.com/return'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a176"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a177"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a178"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a179"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html">Tests_Auth_OpenID_ReturnToMatches</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestCase&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a180"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_noEntries">test_noEntries</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a181"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a182"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-str">'anything'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a183"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a184"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a185"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_exactMatch">test_exactMatch</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a186"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a187"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-str">'http://example.com/return.to'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a188"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertTrue</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$r</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a189"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a190"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a191"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_garbageMatch">test_garbageMatch</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a192"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a193"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-str">'http://example.com/return.to'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a194"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertTrue</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a195"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'This&nbsp;is&nbsp;not&nbsp;a&nbsp;URL&nbsp;at&nbsp;all.&nbsp;In&nbsp;fact,&nbsp;it&nbsp;has&nbsp;characters,&nbsp;'&nbsp;</span>.</div></li>
+<li><div class="src-line"><a name="a196"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'like&nbsp;&quot;&lt;&quot;&nbsp;that&nbsp;are&nbsp;not&nbsp;allowed&nbsp;in&nbsp;URLs'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$r</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$r</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a197"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a198"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a199"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_descendant">test_descendant</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a200"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a201"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-str">'http://example.com/return.to'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a202"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertTrue</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a203"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://example.com/return.to/user:joe'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a204"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a205"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a206"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_wildcard">test_wildcard</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a207"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a208"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a209"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'http://*.example.com/return.to'</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a210"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://example.com/return.to'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a211"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a212"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a213"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_ReturnToMatches.html#methodtest_noMatch">test_noMatch</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a214"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a215"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$r&nbsp;</span>=&nbsp;<span class="src-str">'http://example.com/return.to'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a216"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_returnToMatches">Auth_OpenID_returnToMatches</a><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$r</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a217"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'http://example.com/xss_exploit'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a218"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a219"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a220"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a221"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Verifier.html">Verifier</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a222"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Verifier.html#methodVerifier">Verifier</a><span class="src-sym">(</span><span class="src-var">$test_case</span><span class="src-sym">,&nbsp;</span><span class="src-var">$return_to</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a223"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a224"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">tc&nbsp;</span>=<span class="src-sym">&amp;&nbsp;</span><span class="src-var">$test_case</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a225"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">return_to&nbsp;</span>=&nbsp;<span class="src-var">$return_to</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a226"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a227"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a228"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Verifier.html#methodverify">verify</a><span class="src-sym">(</span><span class="src-var">$disco_url</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a229"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a230"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">tc</span><span class="src-sym">-&gt;</span><span class="src-id">assertEquals</span><span class="src-sym">(</span><span class="src-str">'http://www.example.com/'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$disco_url</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a231"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a232"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">return_to&nbsp;</span>===&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a233"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a234"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a235"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">return_to</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a236"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a237"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a238"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a239"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a240"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_VerifyReturnTo.html">Tests_Auth_OpenID_VerifyReturnTo</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestCase&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a241"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a242"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_VerifyReturnTo.html#methodtest_bogusRealm">test_bogusRealm</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a243"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a244"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_verifyReturnTo">Auth_OpenID_verifyReturnTo</a><span class="src-sym">(</span><span class="src-str">''</span><span class="src-sym">,&nbsp;</span><span class="src-str">'http://example.com/'</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a245"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a246"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a247"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_VerifyReturnTo.html#methodtest_verifyWithDiscoveryCalled">test_verifyWithDiscoveryCalled</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a248"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a249"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$realm&nbsp;</span>=&nbsp;<span class="src-str">'http://*.example.com/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a250"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$return_to&nbsp;</span>=&nbsp;<span class="src-str">'http://www.example.com/foo'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a251"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a252"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$v&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/Verifier.html">Verifier</a></span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">,&nbsp;</span><span class="src-var">$return_to</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a253"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a254"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertTrue</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_verifyReturnTo">Auth_OpenID_verifyReturnTo</a><span class="src-sym">(</span><span class="src-var">$realm</span><span class="src-sym">,&nbsp;</span><span class="src-var">$return_to</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">,&nbsp;</span><span class="src-str">'verify'</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a255"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a256"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a257"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_VerifyReturnTo.html#methodtest_verifyFailWithDiscoveryCalled">test_verifyFailWithDiscoveryCalled</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a258"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a259"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$realm&nbsp;</span>=&nbsp;<span class="src-str">'http://*.example.com/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a260"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$return_to&nbsp;</span>=&nbsp;<span class="src-str">'http://www.example.com/foo'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a261"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a262"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$v&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/Verifier.html">Verifier</a></span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">,&nbsp;</span><span class="src-str">'http://something-else.invalid/'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a263"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a264"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_verifyReturnTo">Auth_OpenID_verifyReturnTo</a><span class="src-sym">(</span><span class="src-var">$realm</span><span class="src-sym">,&nbsp;</span><span class="src-var">$return_to</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">,&nbsp;</span><span class="src-str">'verify'</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a265"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a266"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a267"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_VerifyReturnTo.html#methodtest_verifyFailIfDiscoveryRedirects">test_verifyFailIfDiscoveryRedirects</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a268"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a269"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$realm&nbsp;</span>=&nbsp;<span class="src-str">'http://*.example.com/'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a270"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$return_to&nbsp;</span>=&nbsp;<span class="src-str">'http://www.example.com/foo'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a271"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a272"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$v&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id"><a href="../OpenID/Verifier.html">Verifier</a></span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">,&nbsp;</span><span class="src-id">false</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a273"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a274"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">assertFalse</span><span class="src-sym">(</span><a href="../OpenID/_Auth---OpenID---TrustRoot.php.html#functionAuth_OpenID_verifyReturnTo">Auth_OpenID_verifyReturnTo</a><span class="src-sym">(</span><span class="src-var">$realm</span><span class="src-sym">,&nbsp;</span><span class="src-var">$return_to</span><span class="src-sym">,&nbsp;</span><span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$v</span><span class="src-sym">,&nbsp;</span><span class="src-str">'verify'</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a275"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a276"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a277"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a278"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_RPVerify.html">Tests_Auth_OpenID_RPVerify</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">PHPUnit_Framework_TestSuite&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a279"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_RPVerify.html#methodgetName">getName</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a280"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a281"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-str">&quot;Tests_Auth_OpenID_RPVerify&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a282"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a283"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a284"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Tests_Auth_OpenID_RPVerify.html#methodTests_Auth_OpenID_RPVerify">Tests_Auth_OpenID_RPVerify</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a285"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a286"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">addTestSuite</span><span class="src-sym">(</span><span class="src-str">'Tests_Auth_OpenID_VerifyReturnTo'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a287"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">addTestSuite</span><span class="src-sym">(</span><span class="src-str">'Tests_Auth_OpenID_ReturnToMatches'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a288"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">addTestSuite</span><span class="src-sym">(</span><span class="src-str">'Tests_Auth_OpenID_ExtractReturnToURLs'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a289"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">addTestSuite</span><span class="src-sym">(</span><span class="src-str">'Tests_Auth_OpenID_BuildDiscoveryURL'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a290"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a291"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:13 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

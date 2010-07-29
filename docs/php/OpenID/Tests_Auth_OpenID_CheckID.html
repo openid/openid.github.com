@@ -1,0 +1,1085 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Tests_Auth_OpenID_CheckID</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Tests_Auth_OpenID_CheckID</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+		<p class="notes">
+			Located in <a class="field" href="_Tests---Auth---OpenID---Server.php.html">/Tests/Auth/OpenID/Server.php</a> (line <span class="field"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a993">993</a></span>)
+		</p>
+		
+				
+		<pre>PHPUnit_Framework_TestCase
+   |
+   --Tests_Auth_OpenID_CheckID</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																																																																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#setUp" title="details" class="method-name">setUp</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllow" title="details" class="method-name">test_answerAllow</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowAnonymousFail" title="details" class="method-name">test_answerAllowAnonymousFail</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowDelegatedIdentity" title="details" class="method-name">test_answerAllowDelegatedIdentity</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowForgotEndpoint" title="details" class="method-name">test_answerAllowForgotEndpoint</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowNoEndpointOpenID1" title="details" class="method-name">test_answerAllowNoEndpointOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowNoIdentityOpenID1" title="details" class="method-name">test_answerAllowNoIdentityOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowNoTrustRoot" title="details" class="method-name">test_answerAllowNoTrustRoot</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowWithAnotherIdentity" title="details" class="method-name">test_answerAllowWithAnotherIdentity</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowWithDelegatedIdentityOpenID1" title="details" class="method-name">test_answerAllowWithDelegatedIdentityOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowWithDelegatedIdentityOpenID2" title="details" class="method-name">test_answerAllowWithDelegatedIdentityOpenID2</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowWithIdentity" title="details" class="method-name">test_answerAllowWithIdentity</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerAllowWithoutIdentityReally" title="details" class="method-name">test_answerAllowWithoutIdentityReally</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerImmediateDenyOpenID1" title="details" class="method-name">test_answerImmediateDenyOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerImmediateDenyOpenID2" title="details" class="method-name">test_answerImmediateDenyOpenID2</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerSetupDeny" title="details" class="method-name">test_answerSetupDeny</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_answerToInvalidRoot" title="details" class="method-name">test_answerToInvalidRoot</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_checkIDWithNoIdentityOpenID1" title="details" class="method-name">test_checkIDWithNoIdentityOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_encodeToURL" title="details" class="method-name">test_encodeToURL</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_fromMessageClaimedIDWithoutIdentityOpenID2" title="details" class="method-name">test_fromMessageClaimedIDWithoutIdentityOpenID2</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_fromMessageIdentityWithoutClaimedIDOpenID2" title="details" class="method-name">test_fromMessageIdentityWithoutClaimedIDOpenID2</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_fromMessageWithEmptyTrustRoot" title="details" class="method-name">test_fromMessageWithEmptyTrustRoot</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_fromMessageWithoutTrustRoot" title="details" class="method-name">test_fromMessageWithoutTrustRoot</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_fromMessageWithoutTrustRootOrReturnTo" title="details" class="method-name">test_fromMessageWithoutTrustRootOrReturnTo</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_getCancelURL" title="details" class="method-name">test_getCancelURL</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_getCancelURLimmed" title="details" class="method-name">test_getCancelURLimmed</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_malformedTrustRoot" title="details" class="method-name">test_malformedTrustRoot</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_returnToVerified_callsVerify" title="details" class="method-name">test_returnToVerified_callsVerify</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_trustRootInvalid" title="details" class="method-name">test_trustRootInvalid</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_trustRootOpenID1" title="details" class="method-name">test_trustRootOpenID1</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_trustRootOpenID2" title="details" class="method-name">test_trustRootOpenID2</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#test_trustRootValid" title="details" class="method-name">test_trustRootValid</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_expectAnswer" title="details" class="method-name">_expectAnswer</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$answer</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$identity</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$claimed_id</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_verify" title="details" class="method-name">_verify</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_verifyFalse" title="details" class="method-name">_verifyFalse</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">void</span>
+										<a href="#_verifyTrue" title="details" class="method-name">_verifyTrue</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodsetUp" id="setUp"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">setUp</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a994">994</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setUp
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllow" id="test_answerAllow"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllow</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1169">1169</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllow
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowAnonymousFail" id="test_answerAllowAnonymousFail"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowAnonymousFail</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1197">1197</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowAnonymousFail
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowDelegatedIdentity" id="test_answerAllowDelegatedIdentity"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowDelegatedIdentity</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1181">1181</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowDelegatedIdentity
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowForgotEndpoint" id="test_answerAllowForgotEndpoint"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowForgotEndpoint</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1333">1333</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowForgotEndpoint
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowNoEndpointOpenID1" id="test_answerAllowNoEndpointOpenID1"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowNoEndpointOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1246">1246</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowNoEndpointOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowNoIdentityOpenID1" id="test_answerAllowNoIdentityOpenID1"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowNoIdentityOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1322">1322</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowNoIdentityOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowNoTrustRoot" id="test_answerAllowNoTrustRoot"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowNoTrustRoot</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1407">1407</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowNoTrustRoot
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowWithAnotherIdentity" id="test_answerAllowWithAnotherIdentity"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowWithAnotherIdentity</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1312">1312</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowWithAnotherIdentity
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowWithDelegatedIdentityOpenID1" id="test_answerAllowWithDelegatedIdentityOpenID1"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowWithDelegatedIdentityOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1293">1293</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowWithDelegatedIdentityOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowWithDelegatedIdentityOpenID2" id="test_answerAllowWithDelegatedIdentityOpenID2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowWithDelegatedIdentityOpenID2</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1281">1281</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowWithDelegatedIdentityOpenID2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowWithIdentity" id="test_answerAllowWithIdentity"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowWithIdentity</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1208">1208</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowWithIdentity
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerAllowWithoutIdentityReally" id="test_answerAllowWithoutIdentityReally"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerAllowWithoutIdentityReally</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1189">1189</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerAllowWithoutIdentityReally
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerImmediateDenyOpenID1" id="test_answerImmediateDenyOpenID1"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerImmediateDenyOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1415">1415</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerImmediateDenyOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerImmediateDenyOpenID2" id="test_answerImmediateDenyOpenID2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerImmediateDenyOpenID2</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1441">1441</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerImmediateDenyOpenID2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerSetupDeny" id="test_answerSetupDeny"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerSetupDeny</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1456">1456</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerSetupDeny
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_answerToInvalidRoot" id="test_answerToInvalidRoot"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_answerToInvalidRoot</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1120">1120</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_answerToInvalidRoot
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_checkIDWithNoIdentityOpenID1" id="test_checkIDWithNoIdentityOpenID1"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_checkIDWithNoIdentityOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1340">1340</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_checkIDWithNoIdentityOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_encodeToURL" id="test_encodeToURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_encodeToURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1389">1389</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_encodeToURL
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_fromMessageClaimedIDWithoutIdentityOpenID2" id="test_fromMessageClaimedIDWithoutIdentityOpenID2"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_fromMessageClaimedIDWithoutIdentityOpenID2</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1014">1014</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_fromMessageClaimedIDWithoutIdentityOpenID2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_fromMessageIdentityWithoutClaimedIDOpenID2" id="test_fromMessageIdentityWithoutClaimedIDOpenID2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_fromMessageIdentityWithoutClaimedIDOpenID2</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1030">1030</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_fromMessageIdentityWithoutClaimedIDOpenID2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_fromMessageWithEmptyTrustRoot" id="test_fromMessageWithEmptyTrustRoot"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_fromMessageWithEmptyTrustRoot</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1046">1046</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_fromMessageWithEmptyTrustRoot
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_fromMessageWithoutTrustRoot" id="test_fromMessageWithoutTrustRoot"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_fromMessageWithoutTrustRoot</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1216">1216</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_fromMessageWithoutTrustRoot
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_fromMessageWithoutTrustRootOrReturnTo" id="test_fromMessageWithoutTrustRootOrReturnTo"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_fromMessageWithoutTrustRootOrReturnTo</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1233">1233</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_fromMessageWithoutTrustRootOrReturnTo
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_getCancelURL" id="test_getCancelURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_getCancelURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1463">1463</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_getCancelURL
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_getCancelURLimmed" id="test_getCancelURLimmed"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_getCancelURLimmed</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1475">1475</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_getCancelURLimmed
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_malformedTrustRoot" id="test_malformedTrustRoot"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_malformedTrustRoot</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1077">1077</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_malformedTrustRoot
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_returnToVerified_callsVerify" id="test_returnToVerified_callsVerify"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_returnToVerified_callsVerify</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1110">1110</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_returnToVerified_callsVerify
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_trustRootInvalid" id="test_trustRootInvalid"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_trustRootInvalid</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1063">1063</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_trustRootInvalid
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_trustRootOpenID1" id="test_trustRootOpenID1"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_trustRootOpenID1</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1356">1356</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_trustRootOpenID1
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_trustRootOpenID2" id="test_trustRootOpenID2"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_trustRootOpenID2</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1372">1372</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_trustRootOpenID2
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtest_trustRootValid" id="test_trustRootValid"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">test_trustRootValid</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1070">1070</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			test_trustRootValid
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="method_expectAnswer" id="_expectAnswer"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_expectAnswer</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1132">1132</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_expectAnswer
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$answer</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$identity</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$claimed_id</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$answer</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$identity</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$claimed_id</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_verify" id="_verify"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_verify</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1089">1089</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_verify
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$trust_root</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$return_to</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$value</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_verifyFalse" id="_verifyFalse"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_verifyFalse</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1101">1101</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_verifyFalse
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$trust_root</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$return_to</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="method_verifyTrue" id="_verifyTrue"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">_verifyTrue</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDServer.php.html#a1096">1096</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			_verifyTrue
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$return_to</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$trust_root</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$return_to</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:23 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

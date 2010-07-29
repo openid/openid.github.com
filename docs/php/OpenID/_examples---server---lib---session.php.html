@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page session.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/examples/server/lib/session.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+									<a href="#sec-includes">Includes</a>
+			|											<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">filesource:</span> <a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html">Source Code for this file</a></li>
+			</ul>
+		
+			</div>
+</div>
+		
+
+	<a name="sec-includes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Includes</span>
+			|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<a name="_lib/render_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">"lib/render.php"</span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a4">4</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_config_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">"config.php"</span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a3">3</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/Server_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---Server.php.html">"Auth/OpenID/Server.php"</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a5">5</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+		</div>
+	</div>
+	
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-includes">Includes</a>
+				|												<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionbuildURL" id="functionbuildURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">buildURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a47">47</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Build a URL to a server action</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			buildURL
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$action</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$escaped</span> = <span class="var-default">true</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$action</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$escaped</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functiongetAction" id="functiongetAction"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getAction</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a59">59</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Extract the current action from the request</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getAction
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiongetLoggedInUser" id="functiongetLoggedInUser"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getLoggedInUser</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a105">105</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the openid_url out of the cookie</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> The URL that was stored in the cookie or  false if there is none present or if the cookie is bad.</li>
+			</ul>
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			getLoggedInUser
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiongetRequestInfo" id="functiongetRequestInfo"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getRequestInfo</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a127">127</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getRequestInfo
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiongetServer" id="functiongetServer"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getServer</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a81">81</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Instantiate a new OpenID server object</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getServer
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiongetServerURL" id="functiongetServerURL"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getServerURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a29">29</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the URL of the current script</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getServerURL
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functiongetSreg" id="functiongetSreg"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getSreg</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a144">144</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getSreg
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$identity</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$identity</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functiongetStyle" id="functiongetStyle"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">getStyle</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a19">19</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get the style markup</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getStyle
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionhashPassword" id="functionhashPassword"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">hashPassword</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a94">94</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a hashed form of the user's password</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			hashPassword
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$password</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$password</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionidFromURL" id="functionidFromURL"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">idFromURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a162">162</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			idFromURL
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$url</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$url</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionidURL" id="functionidURL"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">idURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a157">157</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			idURL
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$identity</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$identity</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functioninit" id="functioninit"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">init</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a10">10</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set up the session</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			init
+		</span>
+				()
+			</div>
+
+		
+	
+</div>
+<a name="functionsetLoggedInUser" id="functionsetLoggedInUser"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">setLoggedInUser</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a118">118</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Set the openid_url in the cookie</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setLoggedInUser
+		</span>
+					([<span class="var-type">mixed</span>&nbsp;<span class="var-name">$identity_url</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$identity_url</span><span class="var-description">: The URL to set. If set to null, the  value will be unset.</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsetRequestInfo" id="functionsetRequestInfo"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">setRequestInfo</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a134">134</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setRequestInfo
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$info</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$info</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionwriteResponse" id="functionwriteResponse"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">writeResponse</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibsession.php.html#a70">70</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Write the response to the request</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			writeResponse
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$resp</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$resp</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:27 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

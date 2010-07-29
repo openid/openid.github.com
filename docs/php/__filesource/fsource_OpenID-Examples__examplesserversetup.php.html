@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for setup.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file setup.php</h1>
+<p>Documentation is available at <a href="../OpenID-Examples/_examples---server---setup.php.html">setup.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;OpenID&nbsp;server&nbsp;configuration&nbsp;script.</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;script&nbsp;generates&nbsp;a&nbsp;config.php&nbsp;file&nbsp;needed&nbsp;by&nbsp;the&nbsp;server</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;example.</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID.Examples</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;JanRain,&nbsp;Inc.&nbsp;&lt;openid@janrain.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;2005-2008&nbsp;Janrain,&nbsp;Inc.</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;http://www.apache.org/licenses/LICENSE-2.0&nbsp;Apache</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-var">$path_extra&nbsp;</span>=&nbsp;<a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span>__FILE__<span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-var">$path&nbsp;</span>=&nbsp;<a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">(</span><span class="src-str">'include_path'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-var">$path&nbsp;</span>=&nbsp;<span class="src-var">$path_extra&nbsp;</span>.&nbsp;<span class="src-id">PATH_SEPARATOR&nbsp;</span>.&nbsp;<span class="src-var">$path</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a18"></a><a href="http://www.php.net/ini_set">ini_set</a><span class="src-sym">(</span><span class="src-str">'include_path'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$path</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;Auth/OpenID.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">&nbsp;*&nbsp;Data.</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-var">$store_types&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">&quot;Filesystem&quot;&nbsp;</span>=&gt;&nbsp;<span class="src-str">&quot;Auth_OpenID_FileStore&quot;</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;MySQL&quot;&nbsp;</span>=&gt;&nbsp;<span class="src-str">&quot;Auth_OpenID_MySQLStore&quot;</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;PostgreSQL&quot;&nbsp;</span>=&gt;&nbsp;<span class="src-str">&quot;Auth_OpenID_PostgreSQLStore&quot;</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;SQLite&quot;&nbsp;</span>=&gt;&nbsp;<span class="src-str">&quot;Auth_OpenID_SQLiteStore&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*&nbsp;Main.</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-var">$messages&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a><a href="http://www.php.net/session_start">session_start</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a37"></a><a href="../OpenID-Examples/_examples---server---setup.php.html#functioninit_session">init_session</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_session">check_session</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;isset<span class="src-sym">(</span><span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-str">'add_openid'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../OpenID-Examples/_examples---server---setup.php.html#functionrender_form">render_form</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<a href="../OpenID-Examples/_examples---server---setup.php.html#functiongenerate_config">generate_config</a><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-str">'download'</span><span class="src-sym">]</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-doc">&nbsp;*&nbsp;Functions.</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_url">check_url</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-sym">(</span><span class="src-id">Auth_OpenID</span><span class="src-sym">::</span><span class="src-id">normalizeUrl</span><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">)&nbsp;</span>!==&nbsp;<span class="src-id">null</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functionbuild_url">build_url</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$port&nbsp;</span>=&nbsp;<span class="src-sym">((</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'SERVER_PORT'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-num">80</span><span class="src-sym">)&nbsp;</span>?&nbsp;<span class="src-id">null&nbsp;</span>:&nbsp;<span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'SERVER_PORT'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$parts&nbsp;</span>=&nbsp;<a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-str">&quot;/&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'SERVER_PROTOCOL'</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$scheme&nbsp;</span>=&nbsp;<a href="http://www.php.net/strtolower">strtolower</a><span class="src-sym">(</span><span class="src-var">$parts</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$port</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;%s://%s:%s%s/server.php&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$scheme</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'SERVER_NAME'</span><span class="src-sym">]</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$port</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'PHP_SELF'</span><span class="src-sym">]</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">&quot;%s://%s%s/server.php&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-var">$scheme</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'SERVER_NAME'</span><span class="src-sym">]</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span><span class="src-var">$_SERVER</span><span class="src-sym">[</span><span class="src-str">'PHP_SELF'</span><span class="src-sym">]</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_open_basedir">check_open_basedir</a><span class="src-sym">(</span><span class="src-var">$path</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">(</span><span class="src-str">'open_basedir'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$parts&nbsp;</span>=&nbsp;<a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-id">PATH_SEPARATOR</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">(</span><span class="src-str">'open_basedir'</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$found&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$parts&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$p</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/strpos">strpos</a><span class="src-sym">(</span><span class="src-var">$path</span><span class="src-sym">,&nbsp;</span><span class="src-var">$p</span><span class="src-sym">)&nbsp;</span>===&nbsp;<span class="src-num">0</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$found&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$found</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a86"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a88"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_session">check_session</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">global&nbsp;</span><span class="src-var">$messages</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_GET&nbsp;</span>&amp;&amp;&nbsp;isset<span class="src-sym">(</span><span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-str">'clear'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/session_destroy">session_destroy</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../OpenID-Examples/_examples---server---setup.php.html#functioninit_session">init_session</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$bad_path&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-str">'generate'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;Please&nbsp;enter&nbsp;a&nbsp;server&nbsp;URL.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span>isset<span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;No&nbsp;store&nbsp;type&nbsp;chosen.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">switch&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;Filesystem&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'fs_path'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;Please&nbsp;specify&nbsp;a&nbsp;filesystem&nbsp;store&nbsp;path.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_open_basedir">check_open_basedir</a><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'fs_path'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;The&nbsp;filesystem&nbsp;store&nbsp;path&nbsp;violates&nbsp;PHP's&nbsp;&lt;code&gt;open_basedir&lt;/code&gt;&nbsp;setting.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$bad_path&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;SQLite&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'sqlite_path'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;Please&nbsp;specify&nbsp;a&nbsp;SQLite&nbsp;database&nbsp;path.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioncheck_open_basedir">check_open_basedir</a><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'sqlite_path'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;The&nbsp;SQLite&nbsp;store&nbsp;path&nbsp;violates&nbsp;PHP's&nbsp;&lt;code&gt;open_basedir&lt;/code&gt;&nbsp;setting.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$bad_path&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">default</span>:</div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'host'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'username'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'password'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$messages</span><span class="src-sym">[</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;Please&nbsp;specify&nbsp;database&nbsp;connection&nbsp;details.&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a141"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a142"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a143"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a144"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a145"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">(</span><a href="http://www.php.net/parse_url">parse_url</a><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>!==&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a146"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">(((</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'Filesystem'</span><span class="src-sym">)&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a147"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'fs_path'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a148"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">((</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'SQLite'</span><span class="src-sym">)&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a149"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'sqlite_path'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a150"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'host'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a151"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'username'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a152"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a153"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'password'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span>&amp;&amp;</div></li>
+<li><div class="src-line"><a name="a154"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">!</span><span class="src-var">$bad_path</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a155"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a156"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a157"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a160"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a162"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functionrender_form">render_form</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">global&nbsp;</span><span class="src-var">$store_types</span><span class="src-sym">,&nbsp;</span><span class="src-var">$fields</span><span class="src-sym">,&nbsp;</span><span class="src-var">$messages</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a165"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a166"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$basedir_msg&nbsp;</span>=&nbsp;<span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a167"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a168"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">(</span><span class="src-str">'open_basedir'</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a169"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$basedir_msg&nbsp;</span>=&nbsp;<span class="src-str">&quot;&lt;/br&gt;&lt;span&nbsp;class=\&quot;notice\&quot;&gt;Note:&nbsp;Due&nbsp;to&nbsp;the&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a170"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;&lt;code&gt;open_basedir&lt;/code&gt;&nbsp;php.ini&nbsp;setting,&nbsp;be&nbsp;sure&nbsp;to&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a171"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;choose&nbsp;a&nbsp;path&nbsp;in&nbsp;one&nbsp;of&nbsp;the&nbsp;following&nbsp;directories:&lt;ul&gt;&lt;li&gt;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a172"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/implode">implode</a><span class="src-sym">(</span><span class="src-str">&quot;&lt;li&gt;&quot;</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a173"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/explode">explode</a><span class="src-sym">(</span><span class="src-id">PATH_SEPARATOR</span><span class="src-sym">,&nbsp;</span><a href="http://www.php.net/ini_get">ini_get</a><span class="src-sym">(</span><span class="src-str">'open_basedir'</span><span class="src-sym">)))</span>.</div></li>
+<li><div class="src-line"><a name="a174"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;&lt;/ul&gt;&lt;/span&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a175"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a176"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a177"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sqlite_found&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a178"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/extension_loaded">extension_loaded</a><span class="src-sym">(</span><span class="src-str">'sqlite'</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a179"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">@</span><a href="http://www.php.net/dl">dl</a><span class="src-sym">(</span><span class="src-str">'sqlite.'&nbsp;</span>.&nbsp;<span class="src-id">PHP_SHLIB_SUFFIX</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a180"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$sqlite_found&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a181"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a182"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a183"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$mysql_found&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a184"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/extension_loaded">extension_loaded</a><span class="src-sym">(</span><span class="src-str">'mysql'</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a185"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">@</span><a href="http://www.php.net/dl">dl</a><span class="src-sym">(</span><span class="src-str">'mysql.'&nbsp;</span>.&nbsp;<span class="src-id">PHP_SHLIB_SUFFIX</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a186"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$mysql_found&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a187"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a188"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a189"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$pgsql_found&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a190"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/extension_loaded">extension_loaded</a><span class="src-sym">(</span><span class="src-str">'pgsql'</span><span class="src-sym">)&nbsp;</span>||</div></li>
+<li><div class="src-line"><a name="a191"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">@</span><a href="http://www.php.net/dl">dl</a><span class="src-sym">(</span><span class="src-str">'pgsql.'&nbsp;</span>.&nbsp;<span class="src-id">PHP_SHLIB_SUFFIX</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a192"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$pgsql_found&nbsp;</span>=&nbsp;<span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a193"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a194"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a195"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a196"></a>&lt;html&gt;</div></li>
+<li><div class="src-line"><a name="a197"></a>&nbsp;&nbsp;&lt;head&gt;</div></li>
+<li><div class="src-line"><a name="a198"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&nbsp;type=&quot;text/css&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a199"></a>span.label&nbsp;{</div></li>
+<li><div class="src-line"><a name="a200"></a>&nbsp;float:&nbsp;left;</div></li>
+<li><div class="src-line"><a name="a201"></a>&nbsp;width:&nbsp;2in;</div></li>
+<li><div class="src-line"><a name="a202"></a>}</div></li>
+<li><div class="src-line"><a name="a203"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a204"></a>span.notice&nbsp;{</div></li>
+<li><div class="src-line"><a name="a205"></a>&nbsp;color:&nbsp;red;</div></li>
+<li><div class="src-line"><a name="a206"></a>&nbsp;font-size:&nbsp;80%;</div></li>
+<li><div class="src-line"><a name="a207"></a>}</div></li>
+<li><div class="src-line"><a name="a208"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a209"></a>div&nbsp;p&nbsp;{</div></li>
+<li><div class="src-line"><a name="a210"></a>&nbsp;&nbsp;&nbsp;&nbsp;border-top:&nbsp;1px&nbsp;solid&nbsp;#ccc;</div></li>
+<li><div class="src-line"><a name="a211"></a>&nbsp;&nbsp;&nbsp;&nbsp;font-style:&nbsp;italic;</div></li>
+<li><div class="src-line"><a name="a212"></a>&nbsp;&nbsp;&nbsp;&nbsp;padding-top:&nbsp;0.5em;</div></li>
+<li><div class="src-line"><a name="a213"></a>}</div></li>
+<li><div class="src-line"><a name="a214"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a215"></a>div&nbsp;{</div></li>
+<li><div class="src-line"><a name="a216"></a>&nbsp;padding:&nbsp;3px;</div></li>
+<li><div class="src-line"><a name="a217"></a>}</div></li>
+<li><div class="src-line"><a name="a218"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a219"></a>div.store_fields&nbsp;{</div></li>
+<li><div class="src-line"><a name="a220"></a>&nbsp;margin-left:&nbsp;2in;</div></li>
+<li><div class="src-line"><a name="a221"></a>&nbsp;padding:&nbsp;default;</div></li>
+<li><div class="src-line"><a name="a222"></a>}</div></li>
+<li><div class="src-line"><a name="a223"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a224"></a>div.store_fields&nbsp;label.field&nbsp;{</div></li>
+<li><div class="src-line"><a name="a225"></a>&nbsp;float:&nbsp;left;</div></li>
+<li><div class="src-line"><a name="a226"></a>&nbsp;width:&nbsp;1.75in;</div></li>
+<li><div class="src-line"><a name="a227"></a>}</div></li>
+<li><div class="src-line"><a name="a228"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a229"></a>div.store_fields&nbsp;&gt;&nbsp;div&nbsp;{</div></li>
+<li><div class="src-line"><a name="a230"></a>&nbsp;border:&nbsp;1px&nbsp;solid&nbsp;gray;</div></li>
+<li><div class="src-line"><a name="a231"></a>&nbsp;margin-bottom:&nbsp;0.5em;</div></li>
+<li><div class="src-line"><a name="a232"></a>&nbsp;background:&nbsp;#eee;</div></li>
+<li><div class="src-line"><a name="a233"></a>}</div></li>
+<li><div class="src-line"><a name="a234"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a235"></a>div.store_fields&nbsp;&gt;&nbsp;div&nbsp;&gt;&nbsp;div&nbsp;{</div></li>
+<li><div class="src-line"><a name="a236"></a>&nbsp;&nbsp;&nbsp;&nbsp;margin-left:&nbsp;0.4in;</div></li>
+<li><div class="src-line"><a name="a237"></a>}</div></li>
+<li><div class="src-line"><a name="a238"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a239"></a>div.errors&nbsp;{</div></li>
+<li><div class="src-line"><a name="a240"></a>&nbsp;background:&nbsp;#faa;</div></li>
+<li><div class="src-line"><a name="a241"></a>&nbsp;border:&nbsp;1px&nbsp;solid&nbsp;red;</div></li>
+<li><div class="src-line"><a name="a242"></a>}</div></li>
+<li><div class="src-line"><a name="a243"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a244"></a>&lt;/style&gt;</div></li>
+<li><div class="src-line"><a name="a245"></a>&lt;/head&gt;</div></li>
+<li><div class="src-line"><a name="a246"></a>&lt;body&gt;</div></li>
+<li><div class="src-line"><a name="a247"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a248"></a>&lt;h2&gt;OpenID&nbsp;Example&nbsp;Server&nbsp;Configuration&lt;/h2&gt;</div></li>
+<li><div class="src-line"><a name="a249"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a250"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a251"></a><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$messages</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a252"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;div&nbsp;class=\&quot;errors\&quot;&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a253"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$messages&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$m</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a254"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;</span><span class="src-str">&lt;div&gt;<span class="src-var">$m</span>&lt;/div&gt;</span><span class="src-str">&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a255"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a256"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;/div&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a257"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a258"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a259"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a260"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a261"></a>&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a262"></a>Your&nbsp;browser&nbsp;has&nbsp;been&nbsp;redirected&nbsp;to&nbsp;this&nbsp;page&nbsp;so&nbsp;you&nbsp;can&nbsp;configure&nbsp;the</div></li>
+<li><div class="src-line"><a name="a263"></a>server&nbsp;example.&nbsp;&nbsp;This&nbsp;form&nbsp;will&nbsp;auto-generate&nbsp;an&nbsp;OpenID&nbsp;example&nbsp;server</div></li>
+<li><div class="src-line"><a name="a264"></a>configuration&nbsp;for&nbsp;use&nbsp;with&nbsp;the&nbsp;OpenID&nbsp;server&nbsp;example.</div></li>
+<li><div class="src-line"><a name="a265"></a>&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a266"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a267"></a>&lt;form&gt;</div></li>
+<li><div class="src-line"><a name="a268"></a>&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a269"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a270"></a>&nbsp;&nbsp;&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a271"></a>&nbsp;&nbsp;The&nbsp;server&nbsp;URL&nbsp;is&nbsp;the&nbsp;URL&nbsp;that&nbsp;points&nbsp;to&nbsp;the&nbsp;&quot;server.php&quot;&nbsp;file.&nbsp;&nbsp;It</div></li>
+<li><div class="src-line"><a name="a272"></a>&nbsp;&nbsp;looks&nbsp;like&nbsp;your&nbsp;server&nbsp;URL&nbsp;should&nbsp;be&nbsp;&lt;code&gt;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<a href="../OpenID-Examples/_examples---server---setup.php.html#functionbuild_url">build_url</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&lt;/code&gt;.</div></li>
+<li><div class="src-line"><a name="a273"></a>&nbsp;&nbsp;&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a274"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a275"></a>&nbsp;&nbsp;&lt;span&nbsp;class=&quot;label&quot;&gt;&lt;label&nbsp;for=&quot;i_server_url&quot;&gt;Server&nbsp;URL:&lt;/label&gt;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a276"></a>&nbsp;&nbsp;&lt;span&gt;</div></li>
+<li><div class="src-line"><a name="a277"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;id=&quot;i_server_url&quot;&nbsp;size=&quot;35&quot;&nbsp;name=&quot;server_url&quot;</div></li>
+<li><div class="src-line"><a name="a278"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a279"></a>&nbsp;&nbsp;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a280"></a>&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a281"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a282"></a>&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a283"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a284"></a>&nbsp;&nbsp;&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a285"></a>&nbsp;&nbsp;If&nbsp;this&nbsp;package&nbsp;isn't&nbsp;installed&nbsp;in&nbsp;the&nbsp;PHP&nbsp;include&nbsp;path,&nbsp;the&nbsp;package's</div></li>
+<li><div class="src-line"><a name="a286"></a>&nbsp;&nbsp;directory&nbsp;should&nbsp;be&nbsp;added.&nbsp;&nbsp;For&nbsp;example,&nbsp;if&nbsp;the&nbsp;package&nbsp;is&nbsp;in</div></li>
+<li><div class="src-line"><a name="a287"></a>&nbsp;&nbsp;&lt;code&gt;/home/me/PHP-OpenID/&lt;/code&gt;,&nbsp;you&nbsp;should&nbsp;enter&nbsp;that&nbsp;directory&nbsp;here.</div></li>
+<li><div class="src-line"><a name="a288"></a>&nbsp;&nbsp;&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a289"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a290"></a>&nbsp;&nbsp;&lt;span&nbsp;class=&quot;label&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a291"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_include_path&quot;&gt;Include&nbsp;path&nbsp;(optional):&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a292"></a>&nbsp;&nbsp;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a293"></a>&nbsp;&nbsp;&lt;span&gt;</div></li>
+<li><div class="src-line"><a name="a294"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;id=&quot;i_include_path&quot;&nbsp;size=&quot;35&quot;&nbsp;name=&quot;include_path&quot;</div></li>
+<li><div class="src-line"><a name="a295"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'include_path'</span><span class="src-sym">]&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a296"></a>&nbsp;&nbsp;&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a297"></a>&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a298"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a299"></a>&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a300"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a301"></a>&nbsp;&nbsp;&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a302"></a>&nbsp;&nbsp;The&nbsp;server&nbsp;needs&nbsp;to&nbsp;store&nbsp;OpenID&nbsp;information&nbsp;in&nbsp;a&nbsp;&quot;store&quot;.&nbsp;&nbsp;The</div></li>
+<li><div class="src-line"><a name="a303"></a>&nbsp;&nbsp;following&nbsp;store&nbsp;types&nbsp;are&nbsp;available&nbsp;on&nbsp;your&nbsp;PHP&nbsp;installation:</div></li>
+<li><div class="src-line"><a name="a304"></a>&nbsp;&nbsp;&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a305"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a306"></a>&nbsp;&nbsp;&lt;span&nbsp;class=&quot;label&quot;&gt;Store&nbsp;method:&lt;/span&gt;</div></li>
+<li><div class="src-line"><a name="a307"></a>&nbsp;&nbsp;&lt;div&nbsp;class=&quot;store_fields&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a308"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a309"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a310"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;store_type&quot;&nbsp;value=&quot;Filesystem&quot;</div></li>
+<li><div class="src-line"><a name="a311"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;i_filesystem&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'Filesystem'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span>print&nbsp;<span class="src-str">&quot;&nbsp;CHECKED&quot;</span><span class="src-sym">;&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span>&gt;</div></li>
+<li><div class="src-line"><a name="a312"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_filesystem&quot;&gt;Filesystem&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a313"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a314"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_fs_path&quot;&nbsp;class=&quot;field&quot;&gt;Filesystem&nbsp;path:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a315"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;fs_path&quot;&nbsp;id=&quot;i_fs_path&quot;</div></li>
+<li><div class="src-line"><a name="a316"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'fs_path'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a317"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$basedir_msg</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a318"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a319"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a320"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a321"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$sqlite_found</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a322"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a323"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;store_type&quot;&nbsp;value=&quot;SQLite&quot;</div></li>
+<li><div class="src-line"><a name="a324"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;i_sqlite&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'SQLite'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span>print&nbsp;<span class="src-str">&quot;&nbsp;CHECKED&quot;</span><span class="src-sym">;&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span>&gt;</div></li>
+<li><div class="src-line"><a name="a325"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_sqlite&quot;&gt;SQLite&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a326"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a327"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_sqlite_path&quot;&nbsp;class=&quot;field&quot;&gt;SQLite&nbsp;database&nbsp;path:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a328"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'sqlite_path'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;</div></li>
+<li><div class="src-line"><a name="a329"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name=&quot;sqlite_path&quot;&nbsp;id=&quot;i_sqlite_path&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a330"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$basedir_msg</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a331"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a332"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a333"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a334"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a335"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a336"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$mysql_found&nbsp;</span>||&nbsp;<span class="src-var">$pgsql_found</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a337"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a338"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a339"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$mysql_found</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a340"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;store_type&quot;&nbsp;value=&quot;MySQL&quot;</div></li>
+<li><div class="src-line"><a name="a341"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;i_mysql&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'MySQL'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span>print&nbsp;<span class="src-str">&quot;&nbsp;CHECKED&quot;</span><span class="src-sym">;&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span>&gt;</div></li>
+<li><div class="src-line"><a name="a342"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_mysql&quot;&gt;MySQL&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a343"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a344"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a345"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$pgsql_found</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a346"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;radio&quot;&nbsp;name=&quot;store_type&quot;&nbsp;value=&quot;PostgreSQL&quot;</div></li>
+<li><div class="src-line"><a name="a347"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id=&quot;i_pgsql&quot;<span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]&nbsp;</span>==&nbsp;<span class="src-str">'PostgreSQL'</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span>print&nbsp;<span class="src-str">&quot;&nbsp;CHECKED&quot;</span><span class="src-sym">;&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span>&gt;</div></li>
+<li><div class="src-line"><a name="a348"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_pgsql&quot;&gt;PostgreSQL&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a349"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a350"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a351"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a352"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_m_host&quot;&nbsp;class=&quot;field&quot;&gt;Host:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a353"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'host'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&nbsp;name=&quot;host&quot;&nbsp;id=&quot;i_m_host&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a354"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a355"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a356"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_m_database&quot;&nbsp;class=&quot;field&quot;&gt;Database:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a357"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&nbsp;type=&quot;text&quot;&nbsp;name=&quot;database&quot;&nbsp;id=&quot;i_m_database&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a358"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a359"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a360"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_m_username&quot;&nbsp;class=&quot;field&quot;&gt;Username:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a361"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;text&quot;&nbsp;name=&quot;username&quot;&nbsp;id=&quot;i_m_username&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'username'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a362"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a363"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div&gt;</div></li>
+<li><div class="src-line"><a name="a364"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;label&nbsp;for=&quot;i_m_password&quot;&nbsp;class=&quot;field&quot;&gt;Password:&lt;/label&gt;</div></li>
+<li><div class="src-line"><a name="a365"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;input&nbsp;type=&quot;password&quot;&nbsp;name=&quot;password&quot;&nbsp;id=&quot;i_m_password&quot;&nbsp;value=&quot;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-sym">@</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'password'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a366"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a367"></a>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a368"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a369"></a>&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a370"></a>&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a371"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a372"></a>&lt;input&nbsp;type=&quot;submit&quot;&nbsp;name=&quot;generate&quot;&nbsp;value=&quot;Generate&nbsp;Configuration&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a373"></a>&lt;/form&gt;</div></li>
+<li><div class="src-line"><a name="a374"></a>&lt;/body&gt;</div></li>
+<li><div class="src-line"><a name="a375"></a>&lt;/html&gt;</div></li>
+<li><div class="src-line"><a name="a376"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a377"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a378"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a379"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functioninit_session">init_session</a><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a380"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a381"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">global&nbsp;</span><span class="src-var">$messages</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a382"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a383"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Set&nbsp;a&nbsp;guess&nbsp;value&nbsp;for&nbsp;the&nbsp;server&nbsp;url.</span></div></li>
+<li><div class="src-line"><a name="a384"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><a href="http://www.php.net/array_key_exists">array_key_exists</a><span class="src-sym">(</span><span class="src-str">'server_url'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_SESSION</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a385"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<a href="../OpenID-Examples/_examples---server---setup.php.html#functionbuild_url">build_url</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a386"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a387"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a388"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'server_url'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'include_path'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'store_type'</span><span class="src-sym">)&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$key</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a389"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span>isset<span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a390"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a391"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a392"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a393"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a394"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span>isset<span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a395"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a396"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a397"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a398"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'server_url'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'include_path'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'store_type'</span><span class="src-sym">)&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$field</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a399"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/array_key_exists">array_key_exists</a><span class="src-sym">(</span><span class="src-var">$field</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_GET</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a400"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-var">$field</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-var">$field</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a401"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a402"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a403"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a404"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'username'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'password'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'database'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'host'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'fs_path'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'sqlite_path'</span><span class="src-sym">)&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$field</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a405"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><a href="http://www.php.net/array_key_exists">array_key_exists</a><span class="src-sym">(</span><span class="src-var">$field</span><span class="src-sym">,&nbsp;</span><span class="src-var">$_GET</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a406"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-var">$field</span><span class="src-sym">]&nbsp;</span>=&nbsp;<span class="src-var">$_GET</span><span class="src-sym">[</span><span class="src-var">$field</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a407"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a408"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a409"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a410"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a411"></a><span class="src-key">function&nbsp;</span><a href="../OpenID-Examples/_examples---server---setup.php.html#functiongenerate_config">generate_config</a><span class="src-sym">(</span><span class="src-var">$download&nbsp;</span>=&nbsp;<span class="src-id">false</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a412"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a413"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$download</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a414"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Emit&nbsp;headers&nbsp;to&nbsp;force&nbsp;browser&nbsp;download.</span></div></li>
+<li><div class="src-line"><a name="a415"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">&quot;Content-type:&nbsp;text/plain&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a416"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/header">header</a><span class="src-sym">(</span><span class="src-str">&quot;Content-disposition:&nbsp;attachment;&nbsp;filename=config.php&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a417"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;&lt;?php\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a418"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a419"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a420"></a>&lt;html&gt;</div></li>
+<li><div class="src-line"><a name="a421"></a>&lt;body&gt;</div></li>
+<li><div class="src-line"><a name="a422"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a423"></a>&lt;h2&gt;OpenID&nbsp;Example&nbsp;Server&nbsp;Configuration&lt;/h2&gt;</div></li>
+<li><div class="src-line"><a name="a424"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a425"></a>&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a426"></a>Put&nbsp;the&nbsp;following&nbsp;text&nbsp;into&nbsp;&lt;strong&gt;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<a href="http://www.php.net/dirname">dirname</a><span class="src-sym">(</span>__FILE__<span class="src-sym">)</span><span class="src-sym">;&nbsp;</span>print&nbsp;<span class="src-id">DIRECTORY_SEPARATOR</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>config.php&lt;/strong&gt;.</div></li>
+<li><div class="src-line"><a name="a427"></a>&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a428"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a429"></a>&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a430"></a>&lt;a&nbsp;href=&quot;setup.php?clear=1&quot;&gt;Back&nbsp;to&nbsp;form&lt;/a&gt;&nbsp;(resets&nbsp;settings)</div></li>
+<li><div class="src-line"><a name="a431"></a>&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a432"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a433"></a>&lt;p&gt;</div></li>
+<li><div class="src-line"><a name="a434"></a>&lt;a&nbsp;href=&quot;setup.php?download=1&quot;&gt;Download&nbsp;this&nbsp;configuration&lt;/a&gt;</div></li>
+<li><div class="src-line"><a name="a435"></a>&lt;/p&gt;</div></li>
+<li><div class="src-line"><a name="a436"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a437"></a>&lt;pre&nbsp;style=&quot;border:&nbsp;1px&nbsp;solid&nbsp;gray;&nbsp;background:&nbsp;#eee;&nbsp;padding:&nbsp;5px;&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a438"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a439"></a>print&nbsp;<span class="src-str">&quot;&amp;lt;?php\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a440"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a441"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a442"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'include_path'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a443"></a>/**</div></li>
+<li><div class="src-line"><a name="a444"></a>&nbsp;*&nbsp;Set&nbsp;any&nbsp;extra&nbsp;include&nbsp;paths&nbsp;needed&nbsp;to&nbsp;use&nbsp;the&nbsp;library</div></li>
+<li><div class="src-line"><a name="a445"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a446"></a>set_include_path(get_include_path()&nbsp;.&nbsp;PATH_SEPARATOR&nbsp;.&nbsp;&quot;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a447"></a>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'include_path'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a448"></a><span class="src-php">?&gt;</span>&quot;);</div></li>
+<li><div class="src-line"><a name="a449"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a450"></a><span class="src-php">&lt;?php&nbsp;</span><span class="src-sym">}&nbsp;</span><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a451"></a>/**</div></li>
+<li><div class="src-line"><a name="a452"></a>&nbsp;*&nbsp;The&nbsp;URL&nbsp;for&nbsp;the&nbsp;server.</div></li>
+<li><div class="src-line"><a name="a453"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a454"></a>&nbsp;*&nbsp;This&nbsp;is&nbsp;the&nbsp;location&nbsp;of&nbsp;server.php.&nbsp;For&nbsp;example:</div></li>
+<li><div class="src-line"><a name="a455"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a456"></a>&nbsp;*&nbsp;$server_url&nbsp;=&nbsp;'http://example.com/~user/server.php';</div></li>
+<li><div class="src-line"><a name="a457"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a458"></a>&nbsp;*&nbsp;This&nbsp;must&nbsp;be&nbsp;a&nbsp;full&nbsp;URL.</div></li>
+<li><div class="src-line"><a name="a459"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a460"></a>$server_url&nbsp;=&nbsp;&quot;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a461"></a>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'server_url'</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a462"></a><span class="src-php">?&gt;</span>&quot;;</div></li>
+<li><div class="src-line"><a name="a463"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a464"></a>/**</div></li>
+<li><div class="src-line"><a name="a465"></a>&nbsp;*&nbsp;Initialize&nbsp;an&nbsp;OpenID&nbsp;store</div></li>
+<li><div class="src-line"><a name="a466"></a>&nbsp;*</div></li>
+<li><div class="src-line"><a name="a467"></a>&nbsp;*&nbsp;@return&nbsp;object&nbsp;$store&nbsp;an&nbsp;instance&nbsp;of&nbsp;OpenID&nbsp;store&nbsp;(see&nbsp;the</div></li>
+<li><div class="src-line"><a name="a468"></a>&nbsp;*&nbsp;documentation&nbsp;for&nbsp;how&nbsp;to&nbsp;create&nbsp;one)</div></li>
+<li><div class="src-line"><a name="a469"></a>&nbsp;*/</div></li>
+<li><div class="src-line"><a name="a470"></a>function&nbsp;getOpenIDStore()</div></li>
+<li><div class="src-line"><a name="a471"></a>{</div></li>
+<li><div class="src-line"><a name="a472"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a473"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a474"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">switch&nbsp;</span><span class="src-sym">(</span><span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_type'</span><span class="src-sym">]</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a475"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;Filesystem&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a476"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a477"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;require_once&nbsp;\&quot;Auth/OpenID/FileStore.php\&quot;;\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a478"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;return&nbsp;new&nbsp;Auth_OpenID_FileStore(\&quot;&quot;</span>.<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'fs_path'</span><span class="src-sym">]</span>.<span class="src-str">&quot;\&quot;);\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a479"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a480"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a481"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;SQLite&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a482"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a483"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;require_once&nbsp;\&quot;Auth/OpenID/SQLiteStore.php\&quot;;\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a484"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;\$s&nbsp;=&nbsp;new&nbsp;Auth_OpenID_SQLiteStore(\&quot;&quot;</span>.<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'sqlite_path'</span><span class="src-sym">]</span>.<span class="src-str">&quot;\&quot;);\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a485"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;\$s-&gt;createTables();\n&nbsp;&nbsp;&nbsp;&nbsp;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a486"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;return&nbsp;\$s;\n&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a487"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a488"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a489"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;MySQL&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a490"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a491"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span>require_once&nbsp;'Auth/OpenID/MySQLStore.php';</div></li>
+<li><div class="src-line"><a name="a492"></a>&nbsp;&nbsp;&nbsp;&nbsp;require_once&nbsp;'DB.php';</div></li>
+<li><div class="src-line"><a name="a493"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a494"></a>&nbsp;&nbsp;&nbsp;&nbsp;$dsn&nbsp;=&nbsp;array(</div></li>
+<li><div class="src-line"><a name="a495"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phptype'&nbsp;&nbsp;=&gt;&nbsp;'mysql',</div></li>
+<li><div class="src-line"><a name="a496"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'username'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'username'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>',</div></li>
+<li><div class="src-line"><a name="a497"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'password'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'password'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>',</div></li>
+<li><div class="src-line"><a name="a498"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hostspec'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'host'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>'</div></li>
+<li><div class="src-line"><a name="a499"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</div></li>
+<li><div class="src-line"><a name="a500"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a501"></a>&nbsp;&nbsp;&nbsp;&nbsp;$db&nbsp;=&amp;&nbsp;DB::connect($dsn);</div></li>
+<li><div class="src-line"><a name="a502"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a503"></a>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(PEAR::isError($db))&nbsp;{</div></li>
+<li><div class="src-line"><a name="a504"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</div></li>
+<li><div class="src-line"><a name="a505"></a>&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a506"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a507"></a>&nbsp;&nbsp;&nbsp;&nbsp;$db-&gt;query(&quot;USE&nbsp;<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>&quot;);</div></li>
+<li><div class="src-line"><a name="a508"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a509"></a>&nbsp;&nbsp;&nbsp;&nbsp;$s&nbsp;=&amp;&nbsp;new&nbsp;Auth_OpenID_MySQLStore($db);</div></li>
+<li><div class="src-line"><a name="a510"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a511"></a>&nbsp;&nbsp;&nbsp;&nbsp;$s-&gt;createTables();</div></li>
+<li><div class="src-line"><a name="a512"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a513"></a>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$s;</div></li>
+<li><div class="src-line"><a name="a514"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a515"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a516"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a517"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">case&nbsp;</span><span class="src-str">&quot;PostgreSQL&quot;</span>:</div></li>
+<li><div class="src-line"><a name="a518"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a519"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span>require_once&nbsp;'Auth/OpenID/PostgreSQLStore.php';</div></li>
+<li><div class="src-line"><a name="a520"></a>&nbsp;&nbsp;&nbsp;&nbsp;require_once&nbsp;'DB.php';</div></li>
+<li><div class="src-line"><a name="a521"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a522"></a>&nbsp;&nbsp;&nbsp;&nbsp;$dsn&nbsp;=&nbsp;array(</div></li>
+<li><div class="src-line"><a name="a523"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'phptype'&nbsp;&nbsp;=&gt;&nbsp;'pgsql',</div></li>
+<li><div class="src-line"><a name="a524"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'username'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'username'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>',</div></li>
+<li><div class="src-line"><a name="a525"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'password'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'password'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>',</div></li>
+<li><div class="src-line"><a name="a526"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'hostspec'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'host'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>',</div></li>
+<li><div class="src-line"><a name="a527"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'database'&nbsp;=&gt;&nbsp;'<span class="src-php">&lt;?php&nbsp;</span>print&nbsp;<span class="src-var">$_SESSION</span><span class="src-sym">[</span><span class="src-str">'store_data'</span><span class="src-sym">]</span><span class="src-sym">[</span><span class="src-str">'database'</span><span class="src-sym">]</span><span class="src-sym">;&nbsp;</span><span class="src-php">?&gt;</span>'</div></li>
+<li><div class="src-line"><a name="a528"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</div></li>
+<li><div class="src-line"><a name="a529"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a530"></a>&nbsp;&nbsp;&nbsp;&nbsp;$db&nbsp;=&amp;&nbsp;DB::connect($dsn);</div></li>
+<li><div class="src-line"><a name="a531"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a532"></a>&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(PEAR::isError($db))&nbsp;{</div></li>
+<li><div class="src-line"><a name="a533"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;null;</div></li>
+<li><div class="src-line"><a name="a534"></a>&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a535"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a536"></a>&nbsp;&nbsp;&nbsp;&nbsp;$s&nbsp;=&amp;&nbsp;new&nbsp;Auth_OpenID_PostgreSQLStore($db);</div></li>
+<li><div class="src-line"><a name="a537"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a538"></a>&nbsp;&nbsp;&nbsp;&nbsp;$s-&gt;createTables();</div></li>
+<li><div class="src-line"><a name="a539"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a540"></a>&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;$s;</div></li>
+<li><div class="src-line"><a name="a541"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a542"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">break</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a543"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a544"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a545"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a546"></a>}</div></li>
+<li><div class="src-line"><a name="a547"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a548"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a549"></a>&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;<span class="src-str">&quot;?&gt;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a550"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$download</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a551"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a552"></a>&lt;/pre&gt;</div></li>
+<li><div class="src-line"><a name="a553"></a>&lt;/body&gt;</div></li>
+<li><div class="src-line"><a name="a554"></a>&lt;/html&gt;</div></li>
+<li><div class="src-line"><a name="a555"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a556"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a557"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-comm">//&nbsp;end&nbsp;function&nbsp;generate_config&nbsp;()</span></div></li>
+<li><div class="src-line"><a name="a558"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:28 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

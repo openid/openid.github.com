@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for render.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file render.php</h1>
+<p>Documentation is available at <a href="../OpenID/_examples---server---lib---render.php.html">render.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'page_template'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-str">'&lt;html&gt;</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-str">&nbsp;&nbsp;&lt;head&gt;</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;cache-control&quot;&nbsp;content=&quot;no-cache&quot;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;pragma&quot;&nbsp;content=&quot;no-cache&quot;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;%s&lt;/title&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-str">%s</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-str">&nbsp;&nbsp;&lt;/head&gt;</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-str">&nbsp;&nbsp;&lt;body&gt;</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;%s</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-str">&lt;div&nbsp;id=&quot;content&quot;&gt;</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;%s&lt;/h1&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-str">&nbsp;&nbsp;&nbsp;&nbsp;%s</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-str">&lt;/div&gt;</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-str">&nbsp;&nbsp;&lt;/body&gt;</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-str">&lt;/html&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a20"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'logged_in_pat'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'You&nbsp;are&nbsp;logged&nbsp;in&nbsp;as&nbsp;%s&nbsp;(URL:&nbsp;%s)'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;HTTP&nbsp;response&nbsp;line&nbsp;contstants</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a25"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'http_bad_request'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'HTTP/1.1&nbsp;400&nbsp;Bad&nbsp;Request'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'http_found'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'HTTP/1.1&nbsp;302&nbsp;Found'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a27"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'http_ok'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'HTTP/1.1&nbsp;200&nbsp;OK'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'http_internal_error'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'HTTP/1.1&nbsp;500&nbsp;Internal&nbsp;Error'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*&nbsp;HTTP&nbsp;header&nbsp;constants</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a33"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'header_connection_close'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'Connection:&nbsp;close'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a34"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'header_content_text'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'Content-Type:&nbsp;text/plain;&nbsp;charset=us-ascii'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'redirect_message'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'Please&nbsp;wait;&nbsp;you&nbsp;are&nbsp;being&nbsp;redirected&nbsp;to&nbsp;&lt;%s&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;*&nbsp;Return&nbsp;a&nbsp;string&nbsp;containing&nbsp;an&nbsp;anchor&nbsp;tag&nbsp;containing&nbsp;the&nbsp;given&nbsp;URL</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;*&nbsp;The&nbsp;URL&nbsp;does&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;quoted,&nbsp;but&nbsp;if&nbsp;text&nbsp;is&nbsp;passed&nbsp;in,&nbsp;then</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;*&nbsp;it&nbsp;does.</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$text</span>=<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$esc_url&nbsp;</span>=&nbsp;<a href="http://www.php.net/htmlspecialchars">htmlspecialchars</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,&nbsp;</span><span class="src-id">ENT_QUOTES</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$text&nbsp;</span>=&nbsp;<span class="src-sym">(</span><span class="src-var">$text&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span>?&nbsp;<span class="src-var">$esc_url&nbsp;</span>:&nbsp;<span class="src-var">$text</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'&lt;a&nbsp;href=&quot;%s&quot;&gt;%s&lt;/a&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$esc_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$text</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-doc">&nbsp;*&nbsp;Return&nbsp;an&nbsp;HTTP&nbsp;redirect&nbsp;response</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionredirect_render">redirect_render</a><span class="src-sym">(</span><span class="src-var">$redir_url</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$headers&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#definehttp_found">http_found</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#defineheader_content_text">header_content_text</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#defineheader_connection_close">header_connection_close</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'Location:&nbsp;'&nbsp;</span>.&nbsp;<span class="src-var">$redir_url</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#defineredirect_message">redirect_message</a></span><span class="src-sym">,&nbsp;</span><span class="src-var">$redir_url</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$headers</span><span class="src-sym">,&nbsp;</span><span class="src-var">$body</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a64"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a66"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionnavigation_render">navigation_render</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-var">$items</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$what&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-str">'PHP&nbsp;OpenID&nbsp;Server'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$what&nbsp;</span>.=&nbsp;<span class="src-str">'&nbsp;&amp;mdash;&nbsp;'&nbsp;</span>.&nbsp;<span class="src-var">$msg</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$s&nbsp;</span>=&nbsp;<span class="src-str">'&lt;p&gt;'&nbsp;</span>.&nbsp;<span class="src-var">$what&nbsp;</span>.&nbsp;<span class="src-str">'&lt;/p&gt;&lt;ul&nbsp;class=&quot;bottom&quot;&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">foreach&nbsp;</span><span class="src-sym">(</span><span class="src-var">$items&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$action&nbsp;</span>=&gt;&nbsp;<span class="src-var">$text</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$url&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-var">$action</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$s&nbsp;</span>.=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'&lt;li&gt;%s&lt;/li&gt;'</span><span class="src-sym">,&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><span class="src-var">$url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$text</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$s&nbsp;</span>.=&nbsp;<span class="src-str">'&lt;/ul&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$s&nbsp;</span>=&nbsp;<span class="src-str">'&lt;p&nbsp;class=&quot;bottom&quot;&gt;'&nbsp;</span>.&nbsp;<span class="src-var">$what&nbsp;</span>.&nbsp;<span class="src-str">'&lt;/p&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-str">'&lt;div&nbsp;class=&quot;navigation&quot;&gt;%s&lt;/div&gt;'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$s</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a83"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a86"></a><span class="src-doc">&nbsp;*&nbsp;Render&nbsp;an&nbsp;HTML&nbsp;page</span></div></li>
+<li><div class="src-line"><a name="a87"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a88"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionpage_render">page_render</a><span class="src-sym">(</span><span class="src-var">$body</span><span class="src-sym">,&nbsp;</span><span class="src-var">$user</span><span class="src-sym">,&nbsp;</span><span class="src-var">$title</span><span class="src-sym">,&nbsp;</span><span class="src-var">$h1</span>=<span class="src-id">null</span><span class="src-sym">,&nbsp;</span><span class="src-var">$login</span>=<span class="src-id">false</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a89"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$h1&nbsp;</span>=&nbsp;<span class="src-var">$h1&nbsp;</span>?&nbsp;<span class="src-var">$h1&nbsp;</span>:&nbsp;<span class="src-var">$title</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$user</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$msg&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#definelogged_in_pat">logged_in_pat</a></span><span class="src-sym">,&nbsp;</span><a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><a href="../OpenID/_examples---server---lib---session.php.html#functionidURL">idURL</a><span class="src-sym">(</span><span class="src-var">$user</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-var">$user</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><a href="../OpenID/_examples---server---lib---session.php.html#functionidURL">idURL</a><span class="src-sym">(</span><span class="src-var">$user</span><span class="src-sym">)))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$nav&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'logout'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'Log&nbsp;Out'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$navigation&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---render.php.html#functionnavigation_render">navigation_render</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-var">$nav</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-sym">!</span><span class="src-var">$login</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$msg&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---render.php.html#functionlink_render">link_render</a><span class="src-sym">(</span><a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-str">'login'</span><span class="src-sym">)</span><span class="src-sym">,&nbsp;</span><span class="src-str">'Log&nbsp;In'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$navigation&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---render.php.html#functionnavigation_render">navigation_render</a><span class="src-sym">(</span><span class="src-var">$msg</span><span class="src-sym">,&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}&nbsp;</span><span class="src-key">else&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$navigation&nbsp;</span>=&nbsp;<span class="src-str">''</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$style&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functiongetStyle">getStyle</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$text&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render.php.html#definepage_template">page_template</a></span><span class="src-sym">,&nbsp;</span><span class="src-var">$title</span><span class="src-sym">,&nbsp;</span><span class="src-var">$style</span><span class="src-sym">,&nbsp;</span><span class="src-var">$navigation</span><span class="src-sym">,&nbsp;</span><span class="src-var">$h1</span><span class="src-sym">,&nbsp;</span><span class="src-var">$body</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;No&nbsp;special&nbsp;headers&nbsp;here</span></div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$headers&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$headers</span><span class="src-sym">,&nbsp;</span><span class="src-var">$text</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a112"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a114"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:13 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

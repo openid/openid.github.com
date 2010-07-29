@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page render.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/examples/server/lib/render.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+											<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">filesource:</span> <a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html">Source Code for this file</a></li>
+			</ul>
+		
+			</div>
+</div>
+		
+
+	
+	<a name="sec-constants"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+									<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<a name="defineheader_connection_close"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">header_connection_close</span> = 'Connection: close'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a33">33</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">HTTP header constants</p>
+	
+		
+</div>
+<a name="defineheader_content_text"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">header_content_text</span> = 'Content-Type: text/plain; charset=us-ascii'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a34">34</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definehttp_bad_request"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">http_bad_request</span> = 'HTTP/1.1 400 Bad Request'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a25">25</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">HTTP response line contstants</p>
+	
+		
+</div>
+<a name="definehttp_found"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">http_found</span> = 'HTTP/1.1 302 Found'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a26">26</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definehttp_internal_error"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">http_internal_error</span> = 'HTTP/1.1 500 Internal Error'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a28">28</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definehttp_ok"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">http_ok</span> = 'HTTP/1.1 200 OK'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a27">27</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definelogged_in_pat"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">logged_in_pat</span> = 'You are logged in as %s (URL: %s)'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a20">20</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="definepage_template"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">page_template</span> = '&lt;html&gt;<br />  &lt;head&gt;<br />    &lt;meta http-equiv=&quot;cache-control&quot; content=&quot;no-cache&quot;/&gt;<br />    &lt;meta http-equiv=&quot;pragma&quot; content=&quot;no-cache&quot;/&gt;<br />    &lt;title&gt;%s&lt;/title&gt;<br />%s<br />  &lt;/head&gt;<br />  &lt;body&gt;<br />    %s<br />&lt;div id=&quot;content&quot;&gt;<br />    &lt;h1&gt;%s&lt;/h1&gt;<br />    %s<br />&lt;/div&gt;<br />  &lt;/body&gt;<br />&lt;/html&gt;'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a3">3</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineredirect_message"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">redirect_message</span> = 'Please wait; you are being redirected to &lt;%s&gt;'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a36">36</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+		</div>
+	</div>
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionlink_render" id="functionlink_render"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">link_render</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a46">46</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return a string containing an anchor tag containing the given URL</p>
+<p class="description"><p>The URL does not need to be quoted, but if text is passed in, then  it does.</p></p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			link_render
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$url</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$text</span> = <span class="var-default">null</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$url</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$text</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionnavigation_render" id="functionnavigation_render"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">navigation_render</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a66">66</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			navigation_render
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$msg</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$items</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$msg</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$items</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionpage_render" id="functionpage_render"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">page_render</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a88">88</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Render an HTML page</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			page_render
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$body</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$user</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$title</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$h1</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$login</span> = <span class="var-default">false</span>])
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$body</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$user</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$title</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$h1</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$login</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionredirect_render" id="functionredirect_render"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">redirect_render</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__examplesserverlibrender.php.html#a55">55</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Return an HTTP redirect response</p>
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			redirect_render
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$redir_url</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$redir_url</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:12 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

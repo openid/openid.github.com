@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for DumbStore.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file DumbStore.php</h1>
+<p>Documentation is available at <a href="../OpenID/_Auth---OpenID---DumbStore.php.html">DumbStore.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;file&nbsp;supplies&nbsp;a&nbsp;dumb&nbsp;store&nbsp;backend&nbsp;for&nbsp;OpenID&nbsp;servers&nbsp;and</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;consumers.</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;PHP&nbsp;versions&nbsp;4&nbsp;and&nbsp;5</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;LICENSE:&nbsp;See&nbsp;the&nbsp;COPYING&nbsp;file&nbsp;included&nbsp;in&nbsp;this&nbsp;distribution.</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;JanRain,&nbsp;Inc.&nbsp;&lt;openid@janrain.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;2005-2008&nbsp;Janrain,&nbsp;Inc.</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;http://www.apache.org/licenses/LICENSE-2.0&nbsp;Apache</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;Import&nbsp;the&nbsp;interface&nbsp;for&nbsp;creating&nbsp;a&nbsp;new&nbsp;store&nbsp;class.</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/OpenID/Interface.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/OpenID/HMAC.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;is&nbsp;a&nbsp;store&nbsp;for&nbsp;use&nbsp;in&nbsp;the&nbsp;worst&nbsp;case,&nbsp;when&nbsp;you&nbsp;have&nbsp;no&nbsp;way&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;saving&nbsp;state&nbsp;on&nbsp;the&nbsp;consumer&nbsp;site.&nbsp;Using&nbsp;this&nbsp;store&nbsp;makes&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*&nbsp;consumer&nbsp;vulnerable&nbsp;to&nbsp;replay&nbsp;attacks,&nbsp;as&nbsp;it's&nbsp;unable&nbsp;to&nbsp;use</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;nonces.&nbsp;Avoid&nbsp;using&nbsp;this&nbsp;store&nbsp;if&nbsp;it&nbsp;is&nbsp;at&nbsp;all&nbsp;possible.</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*&nbsp;Most&nbsp;of&nbsp;the&nbsp;methods&nbsp;of&nbsp;this&nbsp;class&nbsp;are&nbsp;implementation&nbsp;details.</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;*&nbsp;Users&nbsp;of&nbsp;this&nbsp;class&nbsp;need&nbsp;to&nbsp;worry&nbsp;only&nbsp;about&nbsp;the&nbsp;constructor.</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html">Auth_OpenID_DumbStore</a>&nbsp;<span class="src-key">extends&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html">Auth_OpenID_OpenIDStore</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Creates&nbsp;a&nbsp;new&nbsp;</span><span class="src-doc-inlinetag">{@link&nbsp;Auth_OpenID_DumbStore}</span><span class="src-doc">&nbsp;instance.&nbsp;For&nbsp;the&nbsp;security</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;of&nbsp;the&nbsp;tokens&nbsp;generated&nbsp;by&nbsp;the&nbsp;library,&nbsp;this&nbsp;class&nbsp;attempts&nbsp;to</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;at&nbsp;least&nbsp;have&nbsp;a&nbsp;secure&nbsp;implementation&nbsp;of&nbsp;getAuthKey.</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;When&nbsp;you&nbsp;create&nbsp;an&nbsp;instance&nbsp;of&nbsp;this&nbsp;class,&nbsp;pass&nbsp;in&nbsp;a&nbsp;secret</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;phrase.&nbsp;The&nbsp;phrase&nbsp;is&nbsp;hashed&nbsp;with&nbsp;sha1&nbsp;to&nbsp;make&nbsp;it&nbsp;the&nbsp;correct</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;length&nbsp;and&nbsp;form&nbsp;for&nbsp;an&nbsp;auth&nbsp;key.&nbsp;That&nbsp;allows&nbsp;you&nbsp;to&nbsp;use&nbsp;a&nbsp;long</span></div></li>
+<li><div class="src-line"><a name="a44"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;string&nbsp;as&nbsp;the&nbsp;secret&nbsp;phrase,&nbsp;which&nbsp;means&nbsp;you&nbsp;can&nbsp;make&nbsp;it&nbsp;very</span></div></li>
+<li><div class="src-line"><a name="a45"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;difficult&nbsp;to&nbsp;guess.</span></div></li>
+<li><div class="src-line"><a name="a46"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a47"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Each&nbsp;</span><span class="src-doc-inlinetag">{@link&nbsp;Auth_OpenID_DumbStore}</span><span class="src-doc">&nbsp;instance&nbsp;that&nbsp;is&nbsp;created&nbsp;for&nbsp;use&nbsp;by</span></div></li>
+<li><div class="src-line"><a name="a48"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;your&nbsp;consumer&nbsp;site&nbsp;needs&nbsp;to&nbsp;use&nbsp;the&nbsp;same&nbsp;$secret_phrase.</span></div></li>
+<li><div class="src-line"><a name="a49"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a50"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc">secret_phrase&nbsp;The&nbsp;phrase&nbsp;used&nbsp;to&nbsp;create&nbsp;the&nbsp;auth</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;key&nbsp;returned&nbsp;by&nbsp;getAuthKey</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methodAuth_OpenID_DumbStore">Auth_OpenID_DumbStore</a><span class="src-sym">(</span><span class="src-var">$secret_phrase</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">auth_key&nbsp;</span>=&nbsp;<span class="src-id">Auth_OpenID_SHA1</span><span class="src-sym">(</span><span class="src-var">$secret_phrase</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;implementation&nbsp;does&nbsp;nothing.</span></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methodstoreAssociation">storeAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$association</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a66"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;implementation&nbsp;always&nbsp;returns&nbsp;null.</span></div></li>
+<li><div class="src-line"><a name="a67"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methodgetAssociation">getAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$handle&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;implementation&nbsp;always&nbsp;returns&nbsp;false.</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methodremoveAssociation">removeAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$handle</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a82"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;In&nbsp;a&nbsp;system&nbsp;truly&nbsp;limited&nbsp;to&nbsp;dumb&nbsp;mode,&nbsp;nonces&nbsp;must&nbsp;all&nbsp;be</span></div></li>
+<li><div class="src-line"><a name="a83"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;accepted.&nbsp;This&nbsp;therefore&nbsp;always&nbsp;returns&nbsp;true,&nbsp;which&nbsp;makes</span></div></li>
+<li><div class="src-line"><a name="a84"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;replay&nbsp;attacks&nbsp;feasible.</span></div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methoduseNonce">useNonce</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$timestamp</span><span class="src-sym">,&nbsp;</span><span class="src-var">$salt</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a92"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;returns&nbsp;the&nbsp;auth&nbsp;key&nbsp;generated&nbsp;by&nbsp;the&nbsp;constructor.</span></div></li>
+<li><div class="src-line"><a name="a93"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_DumbStore.html#methodgetAuthKey">getAuthKey</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">auth_key</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a98"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:50 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

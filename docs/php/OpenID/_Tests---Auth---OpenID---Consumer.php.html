@@ -1,0 +1,996 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs for page Consumer.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="file-name"><img src="../media/images/Page_logo.png" alt="File" style="vertical-align: middle">/Tests/Auth/OpenID/Consumer.php</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-classes">Classes</a>
+			|							<a href="#sec-includes">Includes</a>
+			|							<a href="#sec-constants">Constants</a>
+			|									<a href="#sec-functions">Functions</a>
+			</div>
+	<div class="info-box-body">	
+		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Tests for the OpenID consumer.</p>
+<p class="description"><p>PHP versions 4 and 5</p><p>LICENSE: See the COPYING file included in this distribution.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> JanRain, Inc. &lt;<a href="mailto:openid@janrain.com">openid@janrain.com</a>&gt;</li>
+				<li><span class="field">copyright:</span> 2005-2008 Janrain, Inc.</li>
+				<li><span class="field">filesource:</span> <a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html">Source Code for this file</a></li>
+				<li><span class="field">license:</span> <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache</a></li>
+			</ul>
+		
+			</div>
+</div>
+		
+	<a name="sec-classes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Classes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Classes</span>
+			|							<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/FastConsumerSession.html">FastConsumerSession</a>
+					</td>
+					<td>
+											A class implementing HMAC/DH-SHA1 consumer sessions.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Auth_OpenID_TestFetcher.html">Auth_OpenID_TestFetcher</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer.html">Tests_Auth_OpenID_Consumer</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/ConfigurableConsumer.html">ConfigurableConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_TestIdRes.html">_TestIdRes</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer_TestSetupNeeded.html">Tests_Auth_OpenID_Consumer_TestSetupNeeded</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/IdResCheckForFieldsTest.html">IdResCheckForFieldsTest</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_CheckAuthDetectingConsumer.html">_CheckAuthDetectingConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/GoodAssociation.html">GoodAssociation</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/GoodAssocStore.html">GoodAssocStore</a>
+					</td>
+					<td>
+											This is the interface for the store objects the OpenID library
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestIdResCheckSignature.html">TestIdResCheckSignature</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/StatelessConsumer1.html">StatelessConsumer1</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Stateless1.html">Tests_Auth_OpenID_Stateless1</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/StatelessConsumer2.html">StatelessConsumer2</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Stateless2.html">Tests_Auth_OpenID_Stateless2</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer_CheckNonceTest.html">Tests_Auth_OpenID_Consumer_CheckNonceTest</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer_TestCheckAuthTriggered.html">Tests_Auth_OpenID_Consumer_TestCheckAuthTriggered</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_MockFetcher.html">_MockFetcher</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Complete.html">Tests_Auth_OpenID_Complete</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_VerifiedError.html">_VerifiedError</a>
+					</td>
+					<td>
+											A response with a status of Auth_OpenID_FAILURE. Indicates that the  OpenID protocol has failed. This could be locally or remotely  triggered.  This has three relevant attributes:
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Consumer_idResURLMismatch.html">Consumer_idResURLMismatch</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_idResURLMismatch.html">Tests_idResURLMismatch</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/SetupNeededConsumer.html">SetupNeededConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_SetupNeeded.html">Tests_Auth_OpenID_SetupNeeded</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TempConsumer.html">TempConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestCompleteMissingSig.html">TestCompleteMissingSig</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestReturnToArgs.html">TestReturnToArgs</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_CheckAuthResponse.html">Tests_Auth_OpenID_CheckAuthResponse</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_IdResFetchFailingConsumer.html">_IdResFetchFailingConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_FetchErrorInIdRes.html">Tests_Auth_OpenID_FetchErrorInIdRes</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_ExceptionRaisingMockFetcher.html">_ExceptionRaisingMockFetcher</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_BadArgCheckingConsumer.html">_BadArgCheckingConsumer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer_TestCheckAuth.html">Tests_Auth_OpenID_Consumer_TestCheckAuth</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_Consumer_TestFetchAssoc.html">Tests_Auth_OpenID_Consumer_TestFetchAssoc</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_AuthRequestHTMLMarkup.html">Tests_Auth_OpenID_AuthRequestHTMLMarkup</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_SuccessResponse.html">Tests_Auth_OpenID_SuccessResponse</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/_StubConsumer.html">_StubConsumer</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_DiscoFailure.html">Tests_Auth_OpenID_DiscoFailure</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Consumer_completeEmptySession.html">Consumer_completeEmptySession</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_ConsumerTest2.html">Tests_Auth_OpenID_ConsumerTest2</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/IDPDrivenTest_Consumer1.html">IDPDrivenTest_Consumer1</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/IDPDrivenTest_Consumer2.html">IDPDrivenTest_Consumer2</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/IDPDrivenTest.html">IDPDrivenTest</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestDiscoveryVerification_test_otherServer.html">TestDiscoveryVerification_test_otherServer</a>
+					</td>
+					<td>
+											This class is the interface to the OpenID consumer logic.
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestDiscoveryVerification.html">TestDiscoveryVerification</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/DummyEndpoint.html">DummyEndpoint</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestCreateAssociationRequest.html">TestCreateAssociationRequest</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestDiffieHellmanResponseParameters.html">TestDiffieHellmanResponseParameters</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestOpenID1SHA1.html">TestOpenID1SHA1</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestOpenID2SHA1.html">TestOpenID2SHA1</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/TestOpenID2SHA256.html">TestOpenID2SHA256</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em; vertical-align: top; white-space: nowrap">
+						<img src="../media/images/Class.png"
+								 alt=" class"
+								 title=" class"/>
+						<a href="../OpenID/Tests_Auth_OpenID_KVPost.html">Tests_Auth_OpenID_KVPost</a>
+					</td>
+					<td>
+											
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+	<a name="sec-includes"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Includes</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|						<span class="disabled">Includes</span>
+			|							<a href="#sec-constants">Constants</a>
+				|													<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<a name="_Auth/OpenID/Consumer_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---Consumer.php.html">'Auth/OpenID/Consumer.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a21">21</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/Server_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---Server.php.html">'Auth/OpenID/Server.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a22">22</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/KVForm_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---KVForm.php.html">'Auth/OpenID/KVForm.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a20">20</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/Nonce_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---Nonce.php.html">'Auth/OpenID/Nonce.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a23">23</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/CryptUtil_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---CryptUtil.php.html">'Auth/OpenID/CryptUtil.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a16">16</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/SReg_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---SReg.php.html">'Auth/OpenID/SReg.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a24">24</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Tests/Auth/OpenID/MemStore_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Tests---Auth---OpenID---MemStore.php.html">'Tests/Auth/OpenID/MemStore.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a26">26</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/Message_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---Message.php.html">'Auth/OpenID/Message.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a25">25</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/FileStore_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---OpenID---FileStore.php.html">'Auth/OpenID/FileStore.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a19">19</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/OpenID/DiffieHellman_php"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name">'Auth/OpenID/DiffieHellman.php'</span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a18">18</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+<a name="_Auth/Yadis/HTTPFetcher_php"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Page.png" alt=" " />
+		<span class="include-title">
+			<span class="include-type">require_once</span>
+			(<span class="include-name"><a href="../OpenID/_Auth---Yadis---HTTPFetcher.php.html">'Auth/Yadis/HTTPFetcher.php'</a></span>)
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a17">17</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+</div>
+		</div>
+	</div>
+	
+	<a name="sec-constants"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Constants</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|										<a href="#sec-includes">Includes</a>
+				|						<span class="disabled">Constants</span>
+			|										<a href="#sec-functions">Functions</a>
+					</div>
+		<div class="info-box-body">	
+			<a name="defineE_ASSERTION_ERROR"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">E_ASSERTION_ERROR</span> = 'assertion error'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a603">603</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineE_CHECK_AUTH_HAPPENED"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">E_CHECK_AUTH_HAPPENED</span> = 'checkauth occurred'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a601">601</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+<a name="defineE_MOCK_FETCHER_EXCEPTION"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Constant.png" />
+		<span class="const-title">
+			<span class="const-name">E_MOCK_FETCHER_EXCEPTION</span> = 'mock fetcher exception'
+			(line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a602">602</a></span>)
+		</span>
+	</div>
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+		
+</div>
+		</div>
+	</div>
+	
+	
+	<a name="sec-functions"></a>	
+	<div class="info-box">
+		<div class="info-box-title">Functions</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-classes">Classes</a>
+				|										<a href="#sec-includes">Includes</a>
+				|										<a href="#sec-constants">Constants</a>
+				|									<span class="disabled">Functions</span>
+		</div>
+		<div class="info-box-body">	
+			<a name="functionAuth_OpenID_associate" id="functionAuth_OpenID_associate"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">Auth_OpenID_associate</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a77">77</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			Auth_OpenID_associate
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$qs</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$assoc_secret</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$assoc_handle</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$qs</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$assoc_secret</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$assoc_handle</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionAuth_OpenID_parse" id="functionAuth_OpenID_parse"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">Auth_OpenID_parse</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a65">65</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			Auth_OpenID_parse
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$qs</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$qs</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionmkSuccess" id="functionmkSuccess"><!-- --></a>
+<div class="evenrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">mkSuccess</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a32">32</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mkSuccess
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$endpoint</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$q</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$endpoint</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$q</span>			</li>
+				</ul>
+		
+	
+</div>
+<a name="functionsetConsumerSession" id="functionsetConsumerSession"><!-- --></a>
+<div class="oddrow">
+	
+	<div>
+		<img src="../media/images/Function.png" />
+		<span class="method-title">setConsumerSession</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__TestsAuthOpenIDConsumer.php.html#a54">54</a></span>)
+	</div> 
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setConsumerSession
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$con</span>)
+			</div>
+
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$con</span>			</li>
+				</ul>
+		
+	
+</div>
+		</div>
+	</div>
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:33 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

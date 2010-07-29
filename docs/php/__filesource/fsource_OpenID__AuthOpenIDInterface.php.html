@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Interface.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file Interface.php</h1>
+<p>Documentation is available at <a href="../OpenID/_Auth---OpenID---Interface.php.html">Interface.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;file&nbsp;specifies&nbsp;the&nbsp;interface&nbsp;for&nbsp;PHP&nbsp;OpenID&nbsp;store&nbsp;implementations.</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;PHP&nbsp;versions&nbsp;4&nbsp;and&nbsp;5</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;LICENSE:&nbsp;See&nbsp;the&nbsp;COPYING&nbsp;file&nbsp;included&nbsp;in&nbsp;this&nbsp;distribution.</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;JanRain,&nbsp;Inc.&nbsp;&lt;openid@janrain.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@copyright</span><span class="src-doc">&nbsp;2005-2008&nbsp;Janrain,&nbsp;Inc.</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@license</span><span class="src-doc">&nbsp;http://www.apache.org/licenses/LICENSE-2.0&nbsp;Apache</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;is&nbsp;the&nbsp;interface&nbsp;for&nbsp;the&nbsp;store&nbsp;objects&nbsp;the&nbsp;OpenID&nbsp;library</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;*&nbsp;uses.&nbsp;It&nbsp;is&nbsp;a&nbsp;single&nbsp;class&nbsp;that&nbsp;provides&nbsp;all&nbsp;of&nbsp;the&nbsp;persistence</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;*&nbsp;mechanisms&nbsp;that&nbsp;the&nbsp;OpenID&nbsp;library&nbsp;needs,&nbsp;for&nbsp;both&nbsp;servers&nbsp;and</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;*&nbsp;consumers.&nbsp;&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;create&nbsp;an&nbsp;SQL-driven&nbsp;store,&nbsp;please&nbsp;see</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-doc">&nbsp;*&nbsp;then&nbsp;</span><span class="src-doc-inlinetag">{@link&nbsp;Auth_OpenID_SQLStore}</span><span class="src-doc">&nbsp;class.</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;*&nbsp;Change:&nbsp;Version&nbsp;2.0&nbsp;removed&nbsp;the&nbsp;storeNonce,&nbsp;getAuthKey,&nbsp;and&nbsp;isDumb</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;*&nbsp;methods,&nbsp;and&nbsp;changed&nbsp;the&nbsp;behavior&nbsp;of&nbsp;the&nbsp;useNonce&nbsp;method&nbsp;to&nbsp;support</span></div></li>
+<li><div class="src-line"><a name="a25"></a><span class="src-doc">&nbsp;*&nbsp;one-way&nbsp;nonces.</span></div></li>
+<li><div class="src-line"><a name="a26"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a27"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a28"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;JanRain,&nbsp;Inc.&nbsp;&lt;openid@janrain.com&gt;</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-key">class&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html">Auth_OpenID_OpenIDStore</a>&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;puts&nbsp;an&nbsp;Association&nbsp;object&nbsp;into&nbsp;storage,</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;retrievable&nbsp;by&nbsp;server&nbsp;URL&nbsp;and&nbsp;handle.</span></div></li>
+<li><div class="src-line"><a name="a34"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$server_url&nbsp;</span><span class="src-doc">The&nbsp;URL&nbsp;of&nbsp;the&nbsp;identity&nbsp;server&nbsp;that</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;this&nbsp;association&nbsp;is&nbsp;with.&nbsp;Because&nbsp;of&nbsp;the&nbsp;way&nbsp;the&nbsp;server&nbsp;portion</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;of&nbsp;the&nbsp;library&nbsp;uses&nbsp;this&nbsp;interface,&nbsp;don't&nbsp;assume&nbsp;there&nbsp;are&nbsp;any</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;limitations&nbsp;on&nbsp;the&nbsp;character&nbsp;set&nbsp;of&nbsp;the&nbsp;input&nbsp;string.&nbsp;In</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;particular,&nbsp;expect&nbsp;to&nbsp;see&nbsp;unescaped&nbsp;non-url-safe&nbsp;characters&nbsp;in</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;server_url&nbsp;field.</span></div></li>
+<li><div class="src-line"><a name="a41"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a42"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">Association&nbsp;</span><span class="src-doc-var">$association&nbsp;</span><span class="src-doc">The&nbsp;Association&nbsp;to&nbsp;store.</span></div></li>
+<li><div class="src-line"><a name="a43"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodstoreAssociation">storeAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$association</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::storeAssociation&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a51"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Remove&nbsp;expired&nbsp;nonces&nbsp;from&nbsp;the&nbsp;store.</span></div></li>
+<li><div class="src-line"><a name="a52"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Discards&nbsp;any&nbsp;nonce&nbsp;from&nbsp;storage&nbsp;that&nbsp;is&nbsp;old&nbsp;enough&nbsp;that&nbsp;its</span></div></li>
+<li><div class="src-line"><a name="a54"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;timestamp&nbsp;would&nbsp;not&nbsp;pass&nbsp;useNonce().</span></div></li>
+<li><div class="src-line"><a name="a55"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a56"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;is&nbsp;not&nbsp;called&nbsp;in&nbsp;the&nbsp;normal&nbsp;operation&nbsp;of&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;library.&nbsp;&nbsp;It&nbsp;provides&nbsp;a&nbsp;way&nbsp;for&nbsp;store&nbsp;admins&nbsp;to&nbsp;keep&nbsp;their</span></div></li>
+<li><div class="src-line"><a name="a58"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;storage&nbsp;from&nbsp;filling&nbsp;up&nbsp;with&nbsp;expired&nbsp;data.</span></div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a60"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;number&nbsp;of&nbsp;nonces&nbsp;expired</span></div></li>
+<li><div class="src-line"><a name="a61"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodcleanupNonces">cleanupNonces</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::cleanupNonces&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a69"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Remove&nbsp;expired&nbsp;associations&nbsp;from&nbsp;the&nbsp;store.</span></div></li>
+<li><div class="src-line"><a name="a70"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a71"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;is&nbsp;not&nbsp;called&nbsp;in&nbsp;the&nbsp;normal&nbsp;operation&nbsp;of&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a72"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;library.&nbsp;&nbsp;It&nbsp;provides&nbsp;a&nbsp;way&nbsp;for&nbsp;store&nbsp;admins&nbsp;to&nbsp;keep&nbsp;their</span></div></li>
+<li><div class="src-line"><a name="a73"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;storage&nbsp;from&nbsp;filling&nbsp;up&nbsp;with&nbsp;expired&nbsp;data.</span></div></li>
+<li><div class="src-line"><a name="a74"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a75"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@return&nbsp;the&nbsp;number&nbsp;of&nbsp;associations&nbsp;expired.</span></div></li>
+<li><div class="src-line"><a name="a76"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodcleanupAssociations">cleanupAssociations</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::cleanupAssociations&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">/*</span></div></li>
+<li><div class="src-line"><a name="a84"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Shortcut&nbsp;for&nbsp;cleanupNonces(),&nbsp;cleanupAssociations().</span></div></li>
+<li><div class="src-line"><a name="a85"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a86"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;is&nbsp;not&nbsp;called&nbsp;in&nbsp;the&nbsp;normal&nbsp;operation&nbsp;of&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a87"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;library.&nbsp;&nbsp;It&nbsp;provides&nbsp;a&nbsp;way&nbsp;for&nbsp;store&nbsp;admins&nbsp;to&nbsp;keep&nbsp;their</span></div></li>
+<li><div class="src-line"><a name="a88"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;storage&nbsp;from&nbsp;filling&nbsp;up&nbsp;with&nbsp;expired&nbsp;data.</span></div></li>
+<li><div class="src-line"><a name="a89"></a><span class="src-comm">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodcleanup">cleanup</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodcleanupNonces">cleanupNonces</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodcleanupAssociations">cleanupAssociations</a><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a97"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Report&nbsp;whether&nbsp;this&nbsp;storage&nbsp;supports&nbsp;cleanup</span></div></li>
+<li><div class="src-line"><a name="a98"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodsupportsCleanup">supportsCleanup</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">true</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a105"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;returns&nbsp;an&nbsp;Association&nbsp;object&nbsp;from&nbsp;storage&nbsp;that</span></div></li>
+<li><div class="src-line"><a name="a106"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;matches&nbsp;the&nbsp;server&nbsp;URL&nbsp;and,&nbsp;if&nbsp;specified,&nbsp;handle.&nbsp;It&nbsp;returns</span></div></li>
+<li><div class="src-line"><a name="a107"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;null&nbsp;if&nbsp;no&nbsp;such&nbsp;association&nbsp;is&nbsp;found&nbsp;or&nbsp;if&nbsp;the&nbsp;matching</span></div></li>
+<li><div class="src-line"><a name="a108"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;association&nbsp;is&nbsp;expired.</span></div></li>
+<li><div class="src-line"><a name="a109"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a110"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;no&nbsp;handle&nbsp;is&nbsp;specified,&nbsp;the&nbsp;store&nbsp;may&nbsp;return&nbsp;any&nbsp;association</span></div></li>
+<li><div class="src-line"><a name="a111"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;which&nbsp;matches&nbsp;the&nbsp;server&nbsp;URL.&nbsp;If&nbsp;multiple&nbsp;associations&nbsp;are</span></div></li>
+<li><div class="src-line"><a name="a112"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;valid,&nbsp;the&nbsp;recommended&nbsp;return&nbsp;value&nbsp;for&nbsp;this&nbsp;method&nbsp;is&nbsp;the&nbsp;one</span></div></li>
+<li><div class="src-line"><a name="a113"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;most&nbsp;recently&nbsp;issued.</span></div></li>
+<li><div class="src-line"><a name="a114"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a115"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;is&nbsp;allowed&nbsp;(and&nbsp;encouraged)&nbsp;to&nbsp;garbage&nbsp;collect</span></div></li>
+<li><div class="src-line"><a name="a116"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;expired&nbsp;associations&nbsp;when&nbsp;found.&nbsp;This&nbsp;method&nbsp;must&nbsp;not&nbsp;return</span></div></li>
+<li><div class="src-line"><a name="a117"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;expired&nbsp;associations.</span></div></li>
+<li><div class="src-line"><a name="a118"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a119"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$server_url&nbsp;</span><span class="src-doc">The&nbsp;URL&nbsp;of&nbsp;the&nbsp;identity&nbsp;server&nbsp;to&nbsp;get</span></div></li>
+<li><div class="src-line"><a name="a120"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;association&nbsp;for.&nbsp;Because&nbsp;of&nbsp;the&nbsp;way&nbsp;the&nbsp;server&nbsp;portion&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a121"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;library&nbsp;uses&nbsp;this&nbsp;interface,&nbsp;don't&nbsp;assume&nbsp;there&nbsp;are&nbsp;any</span></div></li>
+<li><div class="src-line"><a name="a122"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;limitations&nbsp;on&nbsp;the&nbsp;character&nbsp;set&nbsp;of&nbsp;the&nbsp;input&nbsp;string.&nbsp;&nbsp;In</span></div></li>
+<li><div class="src-line"><a name="a123"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;particular,&nbsp;expect&nbsp;to&nbsp;see&nbsp;unescaped&nbsp;non-url-safe&nbsp;characters&nbsp;in</span></div></li>
+<li><div class="src-line"><a name="a124"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;server_url&nbsp;field.</span></div></li>
+<li><div class="src-line"><a name="a125"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a126"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc-var">$handle&nbsp;</span><span class="src-doc">This&nbsp;optional&nbsp;parameter&nbsp;is&nbsp;the&nbsp;handle&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a127"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;specific&nbsp;association&nbsp;to&nbsp;get.&nbsp;If&nbsp;no&nbsp;specific&nbsp;handle&nbsp;is</span></div></li>
+<li><div class="src-line"><a name="a128"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;provided,&nbsp;any&nbsp;valid&nbsp;association&nbsp;matching&nbsp;the&nbsp;server&nbsp;URL&nbsp;is</span></div></li>
+<li><div class="src-line"><a name="a129"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;returned.</span></div></li>
+<li><div class="src-line"><a name="a130"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a131"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">Association&nbsp;</span><span class="src-doc">The&nbsp;Association&nbsp;for&nbsp;the&nbsp;given&nbsp;identity</span></div></li>
+<li><div class="src-line"><a name="a132"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;server.</span></div></li>
+<li><div class="src-line"><a name="a133"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodgetAssociation">getAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$handle&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::getAssociation&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a138"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a141"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;removes&nbsp;the&nbsp;matching&nbsp;association&nbsp;if&nbsp;it's&nbsp;found,&nbsp;and</span></div></li>
+<li><div class="src-line"><a name="a142"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;returns&nbsp;whether&nbsp;the&nbsp;association&nbsp;was&nbsp;removed&nbsp;or&nbsp;not.</span></div></li>
+<li><div class="src-line"><a name="a143"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a144"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$server_url&nbsp;</span><span class="src-doc">The&nbsp;URL&nbsp;of&nbsp;the&nbsp;identity&nbsp;server&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a145"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;association&nbsp;to&nbsp;remove&nbsp;belongs&nbsp;to.&nbsp;Because&nbsp;of&nbsp;the&nbsp;way&nbsp;the&nbsp;server</span></div></li>
+<li><div class="src-line"><a name="a146"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;portion&nbsp;of&nbsp;the&nbsp;library&nbsp;uses&nbsp;this&nbsp;interface,&nbsp;don't&nbsp;assume&nbsp;there</span></div></li>
+<li><div class="src-line"><a name="a147"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;are&nbsp;any&nbsp;limitations&nbsp;on&nbsp;the&nbsp;character&nbsp;set&nbsp;of&nbsp;the&nbsp;input</span></div></li>
+<li><div class="src-line"><a name="a148"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;string.&nbsp;In&nbsp;particular,&nbsp;expect&nbsp;to&nbsp;see&nbsp;unescaped&nbsp;non-url-safe</span></div></li>
+<li><div class="src-line"><a name="a149"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;characters&nbsp;in&nbsp;the&nbsp;server_url&nbsp;field.</span></div></li>
+<li><div class="src-line"><a name="a150"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a151"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$handle&nbsp;</span><span class="src-doc">This&nbsp;is&nbsp;the&nbsp;handle&nbsp;of&nbsp;the&nbsp;association&nbsp;to</span></div></li>
+<li><div class="src-line"><a name="a152"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;remove.&nbsp;If&nbsp;there&nbsp;isn't&nbsp;an&nbsp;association&nbsp;found&nbsp;that&nbsp;matches&nbsp;both</span></div></li>
+<li><div class="src-line"><a name="a153"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;the&nbsp;given&nbsp;URL&nbsp;and&nbsp;handle,&nbsp;then&nbsp;there&nbsp;was&nbsp;no&nbsp;matching&nbsp;handle</span></div></li>
+<li><div class="src-line"><a name="a154"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;found.</span></div></li>
+<li><div class="src-line"><a name="a155"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a156"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">mixed&nbsp;</span><span class="src-doc">Returns&nbsp;whether&nbsp;or&nbsp;not&nbsp;the&nbsp;given&nbsp;association&nbsp;existed.</span></div></li>
+<li><div class="src-line"><a name="a157"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a158"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodremoveAssociation">removeAssociation</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$handle</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a159"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a160"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::removeAssociation&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a161"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a162"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a163"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a164"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a165"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Called&nbsp;when&nbsp;using&nbsp;a&nbsp;nonce.</span></div></li>
+<li><div class="src-line"><a name="a166"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a167"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;method&nbsp;should&nbsp;return&nbsp;C{True}&nbsp;if&nbsp;the&nbsp;nonce&nbsp;has&nbsp;not&nbsp;been</span></div></li>
+<li><div class="src-line"><a name="a168"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;used&nbsp;before,&nbsp;and&nbsp;store&nbsp;it&nbsp;for&nbsp;a&nbsp;while&nbsp;to&nbsp;make&nbsp;sure&nbsp;nobody</span></div></li>
+<li><div class="src-line"><a name="a169"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;tries&nbsp;to&nbsp;use&nbsp;the&nbsp;same&nbsp;value&nbsp;again.&nbsp;&nbsp;If&nbsp;the&nbsp;nonce&nbsp;has&nbsp;already</span></div></li>
+<li><div class="src-line"><a name="a170"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;been&nbsp;used,&nbsp;return&nbsp;C{False}.</span></div></li>
+<li><div class="src-line"><a name="a171"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a172"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Change:&nbsp;In&nbsp;earlier&nbsp;versions,&nbsp;round-trip&nbsp;nonces&nbsp;were&nbsp;used&nbsp;and&nbsp;a</span></div></li>
+<li><div class="src-line"><a name="a173"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;nonce&nbsp;was&nbsp;only&nbsp;valid&nbsp;if&nbsp;it&nbsp;had&nbsp;been&nbsp;previously&nbsp;stored&nbsp;with</span></div></li>
+<li><div class="src-line"><a name="a174"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;storeNonce.&nbsp;&nbsp;Version&nbsp;2.0&nbsp;uses&nbsp;one-way&nbsp;nonces,&nbsp;requiring&nbsp;a</span></div></li>
+<li><div class="src-line"><a name="a175"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;different&nbsp;implementation&nbsp;here&nbsp;that&nbsp;does&nbsp;not&nbsp;depend&nbsp;on&nbsp;a</span></div></li>
+<li><div class="src-line"><a name="a176"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;storeNonce&nbsp;call.&nbsp;&nbsp;(storeNonce&nbsp;is&nbsp;no&nbsp;longer&nbsp;part&nbsp;of&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a177"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;interface.</span></div></li>
+<li><div class="src-line"><a name="a178"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a179"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$nonce&nbsp;</span><span class="src-doc">The&nbsp;nonce&nbsp;to&nbsp;use.</span></div></li>
+<li><div class="src-line"><a name="a180"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a181"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@return&nbsp;</span><span class="src-doc-type">bool&nbsp;</span><span class="src-doc">Whether&nbsp;or&nbsp;not&nbsp;the&nbsp;nonce&nbsp;was&nbsp;valid.</span></div></li>
+<li><div class="src-line"><a name="a182"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a183"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methoduseNonce">useNonce</a><span class="src-sym">(</span><span class="src-var">$server_url</span><span class="src-sym">,&nbsp;</span><span class="src-var">$timestamp</span><span class="src-sym">,&nbsp;</span><span class="src-var">$salt</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a184"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a185"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.php.net/trigger_error">trigger_error</a><span class="src-sym">(</span><span class="src-str">&quot;Auth_OpenID_OpenIDStore::useNonce&nbsp;&quot;</span>.</div></li>
+<li><div class="src-line"><a name="a186"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;not&nbsp;implemented&quot;</span><span class="src-sym">,&nbsp;</span><span class="src-id">E_USER_ERROR</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a187"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a188"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a189"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a190"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Removes&nbsp;all&nbsp;entries&nbsp;from&nbsp;the&nbsp;store;&nbsp;implementation&nbsp;is&nbsp;optional.</span></div></li>
+<li><div class="src-line"><a name="a191"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a192"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">function&nbsp;</span><a href="../OpenID/Auth_OpenID_OpenIDStore.html#methodreset">reset</a><span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a193"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a194"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a195"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a196"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:53 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

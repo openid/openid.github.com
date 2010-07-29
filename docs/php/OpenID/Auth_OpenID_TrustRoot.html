@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Auth_OpenID_TrustRoot</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> Auth_OpenID_TrustRoot</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">A wrapper for trust-root related functions</p>
+		<p class="notes">
+			Located in <a class="field" href="_Auth---OpenID---TrustRoot.php.html">/Auth/OpenID/TrustRoot.php</a> (line <span class="field"><a href="../__filesource/fsource_OpenID__AuthOpenIDTrustRoot.php.html#a49">49</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+												<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">void</span>
+										<a href="#buildDiscoveryURL" title="details" class="method-name">buildDiscoveryURL</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$realm</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">bool</span>
+										<a href="#isSane" title="details" class="method-name">isSane</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$trust_root</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/StaticMethod.png" alt=" "/>
+											static <span class="method-result">bool</span>
+										<a href="#match" title="details" class="method-name">match</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$url</span>)
+									</div>
+																																							</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodbuildDiscoveryURL" id="buildDiscoveryURL"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static buildDiscoveryURL</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__AuthOpenIDTrustRoot.php.html#a61">61</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			buildDiscoveryURL
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$realm</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$realm</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodisSane" id="isSane"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static isSane</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__AuthOpenIDTrustRoot.php.html#a202">202</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Is this trust root sane?</p>
+<p class="description"><p>A trust root is sane if it is syntactically valid and it has a  reasonable domain name. Specifically, the domain name must be  more than one level below a standard TLD or more than two  levels below a two-letter tld.</p><p>For example, '*.com' is not a sane trust root, but '*.foo.com'  is.  '*.co.uk' is not sane, but '*.bbc.co.uk' is.</p><p>This check is not always correct, but it attempts to err on the  side of marking sane trust roots insane instead of marking  insane trust roots sane. For example, 'kink.fm' is marked as  insane even though it &quot;should&quot; (for some meaning of should) be  marked sane.</p><p>This function should be used when creating OpenID servers to  alert the users of the server when a consumer attempts to get  the user to accept a suspicious trust root.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Whether the trust root looks OK</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			isSane
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$trust_root</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$trust_root</span><span class="var-description">: The trust root to check</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmatch" id="match"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/StaticMethod.png" />
+		<span class="method-title">static match</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__AuthOpenIDTrustRoot.php.html#a272">272</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Does this URL match the given trust root?</p>
+<p class="description"><p>Return whether the URL falls under the given trust root. This  does not check whether the trust root is sane. If the URL or  trust root do not parse, this function will return false.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Whether the URL matches against the  trust root</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			match
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$trust_root</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$url</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$trust_root</span><span class="var-description">: The trust root to match against</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$url</span><span class="var-description">: The URL to check</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:36 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

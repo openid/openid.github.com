@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class SAML</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name"><img src="../media/images/Class_logo.png"
+														alt=" Class"
+														title=" Class"
+														style="vertical-align: middle"> SAML</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">* PHP versions 4 and 5 * * LICENSE: See the COPYING file included in this distribution.</p>
+<p class="description"><p>* * @package OpenID * @author Santosh Subramanian &lt;subrasan@cs.sunysb.edu&gt; * @author Shishir Randive &lt;srandive@cs.sunysb.edu&gt; * Stony Brook University. * largely derived from *  Copyright (C) 2007 Google Inc.</p><p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);  you may not use this file except in compliance with the License.  You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and  limitations under the License.</p></p>
+		<p class="notes">
+			Located in <a class="field" href="_contrib---signed_assertions---SAML.php.html">/contrib/signed_assertions/SAML.php</a> (line <span class="field"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a28">28</a></span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#createSamlAssertion" title="details" class="method-name">createSamlAssertion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$authenticatedUser</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$notBefore</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$notOnOrAfter</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rsadsa</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$acsURI</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$attribute</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$assertionTemplate</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$requestID</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$destination</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#samlCreateId" title="details" class="method-name">samlCreateId</a>
+										()
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#samlGetDateTime" title="details" class="method-name">samlGetDateTime</a>
+											(<span class="var-type">timestamp</span>&nbsp;<span class="var-name">$timestamp</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#signAssertion" title="details" class="method-name">signAssertion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseXmlString</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$privKey</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$cert</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$priKey</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">bool</span>
+										<a href="#validSamlDateFormat" title="details" class="method-name">validSamlDateFormat</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$samlDate</span>)
+									</div>
+																<div class="method-definition">
+					<img src="../media/images/Method.png" alt=" "/>
+											<span class="method-result">string</span>
+										<a href="#verifyAssertion" title="details" class="method-name">verifyAssertion</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseXmlString</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rootcert</span>)
+									</div>
+											</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+													<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodcreateSamlAssertion" id="createSamlAssertion"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">createSamlAssertion</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a43">43</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a SAML response with various elements filled in.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> XML SAML response.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			createSamlAssertion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$authenticatedUser</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$notBefore</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$notOnOrAfter</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rsadsa</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$acsURI</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$attribute</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$value</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$assertionTemplate</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$requestID</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$destination</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$authenticatedUser</span><span class="var-description">: The OpenId of the user</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$notBefore</span><span class="var-description">: The ISO 8601 formatted date before which the</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$notOnOrAfter</span><span class="var-description">: The ISO 8601 formatted data after which the</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$rsadsa</span><span class="var-description">: 'rsa' if the response will be signed with RSA keys,</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$requestID</span><span class="var-description">: The ID of the request we're responding to</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$destination</span><span class="var-description">: The ACS URL that the response is submitted to</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$acsURI</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$attribute</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$value</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$assertionTemplate</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsamlCreateId" id="samlCreateId"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">samlCreateId</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a175">175</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates a 40-character string containing 160-bits of pseudorandomness.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Containing pseudorandomness of 160 bits</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			samlCreateId
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsamlGetDateTime" id="samlGetDateTime"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">samlGetDateTime</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a191">191</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns a unix timestamp in xsd:dateTime format.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			samlGetDateTime
+		</span>
+					(<span class="var-type">timestamp</span>&nbsp;<span class="var-name">$timestamp</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">timestamp</span>
+				<span class="var-name">$timestamp</span><span class="var-description">: int UNIX Timestamp to convert to xsd:dateTime  ISO 8601 format.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsignAssertion" id="signAssertion"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">signAssertion</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a66">66</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Signs a SAML response with the given private key, and embeds the public key.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Signed Assertion</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			signAssertion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseXmlString</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$privKey</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$cert</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$priKey</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$responseXmlString</span><span class="var-description">: The unsigned Assertion which will be signed</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$priKey</span><span class="var-description">: Private key to sign the certificate</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$cert</span><span class="var-description">: Public key certificate of signee</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$privKey</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodvalidSamlDateFormat" id="validSamlDateFormat"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">validSamlDateFormat</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a201">201</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Attempts to check whether a SAML date is valid.  Returns true or false.</p>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			validSamlDateFormat
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$samlDate</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$samlDate</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodverifyAssertion" id="verifyAssertion"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<img src="../media/images/Method.png" />
+		<span class="method-title">verifyAssertion</span> (line <span class="line-number"><a href="../__filesource/fsource_OpenID__contribsigned_assertionsSAML.php.html#a109">109</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Verify a saml response with the given public key.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Signed SAML response</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			verifyAssertion
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseXmlString</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$rootcert</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$responseXmlString</span><span class="var-description">: Response to sign</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$rootcert</span><span class="var-description">: trusted public key certificate</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:14 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

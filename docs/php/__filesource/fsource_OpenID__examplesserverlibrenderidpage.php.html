@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for idpage.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file idpage.php</h1>
+<p>Documentation is available at <a href="../OpenID/_examples---server---lib---render---idpage.php.html">idpage.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/session.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">&quot;lib/render.php&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a5"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a6"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'idpage_pat'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a7"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'&lt;html&gt;</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-str">&lt;head&gt;</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-str">&nbsp;&nbsp;&lt;link&nbsp;rel=&quot;openid2.provider&nbsp;openid.server&quot;&nbsp;href=&quot;%s&quot;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-str">&nbsp;&nbsp;&lt;meta&nbsp;http-equiv=&quot;X-XRDS-Location&quot;&nbsp;content=&quot;%s&quot;&nbsp;/&gt;</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-str">&lt;/head&gt;</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-str">&lt;body&gt;</span></div></li>
+<li><div class="src-line"><a name="a13"></a><span class="src-str">&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;identity&nbsp;page&nbsp;for&nbsp;users&nbsp;of&nbsp;this&nbsp;server.</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-str">&lt;/body&gt;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-str">&lt;/html&gt;'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a17"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_examples---server---lib---render---idpage.php.html#functionidpage_render">idpage_render</a><span class="src-sym">(</span><span class="src-var">$identity</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xrdsurl&nbsp;</span>=&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-str">'userXrds'</span><span class="src-sym">)</span>.<span class="src-str">&quot;?user=&quot;</span>.<a href="http://www.php.net/urlencode">urlencode</a><span class="src-sym">(</span><span class="src-var">$identity</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$headers&nbsp;</span>=&nbsp;<span class="src-key">array</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'X-XRDS-Location:&nbsp;'</span>.<span class="src-var">$xrdsurl</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$body&nbsp;</span>=&nbsp;<a href="http://www.php.net/sprintf">sprintf</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_examples---server---lib---render---idpage.php.html#defineidpage_pat">idpage_pat</a></span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../OpenID/_examples---server---lib---session.php.html#functionbuildURL">buildURL</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xrdsurl</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$headers</span><span class="src-sym">,&nbsp;</span><span class="src-var">$body</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-php">?&gt;</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:58:53 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>

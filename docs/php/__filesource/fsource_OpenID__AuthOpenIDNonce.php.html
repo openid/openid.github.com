@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for Nonce.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file Nonce.php</h1>
+<p>Documentation is available at <a href="../OpenID/_Auth---OpenID---Nonce.php.html">Nonce.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;Nonce-related&nbsp;functionality.</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;OpenID</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a8"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*&nbsp;Need&nbsp;CryptUtil&nbsp;to&nbsp;generate&nbsp;random&nbsp;strings.</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-inc">require_once&nbsp;</span><span class="src-str">'Auth/OpenID/CryptUtil.php'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;is&nbsp;the&nbsp;characters&nbsp;that&nbsp;the&nbsp;nonces&nbsp;are&nbsp;made&nbsp;from.</span></div></li>
+<li><div class="src-line"><a name="a16"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a17"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'Auth_OpenID_Nonce_CHRS'</span><span class="src-sym">,</span><span class="src-str">&quot;abcdefghijklmnopqrstuvwxyz&quot;&nbsp;</span>.</div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&quot;</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-comm">//&nbsp;Keep&nbsp;nonces&nbsp;for&nbsp;five&nbsp;hours&nbsp;(allow&nbsp;five&nbsp;hours&nbsp;for&nbsp;the&nbsp;combination&nbsp;of</span></div></li>
+<li><div class="src-line"><a name="a21"></a><span class="src-comm">//&nbsp;request&nbsp;time&nbsp;and&nbsp;clock&nbsp;skew).&nbsp;This&nbsp;is&nbsp;probably&nbsp;way&nbsp;more&nbsp;than&nbsp;is</span></div></li>
+<li><div class="src-line"><a name="a22"></a><span class="src-comm">//&nbsp;necessary,&nbsp;but&nbsp;there&nbsp;is&nbsp;not&nbsp;much&nbsp;overhead&nbsp;in&nbsp;storing&nbsp;nonces.</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-key">global&nbsp;</span><span class="src-var">$Auth_OpenID_SKEW</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-var">$Auth_OpenID_SKEW&nbsp;</span>=&nbsp;<span class="src-num">60&nbsp;</span>*&nbsp;<span class="src-num">60&nbsp;</span>*&nbsp;<span class="src-num">5</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a26"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'Auth_OpenID_Nonce_REGEX'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'/(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z(.*)/'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a29"></a><a href="http://www.php.net/define">define</a><span class="src-sym">(</span><span class="src-str">'Auth_OpenID_Nonce_TIME_FMT'</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-str">'%Y-%m-%dT%H:%M:%SZ'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a32"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Auth---OpenID---Nonce.php.html#functionAuth_OpenID_splitNonce">Auth_OpenID_splitNonce</a><span class="src-sym">(</span><span class="src-var">$nonce_string</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a33"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Extract&nbsp;a&nbsp;timestamp&nbsp;from&nbsp;the&nbsp;given&nbsp;nonce&nbsp;string</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$result&nbsp;</span>=&nbsp;<a href="http://www.php.net/preg_match">preg_match</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_Auth---OpenID---Nonce.php.html#defineAuth_OpenID_Nonce_REGEX">Auth_OpenID_Nonce_REGEX</a></span><span class="src-sym">,&nbsp;</span><span class="src-var">$nonce_string</span><span class="src-sym">,&nbsp;</span><span class="src-var">$matches</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$result&nbsp;</span>!=&nbsp;<span class="src-num">1&nbsp;</span>||&nbsp;<a href="http://www.php.net/count">count</a><span class="src-sym">(</span><span class="src-var">$matches</span><span class="src-sym">)&nbsp;</span>!=&nbsp;<span class="src-num">8</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;&nbsp;&nbsp;&nbsp;list<span class="src-sym">(</span><span class="src-var">$unused</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_year</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_mon</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_mday</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_hour</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_min</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$tm_sec</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$uniquifier</span><span class="src-sym">)&nbsp;</span>=&nbsp;<span class="src-var">$matches</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$timestamp&nbsp;</span>=</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">@</span><a href="http://www.php.net/gmmktime">gmmktime</a><span class="src-sym">(</span><span class="src-var">$tm_hour</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tm_min</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tm_sec</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tm_mon</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tm_mday</span><span class="src-sym">,&nbsp;</span><span class="src-var">$tm_year</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$timestamp&nbsp;</span>===&nbsp;<span class="src-id">false&nbsp;</span>||&nbsp;<span class="src-var">$timestamp&nbsp;</span>&lt;&nbsp;<span class="src-num">0</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">null</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-var">$timestamp</span><span class="src-sym">,&nbsp;</span><span class="src-var">$uniquifier</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a57"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a59"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Auth---OpenID---Nonce.php.html#functionAuth_OpenID_checkTimestamp">Auth_OpenID_checkTimestamp</a><span class="src-sym">(</span><span class="src-var">$nonce_string</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$allowed_skew&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">,</span></div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$now&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a62"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Is&nbsp;the&nbsp;timestamp&nbsp;that&nbsp;is&nbsp;part&nbsp;of&nbsp;the&nbsp;specified&nbsp;nonce&nbsp;string</span></div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;within&nbsp;the&nbsp;allowed&nbsp;clock-skew&nbsp;of&nbsp;the&nbsp;current&nbsp;time?</span></div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">global&nbsp;</span><span class="src-var">$Auth_OpenID_SKEW</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$allowed_skew&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$allowed_skew&nbsp;</span>=&nbsp;<span class="src-var">$Auth_OpenID_SKEW</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$parts&nbsp;</span>=&nbsp;<a href="../OpenID/_Auth---OpenID---Nonce.php.html#functionAuth_OpenID_splitNonce">Auth_OpenID_splitNonce</a><span class="src-sym">(</span><span class="src-var">$nonce_string</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$parts&nbsp;</span>==&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-id">false</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$now&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$now&nbsp;</span>=&nbsp;<a href="http://www.php.net/time">time</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$stamp&nbsp;</span>=&nbsp;<span class="src-var">$parts</span><span class="src-sym">[</span><span class="src-num">0</span><span class="src-sym">]</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Time&nbsp;after&nbsp;which&nbsp;we&nbsp;should&nbsp;not&nbsp;use&nbsp;the&nbsp;nonce</span></div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$past&nbsp;</span>=&nbsp;<span class="src-var">$now&nbsp;</span>-&nbsp;<span class="src-var">$allowed_skew</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Time&nbsp;that&nbsp;is&nbsp;too&nbsp;far&nbsp;in&nbsp;the&nbsp;future&nbsp;for&nbsp;us&nbsp;to&nbsp;allow</span></div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$future&nbsp;</span>=&nbsp;<span class="src-var">$now&nbsp;</span>+&nbsp;<span class="src-var">$allowed_skew</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;the&nbsp;stamp&nbsp;is&nbsp;not&nbsp;too&nbsp;far&nbsp;in&nbsp;the&nbsp;future&nbsp;and&nbsp;is&nbsp;not&nbsp;too&nbsp;far</span></div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;in&nbsp;the&nbsp;past</span></div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-sym">((</span><span class="src-var">$past&nbsp;</span>&lt;=&nbsp;<span class="src-var">$stamp</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-sym">(</span><span class="src-var">$stamp&nbsp;</span>&lt;=&nbsp;<span class="src-var">$future</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a91"></a><span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a93"></a><span class="src-key">function&nbsp;</span><a href="../OpenID/_Auth---OpenID---Nonce.php.html#functionAuth_OpenID_mkNonce">Auth_OpenID_mkNonce</a><span class="src-sym">(</span><span class="src-var">$when&nbsp;</span>=&nbsp;<span class="src-id">null</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a94"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Generate&nbsp;a&nbsp;nonce&nbsp;with&nbsp;the&nbsp;current&nbsp;timestamp</span></div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$salt&nbsp;</span>=&nbsp;<span class="src-id"><a href="../OpenID/Auth_OpenID_CryptUtil.html">Auth_OpenID_CryptUtil</a></span><span class="src-sym">::</span><a href="../OpenID/Auth_OpenID_CryptUtil.html#methodrandomString">randomString</a><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-num">6</span><span class="src-sym">,&nbsp;</span><span class="src-id"><a href="../OpenID/_Auth---OpenID---Nonce.php.html#defineAuth_OpenID_Nonce_CHRS">Auth_OpenID_Nonce_CHRS</a></span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$when&nbsp;</span>===&nbsp;<span class="src-id">null</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;It's&nbsp;safe&nbsp;to&nbsp;call&nbsp;time()&nbsp;with&nbsp;no&nbsp;arguments;&nbsp;it&nbsp;returns&nbsp;a</span></div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;GMT&nbsp;unix&nbsp;timestamp&nbsp;on&nbsp;PHP&nbsp;4&nbsp;and&nbsp;PHP&nbsp;5.&nbsp;&nbsp;gmmktime()&nbsp;with&nbsp;no</span></div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;args&nbsp;returns&nbsp;a&nbsp;local&nbsp;unix&nbsp;timestamp&nbsp;on&nbsp;PHP&nbsp;4,&nbsp;so&nbsp;don't&nbsp;use</span></div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;that.</span></div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$when&nbsp;</span>=&nbsp;<a href="http://www.php.net/time">time</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$time_str&nbsp;</span>=&nbsp;<a href="http://www.php.net/gmstrftime">gmstrftime</a><span class="src-sym">(</span><span class="src-id"><a href="../OpenID/_Auth---OpenID---Nonce.php.html#defineAuth_OpenID_Nonce_TIME_FMT">Auth_OpenID_Nonce_TIME_FMT</a></span><span class="src-sym">,&nbsp;</span><span class="src-var">$when</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$time_str&nbsp;</span>.&nbsp;<span class="src-var">$salt</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a107"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 29 Jul 2010 13:59:05 -0700 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</body>
+</html>
