@@ -6,4 +6,4 @@ phpdoc -ti "OpenID" \
            -dn 'OpenID' \
            -dc 'OpenID' \
            -d ../php-openid \
-           -t docs/php
+           -t php/docs/latest

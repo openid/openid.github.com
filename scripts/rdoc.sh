@@ -11,7 +11,7 @@ cd ../ruby-openid/
 
 RDOC_FILES="README INSTALL LICENSE UPGRADE lib/openid examples/README"
 MAIN=README
-rdoc -o ../openid.github.com/docs/ruby/ \
+rdoc -o ../openid.github.com/ruby/docs/latest/ \
     --main="$MAIN" \
     $RDOC_FILES
 
